@@ -1,0 +1,249 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bck",
+				"background-color"
+			],
+			[
+				"from-",
+				"form-group"
+			],
+			[
+				"form",
+				"form-control"
+			],
+			[
+				"t",
+				"td\tTag"
+			],
+			[
+				"P",
+				"PermissionDenied"
+			],
+			[
+				"d",
+				"divison"
+			],
+			[
+				"re",
+				"response"
+			],
+			[
+				"usr",
+				"username"
+			],
+			[
+				"background-c",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/rizwan/example2.html",
+		"/home/rizwan/HTML/styles2.css",
+		"/home/rizwan/git/cue-training/blogging/blog/templates/blog/adminlogin.html",
+		"/home/rizwan/HTML/assign2.html",
+		"/home/rizwan/git/cue-training/practice/proj1/proj1/urls.py",
+		"/home/rizwan/git/cue-training/practice/proj1/polls/urls.py",
+		"/home/rizwan/git/cue-training/practice/proj1/polls/models.py",
+		"/home/rizwan/git/cue-training/practice/proj1/polls/views.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/templates/pol/reg.html",
+		"/home/rizwan/git/cue-training/pro/example/pol/static/pol/style.css",
+		"/home/rizwan/git/cue-training/pro/example/pol/templatetags/pol_filters.py",
+		"/home/rizwan/deco.py",
+		"/home/rizwan/git/cue-training/practice/proj1/polls/templates/polls/result.html",
+		"/home/rizwan/git/cue-training/practice/proj1/polls/templates/polls/results.html",
+		"/home/rizwan/git/cue-training/practice/proj1/polls/templatetags/polls_tags.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/forms.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/templates/pol/passchange.html",
+		"/home/rizwan/git/cue-training/.gitignore",
+		"/home/rizwan/git/cue-training/pro/example/pol/templates/pol/result.html",
+		"/home/rizwan/git/cue-training/pro/example/pol/decorators.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/views.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/templates/pol/res2.html",
+		"/home/rizwan/git/cue-training/pro/example/pol/templatetags/example1.py",
+		"/home/rizwan/git/cue-training/pro/example/example/settings.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/middleware/exmiddleware.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/middleware/exmiddleware",
+		"/home/rizwan/git/cue-training/decorator1.py",
+		"/home/rizwan/git/cue-training/assign2.html",
+		"/home/rizwan/git/cue-training/styles2.css",
+		"/home/rizwan/HTML/Psdassign/index.html",
+		"/home/rizwan/git/cue-training/pro/example/pol/templates/pol/index.html",
+		"/home/rizwan/git/cue-training/pro/example/pol/urls.py",
+		"/home/rizwan/git/cue-training/pro/example/pol/middleware/__init__.py",
+		"/home/rizwan/git/cue-training/practice/example/pol/views.py",
+		"/home/rizwan/css1.html",
+		"/home/rizwan/git/cue-training/practice/example/pol/forms.py",
+		"/home/rizwan/git/cue-training/practice/example/pol/static/pol/style.css",
+		"/home/rizwan/git/cue-training/practice/example/pol/templates/pol/index.html",
+		"/home/rizwan/git/cue-training/practice/example/pol/templates/pol/reg.html",
+		"/home/rizwan/git/cue-training/example/pol/views.py",
+		"/home/rizwan/git/cue-training/example/pol/forms.py",
+		"/home/rizwan/git/cue-training/example/pol/static/pol/style.css",
+		"/home/rizwan/git/cue-training/example/pol/templates/pol/reg.html",
+		"/home/rizwan/git/cue-training/example/pol/templates/pol/index.html",
+		"/home/rizwan/git/cue-training/example/example/settings.py",
+		"/home/rizwan/git/cue-training/example/pol/urls.py",
+		"/home/rizwan/git/cue-training/example/example/urls.py",
+		"/home/rizwan/git/cue-training/example/pol/templates/index.html"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"r"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "adminlogin.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 159.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
