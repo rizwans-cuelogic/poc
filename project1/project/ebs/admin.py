@@ -27,8 +27,8 @@ def mark_active(ModelAdmin,request,queryset):
 	
 
 	
-mark_inactive.short_description = "Deactivate"
-mark_active.short_description = "activate"
+mark_inactive.short_description = "Deactivate selected users"
+mark_active.short_description = "Activate selected users"
 
 class UserAdmin(UserAdmin):
 	"""for customizing user object table as well as adding actions in admin"""
