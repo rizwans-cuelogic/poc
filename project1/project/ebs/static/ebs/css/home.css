@@ -1,0 +1,41 @@
+body{
+	width:100%;
+}
+
+ul.nav a{
+color:#fff !important;
+}
+#header1{
+	color:#fff !important;
+	margin-top:0px;
+	padding-top:5px;
+	margin-left:30px;
+}
+.color1{
+	height:80px;
+	background-color:#9370DB;
+}
+nav{
+	background-color:#9370DB;
+}
+
+
+.site-footer{
+	background-color:#9370DB;
+	color:white;
+	margin-top:30px;
+	padding-top:20px;
+}
+
+.footer-nav{
+	text-align:right;
+	list-style:none;
+}
+.footer-nav li{
+	display:inline;
+	padding:5px;
+}
+
+.pos{
+	margin-top:43%;
+}

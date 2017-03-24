@@ -1,0 +1,17 @@
+ul.nav a{
+color:#fff !important;
+}
+h1{
+	color:#fff !important;
+	margin-top:0px;
+	padding-top:5px;
+	margin-left:30px;
+}
+.color1{
+	background-color:#9370DB;
+}
+nav{
+	background-color:#9370DB;
+}
+			
+
