@@ -21,16 +21,15 @@ class Organisation(models.Model):
 
 def send_notification(sender,instance, *args,**kwargs):
 	"""function take single user object check whether field is_active is changed 
-		to true and if it is
-		true send email to user"""
+		to true and if it is true send email to user"""
 	try:
 		if instance.is_active != User.objects.get(id=instance.id).is_active and instance.is_active==True:
  			print "created is"
  			subject = 'Active account'
- 			mesagge = '%s Your account has been activated now. You can login and add blogs. Click here to login.' %(instance.username)
+ 			message = '%s Your account has been activated now. You can login and add blogs. Click here to login.' %(instance.username)
  			from_email = settings.EMAIL_HOST_USER
- 			send_mail(subject, mesagge, from_email, 
- 						[instance.email, "rizwan.shaikh@cuelogic.com"], 
+ 			send_mail(subject, message, from_email, 
+ 						[instance.email], 
  						fail_silently=True)
  		else:
  			pass

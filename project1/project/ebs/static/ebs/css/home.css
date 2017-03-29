@@ -1,7 +1,6 @@
 body{
 	width:100%;
 }
-
 ul.nav a{
 color:#fff !important;
 }
@@ -18,8 +17,6 @@ color:#fff !important;
 nav{
 	background-color:#9370DB;
 }
-
-
 .site-footer{
 	background-color:#9370DB;
 	color:white;
