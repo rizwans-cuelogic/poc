@@ -16,7 +16,6 @@ body{
 		width:950;
 	}
 }	
-
 .padding-top{
 	margin-top:50px;
 }
@@ -31,7 +30,6 @@ body{
 		font-size:15px;
 }
 }
-
 ul.nav a{
 color:#fff !important;
 }
@@ -48,18 +46,15 @@ h1{
 nav{
 	background-color:#9370DB;
 }
-			
 #pass1,#username1{
 	color:red;
 }
-
 .site-footer{
 	background-color:#9370DB;
 	color:white;
 	margin-top:30px;
 	padding-top:20px;
 }
-
 .footer-nav{
 	text-align:right;
 	list-style:none;
@@ -68,9 +63,7 @@ nav{
 	display:inline;
 	padding:5px;
 }
-
 .org1{
 	padding-bottom:5px;
 }
-
 #success_message{ display: none;}
