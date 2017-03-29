@@ -24,9 +24,7 @@ def mark_active(ModelAdmin,request,queryset):
  		mesagge = '%s Your account has been activated now. You can login and add blogs. Click here to login.' %(obj.username)
  		from_email = settings.EMAIL_HOST_USER
  		send_mail(subject, mesagge, from_email, [obj.email], fail_silently=True)
-	
 
-	
 mark_inactive.short_description = "Deactivate selected users"
 mark_active.short_description = "Activate selected users"
 
@@ -40,7 +38,6 @@ class UserAdmin(UserAdmin):
 		if Organisation.objects.filter(user__id = request.id):
 			return 'Client'
 	display_orgname.short_description = 'Role'
-
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
