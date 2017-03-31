@@ -41,13 +41,21 @@ def regresult(request):
 			return HttpResponse(json.dumps(response), content_type='application/json')
 	
 		else:
+			error=f1.errors.as_data()
+			if error.get('username') is not None:
+		 		response = {'status':'Error', 'message': "username already exists"}
 
-		 	response = {'status':'Error', 'message': f1.errors}
+		 	elif error.get('email')	is not None:
+		 		response = {'status':'Error', 'message': "email already exists"}
+
+		 	elif error.get('email') is not None and error.get('username') is not None:
+		 		response = {'status':'Error', 'message': "username and email already exists"}	
+
+			else:
+				response = {'status':'Error', 'message': "please fill the details"}
 			return HttpResponse(json.dumps(response), content_type='application/json')
-	
-	
-	# else:
-	# 	f1=UserForm();
-	# 	f2=OrgForm();
-	# 	return render(request,'ebs/home.html',{'f1':f1,'f2':f2})
-	# 
+	else:
+	 	f1=UserForm();
+	 	f2=OrgForm();
+	 	return render(request,'ebs/home.html',{'f1':f1,'f2':f2})
+	 

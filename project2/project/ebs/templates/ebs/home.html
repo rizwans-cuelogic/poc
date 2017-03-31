@@ -24,16 +24,15 @@
 
 <body>
 	
-	<nav class="navbar-default navbar-light">
+	<nav class="navbar1 navbar-default navbar-light">
 		
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
 				<div class="container">
 					<div class="row">
 					<div class="col-md-12 col-xs-12">
-						<ul class="nav1 nav nav-pills">
+						<ul id ="ul1" class="nav1 nav nav-pills">
 						<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
 						<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
-						<li><a href="#">about us</a></li>
 						<li><a href="#">contact us</a></li>
 						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
 						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -45,9 +44,10 @@
 			</div>
 	
 	</nav>
-
+	</div>
 
     <!-- Second navbar for categories -->
+ 
     <nav class="navbar navbar-default">
       	<div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 	</nav>
- 
+ 	</div>
 		
 	
 
@@ -97,7 +97,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div id="img1">
-						<a href="#"><img style="height:420px;" class="img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " /> </a>
+						<a href="#"><img  class="banner-imgbig img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " /> </a>
 	
 					</div>
 					<div id="text1"><a style="text-decoration:none" href="#"><p>PHTOGRAPHY</p><br>
@@ -106,7 +106,7 @@
 					</a></div>
 				</div>
 
-				<div id="banner-slide">
+			
 					<div  class="col-md-6">
 						<div class="row">
 							<div class="col-md-6">
@@ -167,7 +167,7 @@
 						</div>
 						</div>
 					</div>
-				</div>
+				
 			</div>
 		</div>			
 	</div>	
@@ -630,7 +630,7 @@
 			</form>
 				<div class="modal-footer">
 					<div class="col-md-12">
-					<p class="text-center">Already Member?<a href="{% url 'adminlogin' %}">Login Here</a> </p> 
+					<p class="text-center">Already Member?<a href="#" data-toggle="modal" data-target="#signinmodal">Login Here</a> </p> 
 					</div>
 				</div>
 			</div>

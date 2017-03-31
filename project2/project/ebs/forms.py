@@ -49,7 +49,6 @@ class OrgForm(forms.ModelForm):
 					widget=forms.FileInput(
 							attrs={'size':'100%', 
 									'class':'form-control'}))
-	
 	class Meta:
 		model= Organisation
 		fields=['orgname','orglogo',]

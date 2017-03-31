@@ -31,8 +31,11 @@ $(document).ready(function() {
             },
         
        password: {
-           validators:{    
-             stringLength: {
+           validators:{ 
+            notEmpty: {
+                        message: 'Please Enter password'
+                    },
+            stringLength: {
                      min: 8,
                      max: 16,
                      message:'password must be more than 8 character and less than 16 character long'
@@ -52,8 +55,11 @@ $(document).ready(function() {
          },
 
        password1: {
-             validators: {
-                     identical:{
+            validators: {
+                    notEmpty: {
+                        message: 'Please Enter password'
+                    },
+                    identical:{
                          field:"password",
                          message:"The password and confirm are not same"
                      }
