@@ -11,33 +11,45 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/home.css' %}"/>
-	
+	<style>
+		#footer{
+			height:430px;
+			background:url("{%static 'ebs/img/bg.png' %}");
+			background-color:black;
+			opacity:0.8;
+		}
+	</style>
 
 </head>
 
 <body>
 	
 	<nav class="navbar-default navbar-light">
-		<div class="container">
+		
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
-				<ul class="nav nav-pills">
-					<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
-					<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
-					<li><a href="#">about us</a></li>
-					<li><a href="#">contact us</a></li>
-					<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
-					<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
-					<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+				<div class="container">
+					<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<ul class="nav1 nav nav-pills">
+						<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
+						<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
+						<li><a href="#">about us</a></li>
+						<li><a href="#">contact us</a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+						</ul>
 					</div>
-				</ul>
+					</div>
+				</div>
 			</div>
-		</div>
+	
 	</nav>
 
 
     <!-- Second navbar for categories -->
     <nav class="navbar navbar-default">
-      	<div class="container-fluid">
+      	<div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         	<div class="navbar-header">
          		<button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,11 +58,12 @@
             		<span class="icon-bar"></span>
             		<span class="icon-bar"></span>
           		</button>
-          		<a href="#"><img class="img-responsive" src="{% static 'ebs/img/logo.png'%}"/></a>	
+          		<a href="#"><img class="img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>	
 			</div>
     	</div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-inverse" id="navbar-collapse-1">
+        	<div class="container">
           	<ul class="nav navbar-nav">
           		<li class="active"><a hef="#">Home<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Blogs </a></li>
@@ -58,6 +71,7 @@
 				<li><a href="#">News</a></li>
 				<li><a href="#">Popular Blogs</a></li>  
 			</ul>
+
 			<form id="search-form"  class="pull-right navbar-form navbar-left">
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Search">
@@ -68,6 +82,7 @@
 					</div>
 				</div>
 			</form>
+			</div>
 		</div>
 	</nav>
  
@@ -78,58 +93,66 @@
 <!-- BANNER BLOGS POSTS -->
 
 	<div class="banner">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<div id="img1">
-						<a href="#"><img class="img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " style="height:420px;"/> </a>
+						<a href="#"><img style="height:420px;" class="img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " /> </a>
+	
 					</div>
-					<a href="#"><div id="text1"><p>PHTOGRAPHY</p><br>
+					<div id="text1"><a style="text-decoration:none" href="#"><p>PHTOGRAPHY</p><br>
 					<h2> Celebrity Make-up artist gary cockrill shows you beaty tips</h2>
 					<p>David Lee-september 24,2016</p> 
-					</div></a>
+					</a></div>
 				</div>
 
 				<div id="banner-slide">
 					<div  class="col-md-6">
 						<div class="row">
 							<div class="col-md-6">
-								<a href="#"><div class="screen1 screen">
-									<img class="banner-img img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/>
+							<div class="screen1 screen">
+								<a href="#"><!--<div class="screen1 screen">-->
+									<img class="banner-img img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/></a>
 									
 								
 									<div class="text-bannerside">
+										<a style="color:white;" href="#">
 										<p>HEALTH</p>
 										<h4>The workout That Burns More Calories Than Runing</h4>
+										</a>
 									</div>
-								</div></a>
+							</div>
 							</div>
 							
 	
 							<div class="col-md-6">
-								
-								<a href="#"><div class="screen2">
+								<div class="screen2">
+								<a href="#"><!--<div class="screen2">-->
 									<img class="banner-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/>
 						
 									<div class="text-bannerside">
 										<p>TECH</p>
 										<h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
-									</div></div>
+									</div>
 								</a>
+								</div>
 							</div>
 						</div>
 
-						<br>
+						
+						<div id="banner-2">
 						<div class="row">
 							<div class="col-md-6" >
-								<a href="#"><div class="screen">
+								<div class="screen">
+								<a href="#"><!--<div class="screen">-->
 									<img class="banner-img img-responsive" src="{% static 'ebs/img/post2.jpg' %}"/>
 								
 									<div class="text-bannerside">
 										<p>ARTS</p>
 										<h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
 									</div>
-								</div></a>
+								</a>
+								</div>
 							</div>
 							<div class="col-md-6">
 								<a href="#">
@@ -142,6 +165,7 @@
 								</a>
 							</div>
 						</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -150,11 +174,11 @@
 
 	<!--Latest blogs and must read -->
 	<div class="contain1">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
 					<h4><strong>LATEST BLOGS</strong></h4>
-					<hr class="hrcol">
+					<hr class="hrcol1">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="latest-blog">
@@ -396,7 +420,7 @@
 	<!-- FOOTER -->
 
 	<div id="footer" class="footer-padding">
-		<div class="container-fluid">
+		<div class="container">
 				<div class="row">
 					<div class="col-md-12 ">
 						<img class="center-block img-responsive" src="{% static 'ebs/img/logo-footer.png' %}"/>
@@ -428,7 +452,7 @@
 
 
 	<div id="footer-2">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<ul class="footer2-padding">

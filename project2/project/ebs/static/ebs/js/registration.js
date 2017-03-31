@@ -120,12 +120,17 @@ $(document).ready(function() {
                     $('#validator_message').notify(result['message']);
                 }
                 else{
-                $.notify(result['message'],"success");
-              }
+                  $.notify(result['message'],"success");
+                
+                }
             }
             });
-        return false;
+          return false;
         });
+
+      $('body').on('hidden.bs.modal', '.modal', function () {
+        $('input').val('');
+      });
 });
 
 

@@ -52,6 +52,7 @@ ul li a{
 
 #img1{
 	position:relative;
+	width:100%;
 }
 
 #text1{
@@ -112,7 +113,7 @@ ul li a{
 	
 	}
 	.screen{
-		margin-bottom:40px;
+		margin-bottom:60px;
 	}
 	.screen1{
 		margin-top:20px;
@@ -124,31 +125,34 @@ ul li a{
 }
 
 .banner-img{
-	width:90%;
+	width:100%;
 	height:198px;
 	overflow:hidden;
-	margin-left: 25px;
 
 }
 
 .hrcol{
-	border-top:2px solid green;
+	border-top:2px solid #009688;
 
+}
+
+.hrcol1{
+	width:95%;
+	border: 1px solid #009688;
+	margin-left:-1px;
+}
+
+hr{
+	margin-top:0px;
 }
 
 
 .text-bannerside{
-	width:90%;
 	margin-top:-90px;
 	color:white;
-	padding-left:30px;
+	padding-left:0px;
 }
 
-#footer{
-	height:400px;
-	background-color:black;
-	opacity:0.8;
-}
 
 #footer-2{
 	background-color:black;
@@ -190,7 +194,7 @@ ul li a{
 	color:white;
 	list-style:none;
 	padding:0px;
-	text-align:center;
+	
 }
 
 
@@ -223,3 +227,6 @@ ul li a{
 	color:white;
 }
 
+#banner-2{
+	margin-top:35px;
+}
