@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['dev.ebs.com', "172.21.32.76", '127.0.0.1']
 
-
+HOST='127.0.0.1:8000'
 # Application definition
 
 INSTALLED_APPS = [

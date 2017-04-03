@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-
+from django.core.mail import EmailMultiAlternatives
 
 admin.site.register(Organisation)
 
@@ -20,12 +20,13 @@ def mark_active(ModelAdmin,request,queryset):
 	"""for adding activate action in admin as well as sending email to all users"""
 	queryset.update(is_active=True)
 	for obj in queryset:
-		subject = 'Active account'
- 		mesagge = '%s Your account has been activated now. You can login and add blogs. Click here to login.' %(obj.username)
- 		from_email = settings.EMAIL_HOST_USER
- 		send_mail(subject, mesagge, from_email, [obj.email], fail_silently=True)
-	
-
+		subject = 'Welcome to NewsMagzine'
+		text_content = 'Your account has been activated now. You can login and add blogs. click here to login :'
+		html_content = '<html><body><a href="http:'+settings.HOST+'">Click Here</a></body></html>'
+		from_email = settings.EMAIL_HOST_USER
+		msg = EmailMultiAlternatives(subject, text_content, from_email, [obj.email])	
+		msg.attach_alternative(html_content, "text/html")
+		msg.send()
 	
 mark_inactive.short_description = "Deactivate selected users"
 mark_active.short_description = "Activate selected users"

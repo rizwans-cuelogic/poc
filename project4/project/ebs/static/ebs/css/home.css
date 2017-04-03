@@ -22,8 +22,13 @@ white-text{
 }
 
 a{
+	text-decoration: none;
 	color:black;
 }
+.marginlogo{
+	margin-left:-27px;
+}
+
 .navbar1{
 	border-top:4px solid #009688;
 	height:30px;
@@ -204,7 +209,7 @@ hr{
 	color:white;
 	vertical-align: center;
 	line-height: 40px;
-	padding-left:10%;
+	padding-left:14%;
 	
 }
 
@@ -226,6 +231,7 @@ hr{
 .modal-color{
 	background-color:black;
 	color:white;
+	border-bottom: 4px solid #009688;
 }
 .btn-group-lg > .btn, .btn-lg {
     	padding: 10px 16px;

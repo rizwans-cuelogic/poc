@@ -26,10 +26,10 @@ def send_notification(sender,instance, *args,**kwargs):
 	try:
 		if instance.is_active != User.objects.get(id=instance.id).is_active and instance.is_active==True:
  			print "created is"
- 			subject = 'Active account'
- 			mesagge = '%s Your account has been activated now. You can login and add blogs. Click here to login.' %(instance.username)
+ 			subject = 'Welcome To News Magzine'
+			message = 'Your account has been activated now. You can login and add blogs. click here to login ://http:'+settings.HOST+'/ebs/home'
  			from_email = settings.EMAIL_HOST_USER
- 			send_mail(subject, mesagge, from_email, 
+ 			send_mail(subject, message, from_email, 
  						[instance.email], 
  						fail_silently=True)
  		else:

@@ -1,36 +1,37 @@
 from django.test import TestCase
 import unittest
 import os
+from .models import Organisation
+from .forms import UserForm
 from django.core.mail import send_mail
 import re
 from django.contrib.auth.models import User
-import project.settings
+from django.contrib.auth.models import User
 
 # Create your tests here.
 
 class Test1(unittest.TestCase):
 	
-	def test_password_length(self):
-		pass1=os.environ.get('pass1')
-		self.assertTrue(len(pass1)>=8 and len(pass1)<=16)
-		self.assertFalse(len(pass1)>8 or len(pass1)<16)
+	def create_whatever(self, orgname="Anything"):
+		user=User.objects.create(username="abcd ",password="As123456")
+		return Organisation.objects.create(user=user,orgname="Anything")
 
-	def test_password_check(self):
-		REGEX = re.compile('^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$')
-		password=os.environ.get('pass1')
-		self.assertTrue(REGEX.match(password))
+	def test_whatever_creation(self):
+		w = self.create_whatever()
+		self.assertTrue(isinstance(w, Organisation))
+		self.assertEqual(w.__unicode__(), 'Organisation :'+w.orgname)
+
+
+	def test_valid_form(self):
+		data = {'username': 'Abcd1234','email':'abc@gmail.com','password': 'As123456','password1':'As123456'}
+		form = UserForm(data=data)
+		self.assertTrue(form.is_valid())
+
+	def test_invalid_form(self):
+		w =User.objects.create(username='Foo', password='')
+		data = {'username': w.username, 'password': w.password,}
+		form = UserForm(data=data)
+		self.assertFalse(form.is_valid())
+
+
 	
-	def test_equal_password(self):
-		pass1=os.environ.get('pass1')
-		pass2=os.environ.get('pass2')
-		self.assertEqual(pass1,pass2)
-
-	def test_username_length(self):
-		string=os.environ.get('user')
-		self.assertTrue(len(string)>=6)
-		self.assertFalse(len(string)<6)
-
-	def test_email_check(self):
-		REGEX = re.compile('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
-		email=os.environ.get('email')
-		self.assertTrue(REGEX.match(email))

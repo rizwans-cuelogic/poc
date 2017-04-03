@@ -127,8 +127,10 @@ $(document).ready(function() {
                 }
                 else{
                   $.notify(result['message'],"success");
-		  $('#myform')[0].reset();
+		              $('#myform')[0].reset();
                   $('#myform').bootstrapValidator('resetForm',true);
+                  $('#bannerformmodal').modal('toggle');
+                  return false;
                 }
             }
             });
@@ -137,7 +139,7 @@ $(document).ready(function() {
 
       $('body').on('hidden.bs.modal', '.modal', function () {
         $('#myform')[0].reset();
-	$('#myform').bootstrapValidator('resetForm',true);
+	     $('#myform').bootstrapValidator('resetForm',true);
       });
 });
 
