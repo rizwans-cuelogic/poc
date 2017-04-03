@@ -1,3 +1,29 @@
+.margin1{
+	margin-top:30px;
+}
+
+.margin2{
+	margin-top:10px;
+}
+
+.margin3{
+	margin-top:20px;
+}
+
+hr{
+	margin-top:10px;
+}
+h2{
+	font-size:25px;
+}
+
+white-text{
+	color:white;
+}
+
+a{
+	color:black;
+}
 .navbar1{
 	border-top:4px solid #009688;
 	height:30px;
@@ -11,11 +37,6 @@
 	border-bottom: 4px solid #009688;
 }
 
-a{
-	text-decoration:none;
-	color:black;	
-}
-	
 nav{
 	line-height:5px;
 }
@@ -41,6 +62,8 @@ ul li a{
 #text1{
 	position:absolute;
 	top:230px;
+	width:90%;
+
 }
 #text1 h4{
 	color:white;
@@ -77,6 +100,7 @@ ul li a{
 .latest-text{
 	width:90%;
 	margin-top:-20px;
+
 	
 }
 
@@ -95,6 +119,8 @@ ul li a{
 
 .banner-imgbig{
 	height:100%;
+	width:100%;
+
 }
 
 .hrcol{
@@ -115,10 +141,16 @@ hr{
 
 .text-bannerside{
 	margin-top:-90px;
-	color:white;
 	padding-left:5px;
 }
 
+.text-bannerside p{
+	color:white;
+}
+
+.text-bannerside h4{
+	color:white;
+}
 
 #footer-2{
 	background-color:black;
@@ -172,6 +204,7 @@ hr{
 	color:white;
 	vertical-align: center;
 	line-height: 40px;
+	padding-left:10%;
 	
 }
 
@@ -187,11 +220,44 @@ hr{
 	margin-top:35px;
 }
 
+/* modal css */
+
+
+.modal-color{
+	background-color:black;
+	color:white;
+}
+.btn-group-lg > .btn, .btn-lg {
+    	padding: 10px 16px;
+    	font-size:18px;
+    	line-height: 1.33333;
+}
+.btn1{
+	border-radius:0px;
+	background-color:black;
+	color:white;
+}
+.btn1:hover{
+	background-color:#009688;
+}
+.btn2{
+	border: medium none;
+	background-color: black; 
+	font-size: 30px; 
+	width: auto;  
+	margin-top: -10px;
+}
+
+
 @media screen and (max-width:768px){
 	#footer-2{
 		background-color:black;
 	
 	}
+	.footer2-padding{
+		text-align:center;
+	}
+	
 }
 
 
@@ -213,7 +279,7 @@ hr{
 	.screen2{
 		margin-bottom:20px;
 	}				
-			
+		
 }
 
 @media screen and (max-width:768px){
@@ -248,5 +314,7 @@ hr{
 		height:60px;
 		margin-left:30%;
 	}
+
+}
 
 

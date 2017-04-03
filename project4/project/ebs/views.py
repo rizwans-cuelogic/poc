@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.contrib import messages
 from django.contrib.auth.models import Group
+from django import forms
+import sys
 # Create your views here.
 
 def home(request):
@@ -23,6 +25,10 @@ def forgotpass(request):
 def resetpassword(request):
 	return render(request,'ebs/newpassword.html')
 
+def registration(request):
+	return render(request,'ebs/Registration.html')
+
+
 def regresult(request):
 	"""Views for registering client to plateform take UserForm and OrgForm save it to User object
 	and organisation object"""
@@ -33,26 +39,23 @@ def regresult(request):
 		 	user = User.objects.create_user(f1.cleaned_data['username'], f1.cleaned_data['email'], f1.cleaned_data['password'],is_active='False')
 		 	organisation=f2.save(commit=False)
 		 	organisation.user=user
-		 	g = Group.objects.get(name='client') 
-		 	g.user_set.add(user)
+		 	"""g = Group.objects.get(name='client') 
+		 	g.user_set.add(user)"""
 		 	organisation.save()
 		 	user.save()
 		 	response = {'status':'success', 'message': 'Your account has been created and pending for admin approval.  You will get an email after admin approval on your registered email id. This process will take 24 hours.'}
 			return HttpResponse(json.dumps(response), content_type='application/json')
 	
 		else:
-			error=f1.errors.as_data()
-			if error.get('username') is not None:
-		 		response = {'status':'Error', 'message': "username already exists"}
-
-		 	elif error.get('email')	is not None:
-		 		response = {'status':'Error', 'message': "email already exists"}
-
-		 	elif error.get('email') is not None and error.get('username') is not None:
-		 		response = {'status':'Error', 'message': "username and email already exists"}	
-
+			error=json.dumps(f1.errors)
+			errorstring=json.loads(error)
+			if 'username' in errorstring and errorstring['username']==[u'username already exists']:
+				response = {'status':'Error', 'message': "username already exists"}
+			elif 'email' in errorstring and errorstring['email']==[u'Email already exists']:	
+		 		response = {'status':'Error', 'message': "email already exists"}	
 			else:
 				response = {'status':'Error', 'message': "please fill the details"}
+			
 			return HttpResponse(json.dumps(response), content_type='application/json')
 	else:
 	 	f1=UserForm();

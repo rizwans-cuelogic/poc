@@ -127,7 +127,8 @@ $(document).ready(function() {
                 }
                 else{
                   $.notify(result['message'],"success");
-                
+		  $('#myform')[0].reset();
+                  $('#myform').bootstrapValidator('resetForm',true);
                 }
             }
             });
@@ -135,7 +136,8 @@ $(document).ready(function() {
         });
 
       $('body').on('hidden.bs.modal', '.modal', function () {
-        $('input').val('');
+        $('#myform')[0].reset();
+	$('#myform').bootstrapValidator('resetForm',true);
       });
 });
 

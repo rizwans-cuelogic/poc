@@ -13,6 +13,43 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/register.css' %}"/>
 	</head>
+	<style>
+		.modal-color{
+			background-color:black;
+			color:white;
+		}
+	.btn-group-lg > .btn, .btn-lg {
+    		padding: 10px 16px;
+    		font-size:18px;
+    		line-height: 1.33333;
+	}
+	.btn1{
+		border-radius:0px;
+		background-color:black;
+		color:white;
+	}
+	.btn1:hover{
+		background-color:#009688;
+	}
+	.btn2{
+		border: medium none;
+		 background-color: black; 
+		font-size: 30px; 
+		width: auto;  
+		margin-top: -10px;
+	}
+
+	#image{
+		height:420px;
+		width:330px;
+		}
+
+	.img1{
+		max-width:100%;
+		height:auto;
+	}
+
+	</style>
 
 <body>
 	
@@ -27,7 +64,7 @@
 		</nav>
 	</div>
 
-
+	
 	<div class="container-fluid">
     <!-- Second navbar for categories -->
     <nav class="navbar navbar-default">
@@ -58,7 +95,9 @@
    </nav>
 
 
-
+	<div id="image">
+		<a href="#"><img  class="img1 img-fluid " src="{% static 'ebs/img/pro1.jpg' %} " /> </a>
+	</div>
 
 	<br><br>
 	{% if messages %}
@@ -75,7 +114,8 @@
 	<div class="container padding-top">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header modal-color">
+				<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h2 class="text-center">Sign up</h2>
 			</div>
 			{{ f1.non_field_errors }}
@@ -163,7 +203,7 @@
 				<br>
 
 				<div class="form-group">
-					<button class="btn btn-block btn-lg btn-primary">Signup</button>	
+					<button class="btn btn-block btn-lg btn1">Signup</button>	
 				</div>	
 			</form>
 			<div class="modal-footer">
