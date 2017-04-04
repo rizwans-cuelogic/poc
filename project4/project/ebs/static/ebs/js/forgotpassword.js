@@ -32,38 +32,37 @@ $(document).ready(function() {
             }
         });
 
-    $("#signinform").submit(function (event){
+    $("#forgotform").submit(function (event){
             var email1 = $('#email1').val();
+            debugger;
             $.ajax({
             type: "POST",
-            url: 'forgot_passresult/',
-            data:{
-
-                email:email
-            }, 
+            url: 'forgotpassword/',
+            data:JSON.stringify(
+                {'email':email1}
+            ),
             dataType:"JSON",
             processData: false,
             contentType: false,
             success: function(result){
-                /*if(result['status']=='Error'){
-                    $('#message').notify(result['message']);
-                    $('#signinform')[0].reset();
+                if(result['status']=='Error'){
+                    $.notify(result['message']);
+                    $('#forgotform')[0].reset();
                 }
                 else{
-                     $('#signinmodal').modal('hide');
-                     $('#logged-user').text("Welocome "+result['user']);
-                     location.reload();   
+                    $.notify(result['message']); 
+                    $('#forgotform')[0].reset();
+                    $('#forgotpassmodal').modal('toggle');
+                    return false;      
                 }
-              }*/
+              }
                 
             });
           return false;
         });
 
-      
-
-        $('body').on('hidden.bs.modal', '.modal', function () {
-                $('#signinform')[0].reset();
+      $('body').on('hidden.bs.modal', '.modal', function () {
+                $('#forgotform')[0].reset();
          
       });     
 

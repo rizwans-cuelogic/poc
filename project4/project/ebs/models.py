@@ -6,12 +6,11 @@ from django.db.models import signals
 from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import send_mail
-
+from datetime import datetime, timedelta
 
 
 class Organisation(models.Model):
 	"""Organisation(client) model for storing client information"""
-
 	user=models.OneToOneField(User)
 	orgname=models.CharField(max_length=125)
 	description=models.TextField(blank=True,null=True)
@@ -38,3 +37,9 @@ def send_notification(sender,instance, *args,**kwargs):
  		print "caught"
 
 pre_save.connect(send_notification, sender=User)
+
+
+class forgotpassword(models.Model):
+	username = models.ForeignKey(User, on_delete=models.CASCADE)
+	activation_key = models.CharField(max_length=50)
+	link_time= models.DateTimeField(default=datetime.now, blank=True)

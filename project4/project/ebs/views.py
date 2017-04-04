@@ -1,7 +1,7 @@
 import json
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
-from .models import Organisation
+from .models import Organisation,forgotpassword
 from .forms import UserForm,OrgForm,UserLoginForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
@@ -9,7 +9,16 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import (authenticate,login,logout,)
 from django import forms
+from django.conf import settings
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string, get_template
 import sys
+from datetime import datetime, timedelta
+import hashlib
+import os
+import uuid
+from django.utils.html import strip_tags
 # Create your views here.
 
 def home(request):
@@ -92,3 +101,46 @@ def log_out(request):
 	f2=OrgForm()
 	f3=UserLoginForm()
 	return HttpResponseRedirect('/')
+
+def forgotpassword(request):
+	try:
+		if request.method=='POST':
+			"""import pdb
+			pdb.set_trace()"""
+			data = json.loads(request.body)
+			email=data['email']
+			user=User.objects.get(email=email)
+			if user.is_active:
+				hash1 = str(uuid.uuid1())
+				obj=user.forgotpassword_set.create(activation_key=hash1,link_time=datetime.now())
+				subject = 'Password recovery'
+				html_content=render_to_string('ebs/mail.html', {'hash1':hash1,'HOST':settings.HOST,'user':user})
+				text_content=strip_tags(html_content) 
+				from_email = settings.EMAIL_HOST_USER
+				msg = EmailMultiAlternatives(subject, text_content, from_email, [user.email])	
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+				response = {'status':'success', 'message': "Reset password link has been email to your registered email address."}
+				return HttpResponse(json.dumps(response), content_type='application/json')
+			else:
+				response = {'status':'Error', 'message': "Invalid email"}
+				return HttpResponse(json.dumps(response), content_type='application/json')
+
+	except Exception as e:
+		print e
+		response = {'status':'Error', 'message': "Invalid email"}
+		return HttpResponse(json.dumps(response), content_type='application/json')
+
+def forgotpass_link(request):
+	hash1=request.GET.get('uid', '')
+	if (hash1):
+		obj=forgotpassword.objects.get(activation_key=hash1)
+		user=User.objects.get(username=obj.username)	
+		time_date=obj.link_time        
+		if time_date < (datetime.now() - timedelta(hours=48)):
+			raise ValidationError('link has been expired')
+		else:
+			raise ValueError('Wrong hashkey')
+
+
+    
