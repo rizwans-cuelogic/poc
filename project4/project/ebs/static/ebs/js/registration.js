@@ -116,7 +116,7 @@ $(document).ready(function() {
            console.log($(this).serialize());
            $.ajax({
               type: "POST",
-              url: 'regresult/',
+              url: 'register/',
               data: new FormData(this),  
               dataType:"JSON",
               processData: false,
@@ -142,43 +142,3 @@ $(document).ready(function() {
 	     $('#myform').bootstrapValidator('resetForm',true);
       });
 });
-
-
-/*
-    $.ajax({
-            type: $(this).attr('method'),
-            url: this.action,
-            data: $(this).serialize(),
-            context: this,
-            success: function(data, status) {
-            
-                var $feedback=$('<div>').html(data).find("#message-1");
-                $form.prepend($feedback);
-            }
-        });
-    return false;
-    });
-
-
-
-
-    */
-    /*
-
-    $("#myform").submit(function(e) {
-        
-        $.ajax({
-            type: $(this).attr('method'),
-            url: this.action,
-            data: $(this).serialize(),
-            context: this,
-            success: function(data,status) {
-                
-
-            },
-    });
-    event.preventDefault();
-});
-
-});
-*/

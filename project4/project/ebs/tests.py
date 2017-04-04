@@ -1,11 +1,8 @@
 from django.test import TestCase
 import unittest
-import os
 from .models import Organisation
 from .forms import UserForm
 from django.core.mail import send_mail
-import re
-from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 
 # Create your tests here.

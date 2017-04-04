@@ -513,7 +513,7 @@
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-block btn-lg btn1">Login</button>
-					<span><a href="{% url 'forgotpass' %}">forget password?</a></span>	
+					<span><a href="#">forget password?</a></span>	
 				</div>	
 			</form>
 			
@@ -541,80 +541,80 @@
 		
 				{% csrf_token %}
 				<br><div class="form-group ">
-						{{f2.orgname.errors}}
+						{{orgform.orgname.errors}}
 						<label class="control-label">Company Name</label>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
 								</span>
 								</span>
-								{{f2.orgname}} 
+								{{orgform.orgname}} 
 							</div>
 						</div>
 					</div>
 	
 					<div class="form-group ">
-						{{f2.orglogo.errors}}
+						{{orgform.orglogo.errors}}
 						<label class="control-label">Company Logo</label> 
 						<div class="col-sm-12 input-group" style="width:100%">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-picture">
 								</span>
 								</span>
-								{{f2.orglogo}}	
+								{{orgform.orglogo}}	
 							</div>
 				     	</div>
 					</div>
 	
 					<div class="form-group ">
-						<label class="control-label">Company Email </label><span style="color:red">{{f1.email.errors}}</span>
+						<label class="control-label">Company Email </label><span style="color:red">{{userform.email.errors}}</span>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-envelope">
 								</span>
 								</span>
-								{{f1.email}}
+								{{userform.email}}
 							</div>
 						</div>
 					</div>
 
 					<div class="help-block with-errors"></div>
 					<div class="form-group ">
-						<label class="control-label">Username</label>&nbsp;&nbsp;&nbsp;<span style="color:red">{{f1.username.errors}}</span><span id="username1">     </span>
+						<label class="control-label">Username</label>&nbsp;&nbsp;&nbsp;<span style="color:red">{{userform.username.errors}}</span><span id="username1">     </span>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
 								</span>
 								</span>
-								{{f1.username}}
+								{{userform.username}}
 							</div>
 				
 						</div>
 					</div>
 						
 					<div class="form-group">
-						{{f1.password.errors}}
+						{{userform.password.errors}}
 						<label class="control-label">Password</label>&nbsp;&nbsp;&nbsp;<span id="pass1">    </span>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
 								</span>
 								</span>
-								{{f1.password}}
+								{{userform.password}}
 							</div>
 							<div class="help-block with-errors"></div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						{{f1.password1.errors}}
+						{{userform.password1.errors}}
 						<label class="control-label">Confirm Password</label>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
 								</span>
 								</span>
-								{{f1.password1}}
+								{{userform.password1}}
 							</div>
 						</div>
 					</div>
