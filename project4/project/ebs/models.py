@@ -28,7 +28,7 @@ def send_notification(sender,instance, *args,**kwargs):
  			print "created is"
  			subject = 'Welcome To News Magzine'
 			message = ('Your account has been activated now.'
-				'You can login and add blogs. click here to login ://http:'+settings.HOST)
+				'You can login and add blogs. click here to login : http://'+settings.HOST)
  			from_email = settings.EMAIL_HOST_USER
  			send_mail(subject, message, from_email, 
  						[instance.email], 

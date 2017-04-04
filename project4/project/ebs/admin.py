@@ -21,9 +21,8 @@ def mark_active(ModelAdmin,request,queryset):
 	queryset.update(is_active=True)
 	for obj in queryset:
 		subject = 'Welcome to NewsMagzine'
-		text_content = ('Your account has been activated now.'
-			'You can login and add blogs. click here to login :')
-		html_content = '<html><body><a href="http:'+settings.HOST+'">Click Here</a></body></html>'
+		text_content = 'Your account has been activated now.You can login and add blogs. click here to login :http://'
+		html_content = '<html><body><a href="http://'+settings.HOST+'">Click Here</a></body></html>'
 		from_email = settings.EMAIL_HOST_USER
 		msg = EmailMultiAlternatives(subject, text_content, from_email, [obj.email])	
 		msg.attach_alternative(html_content, "text/html")
