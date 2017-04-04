@@ -29,18 +29,27 @@
 		
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
 				<div class="container">
-				{% if user.is_authenticated %}
-					<div class="pull-right" id="logged-user" style="font-weight: 700">Welcome {{user.username}}</div>
+				<!--{% if user.is_authenticated %}
+					<div id="logged-user" style="font-weight: 700; padding-top:10px;">Welcome {{user.username}}</div>
 					<div class="pull-right" id="logout"><a href="{% url 'log_out' %}">Logout</a></div>
-				{% endif %}
+				{% endif %}-->
 					<div class="row">
 					<div class="col-md-12 col-xs-12">
 						<ul id ="ul1" class="nav1 nav nav-pills">
+						{% if user.is_authenticated %}
+							<li><div id="logged-user" style="font-weight: 700; padding-top:10px;">Welcome {{user.username}}</div></li>
+							<li><a href="#">ManageProfile</a></li>
+							<li><a href="#">ManageBlogs</a></li>
+							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
+						{% endif %}
+
+
 						{% if not user.is_authenticated %}
 							<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
 							<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
+						
+							<li><a href="#">contact us</a></li>
 						{% endif %}
-						<li><a href="#">contact us</a></li>
 						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
 						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
 						<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
@@ -74,7 +83,11 @@
           	<ul class="nav navbar-nav">
           		<li class="active"><a hef="#">Home<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Blogs </a></li>
-				<li><a hef="#">FeatureBlogs</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="#">Profile</a></li>
+				{% endif %}
+				{% if not user.is_authenticated %}
+				<li><a hef="#">FeatureBlogs</a></li>{% endif %}
 				<li><a href="#">News</a></li>
 				<li><a href="#">Popular Blogs</a></li>  
 			</ul>
@@ -492,11 +505,13 @@
 			<div class="modal-header modal-color">
 				<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h2 class="text-center">Login</h2>
+				<div id="message">  </div>
 			</div>
+
 			<form id="signinform" method="post" data-toggle="validator" class="col-md-12">
 				{% csrf_token %}
 				<br><div class="form-group ">
-						<label class="control-label">Username</label>&nbsp;&nbsp;&nbsp;<span style="color:red">{{f3.username.errors}}</span><span id="username1">     </span>
+						<label class="control-label">Username</label>&nbsp;&nbsp;&nbsp;<span style="color:red">{{f3.username.errors}}</span>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
@@ -509,7 +524,7 @@
 					</div>
 					<div class="form-group">
 						{{f3.password.errors}}
-						<label class="control-label">Password</label>&nbsp;&nbsp;&nbsp;<span id="pass1">    </span>
+						<label class="control-label">Password</label>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
@@ -523,8 +538,9 @@
 				
 					<div class="form-group">
 					<button class="btn btn-block btn-lg btn1">Login</button>
-					<span><a href="{% url 'forgotpass' %}">forget password?</a></span>	
-				</div>	
+					<div class="forgot"><a id="forgotpass" href="#">forgot your password? get help</a></div>	
+					</div>
+
 			</form>
 			
 			<div class="modal-footer">
@@ -535,6 +551,46 @@
 		</div>
 	</div>		
 </div>
+
+
+<!-- forgot password modal-->
+<div id="forgotpassmodal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header modal-color">
+						<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h2 class="text-center">Password Recovery</h2>
+					</div>
+					<form method='post' class="col-md-12">
+						{% csrf_token %}	
+						<br> 
+						<div class="margin2 form-group">
+							<label>Email</label>
+							<input id="email1" type="email" class="form-control input-lg"  placeholder="email" required>
+						</div>
+
+						<div class="margin3 form-group">
+							<button class="btn btn-block btn-lg btn1">send my password</button>
+							<p class="text-center"><strong> password reset link will be email to you</strong></p>
+						</div>   
+				
+					</form>
+	
+				
+					<div class="modal-footer">
+						<div class="col-md-12">
+						</div>
+					</div>
+				</div>
+		</div>
+</div>
+			
+
+
+
+
+
+
 
 
 	<!--signup modal -->
@@ -652,6 +708,7 @@
 <!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>--> 
 <script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script> 
 <script type="text/javascript" src="{% static 'ebs/js/login.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/forgotpassword.js' %}"></script>
 
 </body>
 </html>

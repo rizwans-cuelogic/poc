@@ -33,18 +33,19 @@ $(document).ready(function() {
         });
 
     $("#signinform").submit(function (event){
-            var username = $('#susername').val();
-            var password = $('#spassword').val();
-
+            var email1 = $('#email1').val();
             $.ajax({
             type: "POST",
-            url: 'loginresult/',
-            data: new FormData(this), 
+            url: 'forgot_passresult/',
+            data:{
+
+                email:email
+            }, 
             dataType:"JSON",
             processData: false,
             contentType: false,
             success: function(result){
-                if(result['status']=='Error'){
+                /*if(result['status']=='Error'){
                     $('#message').notify(result['message']);
                     $('#signinform')[0].reset();
                 }
@@ -53,17 +54,13 @@ $(document).ready(function() {
                      $('#logged-user').text("Welocome "+result['user']);
                      location.reload();   
                 }
-              }
+              }*/
                 
             });
           return false;
         });
 
-        $('#forgotpass').click(function(){
-                $('#signinmodal').modal('hide');
-                $('#forgotpassmodal').modal('show');
-
-        });
+      
 
         $('body').on('hidden.bs.modal', '.modal', function () {
                 $('#signinform')[0].reset();

@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from .models import Organisation
 from .forms import UserForm,OrgForm,UserLoginForm
 from django.contrib.auth.models import User
@@ -88,4 +88,7 @@ def loginresult(request):
 
 def log_out(request):
 	logout(request)
-	return HttpResponse("successfully logout")
+	f1=UserForm()
+	f2=OrgForm()
+	f3=UserLoginForm()
+	return HttpResponseRedirect('/')

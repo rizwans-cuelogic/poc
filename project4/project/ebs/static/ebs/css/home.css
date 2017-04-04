@@ -1,3 +1,7 @@
+.forgot{
+	text-align:center !important;
+	margin-top:10px !important;
+}
 .margin1{
 	margin-top:30px;
 }
@@ -22,8 +26,12 @@ white-text{
 }
 
 a{
-	text-decoration: none;
+	text-decoration: none !important;
 	color:black;
+}
+
+a:hover{
+	color:green;
 }
 .marginlogo{
 	margin-left:-27px;
@@ -254,6 +262,9 @@ hr{
 	margin-top: -10px;
 }
 
+.sendbutton{
+	margin-top:30px;
+}
 
 @media screen and (max-width:768px){
 	#footer-2{

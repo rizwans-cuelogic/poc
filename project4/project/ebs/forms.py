@@ -25,7 +25,6 @@ class UserForm(forms.ModelForm):
 					widget=forms.TextInput(
 							attrs={'size':'100%' , 
 									'class':'form-control'}))
-	
 	class Meta:
 		model=User
 		fields=['username','email','password']
