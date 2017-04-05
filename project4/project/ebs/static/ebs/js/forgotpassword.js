@@ -34,10 +34,9 @@ $(document).ready(function() {
 
     $("#forgotform").submit(function (event){
             var email1 = $('#email1').val();
-            debugger;
             $.ajax({
             type: "POST",
-            url: 'forgotpassword/',
+            url: 'forgotpass/',
             data:JSON.stringify(
                 {'email':email1}
             ),
@@ -46,13 +45,17 @@ $(document).ready(function() {
             contentType: false,
             success: function(result){
                 if(result['status']=='Error'){
-                    $.notify(result['message']);
+                    $('#forgotmessage').notify(result['message']);
                     $('#forgotform')[0].reset();
                 }
                 else{
-                    $.notify(result['message']); 
+                    $.notify.defaults({ className: "success" });
+                    $('#forgotmessage').notify(result['message']); 
                     $('#forgotform')[0].reset();
-                    $('#forgotpassmodal').modal('toggle');
+                    setInterval(function(){
+                        window.location.replace('/');
+                    }, 1000);
+                
                     return false;      
                 }
               }
@@ -64,8 +67,14 @@ $(document).ready(function() {
       $('body').on('hidden.bs.modal', '.modal', function () {
                 $('#forgotform')[0].reset();
          
-      });     
+      });
+
+    if (window.location.href.indexOf("?uid=") > -1) {
+    
+        $('#recoverformmodal').modal('show');
+    }
 
 });
+
 
 

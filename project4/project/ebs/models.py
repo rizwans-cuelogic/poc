@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from datetime import datetime, timedelta
 from django.contrib.auth.models import User 
 from django.db import models
 from django.db.models.signals import pre_save, post_save
@@ -6,10 +7,9 @@ from django.db.models import signals
 from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import send_mail
-from datetime import datetime, timedelta
 from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
-
+from django.core.mail import EmailMultiAlternatives
 
 class Organisation(models.Model):
 	"""Organisation(client) model for storing client information"""
@@ -37,7 +37,7 @@ def send_notification(sender,instance, *args,**kwargs):
  		else:
  			pass
  	except:
- 		print "caught"
+ 		print "can not send email"
 
 pre_save.connect(send_notification, sender=User)
 

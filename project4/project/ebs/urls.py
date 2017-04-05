@@ -3,12 +3,11 @@ from . import views
 
 urlpatterns=[
 	url(r'^$', views.home,name="home"),
-	url(r'^forgotpass/$', views.forgotpass,name='forgotpass'),
-	url(r'^adminlogin/$', views.adminlogin,name='adminlogin'),
-	url(r'^resetpassword/$', views.resetpassword,name='resetpassword'),
-	url(r'^regresult/$', views.regresult,name='regresult'),
-	url(r'^registration/$', views.registration,name='registration'),
+	url(r'^register/$', views.register,name='register'),
 	url(r'^loginresult/$', views.loginresult,name='loginresult'),
-	url(r'^forgotpassword/$', views.forgotpassword,name='forgotpassword'),
+	url(r'^forgotpass/$', views.forgotpass,name='forgotpass'),
 	url(r'^log_out/$', views.log_out,name='log_out'),
+	url(r'^forgotpass_link/$',views.forgotpass_link,name='forgotpass_link'),
+	url(r'^newpassword/$',views.newpassword,name='newpassword'),
+	url(r'^recover_password/$',views.recover_password,name='recover_password'),
 ]

@@ -116,7 +116,7 @@ $(document).ready(function() {
            console.log($(this).serialize());
            $.ajax({
               type: "POST",
-              url: 'regresult/',
+              url: 'register/',
               data: new FormData(this),  
               dataType:"JSON",
               processData: false,
@@ -127,7 +127,7 @@ $(document).ready(function() {
                 }
                 else{
                   $.notify(result['message'],"success");
-		              $('#myform')[0].reset();
+		          $('#myform')[0].reset();
                   $('#myform').bootstrapValidator('resetForm',true);
                   $('#bannerformmodal').modal('toggle');
                   return false;

@@ -1,18 +1,27 @@
-from django.test import TestCase
 import unittest
 import os
-from .models import Organisation
-from .forms import UserForm
+
+from django.test import TestCase,Client
 from django.core.mail import send_mail
-import re
 from django.contrib.auth.models import User
-from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
+from django.test import RequestFactory
+
+from . import views
+from .models import Organisation
+from .forms import UserForm,OrgForm,UserLoginForm
 
 # Create your tests here.
 
+def setUp(self):
+
+    self.user = UserFactory()
+    self.factory = RequestFactory()
+
+
 class Test1(unittest.TestCase):
 	
-	def create_whatever(self, orgname="Anything"):
+	"""def create_whatever(self, orgname="Anything"):
 		user=User.objects.create(username="abcd ",password="As123456")
 		return Organisation.objects.create(user=user,orgname="Anything")
 
@@ -32,6 +41,26 @@ class Test1(unittest.TestCase):
 		data = {'username': w.username, 'password': w.password,}
 		form = UserForm(data=data)
 		self.assertFalse(form.is_valid())
-
-
 	
+	def test_valid_login_form(self):
+		data={'username':'abcd1234','password':'As123456'}
+		form=UserLoginForm(data=data)
+		self.assertTrue(form.is_valid())
+	"""
+	"""def test_register(self):
+		url = reverse("/")
+		resp = self.client.get(url)
+		self.assertEqual(resp.status_code, 200)
+	"""
+	def test_post(self):
+		data = {
+
+				'username': 'Myfdfdfff',
+
+				'content': 'As12345667'
+		}
+		request = self.factory.post(reverse('loginresult'), data)
+		request.user = self.user
+		self.assertEqual(response.status_code, 302)
+
+
