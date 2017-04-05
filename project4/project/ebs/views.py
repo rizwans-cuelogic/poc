@@ -50,8 +50,8 @@ def regresult(request):
 		 	user = User.objects.create_user(f1.cleaned_data['username'], f1.cleaned_data['email'], f1.cleaned_data['password'],is_active='False')
 		 	organisation=f2.save(commit=False)
 		 	organisation.user=user
-		 	"""g = Group.objects.get(name='client') 
-		 	g.user_set.add(user)"""
+		 	g = Group.objects.get(name='client') 
+		 	g.user_set.add(user)
 		 	organisation.save()
 		 	user.save()
 		 	response = {'status':'success', 'message': 'Your account has been created and pending for admin approval.  You will get an email after admin approval on your registered email id. This process will take 24 hours.'}

@@ -5,6 +5,9 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string, get_template
+from django.utils.html import strip_tags
+
 
 admin.site.register(Organisation)
 
@@ -21,13 +24,12 @@ def mark_active(ModelAdmin,request,queryset):
 	queryset.update(is_active=True)
 	for obj in queryset:
 		subject = 'Welcome to NewsMagzine'
-		text_content = 'Your account has been activated now. You can login and add blogs. click here to login :'
-		html_content = '<html><body><a href="http:'+settings.HOST+'">Click Here</a></body></html>'
+		html_content=render_to_string('ebs/welcomemail.html', {'HOST':settings.HOST})
+		text_content=strip_tags(html_content) 
 		from_email = settings.EMAIL_HOST_USER
 		msg = EmailMultiAlternatives(subject, text_content, from_email, [obj.email])	
 		msg.attach_alternative(html_content, "text/html")
-		msg.send()
-	
+		msg.send()	
 mark_inactive.short_description = "Deactivate selected users"
 mark_active.short_description = "Activate selected users"
 

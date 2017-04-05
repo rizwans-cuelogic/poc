@@ -7,6 +7,8 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import send_mail
 from datetime import datetime, timedelta
+from django.template.loader import render_to_string, get_template
+from django.utils.html import strip_tags
 
 
 class Organisation(models.Model):
@@ -26,11 +28,12 @@ def send_notification(sender,instance, *args,**kwargs):
 		if instance.is_active != User.objects.get(id=instance.id).is_active and instance.is_active==True:
  			print "created is"
  			subject = 'Welcome To News Magzine'
-			message = 'Your account has been activated now. You can login and add blogs. click here to login ://http:'+settings.HOST+'/ebs/home'
- 			from_email = settings.EMAIL_HOST_USER
- 			send_mail(subject, message, from_email, 
- 						[instance.email], 
- 						fail_silently=True)
+			html_content=render_to_string('ebs/welcomemail.html', {'HOST':settings.HOST})
+			text_content=strip_tags(html_content) 
+			from_email = settings.EMAIL_HOST_USER
+			msg = EmailMultiAlternatives(subject, text_content, from_email, [instance.email])	
+			msg.attach_alternative(html_content, "text/html")
+			msg.send()
  		else:
  			pass
  	except:
