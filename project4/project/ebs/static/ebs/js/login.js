@@ -47,6 +47,7 @@ $(document).ready(function() {
                 if(result['status']=='Error'){
                     $('#message').notify(result['message']);
                     $('#signinform')[0].reset();
+
                 }
                 else{
                      $('#signinmodal').modal('hide');
@@ -56,6 +57,7 @@ $(document).ready(function() {
               }
                 
             });
+            
           return false;
         });
 

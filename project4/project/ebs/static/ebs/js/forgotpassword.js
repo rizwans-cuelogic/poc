@@ -32,7 +32,7 @@ $(document).ready(function() {
             }
         });
 
-    $("#forgotform").submit(function (event){
+    $("#forgotform").submit(function (event){       
             var email1 = $('#email1').val();
             $.ajax({
             type: "POST",
@@ -49,13 +49,11 @@ $(document).ready(function() {
                     $('#forgotform')[0].reset();
                 }
                 else{
-                    $.notify.defaults({ className: "success" });
-                    $('#forgotmessage').notify(result['message']); 
-                    $('#forgotform')[0].reset();
-                    setInterval(function(){
-                        window.location.replace('/');
-                    }, 1000);
-                
+                    $.notify(result['message'],"success");
+                  $('#forgotform')[0].reset();
+                  $('#forgotform').bootstrapValidator('resetForm',true);
+                  $('#forgotpassmodal').modal('toggle');
+                  return false;                                    
                     return false;      
                 }
               }
@@ -70,10 +68,17 @@ $(document).ready(function() {
       });
 
     if (window.location.href.indexOf("?uid=") > -1) {
-    
+        if ($('#hashval').attr('value')==""){
+            $.notify("This invalid link or token has been expired.");
+            /*var data = {};
+            data.putYour = "data here";
+            History.pushState(data, document.title, window.location.host);*/
+            // $('#recoverform')[0].reset();
+            // $('#recoverform').bootstrapValidator('resetForm',true);
+        } else{   
         $('#recoverformmodal').modal('show');
+        }
     }
-
 });
 
 

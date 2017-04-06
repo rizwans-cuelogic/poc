@@ -24,6 +24,9 @@ from .forms import UserForm,OrgForm,UserLoginForm
 # Create your views here.
 
 def home(request):
+	userform=UserForm()
+	orgform=OrgForm()
+	loginform=UserLoginForm()
 	hash1=request.GET.get('uid', '')
 	try:
 		if (hash1):
@@ -31,13 +34,13 @@ def home(request):
 			user=User.objects.get(username=obj.username)	
 			time_date=obj.link_time        
 			if time_date < (timezone.now() - timedelta(hours=48)):
-				return HttpResponse('link has been expired')
+				return render(request,'ebs/home.html',{'userform':userform,'orgform':orgform,'loginform':loginform, 'hashsuccess':False})
+			else:
+				return render(request,'ebs/home.html',{'userform':userform,'orgform':orgform,'loginform':loginform, 'hashsuccess':True, 'hash':hash1})
 	except Exception:
-		return HttpResponse('Cant change password Twice')
+		return render(request,'ebs/home.html',{'userform':userform,'orgform':orgform,'loginform':loginform, 'hashsuccess':False})
   	 
-	userform=UserForm()
-	orgform=OrgForm()
-	loginform=UserLoginForm()
+	
 	return render(request,'ebs/home.html',{'userform':userform,'orgform':orgform,'loginform':loginform})
 
 def newpassword(request):
@@ -100,9 +103,6 @@ def loginresult(request):
 
 def log_out(request):
 	logout(request)
-	userform=UserForm()
-	orgform=OrgForm()
-	loginform=UserLoginForm()
 	return HttpResponseRedirect('/')
 
 def forgotpass(request):
@@ -132,20 +132,6 @@ def forgotpass(request):
 		response = {'status':'Error', 'message': "Invalid email"}
 		return HttpResponse(json.dumps(response), content_type='application/json')
 
-def forgotpass_link(request):
-	hash1=request.GET.get('uid', '')
-	try:
-		if (hash1):
-			obj=forgotpassword.objects.get(activation_key=hash1)
-			user=User.objects.get(username=obj.username)	
-			time_date=obj.link_time        
-			if time_date < (datetime.now() - timedelta(hours=48)):
-				raise ValidationError('link has been expired')
-		else:
-			raise ValueError('Wrong hashkey')
-	except Exception as e:
-		print e
-
 
 def recover_password(request):
 	try:
@@ -153,13 +139,23 @@ def recover_password(request):
 			data = json.loads(request.body)
 			hash1=data['hash']
 			password=data['password']
+			if password=='':
+				response = {'status':'Error', 'message': "please fill the details"}
+				return HttpResponse(json.dumps(response), content_type='application/json')
+			elif len(password)<8 or len(password)>16:
+				response = {'status':'Error', 'message': "please fill the details"}
+				return HttpResponse(json.dumps(response), content_type='application/json')
+					
 			obj=forgotpassword.objects.get(activation_key=hash1)
+			print obj.activation_key
 			user=User.objects.get(username=obj.username)
 			user.set_password(password)
 			user.save()
 			forgotpassword.objects.get(id=obj.id).delete()
 			response = {'status':'success', 'message': "password updated successfully"}
-			return HttpResponse(json.dumps(response), content_type='application/json')	
-	except Exception:
-		response = {'status':'Error', 'message': "Invalid Hash"}
+			return HttpResponse(json.dumps(response), content_type='application/json')
+
+	except Exception as e:
+		print e
+		response = {'status':'', 'message': ''}
 		return HttpResponse(json.dumps(response), content_type='application/json')

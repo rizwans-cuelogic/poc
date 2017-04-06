@@ -34,8 +34,8 @@
 						<ul id ="ul1" class="nav1 nav nav-pills">
 						{% if user.is_authenticated %}
 							<li><div id="logged-user" style="font-weight: 700; padding-top:10px;">Welcome {{user.username}}</div></li>
-							<li><a href="#">ManageProfile</a></li>
-							<li><a href="#">ManageBlogs</a></li>
+							<li><a href="#">Manage Profile</a></li>
+							<li><a href="#">Manage Blogs</a></li>
 							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
 						{% endif %}
 
@@ -112,9 +112,9 @@
 						<a href="#"><img  class="banner-imgbig img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " /> </a>
 	
 					</div>
-					<div id="text1"><a href="#"><p>PHTOGRAPHY</p><br>
-					<h2> Celebrity Make-up artist gary cockrill shows you beaty tips</h2>
-					<p>David Lee-september 24,2016</p> 
+					<div id="text1"><a href="#"><div class="text-block"><span class=" white-text  font1"><p class="banner-line">PHTOGRAPHY</p></span></div>
+					<h3> Celebrity Make-up artist gary cockrill shows you beaty tips</h3>
+					<span class="white-text marginl font-author"><b>David Lee</b></span><span class="white-text font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span> 
 					</a></div>
 				</div>
 
@@ -129,8 +129,8 @@
 								
 									<div class="text-bannerside">
 										<a href="#">
-										<p>HEALTH</p>
-										<h4>The workout That Burns More Calories Than Runing</h4>
+										<div class="text-block1"><p class="font1">HEALTH</p></div>
+										<h4 class="fontfamily1">The workout That Burns More Calories Than Runing</h4>
 										</a>
 									</div>
 							</div>
@@ -143,8 +143,8 @@
 									<img class="banner-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/></a>
 						
 									<div class="text-bannerside">
-										<a href="#"><p>TECH</p>
-										<h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
+										<a href="#"><div class="text-block2"><p class="font1">TECH</p></div>
+										<h4 class="fontfamily1">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
 										</a>
 									</div>
 								
@@ -161,8 +161,8 @@
 									<img class="banner-img img-responsive" src="{% static 'ebs/img/post2.jpg' %}"/></a>
 								
 									<div class="text-bannerside">
-										<a href="#"><p>ARTS</p>
-										<h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
+										<a href="#"><div class="text-block2"><p class="font1">ARTS</p></div>
+										<h4 class="fontfamily1">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
 										</a>
 									</div>
 								
@@ -173,8 +173,8 @@
 									<img class="banner-img img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/></a>
 								
 									<div class="text-bannerside">
-										<a href="#"><p>FASHION</p>
-										<h4>Fashion Week Parties: Night 4</h4></a>
+										<a href="#"><div class="text-block1"><p class="font1">FASHION</p></div>
+										<h4 class="fontfamily1">Fashion Week Parties: Night 4</h4></a>
 									</div>
 								
 							</div>
@@ -199,20 +199,20 @@
 							<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
 
 							<div class="latest-text">
-								<a href="#"><p style="color:white">PHOTOGRAPHY</p></a>
-								<a href="#"><h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4>
-								<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								<a href="#"><div class="text-block3"><p class="white-text font1">PHTOGRAPHY</p></div></a>
+								<a class="latest-color" href="#"><h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4></a>
+								<span class="font-author"><strong>David Lee</strong></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 							</div>
 							</div>		
 						</div>
 			
 						<div class="col-md-6">
 							<div class="latest-blog">
-								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/books.jpg' %} "/></a>
+								<a  href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/books.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">HEALTH</p></a>
-									<a href="#"><h4>Summer Sports That Torch Serious Calories</h4>
-									<span>David Lee-september 24,2016</span></a> <a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block1"><p class="white-text font1">HEALTH</p></a></div>
+									<a class="latest-color" href="#"><h4>Summer Sports That Torch Serious Calories</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span> <a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>	
 							</div>
 						</div>
@@ -221,11 +221,11 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="latest-blog">
-								<a href="#"><img  class="img-responsive latest-img" src="{% static 'ebs/img/por1.jpg' %} "/></a>
+								<a  href="#"><img  class="img-responsive latest-img" src="{% static 'ebs/img/por1.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">HEALTH</p></a>
-									<a href="#"><h4>The workout That Burns More Calories Than Running</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block1"><p class="white-text font1">HEALTH</p></div></a>
+									<a class="latest-color" href="#"><h4>The workout That Burns More Calories Than Running</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 
 							</div>
@@ -233,11 +233,11 @@
 
 						<div class="col-md-6">
 							<div class="latest-blog">
-								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %} "/></a>
+								<a  href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">TECH</p></a>
-									<a href="#"><h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block2"><p class="white-text font1">TECH</p></a></div>
+									<a class="latest-color" href="#"><h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 							</div>		
 						</div>
@@ -248,10 +248,10 @@
 							<div class="latest-blog">
 								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/army.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">ARMY</p></a>
+									<a href="#"><div class="text-block2"><p class="white-text font1">ARMY</p></a></div>
 
-									<a href="#"><h4>Georgian soldier helped in attack near US base in Afghanistan</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a class="latest-color" href="#"><h4>Georgian soldier helped in attack near US base in Afghanistan</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 							</div>
 						</div>
@@ -259,9 +259,9 @@
 							<div class="latest-blog">
 								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/post2.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">ARTS</p></a>
-									<a href="#"><h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block2"><p class="white-text font1">ARTS</p></a></div>
+									<a class="latest-color" href="#"><h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 							</div>							
 						</div>
@@ -272,9 +272,9 @@
 							<div class="latest-blog">
 							<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/bus.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">ARTS</p></a>		
-									<a href="#"><h4>Making Times Square’s Pedestrian Plazas Work</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block2"><p class="white-text font1">ARTS</p></a></div>		
+									<a class="latest-color" href="#"><h4>Making Times Square’s Pedestrian Plazas Work</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 							</div>				
 
@@ -283,9 +283,9 @@
 							<div class="latest-blog">
 								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/frame.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">ARTS</p></a>
-									<a href="#"><h4>How the Guggenheim Keeps Its Galleries Immaculate</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block2"><p class="white-text font1">ARTS</p></a></div>
+									<a class="latest-color" href="#"><h4>How the Guggenheim Keeps Its Galleries Immaculate</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 							</div>
 						</div>
@@ -297,9 +297,9 @@
 							<div class="latest-blog">
 								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/masterpiece.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">ARTS</p></a>
-									<a href="#"><h4>Joan Young Moderates a Conversation about Singapore</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+									<a href="#"><div class="text-block2"><p class="white-text font1">ARTS</p></a></div>
+									<a class="latest-color" href="#"><h4>Joan Young Moderates a Conversation about Singapore</h4></a>
+									<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a> 
 								</div>
 							</div>
 						</div>
@@ -307,9 +307,9 @@
 							<div class="latest-blog">
 								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/camera.jpg' %} "/></a>
 								<div class="latest-text">
-									<a href="#"><p style="color:white">TECH</p></a>
-									<a href="#"><h4>Lenovo Introduces Its Best Entertainment Tablets Yet</h4>
-									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a>
+									<a href="#"><div class="text-block2"><p class="white-text font1">TECH</p></div></a>
+									<a class="latest-color" href="#"><h4>Lenovo Introduces Its Best Entertainment Tablets Yet</h4></a>
+									<span class="font-author f"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span><a href="#"><span class="pull-right view-block">0</span></a>
 								</div>
 							</div>
 						</div>
@@ -329,8 +329,9 @@
 								
 						</div>
 						<div class="col-md-7 col-xs-7">
-							<a href="#"><h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
-							 TECH   september 24,2016</a>
+							<a class="latest-color" href="#"><h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
+							 </a><div class="text-block2 inlineb"><a href="#"><p class="white-text font1">TECH</p></a></div><span class="font-author">&nbsp;&nbsp;-&nbsp;September 24,&nbsp;2016</span>
+							
 								
 						</div>
 					</div>	
@@ -340,9 +341,9 @@
 							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %}"/></a>
 						</div>
 						<div class="col-md-7 col-xs-7">
-							<a href="#">
-							<h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4>
-							PHOTOGRAPHY   september 24,2016</a>
+							<a class="latest-color" href="#">
+							<h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4></a>
+							<div class="text-block3 inlineb"><a href="#"><p class="white-text font1">PHOTOGRAPHY</p></a></div><span class="font-author">&nbsp;&nbsp;-&nbsp;September 24,&nbsp;2016</span>
 						</div>
 					</div>	
 					<hr class="margin3">
@@ -351,8 +352,8 @@
 							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/por1.jpg' %}"></img></a>
 						</div>
 						<div class="col-md-7 col-xs-7">
-							<a href="#"><h4>The workout That Burns More Calories Than Running</h4>
-							HEALTH september 24,2016</a>
+							<a class="latest-color" href="#"><h4>The workout That Burns More Calories Than Running</h4></a><div class="text-block1 inlineb"><a href="#"><p class="white-text font1">HEALTH</p></a></div><span class="font-author">&nbsp;&nbsp;-&nbsp;September 24,&nbsp;2016</span>
+							
 
 						</div>
 					</div>	
@@ -362,9 +363,10 @@
 							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/></a>
 						</div>
 						<div class="col-md-7 col-xs-7">
-							<a href="#">
-							<h4>Fashion Week Parties: Night 4</h4>
-							FASHION september 24,2016</a>
+							<a class="latest-color" href="#">
+							<h4>Fashion Week Parties: Night 4</h4></a>
+							</a><div class="text-block1 inlineb"><a href="#"><p class="white-text font1">FASHION</p></a></div><span class="font-author">&nbsp;&nbsp;-&nbsp;September 24,&nbsp;2016</span>
+							
 						</div>
 					</div>	
 				
@@ -374,36 +376,37 @@
 						<hr class="hrcol"> 
 						<div class="row">
 							<div class="col-md-12">
-								<a href="#">
+								<a class="latest-color" href="#">
 								<h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4></a>
-								<span><a href="#">TECH</a></span> &nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+								<div class="text-block2 inlineb"><a href="#"><p class="white-text font1">TECH</p></a></div>
+							 &nbsp;<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span></a><a href="#"><span class="pull-right view-block">0</span></a>
 
 							</div>
 						</div>
 						<hr class="margin3">
 						<div class="row">
 							<div class="col-md-12">
-								<a href="#">
+								<a class="latest-color" href="#">
 								<h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4></a>
-								<span><a href="#">PHOTOGRAPHY</a></span>&nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+								<div class="text-block3 inlineb"><a href="#"><p class="white-text font1">PHOTOGRAPHY</p></a></div> &nbsp;<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span></a><a href="#"><span class="pull-right view-block">0</span></a>
 							</div>
 						</div>
 						<hr class="margin3">
 				
 						<div class="row">
 							<div class="col-md-12">
-								<a href="#">	
+								<a class="latest-color" href="#">	
 								<h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4></a>
-								<span><a href="#">ARTS</a></span></span>&nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+								<div class="text-block2 inlineb"><a href="#"><p class="white-text font1">ARTS</p></a></div> &nbsp;<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span></a><a href="#"><span class="pull-right view-block">0</span></a>
 							</div>
 						</div>
 						<hr class="margin3">
 								
 						<div class="row">
 							<div class="col-md-12">
-								<a href="#">
+								<a  class="latest-color" href="#">
 								<h4>Georgian soldier helped in attack near US base in Afghanistan</h4></a>
-								<span><a href="#">ARMY</a></span></span></span>&nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+								<div class="text-block2 inlineb"><a href="#"><p class="white-text font1">ARTS</p></a></div> &nbsp;<span class="font-author"><b>David Lee</b></span><span class="font-author">&nbsp;-&nbsp;September 24,&nbsp;2016</span></a><a href="#"><span class="pull-right view-block">0</span></a>
 							</div>
 						</div>
 					</div>
@@ -560,12 +563,12 @@
 						<br> 
 						<div class="margin2 form-group">
 							<label>Email</label>
-							<input id="email1" type="email" class="form-control input-lg"  placeholder="email" required>
+							<input id="email1" type="email"  class="form-control input-lg"  placeholder="email" required>
 						</div>
 
 						<div class="margin3 form-group">
 							<button class="btn btn-block btn-lg btn1">Send My Password</button>
-							<p class="text-center"><strong> Password Reset Link Will Be Email To You</strong></p>
+							<p class="forgot"> Password Reset Link Will Be Email To You</p>
 						</div>   
 				
 					</form>
@@ -588,18 +591,23 @@
 					<h2>Reset Password</h2>
 				</div>
 				
-				<form id="recoverform" data-toggle='validator' method="post" class="col-md-12">
+				<form id="recoverform" data-toggle='validator' class="col-md-12">
 				<div id="recovermessage"></div>
 				<br>
 				{% csrf_token %}
+				{% if hashsuccess %}
+					<input type="hidden" id="hashval" value="{{hash}}">
+				{% else %}
+					<input type="hidden" id="hashval" value="">
+				{% endif %}
 				<div class="form-group">
 					<label class="control-label">New Password</label>
-						<div class="col-sm-12 input-group">
+						<div class="col-sm-12 col-xs-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
 								</span>
 								</span>
-								<input id="password1" name="password" type="password" class="form-control"  placeholder="New Password" required>
+								<input id="password1" name="password" type="password" class="form-control"  data-minlength="8" placeholder="New Password" required>
 							</div>
 							<div class="help-block with-errors"></div>
 					
@@ -607,18 +615,19 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label">New Password Confirm</label>
-						<div class="col-sm-12 input-group">
+						<div class="col-sm-12 col-xs-12 input-group">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
 								</span>
 								</span>
-								<input id="password2" name="confirmpassword" type="password" class="form-control"  placeholder="New Password confirm" required>
+								<input id="password2" name="confirmpassword" type="password"
+					  class="form-control" data-minlength="8" placeholder="New Password confirm" required>
 							</div>
 							<div class="help-block with-errors"></div>
 						</div>						
 				</div>
 				<div class="form-group">
-					<button class="btn btn-lg btn-block btn1">Change Password</button>
+					<button type="submit" name="submit" class="btn btn-lg btn-block btn1">Change Password</button>
 				</div>   
 				
 				</form>
@@ -728,7 +737,7 @@
 				<br>
 
 					<div class="form-group">
-						<button class="btn btn-block btn-lg btn1">Sign up</button>	
+						<button type=submit class="btn btn-block btn-lg btn1">Sign up</button>	
 					</div>	
 			</form>
 				<div class="modal-footer">

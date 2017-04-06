@@ -12,19 +12,15 @@ from .models import Organisation
 from .forms import UserForm,OrgForm,UserLoginForm
 
 # Create your tests here.
-
+"""
 def setUp(self):
 
     self.user = UserFactory()
     self.factory = RequestFactory()
 
-
+"""
 class Test1(unittest.TestCase):
-	
-	"""def create_whatever(self, orgname="Anything"):
-		user=User.objects.create(username="abcd ",password="As123456")
-		return Organisation.objects.create(user=user,orgname="Anything")
-
+		
 	def test_whatever_creation(self):
 		w = self.create_whatever()
 		self.assertTrue(isinstance(w, Organisation))
@@ -46,21 +42,17 @@ class Test1(unittest.TestCase):
 		data={'username':'abcd1234','password':'As123456'}
 		form=UserLoginForm(data=data)
 		self.assertTrue(form.is_valid())
-	"""
-	"""def test_register(self):
-		url = reverse("/")
+	
+	def create_whatever(self, orgname="Anything"):
+		user=User.objects.create(username="abcd ",password="As123456")
+		return Organisation.objects.create(user=user,orgname="Anything")
+
+	def test_whatever_list_view(self):
+		w = self.create_whatever()
+		url = reverse("login")
 		resp = self.client.get(url)
+
 		self.assertEqual(resp.status_code, 200)
-	"""
-	def test_post(self):
-		data = {
-
-				'username': 'Myfdfdfff',
-
-				'content': 'As12345667'
-		}
-		request = self.factory.post(reverse('loginresult'), data)
-		request.user = self.user
-		self.assertEqual(response.status_code, 302)
+		self.assertIn(w.title, resp.content)
 
 

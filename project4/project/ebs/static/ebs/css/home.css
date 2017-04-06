@@ -1,3 +1,107 @@
+.fontfamily1{
+	font-family:Verdana,Geneva,sans-serif;
+	line-height:21px;
+
+}
+
+.font-author{
+	font-family:Open Sans,arial,sans-serif;
+	font-size:11px;
+	line-height: 1px;
+}
+.font-weigh{
+	font-weight:bold;
+}
+
+p{
+	margin:0px;
+}
+
+#text1 h3{
+	color:white;
+	margin-left:10px;
+	margin-top:10px;
+
+}
+.white-text{
+	color:white;
+}
+.font1{
+	font-size:11px;
+}
+.marginl{
+margin-left:10px;
+}
+
+.text-block{
+	height:17px; 
+	width:90px;
+	margin-left:10px; 
+	text-align: center;
+	background-color:black;
+	color:white;
+	position: relative; 
+}
+
+
+
+.text-block1{
+	height:15px; 
+	width:60px;
+	text-align: center;
+	background-color:black;
+	color:white;
+	position:relative; 
+}
+.inlineb{
+
+	display:inline-block;
+}
+.text-block2{
+	height:15px; 
+	width:40px;
+	text-align: center;
+	background-color:black;
+	color:white;
+	position:relative; 
+}
+
+.text-block3{
+	height:16px; 
+	width:90px; 
+	text-align: center;
+	background-color:black;
+	color:white;
+	position: relative; 
+}
+
+
+.banner-line{
+	line-height:18px;
+}
+.text-block1 :hover{
+	background-color:#009688 !important;
+	overflow:hidden;
+}
+.text-block2 :hover{
+	background-color:#009688 !important;
+	overflow:hidden;
+}
+.text-block3 :hover{
+	background-color:#009688 !important;
+	overflow:hidden;
+}
+
+
+.text-block :hover{
+	background-color:#009688 !important;
+}
+
+.latest-color:hover{
+	color:#009688 !important;
+}
+
+
 .forgot{
 	text-align:center !important;
 	margin-top:10px !important;
@@ -30,8 +134,9 @@ a{
 	color:black;
 }
 
-a:hover{
-	color:green;
+#forgotpass: hover{
+	color:#009688 !important;
+
 }
 .marginlogo{
 	margin-left:-27px;
@@ -91,7 +196,6 @@ ul li a{
 }
 #text1 p{
 	color:white;
-	margin-left:10px;
 	
 }
 
@@ -112,7 +216,7 @@ ul li a{
 }
 .latest-text{
 	width:90%;
-	margin-top:-20px;
+	margin-top:-17px;
 
 	
 }
@@ -230,7 +334,7 @@ hr{
 }
 
 #banner-2{
-	margin-top:35px;
+	margin-top:40px;
 }
 
 /* modal css */

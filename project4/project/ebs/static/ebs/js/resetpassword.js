@@ -67,6 +67,7 @@ $(document).ready(function() {
              }
         }
 })
+
     .on('success.form.bv', function(e) {
             $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
                 $('#recoverform').data('bootstrapValidator').resetForm();
@@ -95,13 +96,13 @@ $(document).ready(function() {
         });
 
     $("#recoverform").submit(function (event){
+            event.preventDefault();
             var password1 = $('#password1').val();
             var password2=$('#password2').val();
             var url=window.location.href;
             var hash=url.split('=');
             var home=url.split('/')
             var hash1=hash[1];
-            debugger;
             $.ajax({
             type: "POST",
             url: 'recover_password/',
@@ -115,19 +116,20 @@ $(document).ready(function() {
             success: function(result){
                 if(result['status']=='Error'){
                     $('#recovermessage').notify(result['message']);
-                    $('#recoverform')[0].reset();
-                    $('#recoverform').bootstrapValidator('resetForm',true);
+              
                 }
-                else{ 
-                    $('#recovermessage').notify(
+                else if(result['status']=='success'){ 
+                    $.notify(
                         "password updated successfully","success"    
                     );     
                     $('#recoverform')[0].reset();
                     $('#recoverform').bootstrapValidator('resetForm',true);
-                    setInterval(function(){ 
-                        window.location.replace('/');
+                    $('#recoverformmodal').modal('hide');
+                    /*var data = {};
+                    data.putYour = "data here";
+                    History.pushState(data, document.title, window.location.host);
+                    */
 
-                     }, 3000);
                     return false;
                 }
               }
