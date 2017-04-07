@@ -24,6 +24,7 @@
 	font-size:17px;
 	line-height:23px;
 	font-weight:300;
+	margin-top:0px;
 }
 
 .fontsize3{
@@ -49,6 +50,8 @@ p{
 a:hover{
 	color:#009688 !important;
 }
+
+
 #text1 h3{
 	color:white;
 	margin-left:10px;
