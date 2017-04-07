@@ -69,7 +69,7 @@ $(document).ready(function() {
 
     if (window.location.href.indexOf("?uid=") > -1) {
         if ($('#hashval').attr('value')==""){
-            $.notify("This invalid link or token has been expired.");
+            $.notify("invalid link or token has been expired.");
             /*var data = {};
             data.putYour = "data here";
             History.pushState(data, document.title, window.location.host);*/

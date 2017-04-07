@@ -105,9 +105,8 @@ $(document).ready(function() {
             var bv = $form.data('bootstrapValidator');
 
             // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
+            
+            
         });
 
    $("#myform").submit(function (event){
@@ -129,7 +128,11 @@ $(document).ready(function() {
                   $.notify(result['message'],"success");
 		          $('#myform')[0].reset();
                   $('#myform').bootstrapValidator('resetForm',true);
-                  $('#bannerformmodal').modal('toggle');
+                  $('#bannerformmodal').modal('hide');
+                  /*setInterval(function(){ 
+                        window.location.replace('/');
+
+                     }, 4000);*/
                   return false;
                 }
             }

@@ -125,6 +125,10 @@ $(document).ready(function() {
                     $('#recoverform')[0].reset();
                     $('#recoverform').bootstrapValidator('resetForm',true);
                     $('#recoverformmodal').modal('hide');
+                    setInterval(function(){ 
+                        window.location.replace('/');
+
+                     }, 5000);
                     /*var data = {};
                     data.putYour = "data here";
                     History.pushState(data, document.title, window.location.host);

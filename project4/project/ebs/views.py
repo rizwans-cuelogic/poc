@@ -147,7 +147,6 @@ def recover_password(request):
 				return HttpResponse(json.dumps(response), content_type='application/json')
 					
 			obj=forgotpassword.objects.get(activation_key=hash1)
-			print obj.activation_key
 			user=User.objects.get(username=obj.username)
 			user.set_password(password)
 			user.save()
@@ -156,6 +155,5 @@ def recover_password(request):
 			return HttpResponse(json.dumps(response), content_type='application/json')
 
 	except Exception as e:
-		print e
 		response = {'status':'', 'message': ''}
 		return HttpResponse(json.dumps(response), content_type='application/json')

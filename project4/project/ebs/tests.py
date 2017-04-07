@@ -44,7 +44,7 @@ class Test1(unittest.TestCase):
 		self.assertTrue(form.is_valid())
 	
 	def create_whatever(self, orgname="Anything"):
-		user=User.objects.create(username="abcd ",password="As123456")
+		user=User.objects.create(username="abcdsadd ",password="As123456sds")
 		return Organisation.objects.create(user=user,orgname="Anything")
 
 	def test_whatever_list_view(self):
