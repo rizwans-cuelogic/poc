@@ -6,7 +6,32 @@
 
 .fontfamily2{
 	font-family: 'Roboto',sans-serif;
+	line-height:25px;
 }
+
+.fontfamily3{
+	font-family:'Open Sans',arial,sans-serif;
+	font-size:14px;
+	line-height: 30px;
+}
+
+.fontsize1{
+	font-size: 21px;
+}
+
+
+.fontsize2{
+	font-size:17px;
+	line-height:23px;
+	font-weight:300;
+}
+
+.fontsize3{
+	font-size:17px;
+	line-height:24px;
+	font-weight: 500;
+}
+
 
 .font-author{
 	font-family:Open Sans,arial,sans-serif;
@@ -21,6 +46,9 @@ p{
 	margin:0px;
 }
 
+a:hover{
+	color:#009688 !important;
+}
 #text1 h3{
 	color:white;
 	margin-left:10px;

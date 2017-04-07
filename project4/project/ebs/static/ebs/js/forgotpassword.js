@@ -70,6 +70,10 @@ $(document).ready(function() {
     if (window.location.href.indexOf("?uid=") > -1) {
         if ($('#hashval').attr('value')==""){
             $.notify("invalid link or token has been expired.");
+            /*setInterval(function(){ 
+                        window.location.replace('/');
+
+                     }, 5000);*/
             /*var data = {};
             data.putYour = "data here";
             History.pushState(data, document.title, window.location.host);*/
