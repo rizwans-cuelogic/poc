@@ -20,7 +20,10 @@ def setUp(self):
 
 """
 class Test1(unittest.TestCase):
-		
+	def create_whatever(self, orgname="Anything"):
+		user=User.objects.create(username="abcdsadd ",password="As123456sds")
+		return Organisation.objects.create(user=user,orgname="Anything")
+
 	def test_whatever_creation(self):
 		w = self.create_whatever()
 		self.assertTrue(isinstance(w, Organisation))
@@ -42,7 +45,8 @@ class Test1(unittest.TestCase):
 		data={'username':'abcd1234','password':'As123456'}
 		form=UserLoginForm(data=data)
 		self.assertTrue(form.is_valid())
-	
+		
+	"""
 	def create_whatever(self, orgname="Anything"):
 		user=User.objects.create(username="abcdsadd ",password="As123456sds")
 		return Organisation.objects.create(user=user,orgname="Anything")
@@ -54,5 +58,5 @@ class Test1(unittest.TestCase):
 
 		self.assertEqual(resp.status_code, 200)
 		self.assertIn(w.title, resp.content)
-
+"""
 

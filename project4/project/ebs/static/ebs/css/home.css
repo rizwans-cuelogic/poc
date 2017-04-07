@@ -4,6 +4,10 @@
 
 }
 
+.fontfamily2{
+	font-family: 'Roboto',sans-serif;
+}
+
 .font-author{
 	font-family:Open Sans,arial,sans-serif;
 	font-size:11px;
@@ -101,6 +105,10 @@ margin-left:10px;
 	color:#009688 !important;
 }
 
+.author-color:hover{
+	color:black  !important;
+}
+
 
 .forgot{
 	text-align:center !important;
@@ -134,9 +142,8 @@ a{
 	color:black;
 }
 
-#forgotpass: hover{
+.forgotpass1: hover{
 	color:#009688 !important;
-
 }
 .marginlogo{
 	margin-left:-27px;
