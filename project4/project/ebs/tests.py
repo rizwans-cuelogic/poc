@@ -40,13 +40,13 @@ class Test1(unittest.TestCase):
 		data = {'username': w.username, 'password': w.password,}
 		form = UserForm(data=data)
 		self.assertFalse(form.is_valid())
-	
+	"""
 	def test_valid_login_form(self):
 		data={'username':'abcd1234','password':'As123456'}
 		form=UserLoginForm(data=data)
 		self.assertTrue(form.is_valid())
 
-	"""
+	
 	def create_whatever(self, orgname="Anything"):
 		user=User.objects.create(username="abcdsadd ",password="As123456sds")
 		return Organisation.objects.create(user=user,orgname="Anything")
