@@ -67,3 +67,4 @@ class UserLoginForm(forms.Form):
 								   'class':'form-control',
 								   'data-minlength':'8',
 								   'data-maxlength':'16'}))
+	

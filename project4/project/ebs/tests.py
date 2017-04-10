@@ -14,7 +14,10 @@ from .forms import UserForm,OrgForm,UserLoginForm
 
 # Create your tests here.
 class Test1(TestCase):
-	def create_user(self, orgname="Anything"):
+	def create_user(self):
+		user=User.objects.create(username='asd1234',email='rizwan.shaikh@cuelogic.com',password='As123456')
+		return user
+	"""def create_user(self, orgname="Anything"):
 		user=User.objects.create(username="abcdsadd ",password="As123456sds")
 		return Organisation.objects.create(user=user,orgname="Anything")
 	
@@ -44,18 +47,30 @@ class Test1(TestCase):
 		client=Client()
 		response=client.post(reverse('register'),{'username':'abc123','email':'abc@gmail.com','password':'As123456','orgname':'Uvitransform'})
 		self.assertTrue(response.status_code,200)
+	"""
 	
 	def test_login(self):
-		setup_test_environment()
+		w=self.create_user()
 		client=Client()
-		response=client.post(reverse('loginresult'),{'username':'Asd1234','password':'As123456'})
+		response=client.post(reverse('loginresult'),{'username':'asd1234','password':'As123456'})
+		print response.content
 		self.assertTrue(response.status_code,200)
-		self.assertContains(response,'{"status": "Error", "message": "Invalid Username And Password"}')
+		#self.assertContains(response,'{"status": "success", "message": "good", "user": "asd1234"}')
 
 	def test_forgotpass(self):
-		setup_test_environment()
+		w=self.create_user()
 		client=Client()
-		email={'email':'asd1@gmail.com'}
+		email={'email':'rizwan.shaikh@cuelogic.com'}
 		response=client.post(reverse('forgotpass'),json.dumps(email),content_type="application/json")
 		self.assertTrue(response.status_code,200)
-		self.assertContains(response,'{"status": "Error", "message": "Invalid email"}')
+		self.assertContains(response,'{"status": "success", "message": "Reset password link has been email to your registered email address."}'
+)
+
+	def test_forgotpass2(self):
+		w=self.create_user()
+		client=Client()
+		email={'email':'rizwan.shaikh@gmail.com'}
+		response=client.post(reverse('forgotpass'),json.dumps(email),content_type="application/json")
+		self.assertTrue(response.status_code,200)
+		self.assertContains(response,'{"status": "Error", "message": "Invalid email"}'
+)
