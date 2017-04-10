@@ -39,17 +39,12 @@ class Test1(TestCase):
 		data={'username':'abcd1234','password':'As123456'}
 		form=UserLoginForm(data=data)
 		self.assertTrue(form.is_valid())
-
-
 	
 	def test_register(self):
 		client=Client()
 		response=client.post(reverse('register'),{'username':'abc123','email':'abc@gmail.com','password':'As123456','orgname':'Uvitransform'})
 		self.assertTrue(response.status_code,200)
 	
-
-	
-
 	def test_login(self):
 		setup_test_environment()
 		client=Client()
@@ -57,9 +52,6 @@ class Test1(TestCase):
 		self.assertTrue(response.status_code,200)
 		self.assertContains(response,'{"status": "Error", "message": "Invalid Username And Password"}')
 
-
-	
-		
 	def test_forgotpass(self):
 		setup_test_environment()
 		client=Client()
@@ -67,12 +59,3 @@ class Test1(TestCase):
 		response=client.post(reverse('forgotpass'),json.dumps(email),content_type="application/json")
 		self.assertTrue(response.status_code,200)
 		self.assertContains(response,'{"status": "Error", "message": "Invalid email"}')
-
-	
-
-	
-		
-
-
-
-
