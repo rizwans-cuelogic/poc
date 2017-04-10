@@ -44,7 +44,7 @@ class Test1(TestCase):
 	
 	def test_register(self):
 		client=Client()
-		response=client.post(reverse('register'),			{'username':'abc123','email':'abc@gmail.com','password':'As123456','orgname':'Uvitransform'})
+		response=client.post(reverse('register'),{'username':'abc123','email':'abc@gmail.com','password':'As123456','orgname':'Uvitransform'})
 		self.assertTrue(response.status_code,200)
 	
 
@@ -68,14 +68,7 @@ class Test1(TestCase):
 		self.assertTrue(response.status_code,200)
 		self.assertContains(response,'{"status": "Error", "message": "Invalid email"}')
 
-	def test_recover_password(self):
-		setup_test_environment()
-		client=Client()
-		password={'password':'As123456'}
-		response=client.post(reverse('recover_password'),json.dumps(password),content_type="application/json")
-		self.assertTrue(response.status_code,200)
-		self.assertContains(response,'{"status": "", "message": ""}')
-
+	
 
 	
 		
