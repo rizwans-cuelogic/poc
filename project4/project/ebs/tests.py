@@ -10,6 +10,8 @@ from django.core.urlresolvers import reverse
 from django.test.utils import setup_test_environment
 from django.utils import timezone
 from django.core.files import File
+from PIL import Image
+
 
 from . import views
 from .models import Organisation, forgotpassword
@@ -58,14 +60,12 @@ class Test1(TestCase):
 		self.assertTrue(response.status_code, 200)
 		self.assertContains(response,'{"status": "success", "message": "Your account has been created and pending for admin approval.  You will get an email after admin approval on your registered email id. This process will take 24 hours."}')
 
-	
 	def test_register_fail(self):
 		client = Client()
 		new_group,created = Group.objects.get_or_create(name='client')
 		response = client.post(reverse('register'), {'username': 'abc123', 'email': 'abc@gmail.com', 'password': 'As123456','password1':'As123456', 'orgname': 'Uvitransform', 'orglogo':'/home/rizwan/Downloads/gile.jpg'})
 		self.assertTrue(response.status_code, 200)
 		self.assertContains(response,'{"status": "Error", "message": "please fill the details"}')
-
 
 	def test_login(self):
 		user1=User.objects.create(username='asd123', email="asd@gmail.com",password='As123456',is_active=True)

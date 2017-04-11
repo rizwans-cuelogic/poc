@@ -122,8 +122,10 @@ $(document).ready(function() {
               
                 }
                 else if(result['status']=='success'){ 
+                    $.notify.defaults({ className: "success" })
                     $.notify(
-                        "password updated successfully","success"    
+                        "password updated successfully",
+                         { position:"top center" }    
                     );     
                     $('#recoverform')[0].reset();
                     $('#recoverform').bootstrapValidator('resetForm',true);

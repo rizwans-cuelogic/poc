@@ -49,7 +49,11 @@ $(document).ready(function() {
                     $('#forgotform')[0].reset();
                 }
                 else{
-                    $.notify(result['message'],"success");
+                    $.notify.defaults({ className: "success" })
+                    $.notify( 
+                    result['message'],
+                    { position:"top center" }
+                    );
                   $('#forgotform')[0].reset();
                   $('#forgotform').bootstrapValidator('resetForm',true);
                   $('#forgotpassmodal').modal('toggle');
@@ -69,7 +73,9 @@ $(document).ready(function() {
 
     if (window.location.href.indexOf("?uid=") > -1) {
         if ($('#hashval').attr('value')==""){
-            $.notify("invalid link or token has been expired.");
+            $.notify("invalid link or token has been expired.",
+                    { position:"top center" }
+                    );
             /*setInterval(function(){ 
                         window.location.replace('/');
 
