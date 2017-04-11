@@ -69,11 +69,12 @@ $(document).ready(function() {
 })
 
     .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                $('#recoverform').data('bootstrapValidator').resetForm();
+          $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+               $('#recoverform').data('bootstrapValidator').resetForm();
 
             // Prevent form submission
-            e.preventDefault();
+          e.preventDefault();
+          e.stopImmediatePropagation();
 
             // Get the form instance
             var $form = $(e.target);
@@ -82,10 +83,10 @@ $(document).ready(function() {
             var bv = $form.data('bootstrapValidator');
 
             // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
+           $.post($form.attr('action'), $form.serialize(), function(result) {
                 console.log(result);
             }, 'json');
-        });
+      });
 
     $.ajaxSetup({
             beforeSend: function(xhr, settings) {
@@ -97,6 +98,7 @@ $(document).ready(function() {
 
     $("#recoverform").submit(function (event){
             event.preventDefault();
+            event.stopImmediatePropagation();
             var password1 = $('#password1').val();
             var password2=$('#password2').val();
             var url=window.location.href;
@@ -108,6 +110,7 @@ $(document).ready(function() {
             url: 'recover_password/',
             data:JSON.stringify(
                 {'password':password1,
+                  'password1':password2,
                  'hash':hash1}
             ),
             dataType:"JSON",
@@ -133,7 +136,6 @@ $(document).ready(function() {
                     data.putYour = "data here";
                     History.pushState(data, document.title, window.location.host);
                     */
-
                     return false;
                 }
               }

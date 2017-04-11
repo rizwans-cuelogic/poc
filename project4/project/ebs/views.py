@@ -3,6 +3,7 @@ import hashlib
 import os
 import uuid
 import sys
+import re
 from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -156,6 +157,8 @@ def recover_password(request):
             data = json.loads(request.body)
             hash1 = data['hash']
             password = data['password']
+            password1=data['password1']
+            REGEX = re.compile('^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$')
             if password == '':
                 response = {'status': 'Error',
                             'message': "please fill the details"}
@@ -165,6 +168,15 @@ def recover_password(request):
                             'message': "please fill the details"}
                 return HttpResponse(json.dumps(response), content_type='application/json')
 
+            elif REGEX.match(password) is None:
+                response = {'status': 'Error',
+                            'message': "please fill the details"}
+                return HttpResponse(json.dumps(response), content_type='application/json')
+
+            elif password!=password1:
+                response = {'status': 'Error',
+                            'message': "please fill the details"}
+                return HttpResponse(json.dumps(response), content_type='application/json')
             obj = forgotpassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             user.set_password(password)
@@ -175,5 +187,5 @@ def recover_password(request):
             return HttpResponse(json.dumps(response), content_type='application/json')
 
     except Exception as e:
-        response = {'status': '', 'message': ''}
+        response = {'status': 'Error', 'message': 'invalid link or token has been expired.'}
         return HttpResponse(json.dumps(response), content_type='application/json')
