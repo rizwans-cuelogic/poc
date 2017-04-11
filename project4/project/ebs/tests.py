@@ -10,9 +10,6 @@ from django.core.urlresolvers import reverse
 from django.test.utils import setup_test_environment
 from django.utils import timezone
 from django.core.files import File
-from PIL import Image
-
-
 from . import views
 from .models import Organisation, forgotpassword
 from .forms import UserForm, OrgForm, UserLoginForm
