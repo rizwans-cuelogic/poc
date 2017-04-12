@@ -655,7 +655,7 @@
 					<h2 class="text-center">Sign up</h2>
 				</div>
 			
-			<form id="myform" data-toggle="validator" class="col-md-12" enctype="multipart/form-data">
+			<form id="myform" action="javascript:return;" data-toggle="validator" class="col-md-12" enctype="multipart/form-data">
 				<div id="validator_message"></div>
 				{% csrf_token %}
 				<br><div class="form-group ">
@@ -739,7 +739,7 @@
 				<br>
 
 					<div class="form-group">
-						<button  class="btn btn-block btn-lg btn1">Sign up</button>	
+						<button class="btn btn-block btn-lg btn1">Sign up</button>	
 					</div>	
 			</form>
 				<div class="modal-footer">
@@ -758,7 +758,8 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 <script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
 <!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>--> 
-<script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script> 
+<script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/registration1.js' %}"></script> 
 <script type="text/javascript" src="{% static 'ebs/js/login.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/forgotpassword.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/resetpassword.js' %}"></script>

@@ -83,9 +83,9 @@ $(document).ready(function() {
             var bv = $form.data('bootstrapValidator');
 
             // Use Ajax to submit form data
-           $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
+           //$.post($form.attr('action'), $form.serialize(), function(result) {
+             //   console.log(result);
+            //}, 'json');
       });
 
     $.ajaxSetup({
@@ -96,9 +96,11 @@ $(document).ready(function() {
             }
         });
 
-    $("#recoverform").submit(function (event){
-            event.preventDefault();
-            event.stopImmediatePropagation();
+    $("#recoverform").submit(function (e){
+            var $form=$(this);
+            if(0 < $form.find('.has-error').length){ 
+                return false;
+            }
             var password1 = $('#password1').val();
             var password2=$('#password2').val();
             var url=window.location.href;

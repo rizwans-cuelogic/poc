@@ -71,7 +71,6 @@ class Test1(TestCase):
 		client=Client()
 		response=client.post(reverse('loginresult'),{'username':'asd123','password':'As123456'})
 		self.assertTrue(response.status_code,200)
-		print response.content
 		self.assertContains(response,'{"status": "success", "message": "good", "user": "asd123"}')
 	
 	def test_login_fail(self):
@@ -79,7 +78,6 @@ class Test1(TestCase):
 		client=Client()
 		response=client.post(reverse('loginresult'),{'username':'asd123','password':'As123456'})
 		self.assertTrue(response.status_code,200)
-		print response.content
 		self.assertContains(response,'{"status": "Error", "message": "Invalid Username And Password"}')
 
 	def test_forgotpass(self):
@@ -123,4 +121,3 @@ class Test1(TestCase):
 		self.assertTrue(response.status_code,200)
 		print response.content
 		self.assertContains(response,'{"status": "Error", "message": "invalid link or token has been expired."}')
-

@@ -92,7 +92,8 @@ $(document).ready(function() {
 })
 
     .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+          alert("Here success");
+          $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
                 $('#myform').data('bootstrapValidator').resetForm();
 
             // Prevent form submission
@@ -105,45 +106,48 @@ $(document).ready(function() {
             var bv = $form.data('bootstrapValidator');
 
             // Use Ajax to submit form data
+            //  $.post($form.attr('action'), $form.serialize(), function(result) {
+            //     console.log(result);
+            // }, 'json');
             
             
-        });
+        })
 
-   $("#myform").submit(function (event){
-           var $form=$(this);
-           console.log($form);
-           console.log($(this).serialize());
-           $.ajax({
-              type: "POST",
-              url: 'register/',
-              data: new FormData(this),  
-              dataType:"JSON",
-              processData: false,
-              contentType: false,
-              success: function(result){
-                if(result['status']=='Error'){
-                    $('#validator_message').notify(result['message']);
-                }
-                else{
-                  $.notify(result['message'],"success");
-		          $('#myform')[0].reset();
-                  $('#myform').bootstrapValidator('resetForm',true);
-                  $('#bannerformmodal').modal('hide');
-                  /*setInterval(function(){ 
-                        window.location.replace('/');
+// $("#myform").submit(function (event){
+//    var $form=$(this);
+//    console.log($form);
+//    console.log($(this).serialize());
+//    $.ajax({
+//       type: "POST",
+//       url: 'register/',
+//       data: new FormData(this),  
+//       dataType:"JSON",
+//       processData: false,
+//       contentType: false,
+//       success: function(result){
+//         if(result['status']=='Error'){
+//             $('#validator_message').notify(result['message']);
+//         }
+//         else{
+//           $.notify(result['message'],"success");
+//           $('#myform')[0].reset();
+//           $('#myform').bootstrapValidator('resetForm',true);
+//           $('#bannerformmodal').modal('hide');
+//           /*setInterval(function(){ 
+//                 window.location.replace('/');
 
-                     }, 4000);*/
-                  return false;
-                }
-            }
-            });
-          return false;
-        });
+//              }, 4000);*/
+//           return false;
+//         }
+//     }
+//     });
+//   return false;
+// });
 
-      $('body').on('hidden.bs.modal', '.modal', function () {
-        $('#myform')[0].reset();
-	     $('#myform').bootstrapValidator('resetForm',true);
-      });
+// $('body').on('hidden.bs.modal', '.modal', function () {
+// $('#myform')[0].reset();
+//  $('#myform').bootstrapValidator('resetForm',true);
+// });
 });
 
 
