@@ -76,6 +76,7 @@ $(document).ready(function() {
             $.notify("invalid link or token has been expired.",
                     { position:"top center" }
                     );
+            /*this is required for redirecting */
             /*setInterval(function(){ 
                         window.location.replace('/');
 

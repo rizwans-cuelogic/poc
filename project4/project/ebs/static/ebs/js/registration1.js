@@ -22,6 +22,7 @@ $(document).ready(function() {
           $('#myform')[0].reset();
           $('#myform').bootstrapValidator('resetForm',true);
           $('#bannerformmodal').modal('hide');
+          /* this is required for redirceting to home' */
           /*setInterval(function(){ 
                 window.location.replace('/');
 
