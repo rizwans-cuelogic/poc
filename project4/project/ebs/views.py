@@ -102,7 +102,7 @@ def loginresult(request):
                 if user.is_active:
                     login(request, user)
                     response = {'status': 'success',
-                                'message': "good", "user": user.username}
+                                'message': "good"}
                     return HttpResponse(json.dumps(response), content_type='application/json')
                 else:
                     response = {'status': 'Error',
