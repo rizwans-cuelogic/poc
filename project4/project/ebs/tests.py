@@ -119,5 +119,4 @@ class Test1(TestCase):
 		password={'password':os.environ['PASSWORD'],'password1':os.environ['PASSWORD'],'hash':hash1}
 		response=client.post(reverse('recover_password'),json.dumps(password),content_type="application/json")
 		self.assertTrue(response.status_code,200)
-		print response.content
 		self.assertContains(response,'{"status": "Error", "message": "invalid link or token has been expired."}')
