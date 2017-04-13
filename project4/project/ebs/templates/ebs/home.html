@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+	<meta charset="utf-8">	
+	<title>Home</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/home.css' %}"/>
+	<style>
+		#footer{
+			height:430px;
+			background:url("{%static 'ebs/img/bg.png' %}");
+			background-color:black;
+			opacity:0.8;
+			margin-top:60px;
+		}
+	</style>
+
+</head>
+
+<body>
+	
+	<nav class="navbar1 navbar-default navbar-light">
+		
+			<div class="collapse navbar-collapse" id="navbar-collapse-2">
+				<div class="container">
+					<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<ul id ="ul1" class="nav1 nav nav-pills">
+						<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
+						<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
+						<li><a href="#">contact us</a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+						</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+	
+	</nav>
+	</div>
+
+    <!-- Second navbar for categories -->
+ 
+    <nav class="navbar navbar-default">
+      	<div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+         		<button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+            		<span class="sr-only">Toggle navigation</span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+          		</button>
+          		<a href="#"><img class="marginlogo img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>	
+			</div>
+    	</div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-inverse" id="navbar-collapse-1">
+        	<div class="container">
+          	<ul class="nav navbar-nav">
+          		<li class="active"><a hef="#">Home<span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Blogs </a></li>
+				<li><a hef="#">FeatureBlogs</a></li>
+				<li><a href="#">News</a></li>
+				<li><a href="#">Popular Blogs</a></li>  
+			</ul>
+
+			<form id="search-form"  class="pull-right navbar-form navbar-left">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</nav>
+ 	</div>
+		
+	
+
+	
+<!-- BANNER BLOGS POSTS -->
+
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div id="img1">
+						<a href="#"><img  class="banner-imgbig img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " /> </a>
+	
+					</div>
+					<div id="text1"><a href="#"><p>PHTOGRAPHY</p><br>
+					<h2> Celebrity Make-up artist gary cockrill shows you beaty tips</h2>
+					<p>David Lee-september 24,2016</p> 
+					</a></div>
+				</div>
+
+			
+					<div  class="col-md-6">
+						<div class="row">
+							<div class="col-md-6">
+							<div class="screen1 screen">
+								<a href="#"><!--<div class="screen1 screen">-->
+									<img class="banner-img img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/></a>
+									
+								
+									<div class="text-bannerside">
+										<a href="#">
+										<p>HEALTH</p>
+										<h4>The workout That Burns More Calories Than Runing</h4>
+										</a>
+									</div>
+							</div>
+							</div>
+							
+	
+							<div class="col-md-6">
+								<div class="screen2">
+								<a href="#"><!--<div class="screen2">-->
+									<img class="banner-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/></a>
+						
+									<div class="text-bannerside">
+										<a href="#"><p>TECH</p>
+										<h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
+										</a>
+									</div>
+								
+								</div>
+							</div>
+						</div>
+
+						
+						<div id="banner-2">
+						<div class="row">
+							<div class="col-md-6" >
+								<div class="screen">
+								<a href="#"><!--<div class="screen">-->
+									<img class="banner-img img-responsive" src="{% static 'ebs/img/post2.jpg' %}"/></a>
+								
+									<div class="text-bannerside">
+										<a href="#"><p>ARTS</p>
+										<h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
+										</a>
+									</div>
+								
+								</div>
+							</div>
+							<div class="col-md-6">
+								<a href="#">
+									<img class="banner-img img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/></a>
+								
+									<div class="text-bannerside">
+										<a href="#"><p>FASHION</p>
+										<h4>Fashion Week Parties: Night 4</h4></a>
+									</div>
+								
+							</div>
+						</div>
+						</div>
+					</div>
+				
+			</div>
+		</div>			
+	</div>	
+
+	<!--Latest blogs and must read -->
+	<div class="contain1">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<h4><strong>LATEST BLOGS</strong></h4>
+					<hr class="hrcol1">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="latest-blog">
+							<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
+
+							<div class="latest-text">
+								<a href="#"><p style="color:white">PHOTOGRAPHY</p></a>
+								<a href="#"><h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4>
+								<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+							</div>
+							</div>		
+						</div>
+			
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/books.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">HEALTH</p></a>
+									<a href="#"><h4>Summer Sports That Torch Serious Calories</h4>
+									<span>David Lee-september 24,2016</span></a> <a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>	
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img  class="img-responsive latest-img" src="{% static 'ebs/img/por1.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">HEALTH</p></a>
+									<a href="#"><h4>The workout That Burns More Calories Than Running</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">TECH</p></a>
+									<a href="#"><h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+							</div>		
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/army.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">ARMY</p></a>
+
+									<a href="#"><h4>Georgian soldier helped in attack near US base in Afghanistan</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/post2.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">ARTS</p></a>
+									<a href="#"><h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+							</div>							
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-md-6">
+							<div class="latest-blog">
+							<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/bus.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">ARTS</p></a>		
+									<a href="#"><h4>Making Times Square’s Pedestrian Plazas Work</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+							</div>				
+
+						</div>
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/frame.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">ARTS</p></a>
+									<a href="#"><h4>How the Guggenheim Keeps Its Galleries Immaculate</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+							</div>
+						</div>
+					</div>
+					
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/masterpiece.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">ARTS</p></a>
+									<a href="#"><h4>Joan Young Moderates a Conversation about Singapore</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a> 
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="latest-blog">
+								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/camera.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#"><p style="color:white">TECH</p></a>
+									<a href="#"><h4>Lenovo Introduces Its Best Entertainment Tablets Yet</h4>
+									<span>David Lee-september 24,2016</span></a><a href="#"><span class="pull-right view-block">0</span></a>
+								</div>
+							</div>
+						</div>
+					</div>					
+				
+				</div>
+
+			
+				<div class="col-md-4 ">
+					<!-- MOST POPULAR -->
+
+					<h4><strong>MOST POPULAR</strong></h4>
+					<hr class="hrcol">
+					<div class="row">
+						<div class="col-md-5 col-xs-5">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/></a>
+								
+						</div>
+						<div class="col-md-7 col-xs-7">
+							<a href="#"><h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4>
+							 TECH   september 24,2016</a>
+								
+						</div>
+					</div>	
+					<hr class="margin3">
+					<div class="row">
+						<div class="col-md-5 col-xs-5">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %}"/></a>
+						</div>
+						<div class="col-md-7 col-xs-7">
+							<a href="#">
+							<h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4>
+							PHOTOGRAPHY   september 24,2016</a>
+						</div>
+					</div>	
+					<hr class="margin3">
+					<div class="row">
+						<div class="col-md-5 col-xs-5">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/por1.jpg' %}"></img></a>
+						</div>
+						<div class="col-md-7 col-xs-7">
+							<a href="#"><h4>The workout That Burns More Calories Than Running</h4>
+							HEALTH september 24,2016</a>
+
+						</div>
+					</div>	
+					<hr class="margin3">
+					<div class="row">
+						<div class="col-md-5 col-xs-5">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/></a>
+						</div>
+						<div class="col-md-7 col-xs-7">
+							<a href="#">
+							<h4>Fashion Week Parties: Night 4</h4>
+							FASHION september 24,2016</a>
+						</div>
+					</div>	
+				
+					<!-- MUST READ BLOG -->
+					<div class="margin1">
+						<h4><strong>MUST READ</strong></h4>
+						<hr class="hrcol"> 
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#">
+								<h4>Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4></a>
+								<span><a href="#">TECH</a></span> &nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+
+							</div>
+						</div>
+						<hr class="margin3">
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#">
+								<h4> Celebrity Make-up artist gary cockrill shows you beaty tips</h4></a>
+								<span><a href="#">PHOTOGRAPHY</a></span>&nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+							</div>
+						</div>
+						<hr class="margin3">
+				
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#">	
+								<h4>A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4></a>
+								<span><a href="#">ARTS</a></span></span>&nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+							</div>
+						</div>
+						<hr class="margin3">
+								
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#">
+								<h4>Georgian soldier helped in attack near US base in Afghanistan</h4></a>
+								<span><a href="#">ARMY</a></span></span></span>&nbsp;<span><a href="#"> David Lee-september 24,2016</a></span><a href="#"><span class="pull-right view-block">0</span></a>
+							</div>
+						</div>
+					</div>
+					<!-- Catogories -->
+					<div class="margin1">
+						<h4><strong>CATAGORIES</strong></h4>
+						<hr class="hrcol">
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#">Arts</a>
+							</div>
+						</div>
+					
+		
+						<div class="row">
+							<div class="col-md-12 margin2">
+								<a href="#">Fashion</a>
+							</div>
+						</div>
+				
+	
+						<div class="row">
+							<div class="col-md-12 margin2">
+								<a href="#">Gallery</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+		
+		<div id="footer" class="footer-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 ">
+						<img class="center-block img-responsive" src="{% static 'ebs/img/logo-footer.png' %}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-offset-2 col-md-8 col-xs-offset-2 col-xs-8 footer-padding">
+						<span>Newspaper is your news, entertain, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 text-center footer-padding-2">
+						<span>Contact us:<a style="color:#009688" href="#"> contact@yourside.com</a></span> 
+					</div>
+				</div>
+	
+				<div class="row">
+					<div class="col-md-12 text-center footer-padding-2">
+						<a href="#"><i class="fa fa-facebook-square fa-2x footer-icon"></i></a>
+						<a href="#"><i class="fa fa-twitter-square fa-2x footer-icon"></i></a>
+						<a href="#"><i class="fa fa-linkedin-square fa-2x footer-icon"></i></a>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	
+
+
+	<div id="footer-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="footer2-padding">
+						<li><a href="#">Contact us</a></li>
+						<li><a href="#"> About us</a></li>
+						<li><a href="#"> Blog</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-6 copyright">
+					<span > &COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv</span>
+				</div> 
+
+			</div>
+		
+		</div>
+	</div>	
+
+	<!-- sign in modal -->
+	<div id="signinmodal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header modal-color">
+				<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="text-center">Login</h2>
+			</div>
+			<form id="signinform"  data-toggle="validator" method="post" class="col-md-12">
+				<br><div class="form-group ">
+					<label class="control-label">Username</label>
+					<div class="col-md-12 input-group">
+						<div class="input-group">
+							<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
+							</span>
+							</span>
+							<input type="text" class="form-control"  placeholder="Username" required>
+						</div>
+					</div>
+				     </div>
+				<div class="form-group">
+					<label>Password</label>
+					<div class="col-md-12 input-group">
+						<div class="input-group">
+							<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+							</span>
+							</span>
+					
+						<input type="password" class="form-control" placeholder="Password" required>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-block btn-lg btn1">Login</button>
+					<span><a href="#">forget password?</a></span>	
+				</div>	
+			</form>
+			
+			<div class="modal-footer">
+				<div class="col-md-12">
+					
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+
+
+	<!--signup modal -->
+	<div id="bannerformmodal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header modal-color">
+					<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<div id="validator_message"></div>
+					<h2 class="text-center">Sign up</h2>
+				</div>
+			
+			<form id="myform" data-toggle="validator" class="col-md-12" method="post" enctype="multipart/form-data">
+		
+				{% csrf_token %}
+				<br><div class="form-group ">
+						{{orgform.orgname.errors}}
+						<label class="control-label">Company Name</label>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
+								</span>
+								</span>
+								{{orgform.orgname}} 
+							</div>
+						</div>
+					</div>
+	
+					<div class="form-group ">
+						{{orgform.orglogo.errors}}
+						<label class="control-label">Company Logo</label> 
+						<div class="col-sm-12 input-group" style="width:100%">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-picture">
+								</span>
+								</span>
+								{{orgform.orglogo}}	
+							</div>
+				     	</div>
+					</div>
+	
+					<div class="form-group ">
+						<label class="control-label">Company Email </label><span style="color:red">{{userform.email.errors}}</span>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-envelope">
+								</span>
+								</span>
+								{{userform.email}}
+							</div>
+						</div>
+					</div>
+
+					<div class="help-block with-errors"></div>
+					<div class="form-group ">
+						<label class="control-label">Username</label>&nbsp;&nbsp;&nbsp;<span style="color:red">{{userform.username.errors}}</span><span id="username1">     </span>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
+								</span>
+								</span>
+								{{userform.username}}
+							</div>
+				
+						</div>
+					</div>
+						
+					<div class="form-group">
+						{{userform.password.errors}}
+						<label class="control-label">Password</label>&nbsp;&nbsp;&nbsp;<span id="pass1">    </span>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+								</span>
+								</span>
+								{{userform.password}}
+							</div>
+							<div class="help-block with-errors"></div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						{{userform.password1.errors}}
+						<label class="control-label">Confirm Password</label>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+								</span>
+								</span>
+								{{userform.password1}}
+							</div>
+						</div>
+					</div>
+				<br>
+
+					<div class="form-group">
+						<button class="btn btn-block btn-lg btn1">Signup</button>	
+					</div>	
+			</form>
+				<div class="modal-footer">
+					<div class="col-md-12">
+					  
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
+<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>--> 
+<script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script> 
+
+
+</body>
+</html>
