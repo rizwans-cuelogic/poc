@@ -159,7 +159,7 @@ class Test1(TestCase):
 		obj=user1.forgotpassword_set.create(activation_key=hash1,
 											link_time=timezone.now())
 		client=Client()
-		hash1='abcdefgh090908hijkl898989898'
+		hash1=os.environ['HASH']		
 		password={'password':os.environ['PASSWORD'],
 					'password1':os.environ['PASSWORD'],'hash':hash1}
 		response=client.post(reverse('recover_password'),
