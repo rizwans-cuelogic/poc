@@ -76,6 +76,7 @@ a{
 	color:black;
 }
 
+
 .icon{
 	padding-top:5px;
 }
@@ -109,7 +110,6 @@ a{
 	width:90%;
 
 }
-
 #banner1-text h3{
 	color:white;
 	margin:10px 0px 10px 10px;
@@ -129,7 +129,6 @@ a{
 	height:170px;
 	overflow:hidden;
 }
-
 .latest-hr{
 	width:95%;
 	border: 1px solid #009688;
@@ -201,6 +200,7 @@ hr{
 }
 
 /* modal css */
+
 .modal-color{
 	background-color:black;
 	color:white;
@@ -280,5 +280,4 @@ hr{
 		width:400px;
 	}
 }
-
 
