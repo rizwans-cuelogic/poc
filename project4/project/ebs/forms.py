@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
+from ebs.model import Organisation
 class UserForm(forms.ModelForm):
 	password=forms.CharField(label="Password" , 
 					widget=forms.PasswordInput(
