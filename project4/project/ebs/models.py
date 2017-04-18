@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
-
+from django.utils import timezone
 
 class Organisation(models.Model):
     """Organisation(client) model for storing client information"""
@@ -67,9 +67,9 @@ class Blog(models.Model):
     tags = models.CharField(max_length=125,blank=True,null=True)
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
-    published=models.DateTimeField()
+    published=models.DateTimeField(default=timezone.now())
     publishedstate=models.BooleanField(default=False)
-    Draft=models.BooleanField(default=False)
+    draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
     commentstate=models.BooleanField(default=True)
     
