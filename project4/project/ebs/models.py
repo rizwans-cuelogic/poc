@@ -10,7 +10,8 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
-
+from django.utils import timezone
+import logging
 
 class Organisation(models.Model):
     """Organisation(client) model for storing client information"""
@@ -22,7 +23,7 @@ class Organisation(models.Model):
     def __unicode__(self):
         return self.orgname
 
-
+logger = logging.getLogger(__name__)
 def send_notification(sender, instance, *args, **kwargs):
     """function take single user object check whether field is_active is changed 
             to true and if it is
@@ -42,7 +43,7 @@ def send_notification(sender, instance, *args, **kwargs):
         else:
             pass
     except:
-        print "can not send email"
+       logger.info('can not send email')
 
 pre_save.connect(send_notification, sender=User)
 
@@ -52,7 +53,7 @@ class forgotpassword(models.Model):
     activation_key = models.CharField(max_length=50)
     link_time = models.DateTimeField(default=datetime.now, blank=True)
 
-class Catagories(models.Model):
+class Categories(models.Model):
     name=models.CharField(max_length=125)
     state=models.BooleanField(default=True)
 
@@ -66,10 +67,10 @@ class Blog(models.Model):
     tags = models.CharField(max_length=125,blank=True,null=True)
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
-    published=models.DateTimeField()
+    published=models.DateTimeField(default=timezone.now)
     publishedstate=models.BooleanField(default=False)
-    Draft=models.BooleanField(default=False)
-    catagories=models.ForeignKey(Catagories,blank=True,on_delete=models.CASCADE)
+    draft=models.BooleanField(default=False)
+    categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
     commentstate=models.BooleanField(default=True)
     
     def __unicode__(self):

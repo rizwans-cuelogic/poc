@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
-from ebs.models import Organisation,Blog,Catagories
+from ebs.models import Organisation,Blog ,Categories
 from functools import partial
 from bootstrap3_datetime.widgets import DateTimePicker
 
@@ -91,7 +91,7 @@ class BlogForm(forms.ModelForm):
           				required=True,
           				widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm "}))
 
-	catagories=forms.ModelChoiceField(queryset=Catagories.objects.all().filter(state=True).order_by('name'),
+	categories=forms.ModelChoiceField(queryset=Categories.objects.all().filter(state=True).order_by('name'),
 									  empty_label='Select Catagory',widget=forms.Select(attrs={
           'class':'catagory' 
           }))
@@ -104,7 +104,7 @@ class BlogForm(forms.ModelForm):
 				"description",
 				"tags",
 				"published",
-				"catagories",
+				"categories",
 				"commentstate"
 			]
 

@@ -19,7 +19,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
-from .models import Organisation, forgotpassword,Blog,Catagories,BlogFile
+from .models import Organisation, forgotpassword,Blog,BlogFile
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 
 # Create your views here.
@@ -264,7 +264,6 @@ def create_blog(request):
 
 
 def manage_blog(request):
-    import pdb 
-    pdb.set_trace()
+    
     if messages:
         return render(request,'ebs/manage_blog.html')
