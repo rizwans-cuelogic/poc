@@ -53,7 +53,7 @@ class forgotpassword(models.Model):
     link_time = models.DateTimeField(default=datetime.now, blank=True)
 
 
-class Catagories(models.Model):
+class Categories(models.Model):
     name=models.CharField(max_length=125)
     state=models.BooleanField(default=True)
 
@@ -70,7 +70,7 @@ class Blog(models.Model):
     published=models.DateTimeField()
     publishedstate=models.BooleanField(default=False)
     Draft=models.BooleanField(default=False)
-    catagories=models.ForeignKey(Catagories,blank=True,on_delete=models.CASCADE)
+    categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
     commentstate=models.BooleanField(default=True)
     
     def __unicode__(self):

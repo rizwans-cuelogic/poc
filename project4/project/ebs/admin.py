@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
-from ebs.models import Organisation,Catagories,Blog,Comment,BlogFile
+from ebs.models import Organisation,Categories,Blog,Comment,BlogFile
 
 
 
@@ -54,12 +54,12 @@ class UserAdmin(UserAdmin):
     display_orgname.short_description = 'Role'
 
 
-class CatagoriesModelAdmin(admin.ModelAdmin):
+class CategoriesModelAdmin(admin.ModelAdmin):
     list_display=('name','state')
     list_filter=['state']
     search_fields=['name']
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-admin.site.register(Catagories,CatagoriesModelAdmin)
+admin.site.register(Categories,CategoriesModelAdmin)
 admin.site.register(Blog)
