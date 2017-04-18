@@ -11,7 +11,7 @@ from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
-
+import logging
 class Organisation(models.Model):
     """Organisation(client) model for storing client information"""
     user = models.OneToOneField(User)
@@ -22,7 +22,7 @@ class Organisation(models.Model):
     def __unicode__(self):
         return self.orgname
 
-
+logger = logging.getLogger(__name__)
 def send_notification(sender, instance, *args, **kwargs):
     """function take single user object check whether field is_active is changed 
             to true and if it is
@@ -42,7 +42,7 @@ def send_notification(sender, instance, *args, **kwargs):
         else:
             pass
     except:
-        print "can not send email"
+        logger.info('can not send email')
 
 pre_save.connect(send_notification, sender=User)
 
@@ -67,7 +67,7 @@ class Blog(models.Model):
     tags = models.CharField(max_length=125,blank=True,null=True)
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
-    published=models.DateTimeField(default=timezone.now())
+    published=models.DateTimeField(default=timezone.now)
     publishedstate=models.BooleanField(default=False)
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
