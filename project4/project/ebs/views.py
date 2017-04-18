@@ -226,14 +226,13 @@ def recover_password(request):
 def create_blog(request):
 
         if request.method=='POST':
-            import pdb
-            pdb.set_trace()
-            blogform=BlogForm(request.POST or None,request.FILES or None)
-            blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
+            
+            blogform=BlogForm(request.POST or None)
+            blogfileform=BlogFileForm(request.FILES or None)
             if blogform.is_valid() and  blogfileform.is_valid():
                 files = request.FILES.values()
                 blog=blogform.save(commit=False)
-                orgobj=Organisation.objects.get(orgname='Oyo')
+                orgobj=Organisation.objects.get(user_id=request.user.id)
                 blog.organisation_id=orgobj.id
                 if 'button1' in request.POST:
                     blog.draft=True
@@ -256,8 +255,16 @@ def create_blog(request):
                 orgobj=Organisation.objects.get(orgname='Oyo')
                 instance.organisation_id=orgobj.id
                 instance.save()"""
-                return HttpResponse("success")
+                messages.success(request, 'Profile details updated.')
+                return HttpResponseRedirect('/manage_blog',{"messages":messages})
         else:
             blogfileform=BlogFileForm()
             blogform=BlogForm()
             return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
+
+
+def manage_blog(request):
+    import pdb 
+    pdb.set_trace()
+    if messages:
+        return render(request,'ebs/manage_blog.html')

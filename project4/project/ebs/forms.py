@@ -89,8 +89,7 @@ class BlogForm(forms.ModelForm):
 	
 	published=forms.DateTimeField(
           				required=True,
-          				widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm",
-          												"pickSeconds":False}))
+          				widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm "}))
 
 	catagories=forms.ModelChoiceField(queryset=Catagories.objects.all().filter(state=True).order_by('name'),
 									  empty_label='Select Catagory',widget=forms.Select(attrs={

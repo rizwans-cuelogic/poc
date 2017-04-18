@@ -16,10 +16,9 @@
 	<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css"
         rel="stylesheet">
     {{ blogform.media.css }}-->
-    <link rel="stylesheet" href="js/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-
+	 {{ blogform.media }}
 	<style>
 		.catagory{
 			width:200px;
@@ -114,7 +113,7 @@
         <hr>
     </div>
     <div class="container">
-        <form method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
+        <form  id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
               {% csrf_token %}
 				<div class="form-group">
                         {{blogform.title.errors}}
@@ -153,7 +152,7 @@
 
 
                 <div class="form-group">
-							<div class="input-group date">
+							<div class="input-group date " id="datetimepicker1">
 								<label class="control-label">*Publish on</label>
 								{{blogform.published.errors}}
 								{{blogform.published}}
@@ -224,13 +223,15 @@
 	</footer>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/moment.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/bootstrap-datetimepicker.min.js' %}"></script>
+
 
 <!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>-->
 <!--<script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script>
@@ -253,5 +254,15 @@ $(document).ready(function() {
         </script>
 </script>
 -->
+
+<script type="text/javascript">
+         //     $(function () {
+	        //     $('#datetimepicker1').datetimepicker({
+	        //         defaultDate: new Date(),
+	        //         format : 'DD/MM/YYYY hh:mm A' 
+	        //     });
+	        // });
+
+        </script>
 </body>
 </html>
