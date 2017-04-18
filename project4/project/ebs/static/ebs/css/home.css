@@ -6,11 +6,84 @@ h1, h2, h2,h3,h4{
 	font-family: 'Roboto',sans-serif;
 }
 
-.font-verdana{
+/*.font-verdana{
 	font-family:Verdana,Geneva,sans-serif;
 	line-height:21px;
 
+}*/
+.label{
+	font-weight: 200;
 }
+.banner-blog .large{
+	height:420px;
+	width:100%;
+}
+.banner-blog{
+	position:relative;
+	color:white;
+}
+.banner-blog img{
+	max-width:100%;
+	height:198px;
+}
+.banner-blog .banner-text{
+	position:absolute;
+	bottom:0px;
+	padding:0px 10px 10px;
+}
+.banner-text h4{
+	margin-bottom:0px;
+}
+.banner-text a{
+	color:white;
+}
+.banner-text .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.banner-text .label-default:hover{
+	background-color:#009688;
+}
+
+.banner-text span{
+	font-size:11px;
+	line-height: 1px;
+}
+
+.l-blog{
+	position:relative;
+
+}
+.l-blog .l-text{
+	padding-right:33px;
+	position:absolute;
+	top:150px;
+	
+}
+.l-blog .l-text h4{
+	font-size: 21px;
+}
+
+.l-blog img{
+	width:90% ;
+	height:170px;
+}
+.l-text .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+
+.l-text .label-default:hover{
+	background-color:#009688;
+}
+
+.l-text .l-author{
+	font-size:11px;
+	line-height: 1px;
+}
+
 
 
 .popular-header{
@@ -32,6 +105,7 @@ p{
 
 a:hover{
 	color:#009688;
+	text-decoration: none;
 }
 
 #logged-user 
@@ -72,7 +146,7 @@ h2{
 }
 
 a{
-	text-decoration: none !important;
+	text-decoration: none;
 	color:black;
 }
 
@@ -196,7 +270,7 @@ hr{
 }
 
 .banner2-margin{
-	margin-top:38px;
+	margin-top:25px;
 }
 
 /* modal css */

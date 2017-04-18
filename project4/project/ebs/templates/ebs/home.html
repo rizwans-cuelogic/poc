@@ -89,95 +89,81 @@
 			</div>
 		</div>
 	</nav>
- 	
-		
-	
 
-	
 <!-- BANNER BLOGS POSTS -->
 
 	<div class="banner1">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<div id="banner1-img">
-						<a href="#">
-						<img  class="banner1-imgbig img-responsive " src="{% static 'ebs/img/pro1.jpg' %} " /> 
-						</a>
-	
+					<div class="banner-blog">
+								<a  href="#"><img class="large" src="{% static 'ebs/img/pro1.jpg' %}"/></a>
+								<div class="banner-text">
+									<a href="#" class="label label-default">photography</a>
+									<h3><a href="#">Celebrity Make-up artist gary cockrill shows you beaty tips</a></h3>
+									<a href="#"><span><b>David Lee</b></span>
+									<span>-  September 24,    2016</span>
+								</div> 
 					</div>
-					<div id="banner1-text">
-					<a href="#"><span class="catagory-block left-margin">PHOTOGRAPHY</span></a>
-					<a href="#"><h3>Celebrity Make-up artist gary cockrill shows you beaty tips</h3></a>
-					<a href="#"><span class="white-text left-margin author-font"><b>David Lee</b></span><span class="white-text font-author">  -  September 24,    2016</span></a> 
-					</div>
-				</div>
 
-			
-					<div  class="col-md-6">
-						<div class="row">
-							<div class="col-md-6">
-							<div class="screen1 screen">
-								<a href="#">
-									<img class="banner2-img img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/></a>
-									
-								
-									<div class="banner2-text">
-										<a href="#"><span class="catagory-block">HEALTH</span></a>
-										<a href="#">
-										<h4 class="font-verdana white-text">The workout That Burns More Calories Than Runing</h4>
-										</a>
-									</div>
+					
+				</div>
+				<div  class="col-md-6">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="banner-blog">
+								<a href="#"><img src="{% static 'ebs/img/por1.jpg' %}"/></a>
+								<div class="banner-text">
+									<a href="#" class="label label-default">Health</a>
+									<h4><a href="#">The workout That Burns More Calories Than Runing</a></h4>
+								</div> 
 							</div>
+						</div>
+
+							
+						<div class="col-md-6">
+							<div class="screen2">
+							<div class="banner-blog">
+								<a href="#"><img src="{% static 'ebs/img/mobile.jpg' %}"/></a>
+								<div class="banner-text">
+									<a href="#" class="label label-default">Tech</a>
+									<h4><a href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h4>
+								</div> 
 							</div>
 							
-	
-							<div class="col-md-6">
-								<div class="screen2">
-								<a href="#">
-									<img class="banner2-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/></a>
-						
-									<div class="banner2-text">
-										<a href="#"><span class="catagory-block">TECH</span></a>
-										<a href="#">
-										<h4 class="font-verdana white-text">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</h4></a>
-									</div>
-								
-								</div>
+							</div>
+							
 							</div>
 						</div>
+					
 
-						
-						<!--<div class="banner-2">-->
-						<div class="row banner2-margin">
-							<div class="col-md-6" >
-								<div class="screen">
-								<a href="#">
-									<img class="banner2-img img-responsive" src="{% static 'ebs/img/post2.jpg' %}"/></a>
-								
-									<div class="banner2-text">
-										<a href="#"><span class="catagory-block">ARTS</span></a>
-										<a href="#">
-										<h4 class="font-verdana white-text">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</h4>
-										</a>
-									</div>
-								
-								</div>
+					
+					<!--<div class="banner-2">-->
+					<div class="row banner2-margin">
+						<div class="col-md-6" >
+							<div class="screen">
+							<div class="banner-blog">
+								<a href="#"><img src="{% static 'ebs/img/post2.jpg' %}"/></a>
+								<div class="banner-text">
+									<a href="#" class="label label-default">Arts</a>
+									<h4><a href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h4>
+								</div> 
 							</div>
-							<div class="col-md-6">
-								<a href="#">
-									<img class="banner2-img img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/></a>
-								
-									<div class="banner2-text">
-										<a href="#"><span class="catagory-block">FASHION</span></a>
-										<a href="#">
-										<h4 class="font-verdana white-text">Fashion Week Parties: Night 4</h4></a>
-									</div>
-								
+							
 							</div>
 						</div>
-						<!--</div>-->
+						<div class="col-md-6">
+							<div class="banner-blog">
+								<a href="#"><img src="{% static 'ebs/img/gile.jpg' %}"/></a>
+								<div class="banner-text">
+									<a href="#" class="label label-default">Fashion</a>
+									<h4><a href="#">Fashion Week Parties: Night 4</a></h4>
+								</div> 
+							</div>
+						</div>
 					</div>
+					<!--</div>-->
+				</div>
 				
 			</div>
 		</div>			
@@ -192,13 +178,13 @@
 					<hr class="latest-hr">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="latest-blog">
-							<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
+							<div class="l-blog">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
 
-							<div class="latest-text">
-								<a href="#"><span class="catagory-block">PHOTOGRAPHY</span></a>
-								<h4 class="latest-header"><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h4>
-								<span class="author-font"><a href="#" class="author-color"><strong>David Lee</strong></a></span><span class="author-font">   -   September 24,   2016</span>
+							<div class="l-text">
+								<a href="#"><span class="label label-default">PHOTOGRAPHY</span></a>
+								<h4><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h4>
+								<span class="l-author"><a href="#"><strong>David Lee</strong></a></span><span class="l-author">   -   September 24,   2016</span>
 								<a href="#"><span class="pull-right view-block">0</span></a>
 
 							</div>
@@ -206,66 +192,65 @@
 						</div>
 			
 						<div class="col-md-6">
-							<div class="latest-blog">
-								<a  href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/books.jpg' %} "/></a>
-								<div class="latest-text ">
-									<a href="#"><span class="catagory-block">HEALTH</span></a>
-									<h4 class="latest-header"><a href="#">Summer Sports That Torch Serious Calories</a></h4>
-									<span class="author-font"><a href="#" class="author-color"><b>David Lee</b></a></span><span class="author-font">  -  September 24,   2016</span> 
-									<a href="#"><span class="pull-right view-block">0</span></a>
+							<div class="l-blog">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
 
-								</div> 
-								</div>	
+							<div class="l-text">
+								<a href="#"><span class="label label-default">PHOTOGRAPHY</span></a>
+								<h4><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h4>
+								<span class="l-author"><a href="#"><strong>David Lee</strong></a></span><span class="l-author">   -   September 24,   2016</span>
+								<a href="#"><span class="pull-right view-block">0</span></a>
+
 							</div>
+							</div>	
 						</div>
-					
-					<div class="row ">
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a  href="#"><img  class="img-responsive latest-img" src="{% static 'ebs/img/por1.jpg' %} "/></a>
-								<div class="latest-text">
-									<a href="#"><span class="catagory-block">HEALTH</span></a>
-									<h4 class="latest-header"><a href="#">The workout That Burns More Calories Than Running</a></h4>
-									<span class="author-font"><a href="#"><b>David Lee</b></a></span><span class="author-font">    -   September 24,   2016</span>
-									<a href="#"><span class="pull-right view-block">0</span></a>
-
-								</div>
-
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a  href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/mobile.jpg' %} "/></a>
-								<div class="latest-text">
-									<a href="#"><span class="catagory-block">TECH</span></a>
-																				
-									<h4 class="latest-header"><a href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h4>
-									
-									<span class="author-font"><a href="#" class="author-color"><b>David Lee</b></a></span>
-									<span class="author-font">     -   September 24,    2016</span>
-									
-									<a href="#"><span class="pull-right view-block">0</span></a>
-
-								</div>
-							</div>
-							</div>		
 					</div>
 					
-					<div class="row">
+					<div class="row " style="margin-top:100px;">
 						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/army.jpg' %} "/></a>
-								<div class="latest-text">
-								<a href="#"><span class="catagory-block">ARMY</span></a>
-									
-									<h4 class="latest-header"><a href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h4>
-									<span class="author-font"><a href="#" class="author-color"><b>David Lee</b></a></span><span class="author-font">     -   September 24,   2016</span>
-									<a href="#"><span class="pull-right view-block">0</span></a>
+							<div class="l-blog">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
 
-								</div> 
-								</div>
+							<div class="l-text">
+								<a href="#"><span class="label label-default">PHOTOGRAPHY</span></a>
+								<h4><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h4>
+								<span class="l-author"><a href="#"><strong>David Lee</strong></a></span><span class="l-author">   -   September 24,   2016</span>
+								<a href="#"><span class="pull-right view-block">0</span></a>
+
 							</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="l-blog">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
+
+							<div class="l-text">
+								<a href="#"><span class="label label-default">PHOTOGRAPHY</span></a>
+								<h4><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h4>
+								<span class="l-author"><a href="#"><strong>David Lee</strong></a></span><span class="l-author">   -   September 24,   2016</span>
+								<a href="#"><span class="pull-right view-block">0</span></a>
+
+							</div>
+							</div>
+						</div>		
+					</div>
+					
+					<div class="row " style="margin-top:100px;">
+						<div class="col-md-6">
+								<div class="l-blog">
+							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %} "/></a>
+
+							<div class="l-text">
+								<a href="#"><span class="label label-default">PHOTOGRAPHY</span></a>
+								<h4><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h4>
+								<span class="l-author"><a href="#"><strong>David Lee</strong></a></span><span class="l-author">   -   September 24,   2016</span>
+								<a href="#"><span class="pull-right view-block">0</span></a>
+
+							</div>
+							</div>
+
+						</div>
 						<div class="col-md-6">
 							<div class="latest-blog">
 								<a href="#"><img class="latest-img img-responsive" src="{% static 'ebs/img/post2.jpg' %} "/></a>
