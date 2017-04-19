@@ -3,7 +3,7 @@
 	background-color:black;
 	opacity:0.8;
 	margin-top:60px;
-	padding: 10px 0px 130px;
+	padding: 50px 0px 130px;
 }
 
 #footer-2{
@@ -32,6 +32,7 @@
 	color:white;
 	list-style:none;
 	padding:0px;
+	margin-bottom: 0px;
 }
 .footer2-padding li{
 	display:inline;
@@ -42,17 +43,15 @@
 }
 
 .footer2-padding li a{
-	vertical-align: center;
+
 	color:white;
 	text-decoration:none;
+
 }
 
 .copyright{
 	color:white;
-	vertical-align: center;
 	line-height: 40px;
-	padding-left:14%;
-	
 }
 .white-text{
 	color:white;
@@ -105,4 +104,9 @@ ul li a{
 		margin-left:30%;
 	}
 
+}
+@media screen and (max-width:768px){
+	#footer{
+		padding: 10px 0px 70px;
+	}
 }

@@ -5,12 +5,6 @@ body{
 h1, h2, h2,h3,h4{
 	font-family: 'Roboto',sans-serif;
 }
-
-/*.font-verdana{
-	font-family:Verdana,Geneva,sans-serif;
-	line-height:21px;
-
-}*/
 .label{
 	font-weight: 200;
 }
@@ -23,7 +17,7 @@ h1, h2, h2,h3,h4{
 	color:white;
 }
 .banner-blog img{
-	max-width:100%;
+	width:100%;
 	height:198px;
 }
 .banner-blog .banner-text{
@@ -31,6 +25,10 @@ h1, h2, h2,h3,h4{
 	bottom:0px;
 	padding:0px 10px 10px;
 }
+.banner-blog a:hover{
+	color:white;
+}
+
 .banner-text h4{
 	margin-bottom:0px;
 }
@@ -51,215 +49,154 @@ h1, h2, h2,h3,h4{
 	line-height: 1px;
 }
 
-.l-blog{
+.latest-blog{
 	position:relative;
-
+	height:285px;
+	width:90%;
 }
-.l-blog .l-text{
-	padding-right:33px;
+.latest-blog .latest-text{
 	position:absolute;
 	top:150px;
-	
 }
-.l-blog .l-text h4{
+.latest-blog .latest-text h4{
 	font-size: 21px;
 }
 
-.l-blog img{
-	width:90% ;
+.latest-blog img{
+	width:100% ;
 	height:170px;
 }
-.l-text .label-default{
+.latest-text .label-default{
 	border-radius:0;
 	background-color: black;
 	text-transform: uppercase;
 }
 
-.l-text .label-default:hover{
+.latest-text .label-default:hover{
 	background-color:#009688;
 }
 
-.l-text .l-author{
+.latest-text .latest-author{
 	font-size:11px;
 	line-height: 1px;
 }
-
-
-
-.popular-header{
+.latest-text .latest-author:hover{
+	color:black;
+}
+.popular-blog{
+	position:relative;
+}
+.popular-blog h4{
 	font-size:17px;
 	line-height:23px;
 	font-weight:300;
 	margin-top:0px;
 }
+.popular-blog .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
 
-.mustread-header{
+.popular-blog .label-default:hover{
+	background-color:#009688;
+}
+.popular-blog .popular-author{
+	font-size:11px;
+	line-height: 1px;
+}
+.must-blog{
+	position:relative;
+}
+.must-blog h4{
 	font-size:16px;
 	line-height:24px;
 	font-weight: 600;
+	margin-top:0px;
+}
+.must-blog .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
 }
 
-p{
-	margin:0px;
+.must-blog .label-default:hover{
+	background-color:#009688;
+}
+.must-blog .must-author{
+	font-size:11px;
+	line-height: 1px;
+}
+.must-blog .must-author:hover{
+	color:black;
 }
 
 a:hover{
 	color:#009688;
 	text-decoration: none;
 }
-
-#logged-user 
+a{
+	text-decoration: none;
+	color:black;
+}
+p{
+	margin:0px;
+}
+#logged-user
 {
 	font-weight: 700; 
 	padding-top:10px;
 }	
-
-.catagory-block:hover{
-	background-color:#009688;
-}
-
-.author-color:hover{
-	color:black ;
-}
-
 .forgot-modal{
 	text-align:center;
 	margin-top:10px ;
 }
-.top-margin-10{
+.top-margin-30{
 	margin-top:30px;
 }
 
-.top-margin-20{
+.top-margin-10{
 	margin-top:10px;
 }
 
-.top-margin-30{
+.top-margin-20{
 	margin-top:20px;
 }
-.left-margin{
-	margin-left:10px;
-}
-
-h2{
-	font-size:25px;
+.top-margin-40{
+	margin-top:40px;
 }
 
 a{
 	text-decoration: none;
 	color:black;
 }
-
-
-.icon{
-	padding-top:5px;
-}
-
 .banner1{
 	margin-top:50px;
 }
-.banner2-img{
-	width:100%;
-	height:198px;
-	overflow:hidden;
-
-}
-
-.banner1-imgbig{
-	height:100%;
-	width:100%;
-
-}
-
-
-#banner1-img{
-	position:relative;
-	height:420px;
-	width:100%;
-}
-
-#banner1-text{
-	position:absolute;
-	top:230px;
-	width:90%;
-
-}
-#banner1-text h3{
-	color:white;
-	margin:10px 0px 10px 10px;
-
-}
-
-.top-margin-40{
-	margin-top:40px;
-}
-
-.latest-header{
-	font-size: 21px;
-}
-
-.latest-img{
-	width:90% ;
-	height:170px;
-	overflow:hidden;
-}
 .latest-hr{
-	width:95%;
-	border: 1px solid #009688;
+	border-bottom: 2px solid #009688;
 	margin-left:-1px;
+	width:95%;
+	padding-bottom:7px;
+	margin-bottom:20px;
 }
-
-.latest-blog{
-	margin-bottom:30px;
-}
-.latest-text{
-	width:90%;
-	margin-top:-21px;
-}
-
-.catagory-block{
-	background: black;
-    color: white;
-    padding: 3px;
-    font-size: x-small;
-    position: relative; 
-}
-
 .hcatagories{
 	font-size:14px;
 	line-height: 30px;
 }
 
-
-.author-font{
-	font-size:11px;
-	line-height: 1px;
-}
-
-
 .modal-padding{
 	padding-top:0px;
 }
-
-
-.hr-color{
-	border-top:2px solid #009688;
-
+.popular-hr{
+	border-bottom:2px solid #009688;
+	padding-bottom:7px;
+	margin-bottom:20px;
 }
-
-
 hr{
 
 	margin-top:0px;
 }
-
-
-.banner2-text{
-	margin-top:-95px;
-	padding-left:5px;
-}
-
-
 .view-block{
 	background: black;
     color: white;
@@ -268,7 +205,6 @@ hr{
     margin-left: 10px;
 	position: relative; 
 }
-
 .banner2-margin{
 	margin-top:25px;
 }
@@ -299,11 +235,9 @@ hr{
 	font-size: 30px; 
 	width: auto;  
 }
-
 .sendbutton{
 	margin-top:30px;
 }
-
 @media screen and (max-width:768px){
 	#footer-2{
 		background-color:black;
@@ -312,43 +246,26 @@ hr{
 	.footer2-padding{
 		text-align:center;
 	}
-	
 }
-
-
 @media screen and (max-width:768px){
 	#ul1 li a{
 		padding: 10px 6px;
     	font-size: 12px;
 	}
-				  
 }
-
 @media screen and (max-width:768px){
-	.screen{
-		margin-bottom:60px;
-	}
 	.screen1{
-		margin-top:20px;
+		margin-top:25px;
 	}
-	.screen2{
-		margin-bottom:20px;
-	}				
-		
 }
-
 @media screen and (max-width:768px){
-	.latest-img{
+	.latest-blog{
 		width:100%;
 	}
-	.latest-text{
+	.latest-blog img{
 		width:100%;
 	}
-	.latest-hr{
-		width:100%;
-	}		
 }
-
 @media screen and (min-width:768px){
 	.modal-dialog{
 		width:400px;
