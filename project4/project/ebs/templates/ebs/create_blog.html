@@ -10,13 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <!--<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/home.css' %}"/>-->
-
-	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/common.css' %}"/>
-	<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css"
-        rel="stylesheet">
-    {{ blogform.media.css }}-->
-    <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/common.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
 	 {{ blogform.media }}
 	<style>
@@ -231,38 +226,8 @@
 <script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/moment.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/bootstrap-datetimepicker.min.js' %}"></script>
-
-
-<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>-->
-<!--<script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/registration1.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/login.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/forgotpassword.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/resetpassword.js' %}"></script>-->
-<!--<script>
-$(document).ready(function() {
-    $('.datepicker').datepicker();
-});-->
-
-  <!--{{ blogform.media.js }}-->
-<!--<script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    
-                });
-            });
-        </script>
-</script>
--->
-
-<script type="text/javascript">
-         //     $(function () {
-	        //     $('#datetimepicker1').datetimepicker({
-	        //         defaultDate: new Date(),
-	        //         format : 'DD/MM/YYYY hh:mm A' 
-	        //     });
-	        // });
-
-        </script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script type="text/javascript" src="{% static 'ebs/js/create_blog.js' %}"></script>
 </body>
 </html>

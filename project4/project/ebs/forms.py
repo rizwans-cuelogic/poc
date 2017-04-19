@@ -82,7 +82,7 @@ class BlogForm(forms.ModelForm):
 							widget=forms.Textarea(
 								attrs={'size': '100%',
 									   'class': 'form-control'}))
-	tags= forms.CharField(required='false',label="title",
+	tags= forms.CharField(required=False,label="title",
 						widget=forms.TextInput(
 							 attrs={'size': '100%',
 									'class': 'form-control'}))

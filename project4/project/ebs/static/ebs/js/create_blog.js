@@ -1,54 +1,27 @@
 $(document).ready(function() {
-    $('#createform').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            attachements: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select an file'
-                    },
-                    file: {
-                        extension: 'jpeg,jpg,png',
-                        type: 'image/jpeg,image/png',
-                        maxSize: 2097152,   // 2048 * 1024
-                        message: 'you can select jpeg,png,doc,pdf,xls file'
-                    }
-                }
-            }
+        jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+        });
+    $( "#createform" ).validate({
+        rules: {
+            attachments: {
+                required: false,
+                accept: "image/jpeg,image/png,application/msword,application/pdf,application/vnd.ms-excel"
+            },
+
             image1: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select an file'
-                    },
-                    file: {
-                        extension: 'jpeg,jpg,png',
-                        type: 'image/jpeg,image/png',
-                        maxSize: 2097152,   // 2048 * 1024
-                        message: 'you can select jpeg,png,doc,pdf,xls file'
-                    }
-                }
-            }
+                required: false,
+                accept: "image/jpeg,image/png,application/msword,application/pdf,application/vnd.ms-excel"
+            },
+
             image2: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select an file'
-                    },
-                    file: {
-                        extension: 'jpeg,jpg,png',
-                        type: 'image/jpeg,image/png',
-                        maxSize: 2097152,   // 2048 * 1024
-                        message: 'you can select jpeg,png,doc,pdf,xls file'
-                    }
-                }
+                required: false,
+                accept: "image/jpeg,image/png,application/msword,application/pdf,application/vnd.ms-excel"
             }
-
-
 
         }
+    });       
+
+        
     });
-});
