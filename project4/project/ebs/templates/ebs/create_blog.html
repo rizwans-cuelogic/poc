@@ -112,23 +112,23 @@
               {% csrf_token %}
 				<div class="form-group">
                         {{blogform.title.errors}}
-						<label class="control-label">*Title</label>
+						<label for="title" class="control-label">*Title</label>
                          {{blogform.title}}
                 </div>
                 <div class="form-group ">
 						{{blogform.description.errors}}
-						<label class="control-label">*Description</label>
+						<label for="description" class="control-label">*Description</label>
                          {{blogform.description}}
                 </div>
                 <div class="form-group ">
 						{{blogform.tags.errors}}
-						<label class="control-label">Tags</label>
+						<label for="tags" class="control-label">Tags</label>
                          {{blogform.tags}}
                 </div>
 
                 <div class="form-group ">
 						{{blogform.image.errors}}
-						<label class="control-label">Attachments</label>
+						<label class="control-label">Attachments</label><br>
                          {{blogfileform.attachments}}<br>
                          {{blogfileform.image1}}<br>
                          {{blogfileform.image2}}
@@ -136,13 +136,13 @@
 
                 <div class="form-group ">
 						{{blogform.categories.errors}}
-						<label class="control-label">*Catagories</label><br>
-                         {{blogform.categories}}
+						<label for="categories" class="control-label">*Catagories</label><br>
+                         {{blogform.categories}}<br>
                 </div>
 
                  <div class="form-group ">
 						{{blogform.commentstate.errors}}
-						{{blogform.commentstate}} &nbsp;  &nbsp;<label class="control-label">Block Comments</label><br>
+						{{blogform.commentstate}} &nbsp;  &nbsp;<label for="commentstate" class="control-label">Block Comments</label><br>
                 </div>
 
 
