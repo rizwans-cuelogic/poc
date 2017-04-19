@@ -2,7 +2,7 @@ body{
 	font-family:'Open Sans',arial,sans-serif;
 	
 }
-h1, h2, h2,h3,h4{
+h1, h2, h3,h4,h5{
 	font-family: 'Roboto',sans-serif;
 }
 .label{
@@ -46,13 +46,11 @@ h1, h2, h2,h3,h4{
 
 .banner-text span{
 	font-size:11px;
-	line-height: 1px;
 }
 
 .latest-blog{
 	position:relative;
 	height:285px;
-	width:90%;
 }
 .latest-blog .latest-text{
 	position:absolute;
@@ -139,9 +137,6 @@ a{
 	text-decoration: none;
 	color:black;
 }
-p{
-	margin:0px;
-}
 #logged-user
 {
 	font-weight: 700; 
@@ -176,7 +171,6 @@ a{
 .latest-hr{
 	border-bottom: 2px solid #009688;
 	margin-left:-1px;
-	width:95%;
 	padding-bottom:7px;
 	margin-bottom:20px;
 }
