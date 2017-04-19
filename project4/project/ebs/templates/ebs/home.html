@@ -22,7 +22,7 @@
 				<div class="container">
 					<div class="row">
 					<div class="col-md-12">
-						<ul id ="ul1" class="nav1 nav nav-pills">
+						<ul id ="nav-list" class="nav nav-pills">
 						{% if user.is_authenticated %}
 							<li id="logged-user">Welcome {{user.username}}</li>
 							<li><a href="#">Manage Profile</a></li>
@@ -147,10 +147,10 @@
 		</div>			
 	</section>	
 	<!--Latest blogs and must read -->
-	<div class="top-margin-40">
+	<section class="top-margin-40">
 		<div class="container">
 			<div class="row">
-				<section class="col-md-8">
+				<main class="col-md-8">
 					<h4 class="latest-hr">LATEST BLOGS</h4>
 						<div class="row">
 						<div class="col-md-6">
@@ -275,7 +275,7 @@
 						</div>
 						</div>
 					</div>					
-				</section>	
+				</main>	
 				<aside class="col-md-4">
 					<!-- MOST POPULAR -->
 					<h4 class="latest-hr">MOST POPULAR</h4>
@@ -391,27 +391,17 @@
 					<!-- Catogories -->
 					<div class="top-margin-30">
 						<h4 class="latest-hr"><strong>CATAGORIES</strong></h4>
+						<ul class="simple-list">
+							<li><a href="#" class="hcatagories">Arts</a></li>
+							<li><a href="#" class="hcatagories">Fashion</a></li>
+							<li><a href="#" class="hcatagories">Gallery</a></li>
+						</ul>
 						
-						<div class="row">
-							<div class="col-md-12">
-								<a id="cat" href="#" class="hcatagories">Arts</a>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 top-margin-10">
-								<a href="#" class="hcatagories">Fashion</a>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 top-margin-10">
-								<a href="#" class="hcatagories">Gallery</a>
-							</div>
-						</div>
 					</div>
 				</aside>
 			</div>
 		</div>
-	</div>
+	</section>
 	<!-- FOOTER -->
 	<footer id="footer" class="footer-padding">
 			<div class="container">
@@ -427,7 +417,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 text-center footer-padding-2">
-						<span>Contact us:<a style="color:#009688" href="#"> contact@yourside.com</a></span> 
+						<span>Contact us:<a href="#"> contact@yourside.com</a></span> 
 					</div>
 				</div>
 				<div class="row">
@@ -617,7 +607,7 @@
 					<div class="form-group ">
 						{{orgform.orglogo.errors}}
 						<label class="control-label">Company Logo</label> 
-						<div class="col-sm-12 input-group" style="width:100%">
+						<div class="col-sm-12 input-group file-size">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-picture">
 								</span>

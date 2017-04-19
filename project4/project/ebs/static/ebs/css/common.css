@@ -15,6 +15,10 @@
 	font-size:15px;
 }
 
+#nav-list{
+	line-height: 14px;
+}
+
 .footer-icon{	
 	color:white;
 	padding-left:10px;
@@ -25,6 +29,12 @@
 .footer-padding-2{
 	padding-top:20px;
 }
+
+.footer-padding-2 span a{
+	color: #009688;
+}
+
+
 .footer2-padding{
 	color:white;
 	list-style:none;
@@ -60,7 +70,6 @@
 
 .header-navbar{
 	border-top:4px solid #009688;
-	height:30px;
 }
 
 .navbar-inverse{
@@ -93,7 +102,12 @@ ul li a{
 .btn1:hover{
 	background-color:#009688;
 }
-
+@media screen and (max-width:768px){
+	#nav-list li a{
+		padding: 10px 6px;
+    	font-size: 12px;
+	}
+}
 @media screen and (max-width:768px){
 	.navbar-header a img{
 		height:60px;

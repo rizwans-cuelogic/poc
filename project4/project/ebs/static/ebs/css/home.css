@@ -221,6 +221,16 @@ a{
 .sendbutton{
 	margin-top:30px;
 }
+
+ul.simple-list{
+	list-style: none;
+	padding: 0;
+}
+@media screen and (max-width:768px){
+	.file-size{
+		width:100%;
+	}
+}
 @media screen and (max-width:768px){
 	#footer-2{
 		background-color:black;
@@ -230,13 +240,6 @@ a{
 		text-align:center;
 	}
 }
-@media screen and (max-width:768px){
-	#ul1 li a{
-		padding: 10px 6px;
-    	font-size: 12px;
-	}
-}
-
 @media screen and (max-width:768px){
 	.latest-blog{
 		width:100%;
