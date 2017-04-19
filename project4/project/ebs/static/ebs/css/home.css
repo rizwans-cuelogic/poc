@@ -79,7 +79,7 @@ h1, h2, h3,h4,h5{
 .latest-text .latest-author{
 	font-size:11px;
 }
-.latest-text .latest-author:hover{
+.latest-text .latest-author a:hover{
 	color:black;
 }
 .popular-blog{
