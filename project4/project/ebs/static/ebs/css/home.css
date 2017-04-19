@@ -125,6 +125,7 @@ h1, h2, h3,h4,h5{
 .must-blog .must-author{
 	font-size:11px;
 	line-height: 1px;
+	margin-left:5px;
 }
 .must-blog .must-author a:hover{
 	color:black;
@@ -176,7 +177,6 @@ a{
 }
 .latest-hr{
 	border-bottom: 2px solid #009688;
-	margin-left:-1px;
 	padding-bottom:7px;
 	margin-bottom:20px;
 	font-weight:600;
