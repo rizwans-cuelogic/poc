@@ -15,6 +15,7 @@ h1, h2, h3,h4,h5{
 .banner-blog{
 	position:relative;
 	color:white;
+	margin-bottom:25px;
 }
 .banner-blog img{
 	width:100%;
@@ -77,7 +78,6 @@ h1, h2, h3,h4,h5{
 
 .latest-text .latest-author{
 	font-size:11px;
-	line-height: 1px;
 }
 .latest-text .latest-author:hover{
 	color:black;
@@ -193,9 +193,7 @@ a{
     margin-left: 10px;
 	position: relative; 
 }
-.banner2-margin{
-	margin-top:25px;
-}
+
 
 /* modal css */
 
@@ -241,16 +239,15 @@ a{
     	font-size: 12px;
 	}
 }
-@media screen and (max-width:768px){
-	.screen1{
-		margin-top:25px;
-	}
-}
+
 @media screen and (max-width:768px){
 	.latest-blog{
 		width:100%;
 	}
 	.latest-blog img{
+		width:100%;
+	}
+	.latest-text{
 		width:100%;
 	}
 }
