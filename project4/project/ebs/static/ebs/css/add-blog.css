@@ -1,0 +1,15 @@
+.help-line{
+	display:block;
+	color:red;
+	padding-top:10px;
+
+}
+.category{
+	width:200px;
+	height:30px;
+	background-color:white;
+}
+
+.file-width{
+	width:50%;
+}
