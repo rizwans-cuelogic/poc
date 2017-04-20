@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
 	 {{ blogform.media }}
+	
 </head>
 
 
@@ -103,38 +104,38 @@
 						<label for="title" class="control-label">*Title</label>
                          {{blogform.title}}
                 </div>
-                <div class="form-group ">
+                <div class="form-group form-margin">
 						{{blogform.description.errors}}
 						<label for="description" class="control-label">*Description</label>
                          {{blogform.description}}
                 </div>
-                <div class="form-group ">
+                <div class="form-group form-margin">
 						{{blogform.tags.errors}}
 						<label for="tags" class="control-label">Tags</label>
                          {{blogform.tags}}
                 </div>
 
-                <div class="form-group ">
+                <div class="form-group form-margin">
 						{{blogform.image.errors}}
 						<label class="control-label">Attachments</label><br>
                          {{blogfileform.attachments}}<br>
                          {{blogfileform.image1}}<br>
-                         {{blogfileform.image2}}
+                         {{blogfileform.image2}}<br>
                 </div>
 
-                <div class="form-group ">
+                <div class="form-group form-margin ">
 						{{blogform.categories.errors}}
 						<label for="categories" class="control-label">*Catagories</label><br>
-                         {{blogform.categories}}<br>
+                         {{blogform.categories}}
                 </div>
 
-                 <div class="form-group ">
+                 <div class="form-group form-margin">
 						{{blogform.commentstate.errors}}
-						{{blogform.commentstate}} &nbsp;  &nbsp;<label for="commentstate" class="control-label">Block Comments</label><br>
+						{{blogform.commentstate}} &nbsp;<label for="commentstate" class="control-label">Block Comments</label>
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group form-margin">
 							<div class="input-group date " id="datetimepicker1">
 								<label class="control-label">*Publish on</label>
 								{{blogform.published.errors}}
@@ -144,9 +145,9 @@
 							
 				</div>
 
-                <div class="form-group pull-right" >
-						<button class="btn btn1" name="button1" value="button1">Save as draft</button>
-                        <button type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
+                <div class="form-group pull-right " >
+						<button id="draft" class="btn btn1" name="button1" value="button1">Save as draft</button>
+                        <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
                         <button class="btn btn1">Cancel</button>
                 </div>
 

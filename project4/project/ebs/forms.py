@@ -81,20 +81,23 @@ class BlogForm(forms.ModelForm):
 	description = forms.CharField(required=True,label="description",
 							widget=forms.Textarea(
 								attrs={'size': '100%',
+									   'placeholder':'Add Description',
 									   'class': 'form-control'}))
 	tags= forms.CharField(required=False,label="title",
 						widget=forms.TextInput(
 							 attrs={'size': '100%',
+							 		'placeholder':'Tags',
 									'class': 'form-control'}))
 	
 	published=forms.DateTimeField(
           				required=True,
           				widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm "}))
 
-	categories=forms.ModelChoiceField(queryset=Categories.objects.all().filter(state=True).order_by('name'),
-									  empty_label='Select Catagory',widget=forms.Select(attrs={
-          'class':'catagory' 
-          }))
+	categories=forms.ModelChoiceField(
+						queryset=Categories.objects.all().filter(state=True).order_by('name'),
+						empty_label='Select Catagory',
+						widget=forms.Select(attrs={"class":"catagory"})
+					)
 	commentstate=forms.BooleanField(required=False)
 
 	class Meta:
@@ -112,13 +115,19 @@ class BlogFileForm(forms.Form):
 	attachments=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={'size':'50%',
-								   'class':'form-control file-width'}))
+								   'class':'form-control file-width',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								}))
 	image1=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={'size':'50%',
-								   'class':'form-control file-width'}))
+								   'class':'form-control file-width',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								}))
 	image2=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={'size':'50%',
-								   'class':'form-control file-width'}))
+								   'class':'form-control file-width',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								}))
 	
