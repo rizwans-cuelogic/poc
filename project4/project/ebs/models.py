@@ -48,7 +48,7 @@ def send_notification(sender, instance, *args, **kwargs):
 pre_save.connect(send_notification, sender=User)
 
 
-class forgotpassword(models.Model):
+class ForgotPassword(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     activation_key = models.CharField(max_length=50)
     link_time = models.DateTimeField(default=datetime.now, blank=True)

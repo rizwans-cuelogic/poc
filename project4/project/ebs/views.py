@@ -12,6 +12,7 @@ from django.forms import ModelForm
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import (authenticate, login, logout,)
+from django.contrib.auth.decorators import login_required
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
@@ -19,7 +20,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
-from .models import Organisation,Blog,BlogFile,forgotpassword
+from .models import Organisation,Blog,BlogFile,ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 
 # Create your views here.
@@ -32,7 +33,7 @@ def home(request):
     hash1 = request.GET.get('uid', '')
     try:
         if (hash1):
-            obj = forgotpassword.objects.get(activation_key=hash1)
+            obj = ForgotPassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             time_date = obj.link_time
             if time_date < (timezone.now() - timedelta(hours=48)):
@@ -140,7 +141,6 @@ def log_out(request):
 
 
 def forgotpass(request):
-    
     try:
         if request.method == 'POST':
             data = json.loads(request.body)
@@ -208,11 +208,11 @@ def recover_password(request):
                             'message': "please fill the details"}
                 return HttpResponse(json.dumps(response), 
                                     content_type='application/json')
-            obj = forgotpassword.objects.get(activation_key=hash1)
+            obj = ForgotPassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             user.set_password(password)
             user.save()
-            forgotpassword.objects.get(id=obj.id).delete()
+            ForgotPassword.objects.get(id=obj.id).delete()
             response = {'status': 'success',
                         'message': "password updated successfully"}
             return HttpResponse(json.dumps(response), 
@@ -223,12 +223,11 @@ def recover_password(request):
         return HttpResponse(json.dumps(response), 
                             content_type='application/json')
 
+@login_required(login_url='/')
 def create_blog(request):
-
         if request.method=='POST':
-            
-            blogform=BlogForm(request.POST or None)
-            blogfileform=BlogFileForm(request.FILES or None)
+            blogform=BlogForm(request.POST or None,request.FILES or None)
+            blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
             if blogform.is_valid() and  blogfileform.is_valid():
                 files = request.FILES.values()
                 blog=blogform.save(commit=False)
@@ -243,27 +242,13 @@ def create_blog(request):
                     instance.attachments=a_file
                     instance.save()
                 blog.save()
-
-                """instance=Blog()
-                instance.title=blogform.cleaned_data['title']
-                instance.description=blogform.cleaned_data['description']
-                instance.attachments=a_file
-                instance.tags=blogform.cleaned_data['tags']
-                instance.catagories=blogform.cleaned_data['catagories']
-                instance.commentstate=blogform.cleaned_data['commentstate']
-                instance.published=blogform.cleaned_data['published']
-                orgobj=Organisation.objects.get(orgname='Oyo')
-                instance.organisation_id=orgobj.id
-                instance.save()"""
-                messages.success(request, 'Profile details updated.')
+                messages.success(request, 'Blog details saved successfully.')
                 return HttpResponseRedirect('/manage_blog',{"messages":messages})
         else:
             blogfileform=BlogFileForm()
             blogform=BlogForm()
             return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
 
-
+@login_required(login_url='/')
 def manage_blog(request):
-    
-    if messages:
-        return render(request,'ebs/manage_blog.html')
+    return render(request,'ebs/manage_blog.html')

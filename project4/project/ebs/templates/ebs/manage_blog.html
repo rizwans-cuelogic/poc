@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	{{messages}}
+	
 	<nav class="header-navbar navbar-default navbar-light">
 		
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
@@ -51,11 +51,7 @@
 
 
     <!-- Second navbar for categories -->
- 	{% if success %}
- 		<script>
- 			alert("blog save successfully" )
- 		</script>
- 	{% endif %}
+ 	
     <nav class="navbar navbar-default">
       	<div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -94,7 +90,12 @@
 		</div>
 	</nav>
 
-	<h4>Manage Blogs</h4>
+	{% for message in messages %}
+		<div class="alert alert-success" id="success-alert">
+    	<button type="button" class="close" data-dismiss="alert">x</button>
+   			Blog save Successfully.
+		</div>
+	{% endfor %}
 
 
  
@@ -103,11 +104,7 @@
 <script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 <script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
-<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>--> 
-<!--<script type="text/javascript" src="{% static 'ebs/js/registration.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/registration1.js' %}"></script> 
-<script type="text/javascript" src="{% static 'ebs/js/login.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/forgotpassword.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/resetpassword.js' %}"></script>-->
+<script type="text/javascript" src="{% static 'ebs/js/bootbox.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/manage_blog.js' %}"></script>
 </body>
 </html>
