@@ -11,7 +11,7 @@ from django.test.utils import setup_test_environment
 from django.utils import timezone
 from django.core.files import File
 from . import views
-from .models import Organisation, forgotpassword
+from .models import Organisation, ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm
 
 # Create your tests here.
@@ -136,7 +136,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.forgotpassword_set.create(activation_key=hash1,
+		obj=user1.ForgotPassword_set.create(activation_key=hash1,
 									link_time=timezone.now())
 		client=Client()
 		password={'password':os.environ['PASSWORD'],
@@ -156,7 +156,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.forgotpassword_set.create(activation_key=hash1,
+		obj=user1.ForgotPassword_set.create(activation_key=hash1,
 											link_time=timezone.now())
 		client=Client()
 		hash1=os.environ['HASH']		

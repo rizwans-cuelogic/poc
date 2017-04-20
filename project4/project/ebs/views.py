@@ -19,7 +19,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
-from .models import Organisation, forgotpassword,Blog,BlogFile
+from .models import Organisation,Blog,BlogFile,forgotpassword
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 
 # Create your views here.

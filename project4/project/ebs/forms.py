@@ -98,7 +98,7 @@ class BlogForm(forms.ModelForm):
 						empty_label='Select Catagory',
 						widget=forms.Select(attrs={"class":"catagory"})
 					)
-	commentstate=forms.BooleanField(required=False)
+	comment_state=forms.BooleanField(required=False)
 
 	class Meta:
 			model=Blog
@@ -108,7 +108,7 @@ class BlogForm(forms.ModelForm):
 				"tags",
 				"published",
 				"categories",
-				"commentstate"
+				"comment_state"
 			]
 
 class BlogFileForm(forms.Form):

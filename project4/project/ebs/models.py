@@ -61,17 +61,17 @@ class Categories(models.Model):
         return self.name
 
 class Blog(models.Model):
-    organisation=models.ForeignKey(Organisation,blank=True,on_delete=models.CASCADE)
+    organisation=models.ForeignKey(Organisation, blank=True, on_delete=models.CASCADE)
     title=models.CharField(max_length=125)
     description=models.TextField()
     tags = models.CharField(max_length=125,blank=True,null=True)
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
     published=models.DateTimeField(default=timezone.now)
-    publishedstate=models.BooleanField(default=False)
+    published_state=models.BooleanField(default=False)
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
-    commentstate=models.BooleanField(default=True)
+    comment_state=models.BooleanField(default=True)
     
     def __unicode__(self):
         return self.title
@@ -79,8 +79,8 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     text=models.CharField(max_length=225)
-    blog=models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
+    blog=models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
 
 class BlogFile(models.Model):
     attachments=models.FileField(upload_to='blogimages/')
-    blog = models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
