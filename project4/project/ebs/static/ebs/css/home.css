@@ -2,241 +2,198 @@ body{
 	font-family:'Open Sans',arial,sans-serif;
 	
 }
-h1, h2, h2,h3,h4{
+h1, h2, h3,h4,h5{
 	font-family: 'Roboto',sans-serif;
 }
-
-.font-verdana{
-	font-family:Verdana,Geneva,sans-serif;
-	line-height:21px;
-
+.label{
+	font-weight: 200;
+}
+.banner-blog .large{
+	height:420px;
+	width:100%;
+}
+.banner-blog{
+	position:relative;
+	color:white;
+	margin-bottom:25px;
+}
+.banner-blog img{
+	width:100%;
+	height:198px;
+}
+.banner-blog .banner-text{
+	position:absolute;
+	bottom:0px;
+	padding:0px 10px 10px;
+}
+.banner-blog a:hover{
+	color:white;
 }
 
+.banner-text h4{
+	margin-bottom:0px;
+}
+.banner-text a{
+	color:white;
+}
+.banner-text .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.banner-text .label-default:hover{
+	background-color:#009688;
+}
 
-.popular-header{
+.banner-text span{
+	font-size:11px;
+}
+
+.latest-blog{
+	position:relative;
+	height:285px;
+}
+.latest-blog .latest-text{
+	position:absolute;
+	top:150px;
+}
+.latest-blog .latest-text h3{
+	margin-top:10px;
+	font-size: 21px;
+}
+
+.latest-blog img{
+	width:100% ;
+	height:170px;
+}
+.latest-text .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+
+.latest-text .label-default:hover{
+	background-color:#009688;
+}
+
+.latest-text .latest-author{
+	font-size:11px;
+}
+.latest-text .latest-author a:hover{
+	color:black;
+}
+.popular-blog{
+	position:relative;
+}
+.popular-blog h4{
 	font-size:17px;
 	line-height:23px;
 	font-weight:300;
 	margin-top:0px;
 }
+.popular-blog .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
 
-.mustread-header{
+.popular-blog .label-default:hover{
+	background-color:#009688;
+}
+.popular-blog .popular-author{
+	font-size:11px;
+	line-height: 1px;
+}
+.must-blog{
+	position:relative;
+}
+.must-blog h5{
 	font-size:16px;
 	line-height:24px;
 	font-weight: 600;
+	margin-top:0px;
+}
+.must-blog .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
 }
 
-p{
-	margin:0px;
+.must-blog .label-default:hover{
+	background-color:#009688;
 }
-
+.must-blog .must-author{
+	font-size:11px;
+	line-height: 1px;
+	margin-left:5px;
+}
+.must-blog .must-author a:hover{
+	color:black;
+}
 a:hover{
 	color:#009688;
+	text-decoration: none;
 }
-
-#logged-user 
+a{
+	text-decoration: none;
+	color:black;
+}
+.latest-text .view-block:hover {
+	background-color:black;
+}
+.must-blog .view-block:hover{
+	background-color:black;
+}
+#logged-user
 {
 	font-weight: 700; 
 	padding-top:10px;
 }	
-/*.title-block1{
-	background: black;
-    color: white;
-    padding: 3px;
-    font-size: x-small;
-	position: relative;  
-}*/
-
-
-/*.title-block1:hover{
-	background-color:#009688;
-	overflow:hidden;
-}*/
-
-.catagory-block:hover{
-	background-color:#009688;
-}
-
-/*.latest-color:hover{
-	color:#009688 ;
-}*/
-
-.author-color:hover{
-	color:black ;
-}
-
 .forgot-modal{
 	text-align:center;
 	margin-top:10px ;
 }
-.top-margin-10{
+.top-margin-30{
 	margin-top:30px;
 }
 
-.top-margin-20{
+.top-margin-10{
 	margin-top:10px;
 }
 
-.top-margin-30{
+.top-margin-20{
 	margin-top:20px;
 }
-.left-margin{
-	margin-left:10px;
-}
-
-h2{
-	font-size:25px;
-}
-
-a{
-	text-decoration: none !important;
-	color:black;
-}
-
-
-.icon{
-	padding-top:5px;
-}
-
-.banner1{
-	margin-top:50px;
-}
-.banner2-img{
-	width:100%;
-	height:198px;
-	overflow:hidden;
-
-}
-
-.banner1-imgbig{
-	height:100%;
-	width:100%;
-
-}
-
-
-#banner1-img{
-	position:relative;
-	height:420px;
-	width:100%;
-}
-
-#banner1-text{
-	position:absolute;
-	top:230px;
-	width:90%;
-
-}
-#banner1-text h3{
-	color:white;
-	margin:10px 0px 10px 10px;
-
-}
-
-/*#banner-text h4{
-	color:white;
-	margin-left:10px;
-
-}
-#banner-text h2{
-	color:white;
-	margin-left:10px;
-	margin-top:-20px;
-
-}*/
 .top-margin-40{
 	margin-top:40px;
 }
 
-.latest-header{
-	font-size: 21px;
+a{
+	text-decoration: none;
+	color:black;
 }
-
-.latest-img{
-	width:90% ;
-	height:170px;
-	overflow:hidden;
+.banner1{
+	margin-top:50px;
 }
 .latest-hr{
-	width:95%;
-	border: 1px solid #009688;
-	margin-left:-1px;
+	border-bottom: 2px solid #009688;
+	padding-bottom:7px;
+	margin-bottom:20px;
+	font-weight:600;
 }
-
-.latest-blog{
-	margin-bottom:30px;
-}
-.latest-text{
-	width:90%;
-	margin-top:-21px;
-}
-
-.catagory-block{
-	background: black;
-    color: white;
-    padding: 3px;
-    font-size: x-small;
-    position: relative; 
-}
-
 .hcatagories{
 	font-size:14px;
 	line-height: 30px;
 }
 
-
-.author-font{
-	font-size:11px;
-	line-height: 1px;
+.form-padding{
+	padding-top:10px;
 }
-
-
-.modal-padding{
-	padding-top:0px;
-}
-
-
-.hr-color{
-	border-top:2px solid #009688;
-
-}
-
-
-hr{
-
-	margin-top:0px;
-}
-
-
-.banner2-text{
-	margin-top:-95px;
-	padding-left:5px;
-}
-
-/*.text-bannerside p{
-	color:white;
-}
-
-.text-bannerside h4{
-	color:white;
-}
-*/
 
 .view-block{
-	background: black;
-    color: white;
-    padding:3px 5px 3px 5px;
-    font-size: x-small;
-    margin-left: 10px;
-	position: relative; 
+	padding:5px;
 }
-
-.banner2-margin{
-	margin-top:38px;
-}
-
 /* modal css */
-
 .modal-color{
 	background-color:black;
 	color:white;
@@ -261,11 +218,19 @@ hr{
 	font-size: 30px; 
 	width: auto;  
 }
-
 .sendbutton{
 	margin-top:30px;
 }
 
+ul.simple-list{
+	list-style: none;
+	padding: 0;
+}
+@media screen and (max-width:768px){
+	.file-size{
+		width:100%;
+	}
+}
 @media screen and (max-width:768px){
 	#footer-2{
 		background-color:black;
@@ -274,43 +239,18 @@ hr{
 	.footer2-padding{
 		text-align:center;
 	}
-	
 }
-
-
 @media screen and (max-width:768px){
-	#ul1 li a{
-		padding: 10px 6px;
-    	font-size: 12px;
+	.latest-blog{
+		width:100%;
 	}
-				  
-}
-
-@media screen and (max-width:768px){
-	.screen{
-		margin-bottom:60px;
-	}
-	.screen1{
-		margin-top:20px;
-	}
-	.screen2{
-		margin-bottom:20px;
-	}				
-		
-}
-
-@media screen and (max-width:768px){
-	.latest-img{
+	.latest-blog img{
 		width:100%;
 	}
 	.latest-text{
 		width:100%;
 	}
-	.latest-hr{
-		width:100%;
-	}		
 }
-
 @media screen and (min-width:768px){
 	.modal-dialog{
 		width:400px;
