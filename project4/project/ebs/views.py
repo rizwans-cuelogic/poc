@@ -19,7 +19,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
-from .models import Organisation, forgotpassword
+from .models import Organisation, ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm
 
 # Create your views here.
@@ -32,7 +32,7 @@ def home(request):
     hash1 = request.GET.get('uid', '')
     try:
         if (hash1):
-            obj = forgotpassword.objects.get(activation_key=hash1)
+            obj = ForgotPassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             time_date = obj.link_time
             if time_date < (timezone.now() - timedelta(hours=48)):
@@ -208,11 +208,11 @@ def recover_password(request):
                             'message': "please fill the details"}
                 return HttpResponse(json.dumps(response), 
                                     content_type='application/json')
-            obj = forgotpassword.objects.get(activation_key=hash1)
+            obj = ForgotPassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             user.set_password(password)
             user.save()
-            forgotpassword.objects.get(id=obj.id).delete()
+            ForgotPassword.objects.get(id=obj.id).delete()
             response = {'status': 'success',
                         'message': "password updated successfully"}
             return HttpResponse(json.dumps(response), 

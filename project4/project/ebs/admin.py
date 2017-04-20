@@ -6,12 +6,13 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
-from ebs.models import Organisation
+from ebs.models import Organisation,Categories,Blog,Comment,BlogFile
+
 
 
 admin.site.register(Organisation)
-
-
+admin.site.register(Comment)
+admin.site.register(BlogFile)
 class OrganisationInline(admin.StackedInline):
     model = Organisation
     can_delete = False
@@ -53,5 +54,12 @@ class UserAdmin(UserAdmin):
     display_orgname.short_description = 'Role'
 
 
+class CategoriesModelAdmin(admin.ModelAdmin):
+    list_display=('name','state')
+    list_filter=['state']
+    search_fields=['name']
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+admin.site.register(Categories,CategoriesModelAdmin)
+admin.site.register(Blog)

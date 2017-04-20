@@ -55,7 +55,7 @@ class OrgForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-	username=forms.CharField(label="Username" , 
+	username=forms.CharField(label="Username" ,
 					widget=forms.TextInput(
 							attrs={'size':'100%' , 
 									'class':'form-control',
@@ -67,4 +67,3 @@ class UserLoginForm(forms.Form):
 								   'class':'form-control',
 								   'data-minlength':'8',
 								   'data-maxlength':'16'}))
-	

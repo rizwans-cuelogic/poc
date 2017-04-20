@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import logging
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User 
 from django.db import models
@@ -10,7 +11,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
-
+from django.utils import timezone
 
 class Organisation(models.Model):
     """Organisation(client) model for storing client information"""
@@ -20,9 +21,9 @@ class Organisation(models.Model):
     orglogo = models.ImageField(upload_to='Companylogo/')
 
     def __unicode__(self):
-        return 'Organisation :' + self.orgname
+        return self.orgname
 
-
+logger = logging.getLogger(__name__)
 def send_notification(sender, instance, *args, **kwargs):
     """function take single user object check whether field is_active is changed 
             to true and if it is
@@ -42,12 +43,45 @@ def send_notification(sender, instance, *args, **kwargs):
         else:
             pass
     except:
-        print "can not send email"
+        logger.info('can not send email')
 
 pre_save.connect(send_notification, sender=User)
 
 
-class forgotpassword(models.Model):
+class ForgotPassword(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     activation_key = models.CharField(max_length=50)
     link_time = models.DateTimeField(default=datetime.now, blank=True)
+
+
+class Categories(models.Model):
+    name=models.CharField(max_length=125)
+    state=models.BooleanField(default=True)
+
+    def __unicode__(self):
+        return self.name
+
+class Blog(models.Model):
+    organisation=models.ForeignKey(Organisation,blank=True,on_delete=models.CASCADE)
+    title=models.CharField(max_length=125)
+    description=models.TextField()
+    tags = models.CharField(max_length=125,blank=True,null=True)
+    updated=models.DateTimeField(auto_now=True,auto_now_add=False)
+    timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
+    published=models.DateTimeField(default=timezone.now)
+    published_state=models.BooleanField(default=False)
+    draft=models.BooleanField(default=False)
+    categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
+    comment_state=models.BooleanField(default=True)
+    
+    def __unicode__(self):
+        return self.title
+
+
+class Comment(models.Model):
+    text=models.CharField(max_length=225)
+    blog=models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
+
+class BlogFile(models.Model):
+    attachments=models.FileField(upload_to='blogimages/')
+    blog = models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
