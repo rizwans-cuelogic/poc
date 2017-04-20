@@ -48,7 +48,7 @@ def send_notification(sender, instance, *args, **kwargs):
 pre_save.connect(send_notification, sender=User)
 
 
-class forgotpassword(models.Model):
+class ForgotPassword(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     activation_key = models.CharField(max_length=50)
     link_time = models.DateTimeField(default=datetime.now, blank=True)
@@ -69,10 +69,10 @@ class Blog(models.Model):
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
     published=models.DateTimeField(default=timezone.now)
-    publishedstate=models.BooleanField(default=False)
+    published_state=models.BooleanField(default=False)
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
-    commentstate=models.BooleanField(default=True)
+    comment_state=models.BooleanField(default=True)
     
     def __unicode__(self):
         return self.title
