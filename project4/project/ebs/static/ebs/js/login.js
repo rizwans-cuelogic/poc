@@ -70,7 +70,11 @@ $(document).ready(function() {
         $('body').on('hidden.bs.modal', '.modal', function () {
                 $('#signinform')[0].reset();
          
-      });     
+      });
+
+    /*$('#mustread').on("mouseenter",'#title',function(){
+        $(this).parent().find("#title-hd").css("color","#009688");
+    }) ;*/    
 
 });
 
