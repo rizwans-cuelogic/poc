@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import logging
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User 
 from django.db import models
@@ -11,7 +12,7 @@ from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
-import logging
+
 class Organisation(models.Model):
     """Organisation(client) model for storing client information"""
     user = models.OneToOneField(User)
@@ -84,5 +85,3 @@ class Comment(models.Model):
 class BlogFile(models.Model):
     attachments=models.FileField(upload_to='blogimages/')
     blog = models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
-
-   
