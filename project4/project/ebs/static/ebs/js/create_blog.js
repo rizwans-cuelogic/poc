@@ -1,7 +1,7 @@
 
-$(document).ready(function() {    
+$(document).ready(function() {  
+
     $('#createform').on('submit', function (e) {
-        debugger;
         var file_error_one = 0
         var file_error_two = 0
         var file_error_three = 0
@@ -46,6 +46,9 @@ $(document).ready(function() {
         return false;
 
     });
+
+
+
 });
     
 
