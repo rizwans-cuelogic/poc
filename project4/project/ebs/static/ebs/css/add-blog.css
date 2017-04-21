@@ -4,35 +4,33 @@
 	padding-top:10px;
 
 }
-.catagory{
-	width:200px;
-	height:30px;
-	background-color:white;
-}
 .header{
 	border-bottom:1px solid black;
 	padding-bottom:10px;
 }
-.file-width{
+.blog-file{
 	margin-bottom:20px;
 }
 .form-group{
-	margin-top:30px;
+	margin-top:15px;
+}
+
+.buttons{
+	text-align:right;
 }
 
 @media screen and (max-width:768px){
-	.file-width{
+	.blog-file{
 		width:100%;
 	}
-	.catagory{
-		width:100%;
-	}
-	#id_published{
-		width:100%;
-	}
+	
 	#datetimepicker1{
 		width:100%;
 	}
+	.buttons{
+	text-align:center;
+	}
+
 
 }
 
