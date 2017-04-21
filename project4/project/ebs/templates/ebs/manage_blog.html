@@ -10,8 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!--<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/home.css' %}"/>-->
 	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/common.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/manage_blog.css' %}"/>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 				<div class="container">
 					<div class="row">
 					<div class="col-md-12">
-						<ul id ="ul1" class="nav1 nav nav-pills">
+						<ul id ="nav-list" class="nav1 nav nav-pills">
 						{% if user.is_authenticated %}
 							<li id="logged-user">Welcome {{user.username}}</li>
 							<li><a href="#">Manage Profile</a></li>
@@ -51,8 +51,7 @@
 
 
     <!-- Second navbar for categories -->
- 	
-    <nav class="navbar navbar-default">
+ 	<nav class="navbar navbar-default">
       	<div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         	<div class="navbar-header">
@@ -91,20 +90,17 @@
 	</nav>
 
 	{% for message in messages %}
-		<div class="alert alert-success" id="success-alert">
-    	<button type="button" class="close" data-dismiss="alert">x</button>
-    		Blog saved successfully
-		</div>
+		<div id="message"></div>
 	{% endfor %}
 
+	<div class="container">
+		<a class="pull-right btn btn1 top-margin" href="{% url 'create_blog' %}">Add Blog</a> 
+	</div>
 
- 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
-<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 <script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
 <script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'ebs/js/bootbox.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/manage_blog.js' %}"></script>
 </body>
 

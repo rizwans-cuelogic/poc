@@ -1,7 +1,9 @@
 $(document).ready(function() {    
-	$("#success-alert").hide();
-    $("#success-alert").alert();
-    $("#success-alert").fadeTo(1000, 300).slideUp(500, function(){
-    $("#success-alert").slideUp(500);});
-
+	if(document.getElementById('message')!==null){
+    	$.notify.defaults({ className: "success" })
+        $.notify( 
+            "Blog details saved successfully",
+           { position:"top center" }
+        );
+    }
 });
