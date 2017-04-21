@@ -1,13 +1,13 @@
 
 $(document).ready(function() {  
     $('#createform').on('submit', function (e) {
-        debugger;
         input=$('#id_published').val();
         input=input.split(" ");
+        time=input[1].split[":"]
         input_date=input[0].split("-");
         input_date=new Date(input_date[0],input_date[1]-1,input_date[2])
         now=new Date()
-        if(input_date<now){
+        if(input_date<now ){
             if ($("#datetimepicker1").next(".validation").length == 0){
                  $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top: 10px;'>Invalid Date And Time</div>");
                  
