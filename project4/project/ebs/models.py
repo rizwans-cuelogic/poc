@@ -30,7 +30,6 @@ def send_notification(sender, instance, *args, **kwargs):
             true send email to user"""
     try:
         if instance.is_active != User.objects.get(id=instance.id).is_active and instance.is_active == True:
-            print "created is"
             subject = 'Welcome To News Magzine'
             html_content = render_to_string(
                 'ebs/welcomemail.html', {'HOST': settings.HOST})
