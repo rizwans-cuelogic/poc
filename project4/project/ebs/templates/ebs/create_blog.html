@@ -94,9 +94,6 @@
 
     <div class="container">
         <h3>Add Blog</h3>
-        <hr>
-    </div>
-    <div class="container">
         <form  id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
               {% csrf_token %}
 				<div class="form-group">
@@ -145,8 +142,8 @@
 							
 				</div>
 
-                <div class="form-group pull-right " >
-						<button id="draft" class="btn btn1" name="button1" value="button1">Save as draft</button>
+                <div id="buttons" class="form-group pull-right form-margin" >
+						<button id="draft" class="btn btn1 " name="button1" value="button1">Save as draft</button>
                         <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
                         <a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
                 </div>

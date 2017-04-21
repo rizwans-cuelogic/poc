@@ -15,3 +15,29 @@
 .form-margin{
 	margin-top:30px;
 }
+
+@media screen and (max-width:768px){
+	.file-width{
+		width:100%;
+	}
+	.catagory{
+		width:100%;
+	}
+	#id_published{
+		width:100%;
+	}
+	#datetimepicker1{
+		width:100%;
+	}
+
+	#buttons{
+		margin-left:50%;
+	}
+}
+
+}
+}
+
+
+	
+
