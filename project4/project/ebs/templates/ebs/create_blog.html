@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create_blog</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css' %}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/common.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+	 {{ blogform.media }}
+	
+</head>
+
+
+    <nav class="header-navbar navbar-default navbar-light">
+
+			<div class="collapse navbar-collapse" id="navbar-collapse-2">
+				<div class="container">
+					<div class="row">
+					<div class="col-md-12">
+						<ul id ="nav-list" class="nav1 nav nav-pills">
+						{% if user.is_authenticated %}
+							<li id="logged-user">Welcome {{user.username}}</li>
+							<li><a href="#">Manage Profile</a></li>
+							<li><a href="#">Manage Blogs</a></li>
+							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
+
+						{% endif %}
+
+
+						{% if not user.is_authenticated %}
+							<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
+
+							<li><a href="#">contact us</a></li>
+						{% endif %}
+						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+						</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+
+	</nav>
+
+
+    <!-- Second navbar for categories -->
+
+    <nav class="navbar navbar-default">
+      	<div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+         		<button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+            		<span class="sr-only">Toggle navigation</span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+          		</button>
+          		<a href="#"><img class="marginlogo img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>
+			</div>
+    	</div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-inverse" id="navbar-collapse-1">
+        	<div class="container">
+          	<ul class="nav navbar-nav">
+          		<li class="active"><a hef="#">Home<span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Blogs </a></li>
+				<li><a href="#">FeatureBlogs</a></li>
+				<li><a href="#">News</a></li>
+				<li><a href="#">Popular Blogs</a></li>
+			</ul>
+			<form id="search-form"  class="navbar-form navbar-right">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</nav>
+
+    <div class="container">
+        <h3>Add Blog</h3>
+        <hr>
+    </div>
+    <div class="container">
+        <form  id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
+              {% csrf_token %}
+				<div class="form-group">
+                        {{blogform.title.errors}}
+						<label for="title" class="control-label">*Title</label>
+                         {{blogform.title}}
+                </div>
+                <div class="form-group form-margin">
+						{{blogform.description.errors}}
+						<label for="description" class="control-label">*Description</label>
+                         {{blogform.description}}
+                </div>
+                <div class="form-group form-margin">
+						{{blogform.tags.errors}}
+						<label for="tags" class="control-label">Tags</label>
+                         {{blogform.tags}}
+                </div>
+
+                <div class="form-group form-margin">
+						{{blogform.image.errors}}
+						<label class="control-label">Attachments</label><br>
+                         {{blogfileform.attachments}}<br>
+                         {{blogfileform.image1}}<br>
+                         {{blogfileform.image2}}<br>
+                </div>
+
+                <div class="form-group form-margin ">
+						{{blogform.categories.errors}}
+						<label for="categories" class="control-label">*Catagories</label><br>
+                         {{blogform.categories}}
+                </div>
+
+                 <div class="form-group form-margin">
+						{{blogform.comment_state.errors}}
+						{{blogform.comment_state}} &nbsp;<label for="comment_state" class="control-label">Block Comments</label>
+                </div>
+
+
+                <div class="form-group form-margin">
+							<div class="input-group date " id="datetimepicker1">
+								<label class="control-label">*Publish on</label>
+								{{blogform.published.errors}}
+								{{blogform.published}}
+								
+							</div>
+							
+				</div>
+
+                <div class="form-group pull-right " >
+						<button id="draft" class="btn btn1" name="button1" value="button1">Save as draft</button>
+                        <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
+                        <a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
+                </div>
+
+        </form>
+    </div>
+
+    <footer id="footer" class="footer-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 ">
+						<img class="center-block img-responsive" src="{% static 'ebs/img/logo-footer.png' %}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-offset-2 col-md-8 col-xs-offset-2 col-xs-8 footer-padding">
+						<span>Newspaper is your news, entertain, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 text-center footer-padding-2">
+						<span>Contact us:<a style="color:#009688" href="#"> contact@yourside.com</a></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 text-center footer-padding-2">
+						<a href="#"><i class="fa fa-facebook-square fa-2x footer-icon"></i></a>
+						<a href="#"><i class="fa fa-twitter-square fa-2x footer-icon"></i></a>
+						<a href="#"><i class="fa fa-linkedin-square fa-2x footer-icon"></i></a>
+					</div>
+				</div>
+
+			</div>
+		</footer>
+
+	<footer id="footer-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="footer2-padding">
+						<li><a href="#">Contact us</a></li>
+						<li><a href="#"> About us</a></li>
+						<li><a href="#"> Blog</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-6 copyright text-right">
+					<span > &COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv</span>
+				</div> 
+
+			</div>
+		
+		</div>
+	</footer>	
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script type="text/javascript" src="{% static 'ebs/js/notify.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/moment.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/bootstrap-datetimepicker.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script type="text/javascript" src="{% static 'ebs/js/create_blog.js' %}"></script>
+</body>
+</html>

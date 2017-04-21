@@ -1,0 +1,122 @@
+#footer{
+	background:url(../img/bg.png);
+	background-color:black;
+	opacity:0.8;
+	margin-top:60px;
+	padding: 50px 0px 130px;
+}
+
+#footer-2{
+	background-color:black;
+}
+
+#footer span{
+	color:white;
+	font-size:15px;
+}
+
+#nav-list{
+	line-height: 14px;
+}
+
+.footer-icon{	
+	color:white;
+	padding-left:10px;
+}
+.footer-padding{
+	padding-top:40px;
+}
+.footer-padding-2{
+	padding-top:20px;
+}
+
+.footer-padding-2 span a{
+	color: #009688;
+}
+
+
+.footer2-padding{
+	color:white;
+	list-style:none;
+	padding:0px;
+	margin-bottom: 0px;
+}
+.footer2-padding li{
+	display:inline;
+	padding:5px;
+	vertical-align: center;
+	line-height:40px;
+	
+}
+.footer2-padding li a{
+
+	color:white;
+	text-decoration:none;
+
+}
+
+.copyright{
+	color:white;
+	line-height: 40px;
+}
+.white-text{
+	color:white;
+}
+
+.marginlogo{
+	margin-left:-27px;
+
+}
+
+.header-navbar{
+	border-top:4px solid #009688;
+}
+
+.navbar-inverse{
+	border-radius:0px;
+
+}
+.navbar{
+	border-bottom: 4px solid #009688;
+}
+
+nav{
+	line-height:5px;
+}
+	
+ul li a{
+	color:black;
+}
+
+#logged-user
+{
+	font-weight: 700;
+	padding-top:10px;
+}
+
+.btn1{
+	border-radius:0px;
+	background-color:black;
+	color:white;
+}
+.btn1:hover{
+	background-color:#009688;
+}
+@media screen and (max-width:768px){
+	#nav-list li a{
+		padding: 10px 6px;
+    	font-size: 12px;
+	}
+}
+@media screen and (max-width:768px){
+	.navbar-header a img{
+		height:60px;
+		margin-left:30%;
+	}
+
+}
+@media screen and (max-width:768px){
+	#footer{
+		padding: 10px 0px 70px;
+	}
+}
