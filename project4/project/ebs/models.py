@@ -84,3 +84,5 @@ class Comment(models.Model):
 class BlogFile(models.Model):
     attachments=models.FileField(upload_to='blogimages/')
     blog = models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return self.blog.title
