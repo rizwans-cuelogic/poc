@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
-from ebs.models import Organisation
+from ebs.models import Organisation,Blog ,Categories
+from functools import partial
+from bootstrap3_datetime.widgets import DateTimePicker
 
 class UserForm(forms.ModelForm):
 	password=forms.CharField(label="Password" , 
@@ -67,3 +69,65 @@ class UserLoginForm(forms.Form):
 								   'class':'form-control',
 								   'data-minlength':'8',
 								   'data-maxlength':'16'}))
+
+DateInput=partial(forms.DateInput, {'class' : 'datepicker' })
+class BlogForm(forms.ModelForm):
+	title=forms.CharField(required=True,label="title",
+					widget=forms.TextInput(
+						attrs={'size':'100%',
+								'placeholder':'Title',
+							   'class':'form-control',
+							   }))
+	description = forms.CharField(required=True,label="description",
+							widget=forms.Textarea(
+								attrs={'size': '100%',
+									   'placeholder':'Add Description',
+									   'class': 'form-control'}))
+	tags= forms.CharField(required=False,label="title",
+						widget=forms.TextInput(
+							 attrs={'size': '100%',
+							 		'placeholder':'Tags',
+									'class': 'form-control'}))
+	
+	published=forms.DateTimeField(
+          				required=True,
+          				widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm "}))
+
+	categories=forms.ModelChoiceField(
+						queryset=Categories.objects.all().filter(state=True).order_by('name'),
+						empty_label='Select Catagory',
+						widget=forms.Select(attrs={"class":"catagory"})
+					)
+	comment_state=forms.BooleanField(required=False)
+
+	class Meta:
+			model=Blog
+			fields=[
+				"title",
+				"description",
+				"tags",
+				"published",
+				"categories",
+				"comment_state"
+			]
+
+class BlogFileForm(forms.Form):
+	attachments=forms.FileField(required=False,label="image",
+						widget=forms.FileInput(
+							attrs={'size':'50%',
+								   'class':'form-control file-width',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								}))
+	image1=forms.FileField(required=False,label="image",
+						widget=forms.FileInput(
+							attrs={'size':'50%',
+								   'class':'form-control file-width',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								}))
+	image2=forms.FileField(required=False,label="image",
+						widget=forms.FileInput(
+							attrs={'size':'50%',
+								   'class':'form-control file-width',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								}))
+	

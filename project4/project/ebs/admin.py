@@ -57,7 +57,7 @@ class UserAdmin(UserAdmin):
 class CategoriesModelAdmin(admin.ModelAdmin):
     list_display=('name','state')
     list_filter=['state']
-    search_fields=['name']
+    search_fields=['name','state']
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

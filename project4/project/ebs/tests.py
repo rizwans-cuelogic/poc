@@ -11,8 +11,8 @@ from django.test.utils import setup_test_environment
 from django.utils import timezone
 from django.core.files import File
 from . import views
-from .models import Organisation, forgotpassword
-from .forms import UserForm, OrgForm, UserLoginForm
+from .models import Organisation, ForgotPassword,BlogFile,Blog,Comment,Categories
+from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 
 # Create your tests here.
 
@@ -136,7 +136,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.forgotpassword_set.create(activation_key=hash1,
+		obj=user1.ForgotPassword_set.create(activation_key=hash1,
 									link_time=timezone.now())
 		client=Client()
 		password={'password':os.environ['PASSWORD'],
@@ -156,7 +156,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.forgotpassword_set.create(activation_key=hash1,
+		obj=user1.ForgotPassword_set.create(activation_key=hash1,
 											link_time=timezone.now())
 		client=Client()
 		hash1=os.environ['HASH']		
@@ -167,3 +167,15 @@ class Test1(TestCase):
 									content_type="application/json")
 		self.assertTrue(response.status_code,200)
 		self.assertContains(response,'{"status": "Error", "message": "invalid link or token has been expired."}')
+
+	def test_create_blog(self):
+		client=Client()
+		response=client.post(reverse('create_blog'),
+	 							{'title':os.environ['TITLE'],
+	 							'description':os.environ['DESCRIPTION'],
+	 							'published':os.environ['PUBLISHED'],
+	 							'categories':os.environ['CATEGORIES']
+	 							})
+		self.assertTrue(response.status_code,200)
+
+	

@@ -12,6 +12,7 @@ from django.forms import ModelForm
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import (authenticate, login, logout,)
+from django.contrib.auth.decorators import login_required
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
@@ -19,8 +20,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
-from .models import Organisation, ForgotPassword
-from .forms import UserForm, OrgForm, UserLoginForm
+from .models import Organisation,Blog,BlogFile,ForgotPassword
+from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 
 # Create your views here.
 
@@ -140,36 +141,35 @@ def log_out(request):
 
 
 def forgotpass(request):
-    
     try:
-    	if request.method == 'POST':
-    		data = json.loads(request.body)
-    		email = data['email']
-    		user = User.objects.get(email=email)
-    		if user.is_active:
-    			hash1 = str(uuid.uuid1())
-    			obj = user.forgotpassword_set.create(
-    				activation_key=hash1, link_time=timezone.now())
-    			subject = 'Password Recovery'
-    			html_content = render_to_string(
-    				                        'ebs/mail.html', 
+        if request.method == 'POST':
+            data = json.loads(request.body)
+            email = data['email']
+            user = User.objects.get(email=email)
+            if user.is_active:
+                hash1 = str(uuid.uuid1())
+                obj = user.forgotpassword_set.create(
+                    activation_key=hash1, link_time=timezone.now())
+                subject = 'Password Recovery'
+                html_content = render_to_string(
+                                            'ebs/mail.html', 
                                             {'hash1': hash1, 
                                             'HOST': settings.HOST,
                                              'user': user})
 
-    			text_content = strip_tags(html_content)
-    			from_email = settings.EMAIL_HOST_USER
-    			msg = EmailMultiAlternatives(
-    				subject, text_content, from_email, [user.email])
-    			msg.attach_alternative(html_content, "text/html")
-    			msg.send()
-    			response = {
-    			'status': 'success', 'message': "Reset password link has been email to your registered email address."}
-    			return HttpResponse(json.dumps(response), 
+                text_content = strip_tags(html_content)
+                from_email = settings.EMAIL_HOST_USER
+                msg = EmailMultiAlternatives(
+                    subject, text_content, from_email, [user.email])
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+                response = {
+                'status': 'success', 'message': "Reset password link has been email to your registered email address."}
+                return HttpResponse(json.dumps(response), 
                                     content_type='application/json')
-    		else:
-    			response = {'status': 'Error', 'message': "Invalid email"}
-    			return HttpResponse(json.dumps(response), 
+            else:
+                response = {'status': 'Error', 'message': "Invalid email"}
+                return HttpResponse(json.dumps(response), 
                                     content_type='application/json')
 
     except Exception as e:
@@ -222,3 +222,33 @@ def recover_password(request):
         response = {'status': 'Error', 'message': 'invalid link or token has been expired.'}
         return HttpResponse(json.dumps(response), 
                             content_type='application/json')
+
+@login_required(login_url='/')
+def create_blog(request):
+        if request.method=='POST':
+            blogform=BlogForm(request.POST or None,request.FILES or None)
+            blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
+            if blogform.is_valid() and  blogfileform.is_valid():
+                files = request.FILES.values()
+                blog=blogform.save(commit=False)
+                orgobj=Organisation.objects.get(user_id=request.user.id)
+                blog.organisation_id=orgobj.id
+                if 'button1' in request.POST:
+                    blog.draft=True
+                blog.save()
+                for a_file in files:
+                    instance=BlogFile()
+                    instance.blog_id=blog.id
+                    instance.attachments=a_file
+                    instance.save()
+                blog.save()
+                messages.success(request, 'Blog details saved successfully.')
+                return HttpResponseRedirect('/manage_blog',{"messages":messages})
+        else:
+            blogfileform=BlogFileForm()
+            blogform=BlogForm()
+            return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
+
+@login_required(login_url='/')
+def manage_blog(request):
+    return render(request,'ebs/manage_blog.html')

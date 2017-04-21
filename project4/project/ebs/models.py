@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-import logging
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User 
 from django.db import models
@@ -12,6 +11,7 @@ from django.template.loader import render_to_string, get_template
 from django.utils.html import strip_tags
 from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
+import logging
 
 class Organisation(models.Model):
     """Organisation(client) model for storing client information"""
@@ -30,7 +30,6 @@ def send_notification(sender, instance, *args, **kwargs):
             true send email to user"""
     try:
         if instance.is_active != User.objects.get(id=instance.id).is_active and instance.is_active == True:
-            print "created is"
             subject = 'Welcome To News Magzine'
             html_content = render_to_string(
                 'ebs/welcomemail.html', {'HOST': settings.HOST})
@@ -43,7 +42,7 @@ def send_notification(sender, instance, *args, **kwargs):
         else:
             pass
     except:
-        logger.info('can not send email')
+       logger.info('can not send email')
 
 pre_save.connect(send_notification, sender=User)
 
@@ -53,7 +52,6 @@ class ForgotPassword(models.Model):
     activation_key = models.CharField(max_length=50)
     link_time = models.DateTimeField(default=datetime.now, blank=True)
 
-
 class Categories(models.Model):
     name=models.CharField(max_length=125)
     state=models.BooleanField(default=True)
@@ -62,7 +60,7 @@ class Categories(models.Model):
         return self.name
 
 class Blog(models.Model):
-    organisation=models.ForeignKey(Organisation,blank=True,on_delete=models.CASCADE)
+    organisation=models.ForeignKey(Organisation, blank=True, on_delete=models.CASCADE)
     title=models.CharField(max_length=125)
     description=models.TextField()
     tags = models.CharField(max_length=125,blank=True,null=True)
@@ -80,8 +78,10 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     text=models.CharField(max_length=225)
-    blog=models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
+    blog=models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
 
 class BlogFile(models.Model):
     attachments=models.FileField(upload_to='blogimages/')
-    blog = models.ForeignKey(Blog,blank=True,on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return self.blog.title
