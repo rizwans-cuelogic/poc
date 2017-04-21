@@ -118,15 +118,14 @@
                 </div>
                 </div>
 				<div class="row">
-                <div class="form-group  col-md-6">
+                <div class="form-group col-md-6">
 						{{blogform.image.errors}}
 						<label class="control-label">Attachments</label>
 						{{blogfileform.attachments}}
                          {{blogfileform.image1}}
                          {{blogfileform.image2}}
-               </div>
+               	</div>
 				</div>
-
 				<div class="row">
                 <div class="form-group col-md-3">
 						{{blogform.categories.errors}}
@@ -134,18 +133,16 @@
                          {{blogform.categories}}
                 </div>
 				</div>
-
 				<div class="row">
                 <div class="form-group col-md-6">
 						{{blogform.comment_state.errors}}
 						{{blogform.comment_state}} <label for="comment_state" class="control-label">Block Comments</label>
                 </div>
                 </div>
-
 				<div class="row">
                 <div class="form-group col-md-3">
-					<div class="input-group date " id="datetimepicker1">
-						<label class="control-label">*Publish on</label>
+                	<label class="control-label">*Publish on</label>	
+					<div id="datetimepicker1">
 						{{blogform.published.errors}}
 						{{blogform.published}}
 					</div>
@@ -153,10 +150,10 @@
 				</div>
 				</div>
 				<div class="row">
-                <div class="form-group buttons" >
-						<button id="draft" class="btn btn1 " name="button1" value="button1">Save as draft</button>
-                        <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
-                        <a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
+                <div class="col-md-12 form-group buttons" >
+					<button id="draft" class="btn btn1 " name="button1" value="button1">Save As Draft</button>
+                    <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
+                    <a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
                 </div>
                 </div>
 
