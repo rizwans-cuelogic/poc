@@ -6,7 +6,6 @@ $(document).ready(function() {
         var file_error_three = 0
     var file_error_four=0
     var file_error_five=0
-    debugger;
     input=$('#id_published').val();
         input=input.split(" ");
         time=input[1].split(":");
