@@ -170,12 +170,29 @@ class Test1(TestCase):
 
 	def test_create_blog(self):
 		client=Client()
+		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('create_blog'),
 	 							{'title':os.environ['TITLE'],
 	 							'description':os.environ['DESCRIPTION'],
 	 							'published':os.environ['PUBLISHED'],
 	 							'categories':os.environ['CATEGORIES']
 	 							})
-		self.assertTrue(response.status_code,200)
+		self.assertTrue(response.status_code,302)
 
+	def test_blogform_valid(self):
+		categories=Categories.objects.create(name='beauty',state=True)
+		blogform=BlogForm({'title':os.environ['TITLE'], 
+							'description':os.environ['DESCRIPTION'],
+							'categories':os.environ['CATEGORIES'],
+							'published':os.environ['PUBLISHED']},
+						)
+		self.assertTrue(blogform.is_valid())
+	
+	def test_blogform_invalid(self):
+		categories=Categories.objects.create(name='beauty',state=True)
+		blogform=BlogForm({'title':os.environ['TITLE'], 
+							'description':os.environ['DESCRIPTION'],
+							'published':os.environ['PUBLISHED']},
+						)
+		self.assertFalse(blogform.is_valid())
 	
