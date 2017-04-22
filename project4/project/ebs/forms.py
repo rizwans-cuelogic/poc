@@ -115,7 +115,7 @@ class BlogFileForm(forms.Form):
 	attachments=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={
-								   'class':'form-control blog-file',
+								   'class':'form-control ',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	image1=forms.FileField(required=False,label="image",
@@ -127,7 +127,7 @@ class BlogFileForm(forms.Form):
 	image2=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={
-								   'class':'form-control',
+								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	
