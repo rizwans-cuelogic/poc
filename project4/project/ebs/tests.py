@@ -32,7 +32,7 @@ class Test1(TestCase):
 	def test_Organisation(self):
 		w = self.create_org()
 		self.assertTrue(isinstance(w, Organisation))
-		self.assertEqual(w.__unicode__(), 'Organisation :'+w.orgname)
+		self.assertEqual(w.__unicode__(),w.orgname)
 
 
 	def test_valid_User_form(self):
@@ -136,7 +136,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.ForgotPassword_set.create(activation_key=hash1,
+		obj=user1.forgotpassword_set.create(activation_key=hash1,
 									link_time=timezone.now())
 		client=Client()
 		password={'password':os.environ['PASSWORD'],
@@ -156,7 +156,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.ForgotPassword_set.create(activation_key=hash1,
+		obj=user1.forgotpassword_set.create(activation_key=hash1,
 											link_time=timezone.now())
 		client=Client()
 		hash1=os.environ['HASH']		
@@ -183,16 +183,16 @@ class Test1(TestCase):
 		categories=Categories.objects.create(name='beauty',state=True)
 		blogform=BlogForm({'title':os.environ['TITLE'], 
 							'description':os.environ['DESCRIPTION'],
-							'categories':os.environ['CATEGORIES'],
-							'published':os.environ['PUBLISHED']},
-						)
+							'categories':categories.id,
+							'published':os.environ['PUBLISHED']
+						})
 		self.assertTrue(blogform.is_valid())
 	
 	def test_blogform_invalid(self):
 		categories=Categories.objects.create(name='beauty',state=True)
 		blogform=BlogForm({'title':os.environ['TITLE'], 
 							'description':os.environ['DESCRIPTION'],
-							'published':os.environ['PUBLISHED']},
-						)
+							'published':os.environ['PUBLISHED']
+							})
 		self.assertFalse(blogform.is_valid())
 	
