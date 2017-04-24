@@ -4,8 +4,16 @@
 	opacity:0.8;
 	margin-top:60px;
 	padding: 50px 0px 130px;
+	color:white;
+}
+#footer a{
+	text-decoration: none;
+	color:white;
 }
 
+#footer a:hover{
+	color:#009688;
+}
 #footer-2{
 	background-color:black;
 }
@@ -13,6 +21,7 @@
 #footer span{
 	color:white;
 	font-size:15px;
+
 }
 
 #nav-list{
@@ -112,8 +121,9 @@ ul li a{
 	.navbar-header a img{
 		height:60px;
 		margin-left:30%;
-	}
 
+	}
+	
 }
 @media screen and (max-width:768px){
 	#footer{
