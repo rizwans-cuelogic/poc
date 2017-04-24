@@ -15,7 +15,6 @@
 </head>
 
 <body>
-	
 	<nav class="header-navbar navbar-default navbar-light">
 		<div class="collapse navbar-collapse" id="navbar-collapse-2">
 				<div class="container">
@@ -60,15 +59,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-inverse" id="navbar-collapse-1">
         	<div class="container">
-				
-          			<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav">
           			<li class="active"><a href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a></li>
 					<li><a href="#">Blogs </a></li>
 					<li><a href="#">FeatureBlogs</a></li>
 					<li><a href="#">News</a></li>
 					<li><a href="#">Popular Blogs</a></li>  
-					</ul>
-
+				</ul>
 				<form id="search-form"  class="navbar-form navbar-right">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search">
@@ -79,7 +76,6 @@
 						</div>
 					</div>
 				</form>
-				
 			</div>
 		</div>
 	</nav>
@@ -110,7 +106,6 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-
 							<div class="banner-blog">
 								<a href="#"><img src="{% static 'ebs/img/mobile.jpg' %}"/></a>
 								<div class="banner-text">
@@ -123,7 +118,6 @@
 					<!--<div class="banner-2">-->
 					<div class="row">
 						<div class="col-md-6 ">
-
 							<div class="banner-blog">
 								<a href="#"><img src="{% static 'ebs/img/post2.jpg' %}"/></a>
 								<div class="banner-text">
@@ -177,7 +171,6 @@
 							</div>	
 						</div>
 					</div>
-					
 					<div class="row" >
 						<div class="col-md-6">
 							<div class="latest-blog">
@@ -336,7 +329,6 @@
 						</div>
 						</div>
 					</div>	
-				
 					<!-- MUST READ BLOG -->
 					<div class="top-margin-30">
 						<h4 class="latest-hr">MUST READ</h4>
@@ -347,8 +339,7 @@
 								<a  href="#" class="label label-default">TECH</a>
 								 <span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 							 	<a href="#" class="pull-right label label-default view-block">0</a>
-							 	
-								</div>
+							 	</div>
 							</div>
 						</div>
 						<hr class="top-margin-20">
@@ -384,7 +375,6 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 					<!-- Catogories -->
 					<div class="top-margin-30">
@@ -394,14 +384,14 @@
 							<li><a href="#" class="hcatagories">Fashion</a></li>
 							<li><a href="#" class="hcatagories">Gallery</a></li>
 						</ul>
-						
 					</div>
 				</aside>
 			</div>
 		</div>
 	</section>
 	<!-- FOOTER -->
-	<footer id="footer">
+	<footer>
+		<div id="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -426,28 +416,26 @@
 					</div>
 				</div>
 			</div>
-	</footer>
-	<div id="footer-2">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<ul class="footer2-padding">
-						<li><a href="#">Contact us</a></li>
-						<li><a href="#"> About us</a></li>
-						<li><a href="#"> Blog</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-6 copyright text-right">
-					 &COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv
-				</div> 
-
-			</div>
-		
 		</div>
-	</div>	
-	<!-- sign in modal -->
-	<div id="signinmodal" class="modal fade" role="dialog">
+		<div id="footer-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="footer2-padding">
+							<li><a href="#">Contact us</a></li>
+							<li><a href="#"> About us</a></li>
+							<li><a href="#"> Blog</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 copyright text-right">
+					 	&COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv
+					</div> 
+				</div>
+			</div>
+		</div>
+	</footer>
+<!-- sign in modal -->
+<div id="signinmodal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header modal-color">
@@ -456,10 +444,9 @@
 			</div>
 			<div id="message">  </div>
 			<div class="modal-body">
-			<form id="signinform"  method="post" class="form-padding" data-toggle="validator">
+				<form id="signinform"  method="post" class="form-padding" data-toggle="validator">
 				{% csrf_token %}
 				<div class="form-group ">
-						
 						<label class="control-label">Username</label>
 						<div class="col-sm-12 input-group">
 							<div class="input-group">
@@ -468,61 +455,57 @@
 								</span>
 								{{loginform.username}}
 							</div>
-				
 						</div>
-					</div>
-					<div class="form-group">
-						{{loginform.password.errors}}
-						<label class="control-label">Password</label>
-						<div class="col-sm-12 input-group">
-							<div class="input-group">
-								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
-								</span>
-								</span>
-								{{loginform.password}}
-							</div>
-							<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					{{loginform.password.errors}}
+					<label class="control-label">Password</label>
+					<div class="col-sm-12 input-group">
+						<div class="input-group">
+							<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+							</span>
+							</span>
+							{{loginform.password}}
 						</div>
+						<div class="help-block with-errors"></div>
 					</div>
-					<div class="form-group">
+				</div>
+				<div class="form-group">
 					<button class="btn btn-block btn-lg btn1">Sign in</button>
 					<div class="forgot-modal"><a id="forgotpass" href="#">Forgot Your Password? Get Help</a></div>	
-					</div>
-
+				</div>
 			</form>
-			</div>
+		</div>
 		</div>
 	</div>		
 </div>
 <!-- forgot password modal-->
 <div id="forgotpassmodal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header modal-color">
-						<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h2 class="text-center">Password Recovery</h2>
+		<div class="modal-content">
+			<div class="modal-header modal-color">
+				<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="text-center">Password Recovery</h2>
+			</div>
+			<div id="forgotmessage">  </div>
+			<div class="modal-body">
+				<form id="forgotform"  method='post' class="form-padding">
+				{% csrf_token %}	 
+					<div class="form-group">
+						<label>Email</label>
+						<input id="email1" type="email"  class="form-control input-lg"  placeholder="email" required>
 					</div>
-					<div id="forgotmessage">  </div>
-					<div class="modal-body">
-					<form id="forgotform"  method='post' class="form-padding">
-						{% csrf_token %}	 
-						<div class="form-group">
-							<label>Email</label>
-							<input id="email1" type="email"  class="form-control input-lg"  placeholder="email" required>
-						</div>
-
-						<div class="top-margin-30 form-group">
-							<button class="btn btn-block btn-lg btn1">Send My Password</button>
-							<p class="forgot-modal"> Password Reset Link Will Be Email To You</p>
-						</div>   
-				
-					</form>
-					</div>
-				</div>
+					<div class="top-margin-30 form-group">
+						<button class="btn btn-block btn-lg btn1">Send My Password</button>
+						<p class="forgot-modal"> Password Reset Link Will Be Email To You</p>
+					</div>   
+				</form>
+			</div>
 		</div>
+	</div>
 </div>
 <!-- recover password Modal -->
-	<div id="recoverformmodal"  class="modal fade" role="dialog">
+<div id="recoverformmodal"  class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header modal-color">
@@ -572,13 +555,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-
-
-	<!--signup modal -->
-	<div id="bannerformmodal" class="modal fade" role="dialog">
+</div>
+<!--signup modal -->
+<div id="bannerformmodal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header modal-color">
@@ -676,7 +655,7 @@
 			</div>
 		</div>
 		</div>
-	</div>
+</div>
 
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>

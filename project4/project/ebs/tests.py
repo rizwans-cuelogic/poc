@@ -165,6 +165,7 @@ class Test1(TestCase):
 		response=client.post(reverse('recover_password'),
 									json.dumps(password),
 									content_type="application/json")
+
 		self.assertTrue(response.status_code,200)
 		self.assertContains(response,'{"status": "Error", "message": "invalid link or token has been expired."}')
 
@@ -180,6 +181,12 @@ class Test1(TestCase):
 		self.assertTrue(response.status_code,302)
 
 	def test_blogform_valid(self):
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
 		categories=Categories.objects.create(name='beauty',state=True)
 		blogform=BlogForm({'title':os.environ['TITLE'], 
 							'description':os.environ['DESCRIPTION'],

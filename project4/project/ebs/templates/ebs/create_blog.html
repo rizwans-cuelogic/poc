@@ -45,11 +45,8 @@
 			</div>
 		</div>
 	</nav>
-
-
-    <!-- Second navbar for categories -->
-
-    <nav class="navbar navbar-default">
+	<!-- Second navbar for categories -->
+	<nav class="navbar navbar-default">
       	<div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         	<div class="navbar-header">
@@ -85,75 +82,74 @@
 			</div>
 		</div>
 	</nav>
-
-    <div class="container">
+	<div class="container">
         <h3 class="header">Add Blog</h3>
         <form id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
-              {% csrf_token %}
-              	<div class="row">
-					<div class="form-group col-md-12">
-                        {{blogform.title.errors}}
-						<label for="title" class="control-label">*Title</label>
-                         {{blogform.title}}
-                	</div>
-                </div>
-				<div class="row">
-                	<div class="form-group col-md-12">
-						{{blogform.description.errors}}
-						<label for="description" class="control-label">*Description</label>
-                         {{blogform.description}}
-                	</div>
-                </div>
-                <div class="row">
-                	<div class="form-group col-md-12">
-						{{blogform.tags.errors}}
-						<label for="tags" class="control-label">Tags</label>
-                         {{blogform.tags}}
-                	</div>
-                </div>
-				<div class="row">
-                	<div class="form-group col-md-6">
-						{{blogform.image.errors}}
-						<label class="control-label">Attachments</label>
-						{{blogfileform.attachments}}
-                         {{blogfileform.image1}}
-                         {{blogfileform.image2}}
-               		</div>
-				</div>
-				<div class="row">
-                	<div class="form-group col-md-3">
-						{{blogform.categories.errors}}
-						<label for="categories" class="control-label">*Catagories</label>
-                         {{blogform.categories}}
-                	</div>
-				</div>
-				<div class="row">
-                	<div class="form-group col-md-6">
-						{{blogform.comment_state.errors}}
-						{{blogform.comment_state}} <label for="comment_state" class="control-label">Block Comments</label>
-                	</div>
-                </div>
-				<div class="row">
-                	<div class="form-group col-md-3">
-                		<label class="control-label">*Publish on</label>	
-						<div id="datetimepicker1">
-							{{blogform.published.errors}}
-							{{blogform.published}}
-						</div>
+        	{% csrf_token %}
+          	<div class="row">
+				<div class="form-group col-md-12">
+                    {{blogform.title.errors}}
+					<label for="title" class="control-label">*Title</label>
+                     {{blogform.title}}
+            	</div>
+            </div>
+			<div class="row">
+            	<div class="form-group col-md-12">
+					{{blogform.description.errors}}
+					<label for="description" class="control-label">*Description</label>
+                     {{blogform.description}}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="form-group col-md-12">
+					{{blogform.tags.errors}}
+					<label for="tags" class="control-label">Tags</label>
+                     {{blogform.tags}}
+            	</div>
+            </div>
+			<div class="row">
+            	<div class="form-group col-md-6">
+					{{blogform.image.errors}}
+					<label class="control-label">Attachments</label>
+					{{blogfileform.attachments}}
+                     {{blogfileform.image1}}
+                     {{blogfileform.image2}}
+           		</div>
+			</div>
+			<div class="row">
+            	<div class="form-group col-md-3">
+					{{blogform.categories.errors}}
+					<label for="categories" class="control-label">*Catagories</label>
+                     {{blogform.categories}}
+            	</div>
+			</div>
+			<div class="row">
+            	<div class="form-group col-md-6">
+					{{blogform.comment_state.errors}}
+					{{blogform.comment_state}} <label for="comment_state" class="control-label">Block Comments</label>
+            	</div>
+            </div>
+			<div class="row">
+            	<div class="form-group col-md-3">
+            		<label class="control-label">*Publish on</label>	
+					<div id="datetimepicker1">
+						{{blogform.published.errors}}
+						{{blogform.published}}
 					</div>
 				</div>
-				<div class="row">
-                	<div class="col-md-12 form-group buttons" >
-						<button id="draft" class="btn btn1 " name="button1" value="button1">Save As Draft</button>
-                    	<button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
-                    	<a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
-                	</div>
-                </div>
+			</div>
+			<div class="row">
+            	<div class="col-md-12 form-group buttons" >
+					<button id="draft" class="btn btn1 " name="button1" value="button1">Save As Draft</button>
+                	<button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
+                	<a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
+            	</div>
+            </div>
 		</form>
     </div>
-
-    <footer id="footer">
-		<div class="container">
+	<footer>
+		<div id="footer">
+			<div class="container">
 			<div class="row">
 				<div class="col-md-12 ">
 					<img class="center-block img-responsive" src="{% static 'ebs/img/logo-footer.png' %}"/>
@@ -164,13 +160,11 @@
 					Newspaper is your news, entertain, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-md-12 text-center footer-padding-2">
 					Contact us:<a href="#"> contact@yourside.com</a>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-md-12 text-center footer-padding-2">
 					<a href="#"><i class="fa fa-facebook-square fa-2x footer-icon"></i></a>
@@ -178,27 +172,25 @@
 					<a href="#"><i class="fa fa-linkedin-square fa-2x footer-icon"></i></a>
 				</div>
 			</div>
-		</div>
-	</footer>
-
-	<div id="footer-2">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<ul class="footer2-padding">
-						<li><a href="#">Contact us</a></li>
-						<li><a href="#"> About us</a></li>
-						<li><a href="#"> Blog</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-6 copyright text-right">
-					&COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv
-				</div> 
 			</div>
 		</div>
-	</div>	
-
+		<div id="footer-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="footer2-padding">
+							<li><a href="#">Contact us</a></li>
+							<li><a href="#"> About us</a></li>
+							<li><a href="#"> Blog</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 copyright text-right">
+						&COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv
+					</div> 
+				</div>
+			</div>
+		</div>
+	</footer>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
