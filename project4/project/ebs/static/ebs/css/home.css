@@ -172,7 +172,6 @@ a{
 	font-size:14px;
 	line-height: 30px;
 }
-
 .form-padding{
 	padding-top:10px;
 }
@@ -216,16 +215,12 @@ ul.simple-list{
 	.file-size{
 		width:100%;
 	}
-}
-@media screen and (max-width:768px){
 	#footer-2{
 		background-color:black;
 	}
 	.footer2-padding{
 		text-align:center;
 	}
-}
-@media screen and (max-width:768px){
 	.latest-blog{
 		width:100%;
 	}

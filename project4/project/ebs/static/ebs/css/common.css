@@ -70,11 +70,9 @@ body{
 .white-text{
 	color:white;
 }
-
 .header-navbar{
 	border-top:4px solid #009688;
 }
-
 .navbar-inverse{
 	border-radius:0px;
 
@@ -87,7 +85,6 @@ body{
 	margin-left:15px;
 	margin-top:14px;
 }
-
 .navbar-collapse {
 	padding:0px;
 }
@@ -98,13 +95,11 @@ nav{
 ul li a{
 	color:black;
 }
-
 #logged-user
 {
 	font-weight: 700;
 	padding-top:10px;
 }
-
 .btn1{
 	border-radius:0px;
 	background-color:black;
@@ -118,14 +113,10 @@ ul li a{
 		padding: 10px 6px;
     	font-size: 12px;
 	}
-}
-@media screen and (max-width:768px){
 	.navbar-header a img{
 		height:60px;
 		margin:0 auto;
 	}
-}
-@media screen and (max-width:768px){
 	#footer{
 		padding: 10px 0px 70px;
 	}
