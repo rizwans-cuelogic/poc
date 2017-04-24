@@ -253,7 +253,9 @@ def create_blog(request):
 def manage_blog(request):
     try:
         orgobj=Organisation.objects.get(user_id=request.user.id)
-        queryset=Blog.objects.filter(organisation_id=orgobj.id)
+        # queryset=Blog.objects.filter(organisation_id=orgobj.id)
+
+        queryset = BlogFile.getBlogList(orgobj.id)
         return render(request, 'ebs/manage_blog.html',{'queryset':queryset})
     except :
         return render(request,'ebs/manage_blog.html')

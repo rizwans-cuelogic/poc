@@ -71,7 +71,8 @@ class Blog(models.Model):
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
     comment_state=models.BooleanField(default=True)
-    
+
+
     def __unicode__(self):
         return self.title
 
@@ -83,5 +84,12 @@ class Comment(models.Model):
 class BlogFile(models.Model):
     attachments=models.FileField(upload_to='blogimages/')
     blog = models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
+
+    @staticmethod
+    def getBlogList(org_id):
+        bloglist = BlogFile.objects.filter(blog__organisation=org_id).values('blog__title', 'blog__description', 'attachments')
+        print "--->>>",bloglist
+        return bloglist
+
     def __unicode__(self):
         return self.blog.title
