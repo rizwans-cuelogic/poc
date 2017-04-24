@@ -72,11 +72,6 @@
 	color:white;
 }
 
-.marginlogo{
-	margin-left:-27px;
-
-}
-
 .header-navbar{
 	border-top:4px solid #009688;
 }
@@ -87,6 +82,10 @@
 }
 .navbar{
 	border-bottom: 4px solid #009688;
+}
+.navbar-toggle{
+	position:absolute;
+	padding:13px 10px;
 }
 
 nav{
@@ -120,7 +119,7 @@ ul li a{
 @media screen and (max-width:768px){
 	.navbar-header a img{
 		height:60px;
-		margin-left:30%;
+		margin:0 auto;
 
 	}
 	

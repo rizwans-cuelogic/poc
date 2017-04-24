@@ -18,28 +18,24 @@
 	
 	<nav class="header-navbar navbar-default navbar-light">
 		<div class="collapse navbar-collapse" id="navbar-collapse-2">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<ul id ="nav-list" class="nav1 nav nav-pills">
-						{% if user.is_authenticated %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul id ="nav-list" class="nav1 nav nav-pills">
+							{% if user.is_authenticated %}
 							<li id="logged-user">Welcome {{user.username}}</li>
 							<li><a href="#">Manage Profile</a></li>
 							<li><a href="#">Manage Blogs</a></li>
 							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
-
-						{% endif %}
-
-
-						{% if not user.is_authenticated %}
+							{% endif %}
+							{% if not user.is_authenticated %}
 							<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
 							<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
-						
 							<li><a href="#">contact us</a></li>
-						{% endif %}
-						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+							{% endif %}
+							<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -59,7 +55,7 @@
             		<span class="icon-bar"></span>
             		<span class="icon-bar"></span>
           		</button>
-          		<a href="#"><img class="marginlogo img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>	
+          		<a href="#"><img class=" img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>	
 			</div>
     	</div>
         <!-- Collect the nav links, forms, and other content for toggling -->
