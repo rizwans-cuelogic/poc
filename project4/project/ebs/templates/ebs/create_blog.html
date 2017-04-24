@@ -26,30 +26,26 @@
 					<div class="row">
 					<div class="col-md-12">
 						<ul id ="nav-list" class="nav1 nav nav-pills">
-						{% if user.is_authenticated %}
-							<li id="logged-user">Welcome {{user.username}}</li>
-							<li><a href="#">Manage Profile</a></li>
-							<li><a href="#">Manage Blogs</a></li>
-							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
+							{% if user.is_authenticated %}
+								<li id="logged-user">Welcome {{user.username}}</li>
+								<li><a href="#">Manage Profile</a></li>
+								<li><a href="#">Manage Blogs</a></li>
+								<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
+							{% endif %}
 
-						{% endif %}
-
-
-						{% if not user.is_authenticated %}
-							<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>
-							<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
-
-							<li><a href="#">contact us</a></li>
-						{% endif %}
-						<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+							{% if not user.is_authenticated %}
+								<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>
+								<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
+								<li><a href="#">contact us</a></li>
+							{% endif %}
+							<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
 						</ul>
 					</div>
 					</div>
 				</div>
 			</div>
-
 	</nav>
 
 
@@ -97,67 +93,65 @@
         <form id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
               {% csrf_token %}
               	<div class="row">
-				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
                         {{blogform.title.errors}}
 						<label for="title" class="control-label">*Title</label>
                          {{blogform.title}}
-                </div>
+                	</div>
                 </div>
 				<div class="row">
-                <div class="form-group col-md-12">
+                	<div class="form-group col-md-12">
 						{{blogform.description.errors}}
 						<label for="description" class="control-label">*Description</label>
                          {{blogform.description}}
-                </div>
+                	</div>
                 </div>
                 <div class="row">
-                <div class="form-group col-md-12">
+                	<div class="form-group col-md-12">
 						{{blogform.tags.errors}}
 						<label for="tags" class="control-label">Tags</label>
                          {{blogform.tags}}
-                </div>
+                	</div>
                 </div>
 				<div class="row">
-                <div class="form-group col-md-6">
+                	<div class="form-group col-md-6">
 						{{blogform.image.errors}}
 						<label class="control-label">Attachments</label>
 						{{blogfileform.attachments}}
                          {{blogfileform.image1}}
                          {{blogfileform.image2}}
-               	</div>
+               		</div>
 				</div>
 				<div class="row">
-                <div class="form-group col-md-3">
+                	<div class="form-group col-md-3">
 						{{blogform.categories.errors}}
 						<label for="categories" class="control-label">*Catagories</label>
                          {{blogform.categories}}
-                </div>
+                	</div>
 				</div>
 				<div class="row">
-                <div class="form-group col-md-6">
+                	<div class="form-group col-md-6">
 						{{blogform.comment_state.errors}}
 						{{blogform.comment_state}} <label for="comment_state" class="control-label">Block Comments</label>
-                </div>
+                	</div>
                 </div>
 				<div class="row">
-                <div class="form-group col-md-3">
-                	<label class="control-label">*Publish on</label>	
-					<div id="datetimepicker1">
-						{{blogform.published.errors}}
-						{{blogform.published}}
+                	<div class="form-group col-md-3">
+                		<label class="control-label">*Publish on</label>	
+						<div id="datetimepicker1">
+							{{blogform.published.errors}}
+							{{blogform.published}}
+						</div>
 					</div>
-					
-				</div>
 				</div>
 				<div class="row">
-                <div class="col-md-12 form-group buttons" >
-					<button id="draft" class="btn btn1 " name="button1" value="button1">Save As Draft</button>
-                    <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
-                    <a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
+                	<div class="col-md-12 form-group buttons" >
+						<button id="draft" class="btn btn1 " name="button1" value="button1">Save As Draft</button>
+                    	<button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
+                    	<a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
+                	</div>
                 </div>
-                </div>
-
-        </form>
+		</form>
     </div>
 
     <footer id="footer" class="footer-padding">
@@ -186,7 +180,6 @@
 						<a href="#"><i class="fa fa-linkedin-square fa-2x footer-icon"></i></a>
 					</div>
 				</div>
-
 			</div>
 		</footer>
 
