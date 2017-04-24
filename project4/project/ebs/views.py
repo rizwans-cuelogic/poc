@@ -251,4 +251,13 @@ def create_blog(request):
 
 @login_required(login_url='/')
 def manage_blog(request):
-    return render(request,'ebs/manage_blog.html')
+    try:
+        orgobj=Organisation.objects.get(user_id=request.user.id)
+        queryset=Blog.objects.filter(organisation_id=orgobj.id)
+        return render(request, 'ebs/manage_blog.html',{'queryset':queryset})
+    except :
+        return render(request,'ebs/manage_blog.html')
+
+def delete_blog(request,id):
+    import pdb
+    pdb.set_trace()
