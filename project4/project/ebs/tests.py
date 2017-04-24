@@ -171,6 +171,14 @@ class Test1(TestCase):
 
 	def test_create_blog(self):
 		client=Client()
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
+		user = authenticate(username=os.environ['USERNAME'], password=os.environ['PASSWORD'])
+		login(request, user)
 		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('create_blog'),
 	 							{'title':os.environ['TITLE'],
@@ -181,12 +189,6 @@ class Test1(TestCase):
 		self.assertTrue(response.status_code,302)
 
 	def test_blogform_valid(self):
-		user1=User.objects.create(username=os.environ['USERNAME'],
-		 							email=os.environ['EMAIL'],
-		 							password=os.environ['PASSWORD'],
-		 							is_active=True)
-		user1.set_password(os.environ['PASSWORD'])
-		user1.save()
 		categories=Categories.objects.create(name='beauty',state=True)
 		blogform=BlogForm({'title':os.environ['TITLE'], 
 							'description':os.environ['DESCRIPTION'],
