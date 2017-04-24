@@ -2,7 +2,6 @@
 	display:block;
 	color:red;
 	padding-top:10px;
-
 }
 .header{
 	border-bottom:1px solid black;
@@ -14,11 +13,9 @@
 .form-group{
 	margin-top:15px;
 }
-
 .buttons{
 	text-align:right;
 }
-
 @media screen and (max-width:768px){
 	.blog-file{
 		width:100%;
@@ -27,8 +24,3 @@
 	text-align:center;
 	}
 }
-
-
-
-	
-

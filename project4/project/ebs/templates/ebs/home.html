@@ -441,36 +441,36 @@
 			<div class="modal-body">
 				<form id="signinform"  method="post" class="form-padding" data-toggle="validator">
 				{% csrf_token %}
-				<div class="form-group ">
-					<label class="control-label">Username</label>
-					<div class="col-sm-12 input-group">
-						<div class="input-group">
-							<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
-							</span>
-							</span>
-							{{loginform.username}}
+					<div class="form-group ">
+						<label class="control-label">Username</label>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
+								</span>
+								</span>
+								{{loginform.username}}
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					{{loginform.password.errors}}
-					<label class="control-label">Password</label>
-					<div class="col-sm-12 input-group">
-						<div class="input-group">
-							<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
-							</span>
-							</span>
-							{{loginform.password}}
+					<div class="form-group">
+						{{loginform.password.errors}}
+						<label class="control-label">Password</label>
+						<div class="col-sm-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+								</span>
+								</span>
+								{{loginform.password}}
+							</div>
+							<div class="help-block with-errors"></div>
 						</div>
-						<div class="help-block with-errors"></div>
 					</div>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-block btn-lg btn1">Sign in</button>
-					<div class="forgot-modal"><a id="forgotpass" href="#">Forgot Your Password? Get Help</a></div>	
-				</div>
-			</form>
-		</div>
+					<div class="form-group">
+						<button class="btn btn-block btn-lg btn1">Sign in</button>
+						<div class="forgot-modal"><a id="forgotpass" href="#">Forgot Your Password? Get Help</a></div>	
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>		
 </div>
@@ -509,42 +509,42 @@
 			</div>
 			<div id="recovermessage"></div>
 			<div class="modal-body">
-			<form id="recoverform" data-toggle='validator' class="form-padding">
-			{% csrf_token %}
-			{% if hashsuccess %}
-				<input type="hidden" id="hashval" value="{{hash}}">
-			{% else %}
-				<input type="hidden" id="hashval" value="">
-			{% endif %}
-			<div class="form-group">
-				<label class="control-label">New Password</label>
-				<div class="col-sm-12 col-xs-12 input-group">
-					<div class="input-group">
-						<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
-						</span>
-						</span>
-						<input id="password1" name="password" type="password" class="form-control"  data-minlength="8" placeholder="New Password" required>
+				<form id="recoverform" data-toggle='validator' class="form-padding">
+				{% csrf_token %}
+				{% if hashsuccess %}
+					<input type="hidden" id="hashval" value="{{hash}}">
+				{% else %}
+					<input type="hidden" id="hashval" value="">
+				{% endif %}
+					<div class="form-group">
+						<label class="control-label">New Password</label>
+						<div class="col-sm-12 col-xs-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+								</span>
+								</span>
+								<input id="password1" name="password" type="password" class="form-control"  data-minlength="8" placeholder="New Password" required>
+							</div>
+							<div class="help-block with-errors"></div>
+						</div>
 					</div>
-					<div class="help-block with-errors"></div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label">New Password Confirm</label>
-				<div class="col-sm-12 col-xs-12 input-group">
-					<div class="input-group">
-						<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
-						</span>
-						</span>
-						<input id="password2" name="confirmpassword" type="password"
-			  class="form-control" data-minlength="8" placeholder="New Password confirm" required>
+					<div class="form-group">
+						<label class="control-label">New Password Confirm</label>
+						<div class="col-sm-12 col-xs-12 input-group">
+							<div class="input-group">
+								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+								</span>
+								</span>
+								<input id="password2" name="confirmpassword" type="password"
+				  				class="form-control" data-minlength="8" placeholder="New Password confirm" required>
+							</div>
+							<div class="help-block with-errors"></div>
+						</div>						
 					</div>
-					<div class="help-block with-errors"></div>
-				</div>						
-			</div>
-			<div class="form-group">
-				<button name="submit" class="btn btn-lg btn-block btn1">Change Password</button>
-			</div>   
-			</form>
+					<div class="form-group">
+						<button name="submit" class="btn btn-lg btn-block btn1">Change Password</button>
+					</div>   
+				</form>
 			</div>
 		</div>
 	</div>
@@ -573,7 +573,6 @@
 							</div>
 						</div>
 					</div>
-	
 					<div class="form-group ">
 						{{orgform.orglogo.errors}}
 						<label class="control-label">Company Logo</label> 
@@ -586,7 +585,6 @@
 							</div>
 				     	</div>
 					</div>
-	
 					<div class="form-group ">
 						<label class="control-label">Company Email </label>
 						<div class="col-sm-12 input-group">
@@ -598,7 +596,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="help-block with-errors"></div>
 					<div class="form-group ">
 						<label class="control-label">Username</label>
@@ -609,10 +606,8 @@
 								</span>
 								{{userform.username}}
 							</div>
-				
 						</div>
 					</div>
-						
 					<div class="form-group">
 						{{userform.password.errors}}
 						<label class="control-label">Password</label>
@@ -626,7 +621,6 @@
 							<div class="help-block with-errors"></div>
 						</div>
 					</div>
-
 					<div class="form-group">
 						{{userform.password1.errors}}
 						<label class="control-label">Confirm Password</label>
@@ -639,8 +633,7 @@
 							</div>
 						</div>
 					</div>
-				<br>
-				<div class="form-group">
+					<div class="form-group">
 						<button class="btn btn-block btn-lg btn1">Sign up</button>	
 					</div>	
 				</form>
