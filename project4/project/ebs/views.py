@@ -17,12 +17,12 @@ from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
+from django.http import Http404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
 from .models import Organisation,Blog,BlogFile,ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
-
 # Create your views here.
 
 
@@ -225,29 +225,29 @@ def recover_password(request):
 
 @login_required(login_url='/')
 def create_blog(request):
-        if request.method=='POST':
-            blogform=BlogForm(request.POST or None,request.FILES or None)
-            blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
-            if blogform.is_valid() and  blogfileform.is_valid():
-                files = request.FILES.values()
-                blog=blogform.save(commit=False)
-                orgobj=Organisation.objects.get(user_id=request.user.id)
-                blog.organisation_id=orgobj.id
-                if 'button1' in request.POST:
-                    blog.draft=True
-                blog.save()
-                for a_file in files:
-                    instance=BlogFile()
-                    instance.blog_id=blog.id
-                    instance.attachments=a_file
-                    instance.save()
-                blog.save()
-                messages.success(request, 'Blog details saved successfully.')
-                return HttpResponseRedirect('/manage_blog',{"messages":messages})
-        else:
-            blogfileform=BlogFileForm()
-            blogform=BlogForm()
-            return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
+    if request.method=='POST':
+        blogform=BlogForm(request.POST or None,request.FILES or None)
+        blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
+        if blogform.is_valid() and  blogfileform.is_valid():
+            files = request.FILES.values()
+            blog=blogform.save(commit=False)
+            orgobj=Organisation.objects.get(user_id=request.user.id)
+            blog.organisation_id=orgobj.id
+            if 'button1' in request.POST:
+                blog.draft=True
+            blog.save()
+            for a_file in files:
+                instance=BlogFile()
+                instance.blog_id=blog.id
+                instance.attachments=a_file
+                instance.save()
+            blog.save()
+            messages.success(request, 'Blog details saved successfully.')
+            return HttpResponseRedirect('/manage_blog',{"messages":messages})
+    else:
+        blogfileform=BlogFileForm()
+        blogform=BlogForm()
+        return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
 
 @login_required(login_url='/')
 def manage_blog(request):

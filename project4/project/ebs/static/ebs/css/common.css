@@ -110,4 +110,10 @@ ul li a{
 	#footer{
 		padding: 10px 0px 70px;
 	}
+	#footer-2{
+		background-color:black;
+	}
+	.footer2-padding{
+		text-align:center;
+	}
 }

@@ -17,9 +17,6 @@
 	text-align:right;
 }
 @media screen and (max-width:768px){
-	.blog-file{
-		width:100%;
-	}
 	.buttons{
 	text-align:center;
 	}

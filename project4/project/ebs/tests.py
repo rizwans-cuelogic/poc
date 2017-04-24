@@ -14,7 +14,6 @@ from django.contrib.auth import (authenticate, login, logout,)
 from . import views
 from .models import Organisation, ForgotPassword,BlogFile,Blog,Comment,Categories
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
-
 # Create your tests here.
 
 
@@ -178,7 +177,12 @@ class Test1(TestCase):
 		 							is_active=True)
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
-		Organisation.objects.create(user=user1,orgname=os.environ['ORG'])
+		img=File(open('/home/rizwan/Downloads/gile.jpg','r'))
+		img=str(img)
+	 	new_group,created = Group.objects.get_or_create(name='client')
+		Organisation.objects.create(user=user1,
+									orgname=os.environ['ORG'],
+									orglogo='/home/rizwan/Downloads/gile.jpg')
 		response=client.post(reverse('loginresult'),
 	 						{'username':os.environ['USERNAME'],
 	 						'password':os.environ['PASSWORD']})
@@ -187,10 +191,11 @@ class Test1(TestCase):
 	 							{'title':os.environ['TITLE'],
 	 							'description':os.environ['DESCRIPTION'],
 	 							'published':os.environ['PUBLISHED'],
-	 							'categories':categories.id	 							
+	 							'categories':categories.id,
+	 							'user':user1.id	 							
 	 						})
-		self.assertTrue(response.status_code,202)
-		print response.content
+		self.assertTrue(response.status_code,302)
+		self.assertContains(response,"messages")
 
 	# def test_blogform_valid(self):
 	# 	categories=Categories.objects.create(name='beauty',state=True)
