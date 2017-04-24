@@ -1,3 +1,7 @@
+body{
+	font-family:'Open Sans',arial,sans-serif;
+	
+}
 #footer{
 	background:url(../img/bg.png);
 	background-color:black;
@@ -85,9 +89,13 @@
 }
 .navbar-toggle{
 	position:absolute;
-	padding:13px 10px;
+	margin-left:15px;
+	margin-top:14px;
 }
 
+.navbar-collapse {
+	padding:0px;
+}
 nav{
 	line-height:5px;
 }

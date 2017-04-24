@@ -25,7 +25,7 @@
 							{% if user.is_authenticated %}
 							<li id="logged-user">Welcome {{user.username}}</li>
 							<li><a href="#">Manage Profile</a></li>
-							<li><a href="#">Manage Blogs</a></li>
+							<li><a href="{% url 'manage_blog' %}">Manage Blogs</a></li>
 							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
 							{% endif %}
 							{% if not user.is_authenticated %}
@@ -55,7 +55,7 @@
             		<span class="icon-bar"></span>
             		<span class="icon-bar"></span>
           		</button>
-          		<a href="#"><img class=" img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>	
+          		<a href="{% url 'home' %}"><img class=" img-responsive" src="{% static 'ebs/img/logo.png' %}"/></a>	
 			</div>
     	</div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,6 +89,53 @@
 	<div class="container">
 		<a class="pull-right btn btn1 top-margin" href="{% url 'create_blog' %}">Add Blog</a> 
 	</div>
+
+
+	<footer id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<img class="center-block img-responsive" src="{% static 'ebs/img/logo-footer.png' %}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-offset-2 col-md-8 col-xs-offset-2 col-xs-8 top-padding">
+						Newspaper is your news, entertain, music fashion website. We provide you with the latest breaking news and videos straight from the entertainment industry.
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center footer-padding-2">
+						Contact us:<a href="#"> contact@yourside.com</a> 
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center footer-padding-2">
+						<a href="#"><i class="fa fa-facebook-square fa-2x footer-icon"></i></a>
+						<a href="#"><i class="fa fa-twitter-square fa-2x footer-icon"></i></a>
+						<a href="#"><i class="fa fa-linkedin-square fa-2x footer-icon"></i></a>
+					</div>
+				</div>
+			</div>
+	</footer>
+	<div id="footer-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="footer2-padding">
+						<li><a href="#">Contact us</a></li>
+						<li><a href="#"> About us</a></li>
+						<li><a href="#"> Blog</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-6 copyright text-right">
+					 &COPY; Copyright 2017 - Newspaper WordPress Theme by TagDiv
+				</div> 
+
+			</div>
+		
+		</div>
+	</div>	
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
 <script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
