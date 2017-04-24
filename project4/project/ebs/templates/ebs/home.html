@@ -17,35 +17,34 @@
 <body>
 	<nav class="header-navbar navbar-default navbar-light">
 		<div class="collapse navbar-collapse" id="navbar-collapse-2">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<ul id ="nav-list" class="nav nav-pills">
-								{% if user.is_authenticated %}
-								<li id="logged-user">Welcome {{user.username}}</li>
-								<li><a href="#">Manage Profile</a></li>
-								<li><a href="{% url 'manage_blog' %}">Manage Blogs</a></li>
-								<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
-								{% endif %}
-								{% if not user.is_authenticated %}
-								<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
-								<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
-						
-								<li><a href="#">contact us</a></li>
-								{% endif %}
-								<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-							</ul>
-						</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul id ="nav-list" class="nav nav-pills">
+							{% if user.is_authenticated %}
+							<li id="logged-user">Welcome {{user.username}}</li>
+							<li><a href="#">Manage Profile</a></li>
+							<li><a href="{% url 'manage_blog' %}">Manage Blogs</a></li>
+							<li><a id ="logout " href="{% url 'log_out' %}">Logout</a></li>
+							{% endif %}
+							{% if not user.is_authenticated %}
+							<li><a href="#" data-toggle="modal" data-target="#signinmodal">sign in</a></li>	
+							<li><a href="#" data-toggle="modal" data-target="#bannerformmodal">sign up</a></li>
+							<li><a href="#">contact us</a></li>
+							{% endif %}
+							<li class="pull-right"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li class="pull-right"><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li class="pull-right"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
+		</div>
 	</nav>
-<!-- Second navbar for categories -->
+	<!-- Second navbar for categories -->
  	<nav class="navbar navbar-default">
       	<div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
+        	<!-- Brand and toggle get grouped for better mobile display -->
         	<div class="navbar-header">
          		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
             		<span class="sr-only">Toggle navigation</span>
@@ -146,7 +145,7 @@
 			<div class="row">
 				<main class="col-md-8">
 					<h4 class="latest-hr">LATEST BLOGS</h4>
-						<div class="row">
+					<div class="row">
 						<div class="col-md-6">
 							<div class="latest-blog">
 								<a href="#"><img  src="{% static 'ebs/img/pro1.jpg' %} "/></a>
@@ -161,84 +160,82 @@
 						<div class="col-md-6">
 							<div class="latest-blog">
 								<a href="#"><img  src="{% static 'ebs/img/books.jpg' %} "/></a>
-
-							<div class="latest-text">
-								<a href="#" class="label label-default">HEALTH</a>
-								<h3><a href="#">Summer Sports That Torch Serious Calories</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
-							</div>
+								<div class="latest-text">
+									<a href="#" class="label label-default">HEALTH</a>
+									<h3><a href="#">Summer Sports That Torch Serious Calories</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>	
 						</div>
 					</div>
 					<div class="row" >
 						<div class="col-md-6">
 							<div class="latest-blog">
-							<a href="#"><img  src="{% static 'ebs/img/por1.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">Health</a>
-								<h3><a href="#">The workout That Burns More Calories Than Running</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
-							</div>
+								<a href="#"><img  src="{% static 'ebs/img/por1.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">Health</a>
+									<h3><a href="#">The workout That Burns More Calories Than Running</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="latest-blog">
-							<a href="#"><img src="{% static 'ebs/img/mobile.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">TECH</a>
-								<h3><a href="#"> Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
-
-							</div>
+								<a href="#"><img src="{% static 'ebs/img/mobile.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">TECH</a>
+									<h3><a href="#"> Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>
 						</div>		
 					</div>
 					<div class="row" >
 						<div class="col-md-6">
-								<div class="latest-blog">
-							<a href="#"><img  src="{% static 'ebs/img/army.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">army</a>
-								<h3><a href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
-							</div>
+							<div class="latest-blog">
+								<a href="#"><img  src="{% static 'ebs/img/army.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">army</a>
+									<h3><a href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="latest-blog">
-							<a href="#"><img  src="{% static 'ebs/img/post2.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">Arts</a>
-								<h3><a href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h3>
-								<span class="latest-author"><strong>David Lee</strong></a>   -   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
-							</div>
+								<a href="#"><img  src="{% static 'ebs/img/post2.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">Arts</a>
+									<h3><a href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="latest-blog">
-							<a href="#"><img src="{% static 'ebs/img/bus.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">Arts</a>
-								<h3><a href="#">Making Times Square’s Pedestrian Plazas Work</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
+								<a href="#"><img src="{% static 'ebs/img/bus.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">Arts</a>
+									<h3><a href="#">Making Times Square’s Pedestrian Plazas Work</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a> -   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>
-						</div>
 						</div>
 						<div class="col-md-6">
 							<div class="latest-blog">
-							<a href="#"><img  src="{% static 'ebs/img/frame.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">arts</a>
-								<h3><a href="#">How the Guggenheim Keeps Its Galleries Immaculate</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
+								<a href="#"><img  src="{% static 'ebs/img/frame.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">arts</a>
+									<h3><a href="#">How the Guggenheim Keeps Its Galleries Immaculate</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 								<a href="#" class="pull-right label label-default view-block">0</a>
 							</div>
 						</div>
@@ -258,14 +255,14 @@
 						</div>
 						<div class="col-md-6">
 							<div class="latest-blog">
-							<a href="#"><img  src="{% static 'ebs/img/camera.jpg' %} "/></a>
-							<div class="latest-text">
-								<a href="#" class="label label-default">arts</a>
-								<h3><a href="#"> Lenovo Introduces Its Best Entertainment Tablets Yet</a></h3>
-								<span class="latest-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
+								<a href="#"><img  src="{% static 'ebs/img/camera.jpg' %} "/></a>
+								<div class="latest-text">
+									<a href="#" class="label label-default">arts</a>
+									<h3><a href="#"> Lenovo Introduces Its Best Entertainment Tablets Yet</a></h3>
+									<span class="latest-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
 							</div>
-						</div>
 						</div>
 					</div>					
 				</main>	
@@ -274,59 +271,57 @@
 					<h4 class="latest-hr">MOST POPULAR</h4>
 					 <div class="row">
 						<div class="popular-blog">
-						<div class="col-md-5 col-xs-5">
-							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/>
-							</a>
-					</div>
-						<div class="col-md-7 col-xs-7">
-							<h4><a  href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h4>
-							 
-							 <a href="#" class="label label-default">TECH</a>
-							<span class="popular-author">    -   September 24,   2016</span>
+							<div class="col-md-5 col-xs-5">
+								<a href="#"><img class="img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/>
+								</a>
+							</div>
+							<div class="col-md-7 col-xs-7">
+								<h4><a  href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h4>
+								<a href="#" class="label label-default">TECH</a>
+								<span class="popular-author">    -   September 24,   2016</span>
 							</div>
 						</div>
 					</div>	
 					<hr>
 					<div class="row">
 						<div class="popular-blog">
-						<div class="col-md-5 col-xs-5">
-							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %}"/>
-							</a>
-						</div>
-						<div class="col-md-7 col-xs-7">
-							<h4 ><a  href="#"> Celebrity Make-up artist gary cockrill shows you beaty tips</a></h4>
-							
-							<a href="#"class="label label-default">PHOTOGRAPHY</a>
-							<span class="popular-author">   -   September 24,   2016</span>
-						</div>
+							<div class="col-md-5 col-xs-5">
+								<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %}"/>
+								</a>
+							</div>
+							<div class="col-md-7 col-xs-7">
+								<h4 ><a  href="#"> Celebrity Make-up artist gary cockrill shows you beaty tips</a></h4>
+								<a href="#"class="label label-default">PHOTOGRAPHY</a>
+								<span class="popular-author">   -   September 24,   2016</span>
+							</div>
 						</div>
 					</div>	
 					<hr>
 					<div class="row">
 						<div class="popular-blog">
-						<div class="col-md-5 col-xs-5">
-							<a href="#"><img class="img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/></a>
-						</div>
-						<div class="col-md-7 col-xs-7">
-							<h4><a  href="#">The workout That Burns More Calories Than Running</a></h4>
-							<a href="#" class="label label-default">HEALTH</a>
-							<span class="popular-author">     -   September 24,    2016</span>
-						</div>
+							<div class="col-md-5 col-xs-5">
+								<a href="#"><img class="img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/></a>
+							</div>
+							<div class="col-md-7 col-xs-7">
+								<h4><a  href="#">The workout That Burns More Calories Than Running</a></h4>
+								<a href="#" class="label label-default">HEALTH</a>
+								<span class="popular-author">     -   September 24,    2016</span>
+							</div>
 						</div>
 					</div>
 					<hr>
 					<div class="row">
 						<div class="popular-blog">
-						<div class="col-md-5 col-xs-5">
-							<a href="#">
-								<img class="img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/>
-							</a>
-						</div>
-						<div class="col-md-7 col-xs-7">
-							<h4><a  href="#">Fashion Week Parties: Night 4</a></h4>
-							<a href="#" class="label label-default">FASHION</a>
-							<span class="popular-author">    -    September 24,    2016</span>
-						</div>
+							<div class="col-md-5 col-xs-5">
+								<a href="#">
+									<img class="img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/>
+								</a>
+							</div>
+							<div class="col-md-7 col-xs-7">
+								<h4><a  href="#">Fashion Week Parties: Night 4</a></h4>
+								<a href="#" class="label label-default">FASHION</a>
+								<span class="popular-author">    -    September 24,    2016</span>
+							</div>
 						</div>
 					</div>	
 					<!-- MUST READ BLOG -->
@@ -335,30 +330,19 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="must-blog">
-								<h5><a  href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h5>
-								<a  href="#" class="label label-default">TECH</a>
-								 <span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-							 	<a href="#" class="pull-right label label-default view-block">0</a>
+									<h5><a  href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h5>
+									<a  href="#" class="label label-default">TECH</a>
+								 	<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
+							 		<a href="#" class="pull-right label label-default view-block">0</a>
 							 	</div>
 							</div>
 						</div>
 						<hr class="top-margin-20">
 						<div class="row">
 							<div class="col-md-12">
-							<div class="must-blog">
-							<h5> <a  href="#">Celebrity Make-up artist gary cockrill shows you beaty tips</a></h5>
-							<a href="#" class="label label-default">PHOTOGRAPPHY</a>
-							<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-							<a href="#" class="pull-right label label-default view-block">0</a>
-							</div>
-							</div>
-						</div>
-						<hr class="top-margin-20">
-						<div class="row">
-							<div class="col-md-12">
 								<div class="must-blog">
-								<h5><a  href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h5>
-								<a href="#" class="label label-default">ARTS</a>
+								<h5> <a  href="#">Celebrity Make-up artist gary cockrill shows you beaty tips</a></h5>
+								<a href="#" class="label label-default">PHOTOGRAPPHY</a>
 								<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 								<a href="#" class="pull-right label label-default view-block">0</a>
 								</div>
@@ -368,10 +352,21 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="must-blog">
-								<h5><a  href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h5>
-								<a href="#"  class="label label-default">ARMY</a>
-								<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-								<a href="#" class="pull-right view-block label label-default">0</a>
+									<h5><a  href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h5>
+									<a href="#" class="label label-default">ARTS</a>
+									<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
+									<a href="#" class="pull-right label label-default view-block">0</a>
+								</div>
+							</div>
+						</div>
+						<hr class="top-margin-20">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="must-blog">
+									<h5><a  href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h5>
+									<a href="#"  class="label label-default">ARMY</a>
+									<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
+									<a href="#" class="pull-right view-block label label-default">0</a>
 								</div>
 							</div>
 						</div>
@@ -447,15 +442,15 @@
 				<form id="signinform"  method="post" class="form-padding" data-toggle="validator">
 				{% csrf_token %}
 				<div class="form-group ">
-						<label class="control-label">Username</label>
-						<div class="col-sm-12 input-group">
-							<div class="input-group">
-								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
-								</span>
-								</span>
-								{{loginform.username}}
-							</div>
+					<label class="control-label">Username</label>
+					<div class="col-sm-12 input-group">
+						<div class="input-group">
+							<span class="input-group-addon transparent"><span class="glyphicon glyphicon-user">
+							</span>
+							</span>
+							{{loginform.username}}
 						</div>
+					</div>
 				</div>
 				<div class="form-group">
 					{{loginform.password.errors}}
@@ -506,69 +501,67 @@
 </div>
 <!-- recover password Modal -->
 <div id="recoverformmodal"  class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header modal-color">
-					<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h2>Reset Password</h2>
-				</div>
-				<div id="recovermessage"></div>
-				<div class="modal-body">
-				<form id="recoverform" data-toggle='validator' class="form-padding">
-				{% csrf_token %}
-				{% if hashsuccess %}
-					<input type="hidden" id="hashval" value="{{hash}}">
-				{% else %}
-					<input type="hidden" id="hashval" value="">
-				{% endif %}
-				<div class="form-group">
-					<label class="control-label">New Password</label>
-						<div class="col-sm-12 col-xs-12 input-group">
-							<div class="input-group">
-								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
-								</span>
-								</span>
-								<input id="password1" name="password" type="password" class="form-control"  data-minlength="8" placeholder="New Password" required>
-							</div>
-							<div class="help-block with-errors"></div>
-					
-						</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label">New Password Confirm</label>
-						<div class="col-sm-12 col-xs-12 input-group">
-							<div class="input-group">
-								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
-								</span>
-								</span>
-								<input id="password2" name="confirmpassword" type="password"
-					  class="form-control" data-minlength="8" placeholder="New Password confirm" required>
-							</div>
-							<div class="help-block with-errors"></div>
-						</div>						
-				</div>
-				<div class="form-group">
-					<button name="submit" class="btn btn-lg btn-block btn1">Change Password</button>
-				</div>   
-				
-				</form>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header modal-color">
+				<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2>Reset Password</h2>
+			</div>
+			<div id="recovermessage"></div>
+			<div class="modal-body">
+			<form id="recoverform" data-toggle='validator' class="form-padding">
+			{% csrf_token %}
+			{% if hashsuccess %}
+				<input type="hidden" id="hashval" value="{{hash}}">
+			{% else %}
+				<input type="hidden" id="hashval" value="">
+			{% endif %}
+			<div class="form-group">
+				<label class="control-label">New Password</label>
+				<div class="col-sm-12 col-xs-12 input-group">
+					<div class="input-group">
+						<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+						</span>
+						</span>
+						<input id="password1" name="password" type="password" class="form-control"  data-minlength="8" placeholder="New Password" required>
+					</div>
+					<div class="help-block with-errors"></div>
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="control-label">New Password Confirm</label>
+				<div class="col-sm-12 col-xs-12 input-group">
+					<div class="input-group">
+						<span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock">
+						</span>
+						</span>
+						<input id="password2" name="confirmpassword" type="password"
+			  class="form-control" data-minlength="8" placeholder="New Password confirm" required>
+					</div>
+					<div class="help-block with-errors"></div>
+				</div>						
+			</div>
+			<div class="form-group">
+				<button name="submit" class="btn btn-lg btn-block btn1">Change Password</button>
+			</div>   
+			</form>
+			</div>
 		</div>
+	</div>
 </div>
 <!--signup modal -->
 <div id="bannerformmodal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header modal-color">
-					<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h2 class="text-center">Sign up</h2>
-				</div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header modal-color">
+				<button class="pull-right btn2" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="text-center">Sign up</h2>
+			</div>
 			<div id="validator_message"></div>	
 			<div class="modal-body">
-			<form id="myform" action="javascript:return;" data-toggle="validator" enctype="multipart/form-data" class="form-padding">
-				{% csrf_token %}
-				<div class="form-group ">
+				<form id="myform" action="javascript:return;" data-toggle="validator" enctype="multipart/form-data" class="form-padding">
+					{% csrf_token %}
+					<div class="form-group ">
 						{{orgform.orgname.errors}}
 						<label class="control-label">Company Name</label>
 						<div class="col-sm-12 input-group">
@@ -647,17 +640,14 @@
 						</div>
 					</div>
 				<br>
-
-					<div class="form-group">
+				<div class="form-group">
 						<button class="btn btn-block btn-lg btn1">Sign up</button>	
 					</div>	
-			</form>
+				</form>
 			</div>
 		</div>
-		</div>
+	</div>
 </div>
-
-	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
 <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 <script src="{% static 'ebs/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>

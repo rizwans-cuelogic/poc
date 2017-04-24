@@ -10,28 +10,24 @@ body{
 		width:200px;
 	}
 }
-
 @media screen and (min-width:992px){
 	.modal-lg{	
 		width:950;
 	}
 }	
-
 .padding-top{
 	margin-top:50px;
 }
 @media screen and (max-width:500px){
 	#input1{
 		font-size:12px;
+	}
 }
-}
-
 @media screen and (min-width:500px){
 	#input1{
 		font-size:15px;
+	}
 }
-}
-
 ul.nav a{
 color:#fff !important;
 }
@@ -68,7 +64,6 @@ nav{
 	display:inline;
 	padding:5px;
 }
-
 .org1{
 	padding-bottom:5px;
 }

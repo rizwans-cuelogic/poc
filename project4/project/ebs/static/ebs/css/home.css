@@ -25,7 +25,6 @@ h1, h2, h3,h4,h5{
 .banner-blog a:hover{
 	color:white;
 }
-
 .banner-text h4{
 	margin-bottom:0px;
 }
@@ -40,11 +39,9 @@ h1, h2, h3,h4,h5{
 .banner-text .label-default:hover{
 	background-color:#009688;
 }
-
 .banner-text span{
 	font-size:11px;
 }
-
 .latest-blog{
 	position:relative;
 	height:285px;
@@ -57,7 +54,6 @@ h1, h2, h3,h4,h5{
 	margin-top:10px;
 	font-size: 21px;
 }
-
 .latest-blog img{
 	width:100% ;
 	height:170px;
@@ -67,11 +63,9 @@ h1, h2, h3,h4,h5{
 	background-color: black;
 	text-transform: uppercase;
 }
-
 .latest-text .label-default:hover{
 	background-color:#009688;
 }
-
 .latest-text .latest-author{
 	font-size:11px;
 }
@@ -114,7 +108,6 @@ h1, h2, h3,h4,h5{
 	background-color: black;
 	text-transform: uppercase;
 }
-
 .must-blog .label-default:hover{
 	background-color:#009688;
 }
@@ -156,14 +149,12 @@ a{
 .top-margin-10{
 	margin-top:10px;
 }
-
 .top-margin-20{
 	margin-top:20px;
 }
 .top-margin-40{
 	margin-top:40px;
 }
-
 a{
 	text-decoration: none;
 	color:black;
@@ -196,9 +187,9 @@ a{
 	border-bottom: 4px solid #009688;
 }
 .btn-group-lg > .btn, .btn-lg {
-    	padding: 10px 16px;
-    	font-size:18px;
-    	line-height: 1.33333;
+	padding: 10px 16px;
+	font-size:18px;
+	line-height: 1.33333;
 }
 .btn1{
 	border-radius:0px;
@@ -217,7 +208,6 @@ a{
 .sendbutton{
 	margin-top:30px;
 }
-
 ul.simple-list{
 	list-style: none;
 	padding: 0;
@@ -230,7 +220,6 @@ ul.simple-list{
 @media screen and (max-width:768px){
 	#footer-2{
 		background-color:black;
-	
 	}
 	.footer2-padding{
 		text-align:center;
@@ -252,4 +241,3 @@ ul.simple-list{
 		width:400px;
 	}
 }
-

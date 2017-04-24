@@ -46,8 +46,6 @@ body{
 .footer-padding-2 span a{
 	color: #009688;
 }
-
-
 .footer2-padding{
 	color:white;
 	list-style:none;
@@ -62,12 +60,9 @@ body{
 	
 }
 .footer2-padding li a{
-
 	color:white;
 	text-decoration:none;
-
 }
-
 .copyright{
 	color:white;
 	line-height: 40px;
@@ -128,9 +123,7 @@ ul li a{
 	.navbar-header a img{
 		height:60px;
 		margin:0 auto;
-
 	}
-	
 }
 @media screen and (max-width:768px){
 	#footer{
