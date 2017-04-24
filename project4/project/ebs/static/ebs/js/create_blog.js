@@ -25,7 +25,7 @@ $(document).ready(function() {
                  $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top: 5px;'>Invalid Date And Time</div>");
         }           
             file_error_four=1;
-                
+            $( "#id_published" ).focus();    
         }
         if(hours==current_hours){
             if(minutes<current_minutes){
@@ -33,7 +33,9 @@ $(document).ready(function() {
             $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top:5px;'>Invalid Date And Time</div>");
             }               
                 file_error_four=1;
+                $( "#id_published" ).focus();
             }
+
         }
     }
     else{
@@ -43,14 +45,15 @@ $(document).ready(function() {
                  
         }
             file_error_four=1;
+            $( "#id_published" ).focus();
     }
-        }
+    }
       
        if ($('#id_attachments').val() && $('#id_attachments')[0].files[0].size>15728640) {
             if ($("#id_attachments").next(".validation").length == 0){
                     $("#id_attachments").after("<div class='validation' style='color:red;margin-top:5px;'>File size should be less than 15MB</div>"); 
             }   
-
+            $( "#id_attachments" ).focus();
             file_error_one = 1
         }
 
@@ -58,7 +61,8 @@ $(document).ready(function() {
             if ($("#id_image1").next(".validation").length == 0){
                 $("#id_image1").after("<div class='validation' style='color:red;margin-top:5px;'>File size should be less than 15MB</div>"); 
             } 
-            file_error_two = 1  
+            file_error_two = 1 
+            $( "#id_image1" ).focus();
         } 
 
         if ($('#id_image2').val() && $('#id_image2')[0].files[0].size>15728640) {
@@ -66,6 +70,7 @@ $(document).ready(function() {
                 $("#id_image2").after("<div class='validation' style='color:red;margin-top:5px;'>File size should be less than 15MB</div>");
             }
             file_error_three = 1
+            $( "#id_image2" ).focus();
         }
         if(file_error_one==0){
             $("#id_attachments").next(".validation").remove();
@@ -76,10 +81,18 @@ $(document).ready(function() {
         if(file_error_three==0){
             $("#id_image2").next(".validation").remove();
         }
-    if(file_error_four==0){
+        if(file_error_four==0){
             $("#datetimepicker1").next(".validation").remove();
         }
-    
+
+        if(file_error_one && file_error_two || file_error_one && file_error_two && file_error_three ){
+            $( "#id_attachments" ).focus();
+        }
+        
+        if(!file_error_one && file_error_two && file_error_three){
+            $( "#id_image1" ).focus()   
+        }    
+
        if (!file_error_one && !file_error_two && !file_error_three && !file_error_four)
         {
             $("#id_image1").next(".validation").remove();
