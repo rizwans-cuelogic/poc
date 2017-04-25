@@ -74,18 +74,18 @@ DateInput=partial(forms.DateInput, {'class' : 'datepicker' })
 class BlogForm(forms.ModelForm):
 	title=forms.CharField(required=True,label="title",
 					widget=forms.TextInput(
-						attrs={'size':'100%',
+						attrs={
 								'placeholder':'Title',
 							   'class':'form-control',
 							   }))
 	description = forms.CharField(required=True,label="description",
 							widget=forms.Textarea(
-								attrs={'size': '100%',
+								attrs={
 									   'placeholder':'Add Description',
 									   'class': 'form-control'}))
 	tags= forms.CharField(required=False,label="title",
 						widget=forms.TextInput(
-							 attrs={'size': '100%',
+							 attrs={
 							 		'placeholder':'Tags',
 									'class': 'form-control'}))
 	
@@ -96,7 +96,7 @@ class BlogForm(forms.ModelForm):
 	categories=forms.ModelChoiceField(
 						queryset=Categories.objects.all().filter(state=True).order_by('name'),
 						empty_label='Select Catagory',
-						widget=forms.Select(attrs={"class":"catagory"})
+						widget=forms.Select(attrs={"class":"catagory form-control" })
 					)
 	comment_state=forms.BooleanField(required=False)
 
@@ -114,20 +114,20 @@ class BlogForm(forms.ModelForm):
 class BlogFileForm(forms.Form):
 	attachments=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
-							attrs={'size':'50%',
-								   'class':'form-control file-width',
+							attrs={
+								   'class':'form-control ',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	image1=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
-							attrs={'size':'50%',
-								   'class':'form-control file-width',
+							attrs={
+								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	image2=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
-							attrs={'size':'50%',
-								   'class':'form-control file-width',
+							attrs={
+								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	

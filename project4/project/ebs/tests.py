@@ -10,10 +10,10 @@ from django.core.urlresolvers import reverse
 from django.test.utils import setup_test_environment
 from django.utils import timezone
 from django.core.files import File
+from django.contrib.auth import (authenticate, login, logout,)
 from . import views
 from .models import Organisation, ForgotPassword,BlogFile,Blog,Comment,Categories
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
-
 # Create your tests here.
 
 
@@ -32,7 +32,7 @@ class Test1(TestCase):
 	def test_Organisation(self):
 		w = self.create_org()
 		self.assertTrue(isinstance(w, Organisation))
-		self.assertEqual(w.__unicode__(), 'Organisation :'+w.orgname)
+		self.assertEqual(w.__unicode__(),w.orgname)
 
 
 	def test_valid_User_form(self):
@@ -136,7 +136,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.ForgotPassword_set.create(activation_key=hash1,
+		obj=user1.forgotpassword_set.create(activation_key=hash1,
 									link_time=timezone.now())
 		client=Client()
 		password={'password':os.environ['PASSWORD'],
@@ -156,7 +156,7 @@ class Test1(TestCase):
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
 		hash1 = str(uuid.uuid1())
-		obj=user1.ForgotPassword_set.create(activation_key=hash1,
+		obj=user1.forgotpassword_set.create(activation_key=hash1,
 											link_time=timezone.now())
 		client=Client()
 		hash1=os.environ['HASH']		
@@ -165,17 +165,51 @@ class Test1(TestCase):
 		response=client.post(reverse('recover_password'),
 									json.dumps(password),
 									content_type="application/json")
+
 		self.assertTrue(response.status_code,200)
 		self.assertContains(response,'{"status": "Error", "message": "invalid link or token has been expired."}')
 
 	def test_create_blog(self):
 		client=Client()
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
+		img=File(open('/home/rizwan/Downloads/gile.jpg','r'))
+		img=str(img)
+	 	new_group,created = Group.objects.get_or_create(name='client')
+		Organisation.objects.create(user=user1,
+									orgname=os.environ['ORG'],
+									orglogo='/home/rizwan/Downloads/gile.jpg')
+		response=client.post(reverse('loginresult'),
+	 						{'username':os.environ['USERNAME'],
+	 						'password':os.environ['PASSWORD']})
+		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('create_blog'),
 	 							{'title':os.environ['TITLE'],
 	 							'description':os.environ['DESCRIPTION'],
 	 							'published':os.environ['PUBLISHED'],
-	 							'categories':os.environ['CATEGORIES']
-	 							})
-		self.assertTrue(response.status_code,200)
+	 							'categories':categories.id,
+	 							'user':user1.id	 							
+	 						})
+		self.assertTrue(response.status_code,302)
 
+	def test_blogform_valid(self):
+		categories=Categories.objects.create(name='beauty',state=True)
+		blogform=BlogForm({'title':os.environ['TITLE'], 
+							'description':os.environ['DESCRIPTION'],
+							'categories':categories.id,
+							'published':os.environ['PUBLISHED']
+						})
+		self.assertTrue(blogform.is_valid())
+	
+	def test_blogform_invalid(self):
+		categories=Categories.objects.create(name='beauty',state=True)
+		blogform=BlogForm({'title':os.environ['TITLE'], 
+							'description':os.environ['DESCRIPTION'],
+							'published':os.environ['PUBLISHED']
+							})
+		self.assertFalse(blogform.is_valid())
 	
