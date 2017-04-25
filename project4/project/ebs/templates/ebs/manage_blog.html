@@ -1,19 +1,16 @@
 {% extends "ebs/common.html" %}
 {% load static %}
-
 {% block head_extra %}
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/manage_blog.css' %}"/>
 {% endblock %}
-
 {% block content %}
 {% for message in messages %}
 	<div id="message"></div>
 {% endfor %}
-	<div class="container">
-		<a class="pull-right btn btn1 top-margin" href="{% url 'create_blog' %}">Add Blog</a> 
-	</div>
+<div class="container">
+	<a class="pull-right btn btn1 top-margin" href="{% url 'create_blog' %}">Add Blog</a> 
+</div>
 {% endblock %}
-
 {% block extra_js %}
 <script type="text/javascript" src="{% static 'ebs/js/manage_blog.js' %}"></script>
 {% endblock %}
