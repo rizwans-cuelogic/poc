@@ -1,13 +1,35 @@
+h1, h2, h3, h4, h5{
+	font-family: 'Roboto',sans-serif;
+}
 .top-margin{
 	margin-top:30px;
 }
 .search{
 	width: 300px;
-    
+    margin-left:150px;
 }
-.img-responsive{
-max-width: 200px;
+.image{
+	max-width: 150px;
 }
 #delete-button{
-	margin-left:10px;
+	margin-left:30px;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table>tfoot > tr > td {
+  border-top: none;
+}
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+table>tbody>tr>td> a{
+	text-decoration: none;
 }

@@ -4,6 +4,7 @@ import os
 import uuid
 import sys
 import re
+import imghdr
 from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -21,6 +22,7 @@ from django.http import Http404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
+from django.views.decorators.csrf import csrf_exempt
 from .models import Organisation,Blog,BlogFile,ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 # Create your views here.
@@ -251,4 +253,41 @@ def create_blog(request):
 
 @login_required(login_url='/')
 def manage_blog(request):
-    return render(request,'ebs/manage_blog.html')
+    try:
+        orgobj=Organisation.objects.get(user_id=request.user.id)   
+        data=list()
+        context={}
+        bloglist=Blog.objects.filter(organisation_id=orgobj.id).order_by('-timestamp')
+        for each in bloglist:
+            context={'blog_id':each.id,
+                'blog_title':each.title,
+                'blog_description':each.description
+            }
+            files=BlogFile.objects.filter(blog_id=each.id)
+            if files is None:
+                context['blog_file']=''
+            else:
+                count=0
+                for each in files:
+                    filename, file_extension = os.path.splitext(str(each.attachments))
+                    if  file_extension in ['.png','.jpeg','.jpg'] and count==0:
+                        count+=1
+                        context['blog_file']=each.attachments
+
+            data.append(context)
+        return render(request, 'ebs/manage_blog.html',{'data':data})
+    except :
+        return render(request,'ebs/manage_blog.html')
+
+@csrf_exempt
+def delete_blog(request):
+    import pdb
+    pdb.set_trace()
+    newdata = request.user
+    orgdata = Organisation.objects.get(user_id=newdata.id)
+    swid = request.POST.getlist('checkbox[]') 
+    for one in swid:
+        obj = Blog.objects.get(id=one).delete()
+
+    response = json.dumps({'data':'deleted'})
+    return HttpResponse(response, mimetype="application/json")
