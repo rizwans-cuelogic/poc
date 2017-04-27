@@ -35,33 +35,32 @@
 			</thead>
 			<tbody>
 				<tr class="warning no-result">
-      				<td colspan="4"><i class="fa fa-warning"></i> No result</td>
-    			</tr>
+					<td colspan="4"><i class="fa fa-warning"></i> No result</td>
+				</tr>
 				{% if datas %}
 				{% for query in datas %}
 				<tr id="blog_{{query.blog_id}}">
-             		<td>
-             			<input type="checkbox" name="{{query.blog_id}}" value="{{query.blog_id}}">
-             		</td>
-             		<td>
-             			{% if query.blog_file %}
-             			<img class="image img-responsive" src="/media_cdn/{{query.blog_file}}"/>
-             			{% else %}
-             			<img class="image img-responsive" src="{% static 'ebs/img/default.png' %}"/>
-             			{% endif %}
-             		</td>
+					<td>
+						<input type="checkbox" name="{{query.blog_id}}" value="{{query.blog_id}}">
+					</td>
+					<td>
+					{% if query.blog_file %}
+						<img class="image img-responsive" src="/media_cdn/{{query.blog_file}}"/>
+					{% else %}
+						<img class="image img-responsive" src="{% static 'ebs/img/default.png' %}"/>
+					{% endif %}
+					</td>
 					<td>
 						<h3><a href="#">{{query.blog_title }}</a></h3>
 						<p class="text">{{ query.blog_description | truncatechars:300}}</p>
-
-             		</td>
+					</td>
 					<td>
 						<a  class="btn btn2" href="#"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
 					</td>
-             	</tr>
-             	{% endfor %}
-			 	{% endif %}
-            </tbody>
+				</tr>
+				{% endfor %}
+				{% endif %}
+			</tbody>
 	 	</table>
 	</div>
 {% include "ebs/paginator.html"  with page=datas %}
