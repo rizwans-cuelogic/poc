@@ -14,7 +14,7 @@
 				<tr>
 					<th colspan="2">
 						<input type="checkbox" id="select-all">
-						<a  id="delete-button" class=" btn btn1">
+						<a  id="delete-button" class=" btn btn2">
   						<i class="fa fa-trash-o fa-lg"></i>   Delete</a>
   						
 					</th>
@@ -27,17 +27,15 @@
 							</button>
 						</div>
 						</div>
-
 					</th>
 					<th>
-						<a  class="btn btn1" href="{% url 'create_blog' %}"><i class="fa fa-plus fa-fw"></i>  Add</a>
+						<a  class="btn btn2" href="{% url 'create_blog' %}"><i class="fa fa-plus fa-fw"></i>  Add</a>
 					</th>
 				</tr>
-				
 			</thead>
 			<tbody>
 				<tr class="warning no-result">
-      					<td colspan="4"><i class="fa fa-warning"></i> No result</td>
+      				<td colspan="4"><i class="fa fa-warning"></i> No result</td>
     			</tr>
 				{% if datas %}
 				{% for query in datas %}
@@ -54,19 +52,19 @@
              		</td>
 					<td>
 						<h3><a href="#">{{query.blog_title }}</a></h3>
-						<p class="text">{{ query.blog_description | truncatechars:250}}</p>
+						<p class="text">{{ query.blog_description | truncatechars:300}}</p>
 
              		</td>
-				<td>
-					<a  class="btn btn1" href="#"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
-				</td>
-             </tr>
-             {% endfor %}
-			 {% endif %}
+					<td>
+						<a  class="btn btn2" href="#"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
+					</td>
+             	</tr>
+             	{% endfor %}
+			 	{% endif %}
             </tbody>
 	 	</table>
 	</div>
-	{% include "ebs/paginator.html"  with page=datas %}
+{% include "ebs/paginator.html"  with page=datas %}
 </div>
 {% endblock %}
 {% block extra_js %}

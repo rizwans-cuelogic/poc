@@ -296,8 +296,6 @@ def delete_blog(request):
     swid = request.POST.getlist('checkboxes[]')
     if(swid[0]=='on'):
         swid.pop(0)
-
-    print swid 
     for one in swid:
         obj = Blog.objects.get(id=one).delete()
         BlogFile.objects.filter(blog_id=one).delete()
