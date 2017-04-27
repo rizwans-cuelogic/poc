@@ -18,6 +18,7 @@ from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.http import Http404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
@@ -263,31 +264,43 @@ def manage_blog(request):
                 'blog_title':each.title,
                 'blog_description':each.description
             }
-            files=BlogFile.objects.filter(blog_id=each.id)
+            files=BlogFile.objects.filter(blog_id=each.id).order_by('-id')
             if files is None:
                 context['blog_file']=''
             else:
-                count=0
                 for each in files:
+                    print each.attachments
                     filename, file_extension = os.path.splitext(str(each.attachments))
-                    if  file_extension in ['.png','.jpeg','.jpg'] and count==0:
-                        count+=1
+                    if  file_extension in ['.png','.jpeg','.jpg']:
                         context['blog_file']=each.attachments
+                        break
 
             data.append(context)
-        return render(request, 'ebs/manage_blog.html',{'data':data})
+        paginator=Paginator(data,5)
+        page = request.GET.get('page')
+        try:
+            datas=paginator.page(page)
+        except PageNotAnInteger:
+            datas=paginator.page(1)
+        except EmptyPage:
+            datas=paginator.page(paginator.num_pages)
+        return render(request, 'ebs/manage_blog.html',
+                        {'datas':datas,'page':page})
     except :
         return render(request,'ebs/manage_blog.html')
 
 @csrf_exempt
 def delete_blog(request):
-    import pdb
-    pdb.set_trace()
     newdata = request.user
     orgdata = Organisation.objects.get(user_id=newdata.id)
-    swid = request.POST.getlist('checkbox[]') 
+    swid = request.POST.getlist('checkboxes[]')
+    if(swid[0]=='on'):
+        swid.pop(0)
+
+    print swid 
     for one in swid:
         obj = Blog.objects.get(id=one).delete()
+        BlogFile.objects.filter(blog_id=one).delete()
 
-    response = json.dumps({'data':'deleted'})
-    return HttpResponse(response, mimetype="application/json")
+    response = json.dumps({'status':'Success'})
+    return HttpResponse(response, content_type="application/json")

@@ -32,35 +32,54 @@ $(document).ready(function() {
 	else {$('.no-result').hide();}
 		  });
 
+  $('#select-all').click(function(event) {
+      debugger;   
+      if(this.checked) {
+          $(':checkbox').each(function() {
+              this.checked = true;
+      });
+      }
+      else {
+        $(':checkbox').each(function() {
+              this.checked = false;
+          });
+    }
+  });
+  
+  $("#delete-button").click(function () {
+    debugger;
     var checkboxes=[]
-    $('#select-all').click(function(event) {
-    	debugger;   
-    	if(this.checked) {
-        	$(':checkbox').each(function() {
-            	this.checked = true;
-            	checkboxes.push($(this).val()) 
-			});
-    	}
-    	else {
-    		$(':checkbox').each(function() {
-          		this.checked = false;
-      		});
- 		}
-	});
-	
-	var checkboxobject=$.extend({},checkboxes)
-	var checkboxJSON=JSON.stringify(checkboxobject)
+    $(':checkbox:checked').each(function(i){
+      checkboxes[i] = $(this).val();
+      blog_id = $(this).val()
+      $('#blog_'+blog_id).remove()
+    });
+    if(checkboxes.length === 0)
+   {
+    $.notify("please select atleast on checkbox",
+    { position:"top center" }
+    );
 
-	$("#delete-button").click(function () {
-  		$.ajax({	
+   }
+   else{
+
+    $.ajax({	
     	url: '../delete_blog/',
-    	data: {'checkbox':checkboxJSON},
+    	data:{'checkboxes':checkboxes},
     	dataType: 'json',
     	type: 'post',
-    	success: function (data) {
-
-    	}
+    	success: function (result) {
+       debugger ;
+       if(result['status']=="Success"){   
+          $.notify.defaults({ className: "success" })
+            $.notify( 
+            "deleted successfully",
+            { position:"top center" });
+    	 }
+      location.reload();
+      }
   	});
-	});
+  }
+});
 
 });
