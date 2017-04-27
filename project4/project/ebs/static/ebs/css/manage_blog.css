@@ -1,39 +1,29 @@
-h1, h2, h3, h4, h5{
-	font-family: 'Roboto',sans-serif;
-}
-.top-margin{
-	margin-top:30px;
-}
-.search{
+.search-wrapper{
 	width: 300px;
-    margin-left:150px;
+    margin-left:auto;
+    margin-right:auto;
 }
 .image{
 	max-width: 180px;
 	max-height:150px;
 }
-#delete-button{
-	margin-left:30px;
-}
 .text{
 	font-size: 13px;
     color: #777;
     margin-top: 9px;
+   	white-space:normal;
 }
-.nav-center{
-	text-align:center;
-}
-.table>tbody>tr>td>h3{
+.table h3{
 	font-size:21px;
 	line-height:23px;
 	font-weight:500;
 	margin:0px;
 }
-.table>tbody>tr>td>h3>a{
+.table h3 a{
 	color:black;
 	text-decoration:none;
 }
-.table>tbody>tr>td>h3>a:hover{
+.table h3 a:hover{
 	color:#009688;
 }
 .btn2:hover{
@@ -60,12 +50,15 @@ h1, h2, h3, h4, h5{
 .results tr[visible='true']{
   display:table-row;
 }
-.table>tbody>tr>td> a{
-	text-decoration: none;
-}
 .table > thead > tr > th{
 	padding-bottom:15px;
 }
 .table>tbody>tr>td{
-	padding-top:25px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+@media screen and (max-width:768px){
+	.search-wrapper{
+		margin:0px;
+	}
 }

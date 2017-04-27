@@ -6,8 +6,8 @@ $(document).ready(function() {
            { position:"top center" }
         );
     }
-    $(".search1").keyup(function () {
-      var searchTerm = $(".search1").val();
+    $(".search").keyup(function () {
+      var searchTerm = $(".search").val();
       var listItem = $('.results tbody').children('tr');
       var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
 
@@ -47,9 +47,10 @@ $(document).ready(function() {
         blog_id = $(this).val()
         $('#blog_'+blog_id).remove()
       });
-      if(checkboxes.length === 0)
+      var message=$('notifyjs-corner').is(":visible")
+      if(checkboxes.length === 0 && !message)
       {
-        $.notify("please select atleast on checkbox",
+        $.notify("please select atleast one checkbox",
               { position:"top center" }
         );
       }
@@ -61,16 +62,35 @@ $(document).ready(function() {
         type: 'post',
         success: function (result) {
           if(result['status']=="Success"){   
-            $.notify.defaults({ className: "success" })
-            $.notify( 
-              "deleted successfully",
-              { position:"top center" });
-          }
-          setTimeout(function(){ 
             location.reload();
-          }, 2000);
+            var url=window.location.href;
+            url+='?deleted=1'
+            window.location.href=url;   
         }
-      });
-    }
-  });
+      }
+    });
+  }
 });
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+if(getParameterByName('deleted')){    
+  $.notify.defaults({ className: "success" })
+                    $.notify( 
+                    "deleted successfully",
+                    { position:"top center" }
+                  )
+  history.pushState(null, null, '/manage_blog/');
+}
+
+});
+
+
