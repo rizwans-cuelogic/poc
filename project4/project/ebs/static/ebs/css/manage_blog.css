@@ -58,7 +58,6 @@
 .notifyjs-corner{
 	transform:translate(-45%, 0);
 }
-
 @media screen and (max-width:768px){
 	.search-wrapper{
 		margin:0px;

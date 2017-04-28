@@ -7,7 +7,7 @@
 			</div>
 			<div id="message">  </div>
 			<div class="modal-body">
-				<form id="signinform"  method="post" class="form-padding" data-toggle="validator">
+				<form id="signinform" method="post" class="form-padding" data-toggle="validator">
 				{% csrf_token %}
 					<div class="form-group ">
 						<label class="control-label">Username</label>
@@ -52,11 +52,11 @@
 			</div>
 			<div id="forgotmessage">  </div>
 			<div class="modal-body">
-				<form id="forgotform"  method='post' class="form-padding">
+				<form id="forgotform" method='post' class="form-padding">
 				{% csrf_token %}	 
 					<div class="form-group">
 						<label>Email</label>
-						<input id="email1" type="email"  class="form-control input-lg"  placeholder="email" required>
+						<input id="email1" type="email" class="form-control input-lg" placeholder="email" required>
 					</div>
 					<div class="top-margin-30 form-group">
 						<button class="btn btn-block btn-lg btn-secondary">Send My Password</button>
@@ -68,7 +68,7 @@
 	</div>
 </div>
 <!-- recover password Modal -->
-<div id="recoverformmodal"  class="modal fade" role="dialog">
+<div id="recoverformmodal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header modal-color">
@@ -143,8 +143,7 @@
 					</div>
 					<div class="form-group ">
 						{{orgform.orglogo.errors}}
-						<label class="control-label">Company Logo</label> 
-						<div class="col-sm-12 input-group file-size">
+						<label class="control-label">Company Logo</label><div class="col-sm-12 input-group file-size">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-picture">
 								</span>
