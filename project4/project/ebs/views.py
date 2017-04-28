@@ -291,8 +291,7 @@ def manage_blog(request):
 
 @csrf_exempt
 def delete_blog(request):
-    newdata = request.user
-    orgdata = Organisation.objects.get(user_id=newdata.id)
+    orgdata = Organisation.objects.get(user_id=request.user.id)
     swid = request.POST.getlist('checkboxes[]')
     if swid[0]=='on':
         swid.pop(0)

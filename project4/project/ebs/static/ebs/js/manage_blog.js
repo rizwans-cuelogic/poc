@@ -50,6 +50,7 @@ $(document).ready(function() {
       var message=$('notifyjs-corner').is(":visible")
       if(checkboxes.length === 0 && !message)
       {
+         $.notify.defaults({ className: "error" })
         $.notify("please select atleast one checkbox",
               { position:"top center" }
         );
@@ -85,7 +86,7 @@ function getParameterByName(name, url) {
 if(getParameterByName('deleted')){    
   $.notify.defaults({ className: "success" })
                     $.notify( 
-                    "deleted successfully",
+                    "Blog deleted successfully",
                     { position:"top center" }
                   )
   history.pushState(null, null, '/manage_blog/');
