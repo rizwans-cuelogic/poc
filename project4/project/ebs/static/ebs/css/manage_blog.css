@@ -1,13 +1,13 @@
 .search-wrapper{
 	width: 300px;
-    margin-left:auto;
-    margin-right:auto;
+	margin-left:auto;
+	margin-right:auto;
 }
-.image{
+.blog-image{
 	max-width: 180px;
 	max-height:150px;
 }
-.text{
+.blog-text{
 	font-size: 13px;
     color: #777;
     margin-top: 9px;
@@ -26,11 +26,11 @@
 .table h3 a:hover{
 	color:#009688;
 }
-.btn2:hover{
+.btn-ternary:hover{
 	background-color: black;
 	color:white;
 }
-.btn2{
+.btn-ternary{
 	border-radius: 0px;
     background-color: #009688;
     color: white;
@@ -54,9 +54,13 @@
 	padding-bottom:15px;
 }
 .table>tbody>tr>td{
-	padding-top:20px;
-	padding-bottom:20px;
+	padding-top:15px;
+	padding-bottom:15px;
 }
+.notifyjs-corner{
+	transform:translate(-45%, 0);
+}
+
 @media screen and (max-width:768px){
 	.search-wrapper{
 		margin:0px;

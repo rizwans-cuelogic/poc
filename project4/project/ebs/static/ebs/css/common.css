@@ -91,12 +91,12 @@ ul li a{
 	font-weight: 700;
 	padding-top:10px;
 }
-.btn1{
+.btn-secondary{
 	border-radius:0px;
 	background-color:black;
 	color:white;
 }
-.btn1:hover{
+.btn-secondary:hover{
 	background-color:#009688;
 }
 @media screen and (max-width:768px){

@@ -17,7 +17,7 @@
 						
 					</th>
 					<th width="200">
-						<a  id="delete-button" class=" btn btn2">
+						<a  id="delete-button" class=" btn btn-ternary">
   						<i class="fa fa-trash-o fa-lg"></i>   Delete</a>
   					</th>
 					<th>
@@ -31,11 +31,14 @@
 						</div>
 					</th>
 					<th width="90">
-						<a  class="btn btn2" href="{% url 'create_blog' %}"><i class="fa fa-plus fa-fw"></i>  Add</a>
+						<a  class="btn btn-ternary" href="{% url 'create_blog' %}"><i class="fa fa-plus fa-fw"></i>  Add</a>
 					</th>
 				</tr>
 			</thead>
 			<tbody>
+				<tr class="no-result">
+					<td colspan="5"> </td>
+				</tr>
 				<tr class="warning no-result">
 					<td colspan="4"><i class="fa fa-warning"></i> No result</td>
 				</tr>
@@ -47,17 +50,17 @@
 					</td>
 					<td>
 					{% if query.blog_file %}
-						<img class="image img-responsive" src="/media_cdn/{{query.blog_file}}"/>
+						<img class="blog-image img-responsive" src="/media_cdn/{{query.blog_file}}"/>
 					{% else %}
-						<img class="image img-responsive" src="{% static 'ebs/img/default.png' %}"/>
+						<img class="blog-image img-responsive" src="{% static 'ebs/img/default.png' %}"/>
 					{% endif %}
 					</td>
 					<td>
 						<h3><a href="#">{{query.blog_title }}</a></h3>
-						<p class="text">{{ query.blog_description | truncatechars:300}}</p>
+						<p class="blog-text">{{ query.blog_description | truncatechars:300}}</p>
 					</td>
 					<td>
-						<a  class="btn btn2" href="#"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
+						<a class="btn btn-ternary" href="#"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
 					</td>
 				</tr>
 				{% endfor %}
