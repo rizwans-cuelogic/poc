@@ -183,9 +183,7 @@ class Test1(TestCase):
 		Organisation.objects.create(user=user1,
 									orgname=os.environ['ORG'],
 									orglogo='/home/rizwan/Downloads/gile.jpg')
-		response=client.post(reverse('loginresult'),
-	 						{'username':os.environ['USERNAME'],
-	 						'password':os.environ['PASSWORD']})
+		
 		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('create_blog'),
 	 							{'title':os.environ['TITLE'],

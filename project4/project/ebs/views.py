@@ -294,7 +294,7 @@ def delete_blog(request):
     newdata = request.user
     orgdata = Organisation.objects.get(user_id=newdata.id)
     swid = request.POST.getlist('checkboxes[]')
-    if(swid[0]=='on'):
+    if swid[0]=='on':
         swid.pop(0)
     for one in swid:
         obj = Blog.objects.get(id=one).delete()
