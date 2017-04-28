@@ -256,7 +256,14 @@ class Test1(TestCase):
 		print response.status_code
 		self.assertTrue(response.status_code,302)
 
-	
+	def test_manage_blog_fail(self):
+		client=Client()
+		categories=Categories.objects.create(name='beauty',state=True)
+		response=client.post(reverse('manage_blog'))
+		print response.status_code
+		self.assertTrue(response.status_code,302)
+		
+
 	def test_blogform_valid(self):
 	 	categories=Categories.objects.create(name='beauty',state=True)
 	 	blogform=BlogForm({'title':os.environ['TITLE'], 
@@ -273,4 +280,5 @@ class Test1(TestCase):
 	 						'published':os.environ['PUBLISHED']
 	 						})
 	 	self.assertFalse(blogform.is_valid())
+	
 	
