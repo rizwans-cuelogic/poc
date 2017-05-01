@@ -291,13 +291,20 @@ def manage_blog(request):
 
 @csrf_exempt
 def delete_blog(request):
-    orgdata = Organisation.objects.get(user_id=request.user.id)
-    swid = request.POST.getlist('checkboxes[]')
-    if swid[0]=='on':
-        swid.pop(0)
-    for one in swid:
-        obj = Blog.objects.get(id=one).delete()
-        BlogFile.objects.filter(blog_id=one).delete()
+    try:
+        orgdata = Organisation.objects.get(user_id=request.user.id)
+        swid = request.POST.getlist('checkboxes[]')
+        if swid[0]=='on':
+            swid.pop(0)
+        if len(swid)==0:
+            response = json.dumps({'status':'Failure'})
+            return HttpResponse(response, content_type="application/json")
+        for one in swid:
+            obj = Blog.objects.get(id=one).delete()
+            BlogFile.objects.filter(blog_id=one).delete()
 
-    response = json.dumps({'status':'Success'})
-    return HttpResponse(response, content_type="application/json")
+        response = json.dumps({'status':'Success'})
+        return HttpResponse(response, content_type="application/json")
+    except:
+        response = json.dumps({'status':'Failure'})
+        return HttpResponse(response, content_type="application/json")

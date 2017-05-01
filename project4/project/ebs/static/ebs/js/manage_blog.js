@@ -68,6 +68,13 @@ $(document).ready(function() {
             url+='?deleted=1'
             window.location.href=url;   
         }
+        else if(result['status']=="Failure"){
+            $.notify.defaults({ className: "error" })
+            $.notify( 
+                    "please add blogs",
+                    { position:"top center" }
+                  )
+        }
       }
     });
   }

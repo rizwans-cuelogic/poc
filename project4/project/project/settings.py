@@ -25,7 +25,7 @@ SECRET_KEY = 'o53zil_b%ux7iia^-x8e4o1deb&ga!vef!v7of7a6#_$v&us4m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dev.ebs.com', "172.21.32.76", '127.0.0.1','testserver']
+ALLOWED_HOSTS = ['dev.ebs.com', "172.21.32.76", '127.0.0.1','testserver','stagedhost']
 
 HOST='172.21.32.76:8000'
 # Application definition

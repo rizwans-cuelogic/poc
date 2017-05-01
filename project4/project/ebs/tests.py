@@ -7,9 +7,11 @@ from django.test import TestCase, Client
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.http import HttpRequest
 from django.test.utils import setup_test_environment
 from django.utils import timezone
 from django.core.files import File
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import (authenticate, login, logout,)
 from . import views
 from .models import Organisation, ForgotPassword,BlogFile,Blog,Comment,Categories
@@ -44,8 +46,7 @@ class Test1(TestCase):
 		self.assertTrue(form.is_valid())
 
 	def test_invalid_User_form(self):
-		w =User.objects.create(username=os.environ['USERNAME'], password='')
-		data = {'username': w.username, 'password': w.password,}
+		data = {'username':os.environ['USERNAME'], 'password':""}
 		form = UserForm(data=data)
 		self.assertFalse(form.is_valid())
 
@@ -54,9 +55,14 @@ class Test1(TestCase):
 		form=UserLoginForm(data=data)
 		self.assertTrue(form.is_valid())
 
+	def test_invalid_login_form(self):
+		data = {'username': os.environ['USERNAME'], 'password':""}
+		form = UserLoginForm(data=data)
+		self.assertFalse(form.is_valid())
+
 	def test_register(self):
 		client = Client()
-		img=File(open('/home/rizwan/Downloads/gile.jpg','r'))
+		img=File(open('/home/rizwan/a2.jpg','r'))
 		img=str(img)
 		new_group,created = Group.objects.get_or_create(name='client')
 		response = client.post(reverse('register'), 
@@ -65,7 +71,7 @@ class Test1(TestCase):
 									'password':os.environ['PASSWORD'],
 									'password1':os.environ['PASSWORD'], 
 									'orgname':os.environ['ORG'], 
-					'orglogo':File(open('/home/rizwan/Downloads/gile.jpg','r'))
+					'orglogo':File(open('/home/rizwan/a2.jpg','r'))
 													}
 								)
 		self.assertTrue(response.status_code, 200)
@@ -80,7 +86,7 @@ class Test1(TestCase):
 								 'password': os.environ['PASSWORD'],
 								 'password1':os.environ['PASSWORD'],
 								 'orgname': os.environ['ORG'],
-								 'orglogo':'/home/rizwan/Downloads/gile.jpg'})
+								 'orglogo':'/home/rizwan/a2.jpg'})
 		self.assertTrue(response.status_code, 200)
 		self.assertContains(response,'{"status": "Error", "message": "please fill the details"}')
 
@@ -178,16 +184,15 @@ class Test1(TestCase):
 		 							is_active=True)
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
-		img=File(open('/home/rizwan/Downloads/gile.jpg','r'))
+		img=File(open('/home/rizwan/a2.jpg','r'))
 		img=str(img)
 	 	new_group,created = Group.objects.get_or_create(name='client')
 		response=client.post(reverse('loginresult'),
 	 						{'username':os.environ['USERNAME'],
 	 						'password':os.environ['PASSWORD']})
-		print ["logged in "+ str(user1.id)] 
 		Organisation.objects.create(user=user1,
 									orgname=os.environ['ORG'],
-									orglogo='/home/rizwan/Downloads/gile.jpg')
+									orglogo='/home/rizwan/a2.jpg')
 		
 		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('create_blog'),
@@ -197,10 +202,32 @@ class Test1(TestCase):
 	 							'categories':categories.id,
 	 							'user':user1.id	 							
 	 						})
-		print response.status_code
 		self.assertTrue(response.status_code,200)
 
-	def test_create_blog_fail(self):
+	def test_create_blog_fail1(self):
+		client=Client()
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
+		img=File(open('/home/rizwan/a2.jpg','r'))
+		img=str(img)
+	 	new_group,created = Group.objects.get_or_create(name='client')
+		response=client.post(reverse('loginresult'),
+	 						{'username':os.environ['USERNAME'],
+	 						'password':os.environ['PASSWORD']})
+		categories=Categories.objects.create(name='beauty',state=True)
+		request=HttpRequest()
+		request.method='POST'
+		request.POST={'title':os.environ['TITLE'],
+	  							'description':os.environ['DESCRIPTION'],
+	  							'published':os.environ['PUBLISHED'],
+	  							'categories':categories.id}
+		request.user=user1
+		self.assertRaises(ObjectDoesNotExist,views.create_blog,request)
+	def test_create_blog_fail2(self):
 		client=Client()
 		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('create_blog'),
@@ -209,8 +236,9 @@ class Test1(TestCase):
 	 							'published':os.environ['PUBLISHED'],
 	 							'categories':categories.id,	 							
 	 						})
-		print response.status_code
 		self.assertTrue(response.status_code,302)
+		self.assertRedirects(response,expected_url='/?next=/create_blog/',
+							status_code=302,target_status_code=200)
 
 	def test_delete(self):
 		client=Client()
@@ -220,16 +248,15 @@ class Test1(TestCase):
 		 							is_active=True)
 		user1.set_password(os.environ['PASSWORD'])
 		user1.save()
-		img=File(open('/home/rizwan/Downloads/gile.jpg','r'))
+		img=File(open('/home/rizwan/a2.jpg','r'))
 		img=str(img)
 	 	new_group,created = Group.objects.get_or_create(name='client')
 		response=client.post(reverse('loginresult'),
 	 						{'username':os.environ['USERNAME'],
-	 						'password':os.environ['PASSWORD']})
-		print ["logged in "+ str(user1.id)] 
+	 						'password':os.environ['PASSWORD']}) 
 		Organisation.objects.create(user=user1,
 									orgname=os.environ['ORG'],
-									orglogo='/home/rizwan/Downloads/gile.jpg')
+									orglogo='/home/rizwan/a2.jpg')
 		org=Organisation.objects.get(user=user1)
 		categories=Categories.objects.create(name='beauty',state=True)
 		blog=Blog.objects.create(title=os.environ['TITLE'],
@@ -245,23 +272,84 @@ class Test1(TestCase):
 	 								'user':user1.id
 	 							} 							
 	 						)
-		print response.status_code
 		self.assertTrue(response.status_code,200)
-
-
-	def test_delete_blog_fail(self):
+		self.assertContains(response,'{"status": "Success"}')
+	
+	def test_delete_fail1(self):
 		client=Client()
-		categories=Categories.objects.create(name='beauty',state=True)
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
+		img=File(open('/home/rizwan/a2.jpg','r'))
+		img=str(img)
+	 	new_group,created = Group.objects.get_or_create(name='client')
+		response=client.post(reverse('loginresult'),
+	 						{'username':os.environ['USERNAME'],
+	 						'password':os.environ['PASSWORD']}) 
+		Organisation.objects.create(user=user1,
+									orgname=os.environ['ORG'],
+									orglogo='/home/rizwan/a2.jpg')
+		org=Organisation.objects.get(user=user1)
+		
+		checkboxes=[]
+		checkboxes.insert(0,"on")
+		response=client.post(reverse('delete_blog'),
+	 							{'checkboxes[]':checkboxes,
+	 								'user':user1.id
+	 							} 							
+	 						)
+		self.assertTrue(response.status_code,200)
+		self.assertContains(response,'{"status": "Failure"}')
+	
+
+	def test_delete_blog_fail2(self):
+		client=Client()
 		response=client.post(reverse('manage_blog'))
-		print response.status_code
 		self.assertTrue(response.status_code,302)
+		self.assertRedirects(response,
+							expected_url='/?next=/manage_blog/',
+							status_code=302,target_status_code=200)
+
+	def test_manage_blog(self):
+		client=Client()
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
+		img=File(open('/home/rizwan/a2.jpg','r'))
+		img=str(img)
+	 	new_group,created = Group.objects.get_or_create(name='client')
+		response=client.post(reverse('loginresult'),
+	 						{'username':os.environ['USERNAME'],
+	 						'password':os.environ['PASSWORD']})
+ 
+		Organisation.objects.create(user=user1,
+									orgname=os.environ['ORG'],
+									orglogo='/home/rizwan/a2.jpg')
+		org=Organisation.objects.get(user=user1)
+		categories=Categories.objects.create(name='beauty',state=True)
+		blog=Blog.objects.create(title=os.environ['TITLE'],
+									description=os.environ['DESCRIPTION'],
+									published=os.environ['PUBLISHED'],
+									organisation=org,
+									categories=categories)
+		response=client.get(reverse('manage_blog'),{'user':user1.id})
+		self.assertTrue(response.status_code,200)
+		self.assertIn(os.environ['TITLE'],response.content.decode())
 
 	def test_manage_blog_fail(self):
 		client=Client()
-		categories=Categories.objects.create(name='beauty',state=True)
 		response=client.post(reverse('manage_blog'))
-		print response.status_code
 		self.assertTrue(response.status_code,302)
+		self.assertRedirects(response,
+							expected_url='/?next=/manage_blog/',
+							status_code=302,
+							target_status_code=200)
 		
 
 	def test_blogform_valid(self):
@@ -279,6 +367,7 @@ class Test1(TestCase):
 	 						'description':os.environ['DESCRIPTION'],
 	 						'published':os.environ['PUBLISHED']
 	 						})
+
 	 	self.assertFalse(blogform.is_valid())
 	
 	
