@@ -308,3 +308,58 @@ def delete_blog(request):
     except:
         response = json.dumps({'status':'Failure'})
         return HttpResponse(response, content_type="application/json")
+
+def update_blog(request,id):
+    bloginstance=Blog.objects.get(id=id)
+    fileinstance=BlogFile.objects.filter(blog=id)
+    if request.method=='POST':
+        import pdb
+        pdb.set_trace()
+        blogform=BlogForm(request.POST or None,request.FILES or None,instance=bloginstance)
+        blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
+        if blogform.is_valid() and  blogfileform.is_valid():
+            files = request.FILES.values()
+            blog=blogform.save(commit=False)
+            orgobj=Organisation.objects.get(user_id=request.user.id)
+            blog.organisation_id=orgobj.id
+            if 'button1' in request.POST:
+                blog.draft=True
+            blog.save()
+            for a_file in files:
+                instance=BlogFile()
+                instance.blog_id=blog.id
+                instance.attachments=a_file
+                instance.save()
+            blog.save()
+            messages.success(request, 'Blog details saved successfully.')
+            return HttpResponseRedirect('/manage_blog',{"messages":messages})
+
+    else:
+        blogform=BlogForm(instance=bloginstance)
+        attachments_value= ""
+        image1_value=""
+        image2_value=""
+        if not fileinstance:
+            data={}
+        if len(fileinstance)==1:
+            request.FILES['attachments']=fileinstance[0].attachments
+            attachments_value=fileinstance[0].attachments.name
+        if len(fileinstance)==2:
+            request.FILES['attachments']=fileinstance[0].attachments
+            request.FILES['image1']=fileinstance[1].attachments
+            attachments_value=fileinstance[0].attachments.name
+            image1_value=fileinstance[1].attachments.name         
+        if len(fileinstance)==3:
+            request.FILES['attachments']=fileinstance[0].attachments
+            request.FILES['image1']=fileinstance[1].attachments
+            request.FILES['image2']=fileinstance[2].attachments
+            attachments_value=fileinstance[0].attachments.name
+            image1_value=fileinstance[1].attachments.name
+            image2_value=fileinstance[2].attachments.name
+        blogfileform=BlogFileForm(request.POST,files=request.FILES)                      
+        return render(request,'ebs/update_blog.html',
+                                    {'blogform':blogform,'blogfileform':blogfileform,
+                                    'bloginstance':bloginstance,
+                                    'attachments_value':attachments_value,
+                                    'image1_value':image1_value,
+                                    'image2_value':image2_value})
