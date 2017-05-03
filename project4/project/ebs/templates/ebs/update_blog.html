@@ -38,27 +38,27 @@
                 {{blogform.image.errors}}
                 <label class="control-label">Attachments</label><br>
                     {{blogfileform.attachments}}
-                    <input type="hidden" value="{{ blogfileform.attachments.value }}" name="attachments">
                     {{blogfileform.image1}}
-                    <input type="hidden" value="{{ blogfileform.image1.value }}" name="image1">
                     {{blogfileform.image2}}
-                    <input type="hidden" value="{{ blogfileform.image2.value }}" name="image2">
             </div>
         </div>
         <div class="row">
             <div class="upload-button col-md-6">
         {% if attachments_value %}
-            <label id="label-uploaded">Uploaded Files</label>
-            <div id="file1">{{attachments_value}}
-            <button id="button1" class="btn2" type="button" value="{{attachments_id}}">&times;</button></div>
+                <label id="label-uploaded">Uploaded Files</label>
+                <div id="file1">{{attachments_value}}
+                    <button id="button1" class="btn2" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
         {% endif %}
         {% if image1_value %}
-            <div id="file2">{{image1_value}}
-            <button id="button2" class="btn2" type="button" value="{{image1_id}}">&times;</button></div>
+                <div id="file2">{{image1_value}}
+                    <button id="button2" class="btn2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </div>
         {% endif %}
         {% if image2_value %}
             <div id="file3">{{image2_value}}
-            <button id="button3" class="btn2" type="button" value="{{image2_id}}">&times;</button></div>
+                <button id="button3" class="btn2" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </div>
         {% endif %} 
             </div>
         </div>
@@ -82,6 +82,12 @@
                     {{blogform.published.errors}}
                     {{blogform.published}}
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label id="status" class="control-label">Status</label>
+                {{blogform.published_state}}
             </div>
         </div>
         <div class="row">

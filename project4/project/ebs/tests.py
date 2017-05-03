@@ -370,4 +370,37 @@ class Test1(TestCase):
 
 	 	self.assertFalse(blogform.is_valid())
 	
-	
+	def test_update_blog(self):
+		client=Client()
+		user1=User.objects.create(username=os.environ['USERNAME'],
+		 							email=os.environ['EMAIL'],
+		 							password=os.environ['PASSWORD'],
+		 							is_active=True)
+		user1.set_password(os.environ['PASSWORD'])
+		user1.save()
+		img=File(open('/home/rizwan/a2.jpg','r'))
+		img=str(img)
+	 	new_group,created = Group.objects.get_or_create(name='client')
+		response=client.post(reverse('loginresult'),
+	 						{'username':os.environ['USERNAME'],
+	 						'password':os.environ['PASSWORD']})
+ 
+		Organisation.objects.create(user=user1,
+									orgname=os.environ['ORG'],
+									orglogo='/home/rizwan/a2.jpg')
+		org=Organisation.objects.get(user=user1)
+		categories=Categories.objects.create(name='beauty',state=True)
+		blog=Blog.objects.create(title=os.environ['TITLE'],
+									description=os.environ['DESCRIPTION'],
+									published=os.environ['PUBLISHED'],
+									organisation=org,
+									categories=categories)
+		response=client.post(reverse('update_blog'),
+	 							{'title':os.environ['TITLE'],
+	 							'description':os.environ['DESCRIPTION'],
+	 							'published':os.environ['PUBLISHED'],
+	 							'categories':categories.id,
+	 							'id':user1.id	 							
+	 						})
+		self.assertTrue(response.status_code,200)
+		

@@ -82,7 +82,14 @@ $(document).ready(function(){
             }
         }
     }
-    else if(input_date<now ){    
+    else{ 
+    	if(input_date<now ){    
             $("#id_published").prop("readonly", true);
-    }
+    	}
+	}
+
+	if(!$('#id_published').is('[readonly]')){
+		$('#id_published_state').hide();
+		$('#status').hide();
+	}
 })

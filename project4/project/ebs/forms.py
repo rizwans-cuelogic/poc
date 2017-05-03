@@ -72,6 +72,10 @@ class UserLoginForm(forms.Form):
 
 DateInput=partial(forms.DateInput, {'class' : 'datepicker' })
 class BlogForm(forms.ModelForm):
+	TRUE_FALSE_CHOICE = (
+    (1, "Enable"),
+    (0, "Disable")
+	)
 	title=forms.CharField(required=True,label="title",
 					widget=forms.TextInput(
 						attrs={
@@ -100,7 +104,9 @@ class BlogForm(forms.ModelForm):
 					)
 	comment_state=forms.BooleanField(required=False)
 
-	
+	published_state = forms.ChoiceField(choices = TRUE_FALSE_CHOICE, label="Somelabel", 
+                            initial="Enable", widget=forms.Select(attrs={"class":"catagory form-control" }), required=False,
+                        )
 	class Meta:
 			model=Blog
 			fields=[

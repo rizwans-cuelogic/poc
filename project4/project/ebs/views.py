@@ -322,6 +322,8 @@ def update_blog(request,id):
             blog.organisation_id=orgobj.id
             if 'button1' in request.POST:
                 blog.draft=True
+            else:
+                blog.draft=False
             blog.save()
             for a_file in files:
                 instance=BlogFile()
@@ -333,6 +335,9 @@ def update_blog(request,id):
             return HttpResponseRedirect('/manage_blog',{"messages":messages})
 
     else:
+        # if timezone.now()>bloginstance.published and bloginstance.published_state==False:
+        #     bloginstance.published_state=True
+        
         blogform=BlogForm(instance=bloginstance)
         attachments_value= ""
         image1_value=""
@@ -341,29 +346,23 @@ def update_blog(request,id):
         image1_id=0
         image2_id=0
         if not fileinstance:
-            data={}
+            pass
         if len(fileinstance)==1:
-            request.FILES['attachments']=fileinstance[0].attachments
             attachments_value=fileinstance[0].attachments.name
             attachments_id=fileinstance[0].id
         if len(fileinstance)==2:
-            request.FILES['attachments']=fileinstance[0].attachments
-            request.FILES['image1']=fileinstance[1].attachments
             attachments_value=fileinstance[0].attachments.name
             image1_value=fileinstance[1].attachments.name
             attachments_id=fileinstance[0].id
             image1_id=fileinstance[1].id          
         if len(fileinstance)==3:
-            request.FILES['attachments']=fileinstance[0].attachments
-            request.FILES['image1']=fileinstance[1].attachments
-            request.FILES['image2']=fileinstance[2].attachments
             attachments_value=fileinstance[0].attachments.name
             image1_value=fileinstance[1].attachments.name
             image2_value=fileinstance[2].attachments.name
             attachments_id=fileinstance[0].id
             image1_id=fileinstance[1].id
             image2_id=fileinstance[2].id      
-        blogfileform=BlogFileForm(request.POST,files=request.FILES)                      
+        blogfileform=BlogFileForm(request.POST)                      
         return render(request,'ebs/update_blog.html',
                                     {'blogform':blogform,'blogfileform':blogfileform,
                                     'bloginstance':bloginstance,
