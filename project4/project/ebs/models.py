@@ -67,7 +67,7 @@ class Blog(models.Model):
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
     published=models.DateTimeField(default=timezone.now)
-    published_state=models.BooleanField(default=False)
+    published_state=models.BooleanField(default=False,blank=True)
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
     comment_state=models.BooleanField(default=True)

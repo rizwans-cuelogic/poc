@@ -3,6 +3,7 @@
 {% block head_extra %}	
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/edit_blog.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
 {{ blogform.media }}
 {% endblock %}
@@ -44,20 +45,23 @@
                     <input type="hidden" value="{{ blogfileform.image2.value }}" name="image2">
             </div>
         </div>
+        <div class="row">
+            <div class="upload-button col-md-6">
         {% if attachments_value %}
             <label id="label-uploaded">Uploaded Files</label>
-            <span id="file1">{{attachments_value}}
-            <button id="button1" class="btn2" type="button">&times;</button></span>
+            <div id="file1">{{attachments_value}}
+            <button id="button1" class="btn2" type="button" value="{{attachments_id}}">&times;</button></div>
         {% endif %}
         {% if image1_value %}
-            <span id="file2">{{image1_value}}
-            <button id="button2" class="btn2" type="button">&times;</button></span>
+            <div id="file2">{{image1_value}}
+            <button id="button2" class="btn2" type="button" value="{{image1_id}}">&times;</button></div>
         {% endif %}
         {% if image2_value %}
-            <span id="file3">{{image2_value}}
-            <button id="button3" class="btn2" type="button">&times;</button></span>
+            <div id="file3">{{image2_value}}
+            <button id="button3" class="btn2" type="button" value="{{image2_id}}">&times;</button></div>
         {% endif %} 
-
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-3">
                 {{blogform.categories.errors}}
@@ -98,6 +102,6 @@
 <script type="text/javascript" src="{% static 'ebs/js/bootstrap-datetimepicker.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-<script type="text/javascript" src="{% static 'ebs/js/create_blog.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/edit_blog.js' %}"></script>
+<script type="text/javascript" src="{% static 'ebs/js/create_blog.js' %}"></script>
 {% endblock %}

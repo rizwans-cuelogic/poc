@@ -1,25 +1,26 @@
-
 $(document).ready(function() {  
+    debugger;
     $('#createform').on('submit', function (e) {
         var file_error_one = 0
         var file_error_two = 0
         var file_error_three = 0
-    var file_error_four=0
-    var file_error_five=0
-    input=$('#id_published').val();
+        var file_error_four=0
+        var file_error_five=0
+        input=$('#id_published').val();
         input=input.split(" ");
         time=input[1].split(":");
-    hours=time[0];
-    minutes=time[1];
+        hours=time[0];
+        minutes=time[1];
         input_date=input[0].split("-");
         input_date=new Date(input_date[0],input_date[1]-1,input_date[2]);
         now=new Date();
-    now1=new Date();
-    now1.setHours(0,0,0,0)
-    getime=now.toLocaleString('en-GB');
-    current_hours=now.getHours();
-    current_minutes=now.getMinutes();
-    if(input_date.valueOf()==now1.valueOf()){
+        now1=new Date();
+        now1.setHours(0,0,0,0)
+        getime=now.toLocaleString('en-GB');
+        current_hours=now.getHours();
+        current_minutes=now.getMinutes();
+
+    if( !$('#id_published').is('[readonly]') && input_date.valueOf()==now1.valueOf()){
         if(hours<current_hours){
             if ($("#datetimepicker1").next(".validation").length == 0){
                  $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top: 5px;'>Invalid Date And Time</div>");
@@ -39,7 +40,7 @@ $(document).ready(function() {
         }
     }
     else{
-        if(input_date<now ){    
+        if( !$('#id_published').is('[readonly]') && input_date<now ){    
             if ($("#datetimepicker1").next(".validation").length == 0){
                  $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top:5px;'>Invalid Date And Time</div>");
                  

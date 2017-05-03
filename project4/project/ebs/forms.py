@@ -100,6 +100,7 @@ class BlogForm(forms.ModelForm):
 					)
 	comment_state=forms.BooleanField(required=False)
 
+	
 	class Meta:
 			model=Blog
 			fields=[
@@ -108,7 +109,8 @@ class BlogForm(forms.ModelForm):
 				"tags",
 				"published",
 				"categories",
-				"comment_state"
+				"comment_state",
+				"published_state"
 			]
 
 class BlogFileForm(forms.Form):
