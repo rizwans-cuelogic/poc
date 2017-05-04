@@ -1,5 +1,4 @@
 $(document).ready(function() {  
-    debugger;
     $('#createform').on('submit', function (e) {
         var file_error_one = 0
         var file_error_two = 0

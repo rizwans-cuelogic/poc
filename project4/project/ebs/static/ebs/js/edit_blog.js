@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	debugger;
 	if($('#file1').text()!=""){
 		$('#id_attachments').hide();
 	} 
@@ -9,11 +8,20 @@ $(document).ready(function(){
 	if($('#file3').text()!=""){
 		$('#id_image2').hide();
 	}
+	if($('#file3').text()!="" && $('#file1').text()!="" && $('#file2').text()!=""){
+		$('#attached').hide();
+		$('#attached-row').removeClass('form-group');
+	}
 	$(document).on('click','#button1',function(){
+		$('#attached').show()
 		$('#file1').remove();
 		$('#id_attachments').show();
+		$('#attached-row').addClass('form-group');
 		if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
 			$('#label-uploaded').remove();
+		}
+		if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+			$('#upload-row').removeClass('form-group');
 		}
 		var value=$(this).attr('value');
 		$.ajax({
@@ -26,10 +34,15 @@ $(document).ready(function(){
 	    });
 	})
  	$(document).on('click','#button2',function(){
+ 		$('#attached').show()
 		$('#file2').remove();
 		$('#id_image1').show();
+		$('#attached-row').addClass('form-group');
 		if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
 			$('#label-uploaded').remove();
+		}
+		if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+			$('#upload-row').removeClass('form-group');
 		}
 		var value=$(this).attr('value');
 		$.ajax({
@@ -42,10 +55,15 @@ $(document).ready(function(){
 	    });		
 	})
 	$(document).on('click','#button3',function(){
+		$('#attached').show()
 		$('#file3').remove();
 		$('#id_image2').show();
+		$('#attached-row').addClass('form-group');
 		if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
 			$('#label-uploaded').remove();
+		}
+		if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+			$('#upload-row').removeClass('form-group');
 		}
 		var value=$(this).attr('value');
 		$.ajax({
@@ -58,6 +76,9 @@ $(document).ready(function(){
 	    	}
 	    });
 	})
+	if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+		$('#upload-row').removeClass('form-group');
+	}
 
 		input=$('#id_published').val();
         input=input.split(" ");

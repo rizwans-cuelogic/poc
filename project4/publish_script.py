@@ -1,3 +1,4 @@
+#!/user/bin/python
 import os
 
 DATABASE_NAME = os.environ.get('DATABASE_NAME')
@@ -20,10 +21,6 @@ This script does the following:
 4. Close connection. 
 
 '''
-
-PUBLISH_QUERY = "update ebs_blog set published_state=1 where published<now() and published_state=0"
-
-
 import MySQLdb
 
 if __name__=="__main__":
@@ -38,15 +35,11 @@ if __name__=="__main__":
 		cursor = db.cursor()
 
 		# execute SQL query using execute() method.
-		cursor.execute("update ebs_blog set published_state=1 where DATE(published)<=DATE(now()) and published_state=0")
-		cursor.execute("select title, published, published_state,published_count from ebs_blog where published_state=1")
-		# Fetch a single row using fetchone() method.
-		data = cursor.fetchall()
-		for row in data:
-			print "Data: ",row,"\n"
-
-		# disconnect from server
+		cursor.execute("update ebs_blog set published_state=1, is_enable=1 where DATE(published)<=DATE(now()) and is_enable=0")
 		db.commit()
+		# Fetch a single row using fetchone() method.
+		print "running script"
+		# disconnect from server
 		db.close()
 	except Exception as e:
 		print e

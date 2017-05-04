@@ -34,31 +34,31 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6">
+            <div id ="attached-row" class="form-group col-md-6">
                 {{blogform.image.errors}}
-                <label class="control-label">Attachments</label><br>
+                <label id="attached" class="control-label">Attachments</label>
                     {{blogfileform.attachments}}
                     {{blogfileform.image1}}
                     {{blogfileform.image2}}
             </div>
         </div>
         <div class="row">
-            <div class="upload col-md-6">
+            <div id="upload-row" class="upload form-group col-md-6">
         {% if attachments_value %}
                 <label id="label-uploaded">Uploaded Files</label>
-                <div id="file1">{{attachments_value}}
-                    <button id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                </div>
+                <p id="file1">{{attachments_value}}
+                    <button class="pull-right" id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </p>
         {% endif %}
         {% if image1_value %}
-                <div id="file2">{{image1_value}}
-                    <button id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                </div>
+                <p id="file2">{{image1_value}}
+                    <button class="pull-right" id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </p>
         {% endif %}
         {% if image2_value %}
-            <div id="file3">{{image2_value}}
-                <button id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-            </div>
+            <p id="file3">{{image2_value}}
+                <button class="pull-right" id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </p>
         {% endif %} 
             </div>
         </div>

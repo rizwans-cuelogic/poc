@@ -71,7 +71,7 @@ class Blog(models.Model):
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)
     comment_state=models.BooleanField(default=True)
-    published_count=models.BooleanField(default=False)
+    is_enable=models.BooleanField(default=False)
     
     def __unicode__(self):
         return self.title

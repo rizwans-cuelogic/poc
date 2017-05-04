@@ -73,8 +73,8 @@ class UserLoginForm(forms.Form):
 DateInput=partial(forms.DateInput, {'class' : 'datepicker' })
 class BlogForm(forms.ModelForm):
 	TRUE_FALSE_CHOICE = (
-    (1, "Enable"),
-    (0, "Disable")
+    (True, "Enable"),
+    (False, "Disable")
 	)
 	title=forms.CharField(required=True,label="title",
 					widget=forms.TextInput(
@@ -123,7 +123,7 @@ class BlogFileForm(forms.Form):
 	attachments=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={
-								   'class':'form-control ',
+								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	image1=forms.FileField(required=False,label="image",
