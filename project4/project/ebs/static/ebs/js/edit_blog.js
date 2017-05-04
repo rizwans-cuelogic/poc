@@ -34,16 +34,6 @@ $(document).ready(function(){
 	    });
 	})
  	$(document).on('click','#button2',function(){
- 		$('#attached').show()
-		$('#file2').remove();
-		$('#id_image1').show();
-		$('#attached-row').addClass('form-group');
-		if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
-			$('#label-uploaded').remove();
-		}
-		if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
-			$('#upload-row').removeClass('form-group');
-		}
 		var value=$(this).attr('value');
 		$.ajax({
 			url: '../../update_delete_blog/',
@@ -51,6 +41,16 @@ $(document).ready(function(){
 	        dataType: 'json',
 	        type: 'post',
 	        success: function (result) {
+	        	$('#attached').show()
+				$('#file2').remove();
+				$('#id_image1').show();
+				$('#attached-row').addClass('form-group');
+				if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
+					$('#label-uploaded').remove();
+				}
+				if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+					$('#upload-row').removeClass('form-group');
+				}
 	    	}
 	    });		
 	})

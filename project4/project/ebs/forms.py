@@ -76,17 +76,21 @@ class BlogForm(forms.ModelForm):
     (True, "Enable"),
     (False, "Disable")
 	)
-	title=forms.CharField(required=True,label="title",
+	title=forms.CharField(max_length=150,required=True,label="title",
 					widget=forms.TextInput(
 						attrs={
 								'placeholder':'Title',
 							   'class':'form-control',
+
 							   }))
 	description = forms.CharField(required=True,label="description",
 							widget=forms.Textarea(
 								attrs={
 									   'placeholder':'Add Description',
-									   'class': 'form-control'}))
+									   'class': 'form-control',
+									    'rows': '10',
+                						'cols': '90',
+                						'maxlength': '2000',}))
 	tags= forms.CharField(required=False,label="title",
 						widget=forms.TextInput(
 							 attrs={

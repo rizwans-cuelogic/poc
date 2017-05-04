@@ -46,18 +46,21 @@
             <div id="upload-row" class="upload form-group col-md-6">
         {% if attachments_value %}
                 <label id="label-uploaded">Uploaded Files</label>
-                <p id="file1">{{attachments_value}}
-                    <button class="pull-right" id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <p class="media-file" id="file1">
+                <button class="media-button pull-right" id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                {{attachments_value}}
                 </p>
         {% endif %}
         {% if image1_value %}
-                <p id="file2">{{image1_value}}
-                    <button class="pull-right" id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <p class="media-file" id="file2">
+                <button class="media-button pull-right" id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                {{image1_value}}
                 </p>
         {% endif %}
         {% if image2_value %}
-            <p id="file3">{{image2_value}}
-                <button class="pull-right" id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <p class="media-file" id="file3">
+            <button class="media-button pull-right" id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            {{image2_value}}
             </p>
         {% endif %} 
             </div>
@@ -77,8 +80,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-3">
-                <label class="control-label">*Publish on</label>	
-                <div id="datetimepicker1">
+                <label class="control-label">*Publish on</label><div id="datetimepicker1">
                     {{blogform.published.errors}}
                     {{blogform.published}}
                 </div>

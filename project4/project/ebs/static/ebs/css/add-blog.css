@@ -19,8 +19,19 @@
 .buttons{
 	text-align:right;
 }
+.media-button{
+	border:none;
+}
+.media-file{
+	word-wrap:break-word;
+	padding-right:15px;
+}
 @media screen and (max-width:768px){
 	.buttons{
 		text-align:center;
 	}
+}
+
+.file-elem{
+	width:90%;
 }
