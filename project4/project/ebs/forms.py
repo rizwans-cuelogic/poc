@@ -105,8 +105,8 @@ class BlogForm(forms.ModelForm):
 	comment_state=forms.BooleanField(required=False)
 
 	published_state = forms.ChoiceField(choices = TRUE_FALSE_CHOICE, label="Somelabel", 
-                            initial="Enable", widget=forms.Select(attrs={"class":"catagory form-control" }), required=False,
-                        )
+                         		widget=forms.Select(attrs={"class":"catagory form-control" }), required=False,
+                         )
 	class Meta:
 			model=Blog
 			fields=[

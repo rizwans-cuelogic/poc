@@ -335,8 +335,6 @@ def update_blog(request,id):
             return HttpResponseRedirect('/manage_blog',{"messages":messages})
 
     else:
-        # if timezone.now()>bloginstance.published and bloginstance.published_state==False:
-        #     bloginstance.published_state=True
         
         blogform=BlogForm(instance=bloginstance)
         attachments_value= ""

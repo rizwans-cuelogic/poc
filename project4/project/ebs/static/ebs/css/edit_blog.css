@@ -1,10 +1,10 @@
-.upload-button{
+.upload{
 	margin-top:15px;
 }
-.upload-button button{
+.upload button{
 	border:none;
 	margin-left:20px;
 }
-.upload-button div{
+.upload div{
 	padding:5px 0px;
 }

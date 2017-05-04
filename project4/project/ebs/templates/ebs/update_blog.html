@@ -43,21 +43,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="upload-button col-md-6">
+            <div class="upload col-md-6">
         {% if attachments_value %}
                 <label id="label-uploaded">Uploaded Files</label>
                 <div id="file1">{{attachments_value}}
-                    <button id="button1" class="btn2" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    <button id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </div>
         {% endif %}
         {% if image1_value %}
                 <div id="file2">{{image1_value}}
-                    <button id="button2" class="btn2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    <button id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </div>
         {% endif %}
         {% if image2_value %}
             <div id="file3">{{image2_value}}
-                <button id="button3" class="btn2" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>
         {% endif %} 
             </div>
