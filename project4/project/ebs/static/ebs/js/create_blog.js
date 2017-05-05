@@ -19,7 +19,7 @@ $(document).ready(function() {
         current_hours=now.getHours();
         current_minutes=now.getMinutes();
 
-    if( !$('#id_published').is('[readonly]') && input_date.valueOf()==now1.valueOf()){
+    if(!$('#id_published').is('[readonly]') && input_date.valueOf()==now1.valueOf()){
         if(hours<current_hours){
             if ($("#datetimepicker1").next(".validation").length == 0){
                  $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top: 5px;'>Please Select Future Date And Time</div>");

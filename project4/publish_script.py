@@ -35,7 +35,7 @@ if __name__=="__main__":
 		cursor = db.cursor()
 
 		# execute SQL query using execute() method.
-		cursor.execute("update ebs_blog set published_state=1, is_enable=1 where DATE(published)<=DATE(now()) and is_enable=0")
+		cursor.execute("update ebs_blog set published_state=1, is_enable=1 where DATE(published)<=DATE(now()) and is_enable=0 and draft=0")
 		db.commit()
 		# Fetch a single row using fetchone() method.
 		print "running script"

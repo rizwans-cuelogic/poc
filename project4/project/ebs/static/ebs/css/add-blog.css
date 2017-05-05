@@ -21,10 +21,11 @@
 }
 .media-button{
 	border:none;
+	margin-right:-50px;
 }
 .media-file{
 	word-wrap:break-word;
-	padding-right:15px;
+	padding-right:50px;
 }
 @media screen and (max-width:768px){
 	.buttons{

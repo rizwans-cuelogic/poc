@@ -142,4 +142,3 @@ class BlogFileForm(forms.Form):
 								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
-	

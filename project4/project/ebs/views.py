@@ -322,6 +322,7 @@ def update_blog(request,id):
             blog.organisation_id=orgobj.id
             if 'button1' in request.POST:
                 blog.draft=True
+                blog.published_state=False
             else:
                 blog.draft=False
             blog.save()
