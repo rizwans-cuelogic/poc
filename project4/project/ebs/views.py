@@ -378,3 +378,4 @@ def update_delete_blog(request):
         file.delete()
         response = json.dumps({'status':'Success'})
         return HttpResponse(response, content_type="application/json")
+        

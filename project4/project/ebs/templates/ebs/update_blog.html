@@ -3,7 +3,6 @@
 {% block head_extra %}	
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/edit_blog.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
 {{ blogform.media }}
 {% endblock %}
@@ -43,7 +42,7 @@
             </div>
         </div>
         <div class="row">
-            <div id="upload-row" class="upload form-group col-md-6">
+            <div id="upload-row" class="form-group col-md-6">
         {% if attachments_value %}
                 <label id="label-uploaded">Uploaded Files</label>
                 <p class="media-file" id="file1">

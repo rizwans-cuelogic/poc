@@ -22,7 +22,7 @@ $(document).ready(function() {
     if( !$('#id_published').is('[readonly]') && input_date.valueOf()==now1.valueOf()){
         if(hours<current_hours){
             if ($("#datetimepicker1").next(".validation").length == 0){
-                 $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top: 5px;'>Invalid Date And Time</div>");
+                 $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top: 5px;'>Please Select Future Date And Time</div>");
         }           
             file_error_four=1;
             $( "#id_published" ).focus();    
@@ -30,7 +30,7 @@ $(document).ready(function() {
         if(hours==current_hours){
             if(minutes<current_minutes){
             if ($("#datetimepicker1").next(".validation").length == 0){
-            $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top:5px;'>Invalid Date And Time</div>");
+            $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top:5px;'>Please Select Future Date And Time</div>");
             }               
                 file_error_four=1;
                 $( "#id_published" ).focus();
@@ -41,7 +41,7 @@ $(document).ready(function() {
     else{
         if( !$('#id_published').is('[readonly]') && input_date<now ){    
             if ($("#datetimepicker1").next(".validation").length == 0){
-                 $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top:5px;'>Invalid Date And Time</div>");
+                $("#datetimepicker1").after("<div class='validation' style='color:red;margin-top:5px;'>Please Select Future Date And Time</div>");
                  
         }
             file_error_four=1;

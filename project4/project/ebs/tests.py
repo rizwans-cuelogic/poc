@@ -460,3 +460,4 @@ class Test1(TestCase):
 		request=HttpRequest()
 		request.method='GET'
 		self.assertRaises(ObjectDoesNotExist,views.update_blog,request,id=2)
+		

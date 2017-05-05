@@ -76,7 +76,7 @@ class BlogForm(forms.ModelForm):
     (True, "Enable"),
     (False, "Disable")
 	)
-	title=forms.CharField(max_length=150,required=True,label="title",
+	title=forms.CharField(max_length=125,required=True,label="title",
 					widget=forms.TextInput(
 						attrs={
 								'placeholder':'Title',
@@ -91,7 +91,7 @@ class BlogForm(forms.ModelForm):
 									    'rows': '10',
                 						'cols': '90',
                 						'maxlength': '2000',}))
-	tags= forms.CharField(required=False,label="title",
+	tags= forms.CharField(max_length=100,required=False,label="title",
 						widget=forms.TextInput(
 							 attrs={
 							 		'placeholder':'Tags',

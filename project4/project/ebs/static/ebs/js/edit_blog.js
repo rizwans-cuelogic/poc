@@ -13,16 +13,6 @@ $(document).ready(function(){
 		$('#attached-row').removeClass('form-group');
 	}
 	$(document).on('click','#button1',function(){
-		$('#attached').show()
-		$('#file1').remove();
-		$('#id_attachments').show();
-		$('#attached-row').addClass('form-group');
-		if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
-			$('#label-uploaded').remove();
-		}
-		if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
-			$('#upload-row').removeClass('form-group');
-		}
 		var value=$(this).attr('value');
 		$.ajax({
 			url: '../../update_delete_blog/',
@@ -30,6 +20,16 @@ $(document).ready(function(){
 	        dataType: 'json',
 	        type: 'post',
 	        success: function (result) {
+	        	$('#attached').show()
+				$('#file1').remove();
+				$('#id_attachments').show();
+				$('#attached-row').addClass('form-group');
+				if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
+					$('#label-uploaded').remove();
+				}
+				if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+					$('#upload-row').removeClass('form-group');
+				}
 	    	}
 	    });
 	})
@@ -55,16 +55,6 @@ $(document).ready(function(){
 	    });		
 	})
 	$(document).on('click','#button3',function(){
-		$('#attached').show()
-		$('#file3').remove();
-		$('#id_image2').show();
-		$('#attached-row').addClass('form-group');
-		if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
-			$('#label-uploaded').remove();
-		}
-		if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
-			$('#upload-row').removeClass('form-group');
-		}
 		var value=$(this).attr('value');
 		$.ajax({
 			url: '../../update_delete_blog/',
@@ -72,7 +62,16 @@ $(document).ready(function(){
 	        dataType: 'json',
 	        type: 'post',
 	        success: function (result) {
-	    		 	
+	        	$('#attached').show()
+				$('#file3').remove();
+				$('#id_image2').show();
+				$('#attached-row').addClass('form-group');
+				if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
+					$('#label-uploaded').remove();
+				}
+				if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+					$('#upload-row').removeClass('form-group');
+				}
 	    	}
 	    });
 	})
