@@ -11,5 +11,7 @@ urlpatterns = [
     url(r'^recover_password/$', views.recover_password, name='recover_password'),
     url(r'^create_blog/$',views.create_blog,name='create_blog'),
     url(r'^manage_blog/$',views.manage_blog,name='manage_blog'),
-    url(r'^delete_blog/$',views.delete_blog,name='delete_blog')
+    url(r'^delete_blog/$',views.delete_blog,name='delete_blog'),
+    url(r'^update_blog/(?P<id>\d+)/$',views.update_blog,name='update_blog'),
+    url(r'^update_delete_blog/$',views.update_delete_blog,name='update_delete_blog')
 ]

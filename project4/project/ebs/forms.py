@@ -72,18 +72,26 @@ class UserLoginForm(forms.Form):
 
 DateInput=partial(forms.DateInput, {'class' : 'datepicker' })
 class BlogForm(forms.ModelForm):
-	title=forms.CharField(required=True,label="title",
+	TRUE_FALSE_CHOICE = (
+    (True, "Enable"),
+    (False, "Disable")
+	)
+	title=forms.CharField(max_length=125,required=True,label="title",
 					widget=forms.TextInput(
 						attrs={
 								'placeholder':'Title',
 							   'class':'form-control',
+
 							   }))
 	description = forms.CharField(required=True,label="description",
 							widget=forms.Textarea(
 								attrs={
 									   'placeholder':'Add Description',
-									   'class': 'form-control'}))
-	tags= forms.CharField(required=False,label="title",
+									   'class': 'form-control',
+									    'rows': '10',
+                						'cols': '90',
+                						'maxlength': '2000',}))
+	tags= forms.CharField(max_length=100,required=False,label="title",
 						widget=forms.TextInput(
 							 attrs={
 							 		'placeholder':'Tags',
@@ -100,6 +108,9 @@ class BlogForm(forms.ModelForm):
 					)
 	comment_state=forms.BooleanField(required=False)
 
+	published_state = forms.ChoiceField(choices = TRUE_FALSE_CHOICE, label="Somelabel", 
+                         		widget=forms.Select(attrs={"class":"catagory form-control" }), required=False,
+                         )
 	class Meta:
 			model=Blog
 			fields=[
@@ -108,14 +119,15 @@ class BlogForm(forms.ModelForm):
 				"tags",
 				"published",
 				"categories",
-				"comment_state"
+				"comment_state",
+				"published_state"
 			]
 
 class BlogFileForm(forms.Form):
 	attachments=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={
-								   'class':'form-control ',
+								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
 	image1=forms.FileField(required=False,label="image",
@@ -130,4 +142,3 @@ class BlogFileForm(forms.Form):
 								   'class':'form-control blog-file',
 								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
 								}))
-	

@@ -308,3 +308,75 @@ def delete_blog(request):
     except:
         response = json.dumps({'status':'Failure'})
         return HttpResponse(response, content_type="application/json")
+
+def update_blog(request,id):
+    bloginstance=Blog.objects.get(id=id)
+    fileinstance=BlogFile.objects.filter(blog=id)
+    if request.method=='POST':
+        blogform=BlogForm(request.POST or None,request.FILES or None,instance=bloginstance)
+        blogfileform=BlogFileForm(request.POST or None,request.FILES or None)
+        if blogform.is_valid() and  blogfileform.is_valid():
+            files = request.FILES.values()
+            blog=blogform.save(commit=False)
+            orgobj=Organisation.objects.get(user_id=request.user.id)
+            blog.organisation_id=orgobj.id
+            if 'button1' in request.POST:
+                blog.draft=True
+                blog.published_state=False
+            else:
+                blog.draft=False
+            blog.save()
+            for a_file in files:
+                instance=BlogFile()
+                instance.blog_id=blog.id
+                instance.attachments=a_file
+                instance.save()
+            blog.save()
+            messages.success(request, 'Blog details saved successfully.')
+            return HttpResponseRedirect('/manage_blog',{"messages":messages})
+
+    else:
+        
+        blogform=BlogForm(instance=bloginstance)
+        attachments_value= ""
+        image1_value=""
+        image2_value=""
+        attachments_id=0
+        image1_id=0
+        image2_id=0
+        if not fileinstance:
+            pass
+        if len(fileinstance)==1:
+            attachments_value=fileinstance[0].attachments.name
+            attachments_id=fileinstance[0].id
+        if len(fileinstance)==2:
+            attachments_value=fileinstance[0].attachments.name
+            image1_value=fileinstance[1].attachments.name
+            attachments_id=fileinstance[0].id
+            image1_id=fileinstance[1].id          
+        if len(fileinstance)==3:
+            attachments_value=fileinstance[0].attachments.name
+            image1_value=fileinstance[1].attachments.name
+            image2_value=fileinstance[2].attachments.name
+            attachments_id=fileinstance[0].id
+            image1_id=fileinstance[1].id
+            image2_id=fileinstance[2].id      
+        blogfileform=BlogFileForm(request.POST)                      
+        return render(request,'ebs/update_blog.html',
+                                    {'blogform':blogform,'blogfileform':blogfileform,
+                                    'bloginstance':bloginstance,
+                                    'attachments_value':attachments_value,
+                                    'image1_value':image1_value,
+                                    'image2_value':image2_value,
+                                    'attachments_id':attachments_id,
+                                    'image1_id':image1_id,
+                                    'image2_id':image2_id})
+@csrf_exempt
+def update_delete_blog(request):
+    if request.method=='POST':
+        value=request.POST.get('value')
+        file=BlogFile.objects.get(id=value)
+        file.delete()
+        response = json.dumps({'status':'Success'})
+        return HttpResponse(response, content_type="application/json")
+        

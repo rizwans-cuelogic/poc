@@ -59,7 +59,7 @@
 						<p class="blog-text">{{ query.blog_description | truncatechars:300}}</p>
 					</td>
 					<td>
-						<a class="btn btn-ternary" href="#"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
+						<a class="btn btn-ternary" href="{% url 'update_blog' id=query.blog_id%}"><i class="fa fa-pencil fa-fw"></i>  Edit</a>
 					</td>
 				</tr>
 				{% endfor %}
