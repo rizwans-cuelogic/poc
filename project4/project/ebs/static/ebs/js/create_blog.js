@@ -51,7 +51,7 @@ $(document).ready(function() {
       
        if ($('#id_attachments').val() && $('#id_attachments')[0].files[0].size>15728640) {
             if ($("#id_attachments").next(".validation").length == 0){
-                    $("#id_attachments").after("<div class='validation' style='color:red;margin-top:5px;'>File size should be less than 15MB</div>"); 
+                    $("#id_attachments").after("<div class='validation' style='color:red;margin-top:5px;'>File Size Should Be Less Than 15MB</div>"); 
             }   
             $( "#id_attachments" ).focus();
             file_error_one = 1
@@ -59,7 +59,7 @@ $(document).ready(function() {
 
         if($('#id_image1').val() && $('#id_image1')[0].files[0].size>15728640) {
             if ($("#id_image1").next(".validation").length == 0){
-                $("#id_image1").after("<div class='validation' style='color:red;margin-top:5px;'>File size should be less than 15MB</div>"); 
+                $("#id_image1").after("<div class='validation' style='color:red;margin-top:5px;'>File Size Should Be Less Than 15MB</div>"); 
             } 
             file_error_two = 1 
             $( "#id_image1" ).focus();
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
         if ($('#id_image2').val() && $('#id_image2')[0].files[0].size>15728640) {
             if ($("#id_image2").next(".validation").length == 0){
-                $("#id_image2").after("<div class='validation' style='color:red;margin-top:5px;'>File size should be less than 15MB</div>");
+                $("#id_image2").after("<div class='validation' style='color:red;margin-top:5px;'>File Size Should Be Less Than 15MB</div>");
             }
             file_error_three = 1
             $( "#id_image2" ).focus();

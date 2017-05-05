@@ -50,9 +50,9 @@ $(document).ready(function() {
       var message=$('notifyjs-corner').is(":visible")
       if(checkboxes.length === 0 && !message)
       {
-         $.notify.defaults({ className: "error" })
+        $.notify.defaults({ className: "error" })
         $.notify("please select atleast one checkbox",
-              { position:"top center" }
+          { position:"top center" }
         );
       }
       else{
