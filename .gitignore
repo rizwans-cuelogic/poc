@@ -1,0 +1,5 @@
+*.py~
+*.pyc
+*.pyc~
+*.html~
+project4/project/media_cdn/*

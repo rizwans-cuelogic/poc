@@ -1,0 +1,226 @@
+.label{
+	font-weight: 200;
+}
+.banner-blog .large{
+	height:420px;
+	width:100%;
+}
+.banner-blog{
+	position:relative;
+	color:white;
+	margin-bottom:25px;
+}
+.banner-blog img{
+	width:100%;
+	height:198px;
+}
+.banner-blog .banner-text{
+	position:absolute;
+	bottom:0px;
+	padding:0px 10px 10px;
+}
+.banner-blog a:hover{
+	color:white;
+}
+.banner-text h4{
+	margin-bottom:0px;
+}
+.banner-text a{
+	color:white;
+}
+.banner-text .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.banner-text .label-default:hover{
+	background-color:#009688;
+}
+.banner-text span{
+	font-size:11px;
+}
+.latest-blog{
+	position:relative;
+	height:285px;
+}
+.latest-blog .latest-text{
+	position:absolute;
+	top:150px;
+}
+.latest-blog .latest-text h3{
+	margin-top:10px;
+	font-size: 21px;
+}
+.latest-blog img{
+	width:100% ;
+	height:170px;
+}
+.latest-text .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.latest-text .label-default:hover{
+	background-color:#009688;
+}
+.latest-text .latest-author{
+	font-size:11px;
+}
+.latest-text .latest-author a:hover{
+	color:black;
+}
+.popular-blog{
+	position:relative;
+}
+.popular-blog h4{
+	font-size:17px;
+	line-height:23px;
+	font-weight:300;
+	margin-top:0px;
+}
+.popular-blog .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.popular-blog .label-default:hover{
+	background-color:#009688;
+}
+.popular-blog .popular-author{
+	font-size:11px;
+	line-height: 1px;
+}
+.must-blog{
+	position:relative;
+}
+.must-blog h5{
+	font-size:16px;
+	line-height:24px;
+	font-weight: 600;
+	margin-top:0px;
+}
+.must-blog .label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.must-blog .label-default:hover{
+	background-color:#009688;
+}
+.must-blog .must-author{
+	font-size:11px;
+	line-height: 1px;
+	margin-left:5px;
+}
+.must-blog .must-author a:hover{
+	color:black;
+}
+a:hover{
+	color:#009688;
+	text-decoration: none;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+.latest-text .view-block:hover {
+	background-color:black;
+}
+.must-blog .view-block:hover{
+	background-color:black;
+}
+#logged-user
+{
+	font-weight: 700; 
+	padding-top:10px;
+}	
+.forgot-modal{
+	text-align:center;
+	margin-top:10px ;
+}
+.top-margin-30{
+	margin-top:30px;
+}
+.top-margin-10{
+	margin-top:10px;
+}
+.top-margin-20{
+	margin-top:20px;
+}
+.top-margin-40{
+	margin-top:40px;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+.banner1{
+	margin-top:50px;
+}
+.latest-hr{
+	border-bottom: 2px solid #009688;
+	padding-bottom:7px;
+	margin-bottom:20px;
+	font-weight:600;
+}
+.hcatagories{
+	font-size:14px;
+	line-height: 30px;
+}
+.form-padding{
+	padding-top:10px;
+}
+.view-block{
+	padding:5px;
+}
+/* modal css */
+.modal-color{
+	background-color:black;
+	color:white;
+	border-bottom: 4px solid #009688;
+}
+.btn-group-lg > .btn, .btn-lg {
+	padding: 10px 16px;
+	font-size:18px;
+	line-height: 1.33333;
+}
+.btn1{
+	border-radius:0px;
+	background-color:black;
+	color:white;
+}
+.btn1:hover{
+	background-color:#009688;
+}
+.btn2{
+	border: medium none;
+	background-color: black; 
+	font-size: 30px; 
+	width: auto;  
+}
+.sendbutton{
+	margin-top:30px;
+}
+ul.simple-list{
+	list-style: none;
+	padding: 0;
+}
+@media screen and (max-width:768px){
+	.file-size{
+		width:100%;
+	}
+	.latest-blog{
+		width:100%;
+	}
+	.latest-blog img{
+		width:100%;
+	}
+	.latest-text{
+		width:100%;
+	}
+}
+@media screen and (min-width:768px){
+	.modal-dialog{
+		width:400px;
+	}
+}

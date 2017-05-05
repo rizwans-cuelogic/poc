@@ -1,0 +1,38 @@
+.help-line{
+	display:block;
+	color:red;
+	padding-top:10px;
+}
+.header{
+	border-bottom:2px solid #009688;
+	padding-bottom:10px;
+}
+.blog-file{
+	margin-top:13px;
+}
+.blog-file:nth-child(2){
+	margin:0;
+}
+.form-group{
+	margin-top:15px;
+}
+.buttons{
+	text-align:right;
+}
+.media-button{
+	border:none;
+	margin-right:-50px;
+}
+.media-file{
+	word-wrap:break-word;
+	padding-right:50px;
+}
+@media screen and (max-width:768px){
+	.buttons{
+		text-align:center;
+	}
+}
+
+.file-elem{
+	width:90%;
+}
