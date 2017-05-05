@@ -75,7 +75,6 @@ class Blog(models.Model):
     def __unicode__(self):
         return self.title
 
-
 class Comment(models.Model):
     text=models.CharField(max_length=225)
     blog=models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
@@ -85,3 +84,4 @@ class BlogFile(models.Model):
     blog = models.ForeignKey(Blog, blank=True, on_delete=models.CASCADE)
     def __unicode__(self):
         return self.blog.title
+       

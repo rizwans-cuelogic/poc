@@ -4,6 +4,7 @@ import os
 import uuid
 import sys
 import re
+import imghdr
 from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -17,10 +18,12 @@ from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.http import Http404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
+from django.views.decorators.csrf import csrf_exempt
 from .models import Organisation,Blog,BlogFile,ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 # Create your views here.
@@ -251,4 +254,57 @@ def create_blog(request):
 
 @login_required(login_url='/')
 def manage_blog(request):
-    return render(request,'ebs/manage_blog.html')
+    try:
+        orgobj=Organisation.objects.get(user_id=request.user.id)   
+        data=list()
+        context={}
+        bloglist=Blog.objects.filter(organisation_id=orgobj.id).order_by('-timestamp')
+        for each in bloglist:
+            context={'blog_id':each.id,
+                'blog_title':each.title,
+                'blog_description':each.description
+            }
+            files=BlogFile.objects.filter(blog_id=each.id).order_by('-id')
+            if files is None:
+                context['blog_file']=''
+            else:
+                for each in files:
+                    print each.attachments
+                    filename, file_extension = os.path.splitext(str(each.attachments))
+                    if  file_extension in ['.png','.jpeg','.jpg']:
+                        context['blog_file']=each.attachments
+                        break
+
+            data.append(context)
+        paginator=Paginator(data,5)
+        page = request.GET.get('page')
+        try:
+            datas=paginator.page(page)
+        except PageNotAnInteger:
+            datas=paginator.page(1)
+        except EmptyPage:
+            datas=paginator.page(paginator.num_pages)
+        return render(request, 'ebs/manage_blog.html',
+                        {'datas':datas,'page':page})
+    except :
+        return render(request,'ebs/manage_blog.html')
+
+@csrf_exempt
+def delete_blog(request):
+    try:
+        orgdata = Organisation.objects.get(user_id=request.user.id)
+        swid = request.POST.getlist('checkboxes[]')
+        if swid[0]=='on':
+            swid.pop(0)
+        if len(swid)==0:
+            response = json.dumps({'status':'Failure'})
+            return HttpResponse(response, content_type="application/json")
+        for one in swid:
+            obj = Blog.objects.get(id=one).delete()
+            BlogFile.objects.filter(blog_id=one).delete()
+
+        response = json.dumps({'status':'Success'})
+        return HttpResponse(response, content_type="application/json")
+    except:
+        response = json.dumps({'status':'Failure'})
+        return HttpResponse(response, content_type="application/json")

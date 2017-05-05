@@ -7,7 +7,7 @@
 			</div>
 			<div id="message">  </div>
 			<div class="modal-body">
-				<form id="signinform"  method="post" class="form-padding" data-toggle="validator">
+				<form id="signinform" method="post" class="form-padding" data-toggle="validator">
 				{% csrf_token %}
 					<div class="form-group ">
 						<label class="control-label">Username</label>
@@ -34,7 +34,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-block btn-lg btn1">Sign in</button>
+						<button class="btn btn-block btn-lg btn-secondary">Sign in</button>
 						<div class="forgot-modal"><a id="forgotpass" href="#">Forgot Your Password? Get Help</a></div>	
 					</div>
 				</form>
@@ -52,14 +52,14 @@
 			</div>
 			<div id="forgotmessage">  </div>
 			<div class="modal-body">
-				<form id="forgotform"  method='post' class="form-padding">
+				<form id="forgotform" method='post' class="form-padding">
 				{% csrf_token %}	 
 					<div class="form-group">
 						<label>Email</label>
-						<input id="email1" type="email"  class="form-control input-lg"  placeholder="email" required>
+						<input id="email1" type="email" class="form-control input-lg" placeholder="email" required>
 					</div>
 					<div class="top-margin-30 form-group">
-						<button class="btn btn-block btn-lg btn1">Send My Password</button>
+						<button class="btn btn-block btn-lg btn-secondary">Send My Password</button>
 						<p class="forgot-modal"> Password Reset Link Will Be Email To You</p>
 					</div>   
 				</form>
@@ -68,7 +68,7 @@
 	</div>
 </div>
 <!-- recover password Modal -->
-<div id="recoverformmodal"  class="modal fade" role="dialog">
+<div id="recoverformmodal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header modal-color">
@@ -110,7 +110,7 @@
 						</div>						
 					</div>
 					<div class="form-group">
-						<button name="submit" class="btn btn-lg btn-block btn1">Change Password</button>
+						<button name="submit" class="btn btn-lg btn-block btn-secondary">Change Password</button>
 					</div>   
 				</form>
 			</div>
@@ -143,8 +143,7 @@
 					</div>
 					<div class="form-group ">
 						{{orgform.orglogo.errors}}
-						<label class="control-label">Company Logo</label> 
-						<div class="col-sm-12 input-group file-size">
+						<label class="control-label">Company Logo</label><div class="col-sm-12 input-group file-size">
 							<div class="input-group">
 								<span class="input-group-addon transparent"><span class="glyphicon glyphicon-picture">
 								</span>
@@ -202,7 +201,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-block btn-lg btn1">Sign up</button>	
+						<button class="btn btn-block btn-lg btn-secondary">Sign up</button>	
 					</div>	
 				</form>
 			</div>

@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <h3 class="header">Add Blog</h3>
+    <h3 class="header">ADD BLOG</h3>
     <form id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
         {% csrf_token %}
         <div class="row">
@@ -44,7 +44,7 @@
         <div class="row">
             <div class="form-group col-md-3">
                 {{blogform.categories.errors}}
-                <label for="categories" class="control-label">*Catagories</label>
+                <label for="categories" class="control-label">*Categories</label>
                 {{blogform.categories}}
             </div>
         </div>
@@ -65,9 +65,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 form-group buttons" >
-                <button id="draft" class="btn btn1 " name="button1" value="button1">Save As Draft</button>
-                <button id="save" type="submit" class="btn  btn1" name="button2" value="button2">Save</button>
-                <a href="{% url 'manage_blog'%}" class="btn btn1">Cancel</a>
+                <button id="draft" class="btn btn-secondary" name="button1" value="button1">Save As Draft</button>
+                <button id="save" type="submit" class="btn btn-secondary" name="button2" value="button2">Save</button>
+                <a href="{% url 'manage_blog'%}" class="btn btn-secondary">Cancel</a>
             </div>
         </div>
     </form>
