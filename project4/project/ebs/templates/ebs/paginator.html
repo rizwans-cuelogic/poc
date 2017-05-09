@@ -2,7 +2,7 @@
     {% if page.has_other_pages %}
         <ul class="pagination">
             {% if page.has_previous %}
-                <li><a aria-label="previous" href="?page={{page.previous_page_number}}">&laquo;</a></li>
+                <li><a aria-label="previous" href="?page={{page.previous_page_number}}{% if request.GET.q %}&q={{request.GET.q}} {% endif %}">&laquo;</a></li>
             {% else %}
                 <li class="disabled"><span>&laquo;</span></li>
             {% endif %}
@@ -10,11 +10,11 @@
                 {% if page.number == pages %}
                     <li class="active"><span>{{ pages }}<span class="sr-only">(current)</span></span></li>
                 {% else %}
-                    <li><a href="?page={{pages}}">{{ pages }}</a></li>
+                    <li><a href="?page={{pages}}{% if request.GET.q %}&q={{request.GET.q}} {% endif %}">{{ pages }}</a></li>
                 {% endif %}
             {% endfor %}
             {% if page.has_next %}
-                <li><a href="?page={{page.next_page_number}}">&raquo;</a></li>
+                <li><a href="?page={{page.next_page_number}}{% if request.GET.q %}&q={{request.GET.q}} {% endif %}">&raquo;</a></li>
             {% else %}
                 <li class="disabled"><span>&raquo;</span></li>
             {% endif %}

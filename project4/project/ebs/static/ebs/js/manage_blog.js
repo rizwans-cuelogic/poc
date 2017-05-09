@@ -6,7 +6,7 @@ $(document).ready(function() {
            { position:"top center" }
         );
     }
-    $(".search").keyup(function () {
+    /*$(".search").keyup(function () {
       var searchTerm = $(".search").val();
       var listItem = $('.results tbody').children('tr');
       var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
@@ -26,7 +26,12 @@ $(document).ready(function() {
       if(jobCount == '0') {$('.no-result').show();}
       else {$('.no-result').hide();}
     });
-
+  */
+  $(document).on('click','#search-bt',function(){
+    if($('tbody tr:visible').length==0){
+      $('.no-result').show();
+    }
+  })  
     $('#select-all').click(function(event) {   
       if(this.checked) {
         $(':checkbox').each(function() {
