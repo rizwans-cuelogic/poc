@@ -60,32 +60,7 @@ $(document).ready(function(){
 					swal("Deleted!", "Your file has been deleted.", "success");
 	    		}
 	    	});
-		});
-
-
-		// if(confirm('Are you sure to delete this attachment?')){
-		// 	$.ajax({
-		// 		url: '../../update_delete_blog/',
-		//         data:{'value':value},
-		//         dataType: 'json',
-		//         type: 'post',
-		//         success: function (result) {
-		//         	$('#attached').show()
-		// 			$('#'+file1).remove();
-		// 			$('#'+attachments).show();
-		// 			$('#attached-row').addClass('form-group');
-		// 			if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
-		// 				$('#label-uploaded').remove();
-		// 			}
-		// 			if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
-		// 				$('#upload-row').removeClass('form-group');
-		// 			}
-		//     	}
-	 //    	});
-	 //    }
-	 //    else{
-		// 	alert(" Cancel ");
-		// }		
+		});		
 	}
 
 	if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){

@@ -2,6 +2,7 @@
 {% load static %}
 {% block head_extra %}
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/manage_blog.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'ebs/sweetalert/dist/sweetalert.css' %}">
 {% endblock %}
 {% block content %}
 {% for message in messages %}
@@ -33,7 +34,7 @@
 						</form>	
 					</th>
 					<th width="90">
-						<a class="btn btn-ternary" href="{% url 'create_blog' %}"><i class="fa fa-plus fa-fw"></i>CreateBlog</a>
+						<a class="btn btn-ternary" href="{% url 'create_blog' %}"><i class="fa fa-plus fa-fw"></i>Create</a>
 					</th>
 				</tr>
 			</thead>
@@ -75,5 +76,6 @@
 </div>
 {% endblock %}
 {% block extra_js %}
+<script type="text/javascript" src="{% static 'ebs/sweetalert/dist/sweetalert.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/manage_blog.js' %}"></script>
 {% endblock %}

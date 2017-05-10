@@ -6,32 +6,6 @@ $(document).ready(function() {
            { position:"top center" }
         );
     }
-    /*$(".search").keyup(function () {
-      var searchTerm = $(".search").val();
-      var listItem = $('.results tbody').children('tr');
-      var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-
-      $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-      }
-      });
-      $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-        $(this).attr('visible','false');
-      });
-      $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-        $(this).attr('visible','true');
-      });
-      var jobCount = $('.results tbody tr[visible="true"]').length;
-      $('.counter').text(jobCount + ' item');
-      if(jobCount == '0') {$('.no-result').show();}
-      else {$('.no-result').hide();}
-    });
-  */
-  $(document).on('click','#search-bt',function(){
-    if($('tbody tr:visible').length==0){
-      $('.no-result').show();
-    }
-  })  
     $('#select-all').click(function(event) {   
       if(this.checked) {
         $(':checkbox').each(function() {
@@ -50,7 +24,7 @@ $(document).ready(function() {
       $(':checkbox:checked').each(function(i){
         checkboxes[i] = $(this).val();
         blog_id = $(this).val()
-        $('#blog_'+blog_id).remove()
+        //$('#blog_'+blog_id).remove()
       });
       var message=$('notifyjs-corner').is(":visible")
       if(checkboxes.length === 0 && !message)
@@ -60,29 +34,52 @@ $(document).ready(function() {
           { position:"top center" }
         );
       }
-      else{
-        $.ajax({	
-        url: '../delete_blog/',
-        data:{'checkboxes':checkboxes},
-        dataType: 'json',
-        type: 'post',
-        success: function (result) {
-          if(result['status']=="Success"){   
-            location.reload();
-            var url=window.location.href;
-            url+='?deleted=1'
-            window.location.href=url;   
-        }
-        else if(result['status']=="Failure"){
-            $.notify.defaults({ className: "error" })
+      else if(checkboxes.length==1 && checkboxes[0]=='on' && !message){
+        $.notify.defaults({ className: "error" })
             $.notify( 
                     "please add blogs",
                     { position:"top center" }
                   )
-        }
+        $(':checkbox').each(function() {
+        this.checked = false;
+        });
       }
-    });
-  }
+    else{
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this blog!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    },
+    function(isConfirm){
+      if (isConfirm) {
+         $.ajax({ 
+         url: '../delete_blog/',
+         data:{'checkboxes':checkboxes},
+         dataType: 'json',
+         type: 'post',
+         success: function (result) {
+           if(result['status']=="Success"){   
+             location.reload();
+             var url=window.location.href;
+             url+='?deleted=1'
+             window.location.href=url;   
+       }
+       }
+   });
+  } 
+  else {
+      $(':checkbox').each(function() {
+         this.checked = false;
+       });    
+    }
+  });    
+}
 });
 
 function getParameterByName(name, url) {
