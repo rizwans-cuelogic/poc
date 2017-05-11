@@ -24,7 +24,6 @@ $(document).ready(function() {
       $(':checkbox:checked').each(function(i){
         checkboxes[i] = $(this).val();
         blog_id = $(this).val()
-        //$('#blog_'+blog_id).remove()
       });
       var message=$('notifyjs-corner').is(":visible")
       if(checkboxes.length === 0 && !message)
@@ -52,7 +51,7 @@ $(document).ready(function() {
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel plx!",
+        cancelButtonText: "No, cancel",
         closeOnConfirm: false,
         closeOnCancel: true
     },
@@ -69,7 +68,7 @@ $(document).ready(function() {
              var url=window.location.href;
              url+='?deleted=1'
              window.location.href=url;   
-       }
+          }
        }
    });
   } 
@@ -100,7 +99,6 @@ if(getParameterByName('deleted')){
                   )
   history.pushState(null, null, '/manage_blog/');
 }
-
 });
 
 
