@@ -261,7 +261,12 @@ def manage_blog(request):
         context={}
         bloglist=Blog.objects.filter(organisation_id=orgobj.id).order_by('-timestamp')
         query=request.GET.get('q')
-        if query:
+        filters=request.GET.get('filterbox') 
+        if query or filters:
+            if filters=='en':
+                bloglist=bloglist.filter(published_state=True)
+            elif filters=='ds':
+                bloglist=bloglist.filter(published_state=False)    
             bloglist=bloglist.filter(
                             Q(title__icontains=query)|
                             Q(description__icontains=query)|

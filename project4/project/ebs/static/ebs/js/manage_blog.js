@@ -1,12 +1,37 @@
-$(document).ready(function() {    
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+  var param=$.urlParam('filterbox');
+  if(param==null){
+     sessionStorage.setItem("SelItem", 'al')
+}
+window.onload = function() {
+var selItem = sessionStorage.getItem("SelItem");
+$('#filter').val(selItem);
+}
+$(document).ready(function() {
   if(document.getElementById('message')!==null){
     	$.notify.defaults({ className: "success" })
         $.notify( 
             "Blog details saved successfully",
            { position:"top center" }
         );
-    }
-    $('#select-all').click(function(event) {   
+    }  
+  $('#filter').change(function() {
+        var filter_val
+        filter_val = $(this).val();
+        sessionStorage.setItem("SelItem", filter_val);
+    });
+
+
+
+  $('#select-all').click(function(event) {   
       if(this.checked) {
         $(':checkbox').each(function() {
           this.checked = true;
