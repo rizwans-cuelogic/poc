@@ -19,6 +19,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.db.models import Q
 from django.http import Http404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
@@ -259,6 +260,19 @@ def manage_blog(request):
         data=list()
         context={}
         bloglist=Blog.objects.filter(organisation_id=orgobj.id).order_by('-timestamp')
+        query=request.GET.get('q')
+        filters=request.GET.get('filterbox') 
+        if query or filters:
+            if filters=='en':
+                bloglist=bloglist.filter(published_state=True)
+            elif filters=='ds':
+                bloglist=bloglist.filter(published_state=False)    
+            bloglist=bloglist.filter(
+                            Q(title__icontains=query)|
+                            Q(description__icontains=query)|
+                            Q(tags__icontains=query)
+                        )
+
         for each in bloglist:
             context={'blog_id':each.id,
                 'blog_title':each.title,
