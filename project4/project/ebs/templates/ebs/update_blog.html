@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'ebs/sweetalert/dist/sweetalert.css' %}">
 {{ blogform.media }}
 {% endblock %}
 {% block content %}
@@ -109,6 +110,7 @@
 <script type="text/javascript" src="{% static 'ebs/js/bootstrap-datetimepicker.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script type="text/javascript" src="{% static 'ebs/sweetalert/dist/sweetalert.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/edit_blog.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/create_blog.js' %}"></script>
 {% endblock %}

@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <h3 class="header">ADD BLOG</h3>
+    <h3 class="header">CREATE BLOG</h3>
     <form id="createform" method="post" enctype="multipart/form-data" action="{% url 'create_blog' %}">
         {% csrf_token %}
         <div class="row">

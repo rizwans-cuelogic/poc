@@ -1,33 +1,37 @@
-$(document).ready(function() {    
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+  var param=$.urlParam('filterbox');
+  if(param==null){
+     sessionStorage.setItem("SelItem", 'al')
+}
+window.onload = function() {
+var selItem = sessionStorage.getItem("SelItem");
+$('#filter').val(selItem);
+}
+$(document).ready(function() {
   if(document.getElementById('message')!==null){
     	$.notify.defaults({ className: "success" })
         $.notify( 
             "Blog details saved successfully",
            { position:"top center" }
         );
-    }
-    $(".search").keyup(function () {
-      var searchTerm = $(".search").val();
-      var listItem = $('.results tbody').children('tr');
-      var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-
-      $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-      }
-      });
-      $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-        $(this).attr('visible','false');
-      });
-      $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-        $(this).attr('visible','true');
-      });
-      var jobCount = $('.results tbody tr[visible="true"]').length;
-      $('.counter').text(jobCount + ' item');
-      if(jobCount == '0') {$('.no-result').show();}
-      else {$('.no-result').hide();}
+    }  
+  $('#filter').change(function() {
+        var filter_val
+        filter_val = $(this).val();
+        sessionStorage.setItem("SelItem", filter_val);
     });
 
-    $('#select-all').click(function(event) {   
+
+
+  $('#select-all').click(function(event) {   
       if(this.checked) {
         $(':checkbox').each(function() {
           this.checked = true;
@@ -45,7 +49,6 @@ $(document).ready(function() {
       $(':checkbox:checked').each(function(i){
         checkboxes[i] = $(this).val();
         blog_id = $(this).val()
-        $('#blog_'+blog_id).remove()
       });
       var message=$('notifyjs-corner').is(":visible")
       if(checkboxes.length === 0 && !message)
@@ -55,29 +58,52 @@ $(document).ready(function() {
           { position:"top center" }
         );
       }
-      else{
-        $.ajax({	
-        url: '../delete_blog/',
-        data:{'checkboxes':checkboxes},
-        dataType: 'json',
-        type: 'post',
-        success: function (result) {
-          if(result['status']=="Success"){   
-            location.reload();
-            var url=window.location.href;
-            url+='?deleted=1'
-            window.location.href=url;   
-        }
-        else if(result['status']=="Failure"){
-            $.notify.defaults({ className: "error" })
+      else if(checkboxes.length==1 && checkboxes[0]=='on' && !message){
+        $.notify.defaults({ className: "error" })
             $.notify( 
                     "please add blogs",
                     { position:"top center" }
                   )
-        }
+        $(':checkbox').each(function() {
+        this.checked = false;
+        });
       }
-    });
-  }
+    else{
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this blog!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    },
+    function(isConfirm){
+      if (isConfirm) {
+         $.ajax({ 
+         url: '../delete_blog/',
+         data:{'checkboxes':checkboxes},
+         dataType: 'json',
+         type: 'post',
+         success: function (result) {
+           if(result['status']=="Success"){   
+             location.reload();
+             var url=window.location.href;
+             url+='?deleted=1'
+             window.location.href=url;   
+          }
+       }
+   });
+  } 
+  else {
+      $(':checkbox').each(function() {
+         this.checked = false;
+       });    
+    }
+  });    
+}
 });
 
 function getParameterByName(name, url) {
@@ -98,7 +124,6 @@ if(getParameterByName('deleted')){
                   )
   history.pushState(null, null, '/manage_blog/');
 }
-
 });
 
 
