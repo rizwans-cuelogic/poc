@@ -2,11 +2,12 @@
 	width: 500px;
 	margin:0px auto;
 }
-#search-bt{
+.filter-margin{
 	margin-left:10px;
 }
-.filter-box{
-	margin-left:10px;
+.table>tbody>tr>td,
+.table>thead>tr>th.checkbox-middle{
+	vertical-align:middle;
 }
 .blog-image{
 	max-width: 180px;
