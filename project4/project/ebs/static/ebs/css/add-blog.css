@@ -1,3 +1,6 @@
+.django-ckeditor-widget{
+	display:block !important;
+}
 .help-line{
 	display:block;
 	color:red;

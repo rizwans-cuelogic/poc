@@ -4,6 +4,8 @@ from django.forms import ModelForm
 from ebs.models import Organisation,Blog ,Categories
 from functools import partial
 from bootstrap3_datetime.widgets import DateTimePicker
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class UserForm(forms.ModelForm):
 	password=forms.CharField(label="Password" , 
@@ -84,13 +86,7 @@ class BlogForm(forms.ModelForm):
 
 							   }))
 	description = forms.CharField(required=True,label="description",
-							widget=forms.Textarea(
-								attrs={
-									   'placeholder':'Add Description',
-									   'class': 'form-control',
-									    'rows': '10',
-                						'cols': '90',
-                						'maxlength': '2000',}))
+							widget=CKEditorUploadingWidget())
 	tags= forms.CharField(max_length=100,required=False,label="title",
 						widget=forms.TextInput(
 							 attrs={
