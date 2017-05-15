@@ -393,4 +393,45 @@ def update_delete_blog(request):
         file.delete()
         response = json.dumps({'status':'Success'})
         return HttpResponse(response, content_type="application/json")
-        
+
+def detail_blog(request,id):
+    bloginstance=Blog.objects.get(id=id)
+    fileinstance=BlogFile.objects.filter(blog=id)
+    related_blog=Blog.objects.filter(categories=bloginstance.categories)
+    related_blog=related_blog.exclude(id=id)
+    related_context={}
+    related_data=list()
+    pdf_data=list()
+    image_data=list()
+    for each in fileinstance:
+        filename, file_extension = os.path.splitext(str(each.attachments))
+        if  file_extension in ['.png','.jpeg','.jpg']:
+            image_data.append(each)
+        else:
+            pdf_data.append(each)
+    print "pdf",pdf_data
+    print "image",image_data
+    for each in related_blog:
+        related_context={
+                'related_id':each.id,
+                'related_title':each.title,
+                'related_timestamp':each.timestamp,
+                'related_categories':each.categories
+            }
+        files=BlogFile.objects.filter(blog_id=each.id).order_by('-id')
+        if files is None:
+            related_context['related_file']=''
+        else:
+            for each in files:
+                print each.attachments
+                filename, file_extension = os.path.splitext(str(each.attachments))
+                if  file_extension in ['.png','.jpeg','.jpg']:
+                    related_context['related_file']=each.attachments
+                    break
+        related_data.append(related_context)
+
+    print related_blog
+    print related_data
+    return render(request, 'ebs/detail_blog.html',
+                        {'blog':bloginstance,'image_data':image_data,'pdf_data':pdf_data},related_context)
+

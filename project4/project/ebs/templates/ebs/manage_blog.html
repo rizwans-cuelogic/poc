@@ -55,7 +55,7 @@
 					{% endif %}
 					</td>
 					<td>
-						<h3><a href="#">{{query.blog_title }}</a></h3>
+						<h3><a href="{% url 'detail_blog' id=query.blog_id %}">{{query.blog_title }}</a></h3>
 						<p class="blog-text">{{ query.blog_description| striptags | safe| truncatewords_html:50}}</p>
 					</td>
 					<td class="text-right">

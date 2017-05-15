@@ -1,0 +1,32 @@
+{% extends "ebs/common.html" %}
+{% load static %}
+{% block head_extra %}
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+					
+					<h1>{{blog.title}}</h1>
+					<span class="latest-author">By  <a href="#"><strong>{{blog.organisation}}</strong></a>- {{ blog.timestamp }}</span>
+					{% for query in image_data %}
+						<img class="blog-image img-responsive" src="/media_cdn/{{query.attachments}}"/>
+					{% endfor %}
+					<br><br>
+					{{blog.description | safe}}
+					{% for q in pdf_data %}
+					<a href="/media_cdn/{{q.attachments}}">PDF<a>
+					{% endfor %}
+			</div>
+			<div class="col-md-4">
+				<h4>RELATED ARTICLES</h4>
+				<hr>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}	
