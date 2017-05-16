@@ -81,6 +81,39 @@ h1, h2, h3, h4, h5{
 .navbar-collapse {
 	padding:0px;
 }
+.separator{
+	border-bottom: 2px solid #009688;
+	padding-bottom:7px;
+	margin-bottom:20px;
+	font-weight:600;
+}
+.blog-side h4{
+	font-size:17px;
+	line-height:23px;
+	font-weight:300;
+	margin-top:0px;
+}
+.label{
+	font-weight: 200;
+}
+.label-default{
+	border-radius:0;
+	background-color: black;
+	text-transform: uppercase;
+}
+.label-default:hover{
+	background-color:#009688 !important;
+}
+.author-text{
+	font-size:11px;
+}
+.blog-side h4 a{
+	color:black;
+	text-decoration: none;
+}
+.blog-side h4 a:hover{
+	color:#009688;
+}
 nav{
 	line-height:5px;
 }

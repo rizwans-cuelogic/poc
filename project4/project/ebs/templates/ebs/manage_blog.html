@@ -49,7 +49,7 @@
 					</td>
 					<td>
 					{% if query.blog_file %}
-						<img class="blog-image img-responsive" src="/media_cdn/{{query.blog_file}}"/>
+						<a href="{% url 'detail_blog' id=query.blog_id %}"><img class="blog-image img-responsive" src="/media_cdn/{{query.blog_file}}"/></a>
 					{% else %}
 						<img class="blog-image img-responsive" src="{% static 'ebs/img/default.png' %}"/>
 					{% endif %}

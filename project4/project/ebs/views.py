@@ -248,10 +248,14 @@ def create_blog(request):
             blog.save()
             messages.success(request, 'Blog details saved successfully.')
             return HttpResponseRedirect('/manage_blog',{"messages":messages})
+        else:
+            return render(request,'ebs/create_blog.html',
+                            {'blogform': blogform,'blogfileform':blogfileform})    
     else:
         blogfileform=BlogFileForm()
         blogform=BlogForm()
-        return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
+        return render(request,'ebs/create_blog.html',
+                            {'blogform': blogform,'blogfileform':blogfileform})
 
 @login_required(login_url='/')
 def manage_blog(request):
@@ -396,11 +400,13 @@ def update_delete_blog(request):
 
 def detail_blog(request,id):
     bloginstance=Blog.objects.get(id=id)
-    fileinstance=BlogFile.objects.filter(blog=id)
-    related_blog=Blog.objects.filter(categories=bloginstance.categories)
+    fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
+    related_blog=Blog.objects.filter(categories=bloginstance.categories).order_by('-id')
     related_blog=related_blog.exclude(id=id)
+    related_blog=related_blog[:6]
     related_context={}
     related_data=list()
+    main_image=None
     pdf_data=list()
     image_data=list()
     for each in fileinstance:
@@ -409,8 +415,10 @@ def detail_blog(request,id):
             image_data.append(each)
         else:
             pdf_data.append(each)
-    print "pdf",pdf_data
-    print "image",image_data
+    if image_data:
+        main_image=image_data[0]
+        image_data.pop(0)
+
     for each in related_blog:
         related_context={
                 'related_id':each.id,
@@ -433,5 +441,9 @@ def detail_blog(request,id):
     print related_blog
     print related_data
     return render(request, 'ebs/detail_blog.html',
-                        {'blog':bloginstance,'image_data':image_data,'pdf_data':pdf_data},related_context)
+                        {'blog':bloginstance,
+                        'image_data':image_data,
+                        'pdf_data':pdf_data,
+                        'main_image':main_image,
+                        'related_data':related_data})
 
