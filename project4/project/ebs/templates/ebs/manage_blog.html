@@ -13,7 +13,7 @@
   		<table class="table results">
 			<thead>
 				<tr>
-					<th class="checkbox-middle" width="30">
+					<th class="content-middle" width="30">
 						<input type="checkbox" id="select-all">
 					</th>
 					<th width="200">
@@ -44,7 +44,7 @@
 				{% if datas %}
 				{% for query in datas %}
 				<tr id="blog_{{query.blog_id}}">
-					<td class="checkbox-middle">
+					<td class="content-middle">
 						<input type="checkbox" name="{{query.blog_id}}" value="{{query.blog_id}}">
 					</td>
 					<td>
@@ -58,7 +58,7 @@
 						<h3><a href="{% url 'detail_blog' id=query.blog_id %}">{{query.blog_title }}</a></h3>
 						<p class="blog-text">{{ query.blog_description| striptags | safe| truncatewords_html:50}}</p>
 					</td>
-					<td class="text-right">
+					<td class="content-middle text-right">
 						<a class="btn btn-ternary" href="{% url 'update_blog' id=query.blog_id%}"><i class="fa fa-pencil fa-fw"></i> Edit</a>
 					</td>
 				</tr>

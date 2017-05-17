@@ -401,7 +401,13 @@ def update_delete_blog(request):
 def detail_blog(request,id):
     bloginstance=Blog.objects.get(id=id)
     fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
-    related_blog=Blog.objects.filter(categories=bloginstance.categories).order_by('-id')
+    if bloginstance.tags: 
+        related_blog=Blog.objects.filter(
+                        Q(categories=bloginstance.categories)|
+                        Q(tags__icontains=bloginstance.tags)).order_by('-id')
+    else:
+        related_blog=Blog.objects.filter(
+                        Q(categories=bloginstance.categories)).order_by('-id')
     related_blog=related_blog.exclude(id=id)
     related_blog=related_blog[:6]
     related_context={}
@@ -437,9 +443,7 @@ def detail_blog(request,id):
                     related_context['related_file']=each.attachments
                     break
         related_data.append(related_context)
-
-    print related_blog
-    print related_data
+        
     return render(request, 'ebs/detail_blog.html',
                         {'blog':bloginstance,
                         'image_data':image_data,

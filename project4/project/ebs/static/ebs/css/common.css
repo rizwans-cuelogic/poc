@@ -132,6 +132,9 @@ ul li a{
 .btn-secondary:hover{
 	background-color:#009688;
 }
+.top-margin-30{
+	margin-top:30px;
+}
 @media screen and (max-width:768px){
 	#nav-list li a{
 		padding: 10px 6px;

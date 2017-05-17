@@ -5,8 +5,8 @@
 .filter-margin{
 	margin-left:10px;
 }
-.table>tbody>tr>td,
-.table>thead>tr>th.checkbox-middle{
+.table>tbody>tr>td.content-middle,
+.table>thead>tr>th.content-middle{
 	vertical-align:middle;
 }
 .blog-image{
@@ -60,7 +60,7 @@
 	padding-bottom:15px;
 }
 .table>tbody>tr>td{
-	padding:15px 8px;
+	padding:20px 8px;
 }
 .notifyjs-corner{
 	transform:translate(-45%, 0);

@@ -15,9 +15,7 @@ a{
 	font-size:11px;
 }
 .blog-author a{
-	margin-right:3px;
 	margin-left:3px;
-	font-weight: 700px;
 	color:black;
 	text-decoration:none;
 }
@@ -25,6 +23,8 @@ a{
 	margin-bottom:26px;
 	max-width:100%;
 	max-height:462px;
+	margin-left:auto;
+	margin-right:auto;
 }
 main{
 	font-size:15px;
@@ -37,7 +37,12 @@ main p{
 }
 main h3{
     font-size: 21px;
-    margin-top:26px;
+}
+.thumbnail{
+	margin-bottom:0px;
+}
+.blog-thumbnail{
+	margin-bottom:26px;
 }
 .thumbnail img{
 	max-height:232px;
@@ -45,6 +50,13 @@ main h3{
 .blog-attachments p{
 	margin-bottom:10px;
 }
-.blog-attachments h3{
-	margin-top:6px;
+.blog-attachments h3,
+.blog-thumbnail h3{
+	margin-top:26px;
+}
+.tags p{
+	text-transform: uppercase;
+}
+.blog-attachments p:last-child{
+	margin-bottom:26px ;
 }

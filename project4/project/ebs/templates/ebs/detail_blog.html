@@ -1,7 +1,7 @@
 {% extends "ebs/common.html" %}
 {% load static %}
 {% block head_extra %}
-<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/blog_detail.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/detail_blog.css' %}"/>
 {% endblock %}
 {% block content %}
 	<div class="container">
@@ -19,9 +19,9 @@
 					<div class="blog-content">
 					{{blog.description | safe}}
 					</div>
-					<div class="blog-thumbnail">
 					{% if image_data %}
-						<h3><i class="fa fa-picture-o" aria-hidden="true"></i> Media</h3>
+					<div class="blog-thumbnail">
+						<h3><i class="fa fa-camera" aria-hidden="true"></i></i> Media</h3>
 						<div class="row">
 					{% for image in image_data %}
 							<div class="col-md-6">
@@ -31,8 +31,8 @@
 							</div>
 					{% endfor %}
 						</div>
+					</div>	
 					{% endif%}	
-					</div>
 					<div class="blog-attachments">
 					{% if pdf_data %}
 						<h3><i class="fa fa-paperclip" aria-hidden="true"></i> Attachments</h3>
@@ -41,10 +41,6 @@
 					{% endfor %}
 					{% endif %}
 					</div>
-					{% if blog.tags %}
-					<h3><i class="fa fa-tags" aria-hidden="true"></i> Tags</h3>
-					<p>{{blog.tags}}<p>
-					{% endif %}
 			</main>
 			<aside class="col-md-4">
 			{% if related_data %}
@@ -63,7 +59,7 @@
 							</div>
 							<div class="col-md-7 col-xs-7">
 								<h4><a href="{% url 'detail_blog' id=article.related_id %}">{{article.related_title}}</a></h4>
-								<a href="{% url 'detail_blog' id=article.related_id %}" class="label label-default">{{article.related_categories}}</a>
+								<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=article.related_id %}" class="label label-default">{{article.related_categories}}</a>
 								<span class="author-text"> - {{article.related_timestamp }}</span>
 							</div>
 						</div>
@@ -71,18 +67,17 @@
 				<hr>
 			{% endfor %}
 			{% endif %}
+			{% if blog.tags %}
+				<div class="tags top-margin-30">
+					<h4 class="separator">TAGS</h4>
+					<p>{{blog.tags}}</p>
+				</div>
+			{% endif %}
 			</aside>
 		</div>
 	</div>
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.blog-img a').attr('target', '_blank');
-		$('.blog-thumbnail a').attr('target', '_blank');
-		$('.blog-attachments a').attr('target', '_blank');
-		$('.blog-content > p > img').addClass('img-responsive');
-	})
-</script>
+<script type="text/javascript" src="{% static 'ebs/js/detail_blog.js' %}"></script>
 {% endblock %}	
