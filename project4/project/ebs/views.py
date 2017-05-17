@@ -21,6 +21,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.db.models import Q
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
@@ -327,6 +328,7 @@ def delete_blog(request):
         response = json.dumps({'status':'Failure'})
         return HttpResponse(response, content_type="application/json")
 
+@login_required(login_url='/')
 def update_blog(request,id):
     bloginstance=Blog.objects.get(id=id)
     fileinstance=BlogFile.objects.filter(blog=id)
@@ -398,8 +400,9 @@ def update_delete_blog(request):
         response = json.dumps({'status':'Success'})
         return HttpResponse(response, content_type="application/json")
 
+@login_required(login_url='/')
 def detail_blog(request,id):
-    bloginstance=Blog.objects.get(id=id)
+    bloginstance=get_object_or_404(Blog, id=id)
     fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
     if bloginstance.tags: 
         related_blog=Blog.objects.filter(
@@ -443,7 +446,7 @@ def detail_blog(request,id):
                     related_context['related_file']=each.attachments
                     break
         related_data.append(related_context)
-        
+
     return render(request, 'ebs/detail_blog.html',
                         {'blog':bloginstance,
                         'image_data':image_data,
