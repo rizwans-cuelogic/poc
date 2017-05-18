@@ -5,4 +5,8 @@ $(document).ready(function(){
 	$('.blog-content > p > img').addClass('img-responsive');
 	$( "hr").last().remove();
 	$('[data-toggle="tooltip"]').tooltip();
+	debugger;
+	$('.tags:not(:last-child) span').each(function () {
+        $(this).append(',');
+    });
 })

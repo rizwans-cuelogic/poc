@@ -30,8 +30,7 @@ main{
 	font-size:15px;
 	line-height:26px;
 }
-main p{
-	font-family:Verdana,Geneva,sans-serif;
+.blog-content p{
 	word-wrap: break-word;
 	margin-bottom:26px;
 }
@@ -47,15 +46,13 @@ main h3{
 .thumbnail img{
 	max-height:232px;
 }
-.blog-attachments p{
-	margin-bottom:10px;
-}
 .blog-attachments h3,
 .blog-thumbnail h3{
 	margin-top:26px;
 }
-.tags p{
+.tags span{
 	text-transform: uppercase;
+	word-spacing:1px;
 }
 .blog-attachments p:last-child{
 	margin-bottom:26px ;
