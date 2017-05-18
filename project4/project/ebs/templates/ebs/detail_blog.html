@@ -10,7 +10,7 @@
 					<div class="blog-header">
 						<h1>{{blog.title}}</h1>
 						<span class="blog-author">By <a href="#"><strong>{{blog.organisation}}</strong></a> - {{ blog.timestamp }}</span>
-						<p><a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=blog.id %}" class="label label-default">{{blog.categories}}</a><p>
+						<p><a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=blog.id %}" class="label label-default">{{blog.categories}}</a></p>
 					</div>
 					<div class="blog-img">
 					{% if main_image %}
@@ -22,7 +22,7 @@
 					</div>
 					{% if image_data %}
 					<div class="blog-thumbnail">
-						<h3><i class="fa fa-camera" aria-hidden="true"></i></i> Media</h3>
+						<h3><i class="fa fa-camera" aria-hidden="true"></i> Media</h3>
 						<div class="row">
 					{% for image in image_data %}
 							<div class="col-md-6">
@@ -49,7 +49,7 @@
 				{% for article in related_data %}
 					<div class="row">
 						<div class="blog-side">
-							<div class="col-md-5 col-xs-5">
+							<div class="col-xs-5">
 							{% if article.related_file %}
 								<a href="{% url 'detail_blog' id=article.related_id %}"><img class="img-responsive" src="/media_cdn/{{article.related_file}}"/>
 								</a>
@@ -58,7 +58,7 @@
 								</a>
 							{% endif %}
 							</div>
-							<div class="col-md-7 col-xs-7">
+							<div class="col-xs-7">
 								<h4><a href="{% url 'detail_blog' id=article.related_id %}">{{article.related_title}}</a></h4>
 								<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=article.related_id %}" class="label label-default">{{article.related_categories}}</a>
 								<span class="author-text"> - {{article.related_timestamp }}</span>
