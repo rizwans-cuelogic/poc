@@ -129,10 +129,9 @@ if(getParameterByName('deleted')){
                   )
   history.pushState(null, null, '/manage_blog/');
 }
-/*
+
 $('.table > tbody > tr > td > h3 > a').attr({ target: "_blank" });
 $('.table > tbody > tr > td > a').attr({ target: "_blank" });
-*/
 });
 
 
