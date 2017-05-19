@@ -22,7 +22,12 @@ $(document).ready(function() {
             "Blog details saved successfully",
            { position:"top center" }
         );
-    }  
+    }
+
+  $(document).ready(function(){
+    $('.table > tbody > tr > td >.blog-text > p > img').remove();
+  })
+      
   $('#filter').change(function() {
         var filter_val
         filter_val = $(this).val();
@@ -124,6 +129,9 @@ if(getParameterByName('deleted')){
                   )
   history.pushState(null, null, '/manage_blog/');
 }
+
+$('.table > tbody > tr > td > h3 > a').attr({ target: "_blank" });
+$('.table > tbody > tr > .image-wrapper > a').attr({ target: "_blank" });
 });
 
 

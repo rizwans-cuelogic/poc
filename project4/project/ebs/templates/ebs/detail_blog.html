@@ -1,0 +1,86 @@
+{% extends "ebs/common.html" %}
+{% load static %}
+{% block head_extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'ebs/css/detail_blog.css' %}"/>
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<main class="col-md-8">
+					<div class="blog-header">
+						<h1>{{blog.title}}</h1>
+						<span class="blog-author">By <a href="#"><strong>{{blog.organisation}}</strong></a> - {{ blog.timestamp }}</span>
+						<p><a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=blog.id %}" class="label label-default">{{blog.categories}}</a></p>
+					</div>
+					<div class="blog-img">
+					{% if main_image %}
+						<a href="/media_cdn/{{main_image.attachments}}"><img class="blog-image img-responsive" src="/media_cdn/{{main_image.attachments}}" align="middle"/></a>
+					{% endif %}
+					</div>
+					<div class="blog-content">
+					{{blog.description | safe}}
+					</div>
+					{% if image_data %}
+					<div class="blog-thumbnail">
+						<h3><i class="fa fa-camera" aria-hidden="true"></i> Media</h3>
+						<div class="row">
+					{% for image in image_data %}
+							<div class="col-md-6">
+								<div class="thumbnail">
+									<a href="/media_cdn/{{image.attachments}}"><img class="blog-image img-responsive" src="/media_cdn/{{image.attachments}}"/></a>
+								</div>
+							</div>
+					{% endfor %}
+						</div>
+					</div>	
+					{% endif%}	
+					<div class="blog-attachments">
+					{% if pdf_data %}
+						<h3><i class="fa fa-paperclip" aria-hidden="true"></i> Attachments</h3>
+					{% for q in pdf_data %}
+						<p><a href="/media_cdn/{{q.attachments}}">{{q.attachments.name}}</a></p>
+					{% endfor %}
+					{% endif %}
+					</div>
+			</main>
+			<aside class="col-md-4">
+			{% if related_data %}
+				<h4 class="separator">RELATED ARTICLE </h4>
+				{% for article in related_data %}
+					<div class="row">
+						<div class="blog-side">
+							<div class="col-xs-5">
+							{% if article.related_file %}
+								<a href="{% url 'detail_blog' id=article.related_id %}"><img class="img-responsive" src="/media_cdn/{{article.related_file}}"/>
+								</a>
+							{% else %}
+								<a href="{% url 'detail_blog' id=article.related_id %}"><img class="img-responsive" src="{% static 'ebs/img/default.png' %}"/>
+								</a>
+							{% endif %}
+							</div>
+							<div class="col-xs-7">
+								<h4><a href="{% url 'detail_blog' id=article.related_id %}">{{article.related_title}}</a></h4>
+								<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=article.related_id %}" class="label label-default">{{article.related_categories}}</a>
+								<span class="author-text"> - {{article.related_timestamp }}</span>
+							</div>
+						</div>
+					</div>	
+				<hr>
+			{% endfor %}
+			{% endif %}
+			{% if blog.tags %}
+				<div class="tags top-margin-30">
+					<h4 class="separator">TAGS</h4>
+					{% for tag in tags %}
+						<span>{{tag}}</span>
+					{% endfor %}
+				</div>
+			{% endif %}
+			</aside>
+		</div>
+	</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'ebs/js/detail_blog.js' %}"></script>
+{% endblock %}	

@@ -1,6 +1,3 @@
-.label{
-	font-weight: 200;
-}
 .banner-blog .large{
 	height:420px;
 	width:100%;
@@ -28,14 +25,6 @@
 .banner-text a{
 	color:white;
 }
-.banner-text .label-default{
-	border-radius:0;
-	background-color: black;
-	text-transform: uppercase;
-}
-.banner-text .label-default:hover{
-	background-color:#009688;
-}
 .banner-text span{
 	font-size:11px;
 }
@@ -55,40 +44,11 @@
 	width:100% ;
 	height:170px;
 }
-.latest-text .label-default{
-	border-radius:0;
-	background-color: black;
-	text-transform: uppercase;
-}
-.latest-text .label-default:hover{
-	background-color:#009688;
-}
-.latest-text .latest-author{
-	font-size:11px;
-}
-.latest-text .latest-author a:hover{
+.latest-text .author-text a:hover{
 	color:black;
 }
-.popular-blog{
+.blog-side{
 	position:relative;
-}
-.popular-blog h4{
-	font-size:17px;
-	line-height:23px;
-	font-weight:300;
-	margin-top:0px;
-}
-.popular-blog .label-default{
-	border-radius:0;
-	background-color: black;
-	text-transform: uppercase;
-}
-.popular-blog .label-default:hover{
-	background-color:#009688;
-}
-.popular-blog .popular-author{
-	font-size:11px;
-	line-height: 1px;
 }
 .must-blog{
 	position:relative;
@@ -98,14 +58,6 @@
 	line-height:24px;
 	font-weight: 600;
 	margin-top:0px;
-}
-.must-blog .label-default{
-	border-radius:0;
-	background-color: black;
-	text-transform: uppercase;
-}
-.must-blog .label-default:hover{
-	background-color:#009688;
 }
 .must-blog .must-author{
 	font-size:11px;
@@ -119,15 +71,14 @@ a:hover{
 	color:#009688;
 	text-decoration: none;
 }
-a{
-	text-decoration: none;
-	color:black;
-}
 .latest-text .view-block:hover {
 	background-color:black;
 }
 .must-blog .view-block:hover{
 	background-color:black;
+}
+ul li a{
+	color:black;
 }
 #logged-user
 {
@@ -137,9 +88,6 @@ a{
 .forgot-modal{
 	text-align:center;
 	margin-top:10px ;
-}
-.top-margin-30{
-	margin-top:30px;
 }
 .top-margin-10{
 	margin-top:10px;
@@ -156,12 +104,6 @@ a{
 }
 .banner1{
 	margin-top:50px;
-}
-.latest-hr{
-	border-bottom: 2px solid #009688;
-	padding-bottom:7px;
-	margin-bottom:20px;
-	font-weight:600;
 }
 .hcatagories{
 	font-size:14px;

@@ -5,6 +5,7 @@ import uuid
 import sys
 import re
 import imghdr
+from operator import itemgetter
 from datetime import datetime, timedelta
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -21,9 +22,11 @@ from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.db.models import Q
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string, get_template
 from django.utils import timezone
 from django.utils.html import strip_tags
+from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
 from .models import Organisation,Blog,BlogFile,ForgotPassword
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
@@ -248,10 +251,14 @@ def create_blog(request):
             blog.save()
             messages.success(request, 'Blog details saved successfully.')
             return HttpResponseRedirect('/manage_blog',{"messages":messages})
+        else:
+            return render(request,'ebs/create_blog.html',
+                            {'blogform': blogform,'blogfileform':blogfileform})    
     else:
         blogfileform=BlogFileForm()
         blogform=BlogForm()
-        return render(request,'ebs/create_blog.html',{'blogform': blogform,'blogfileform':blogfileform})
+        return render(request,'ebs/create_blog.html',
+                            {'blogform': blogform,'blogfileform':blogfileform})
 
 @login_required(login_url='/')
 def manage_blog(request):
@@ -323,6 +330,7 @@ def delete_blog(request):
         response = json.dumps({'status':'Failure'})
         return HttpResponse(response, content_type="application/json")
 
+@login_required(login_url='/')
 def update_blog(request,id):
     bloginstance=Blog.objects.get(id=id)
     fileinstance=BlogFile.objects.filter(blog=id)
@@ -393,4 +401,61 @@ def update_delete_blog(request):
         file.delete()
         response = json.dumps({'status':'Success'})
         return HttpResponse(response, content_type="application/json")
-        
+
+@login_required(login_url='/')
+def detail_blog(request,id):
+    bloginstance=get_object_or_404(Blog, id=id)
+    fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
+    if bloginstance.tags: 
+        related_blog=Blog.objects.filter(
+                        Q(categories=bloginstance.categories)|
+                        Q(tags__icontains=bloginstance.tags)).order_by('-id')
+    else:
+        related_blog=Blog.objects.filter(
+                        Q(categories=bloginstance.categories)).order_by('-id')
+    related_blog=related_blog.exclude(id=id)
+    related_context={}
+    related_data=list()
+    main_image=None
+    tags=list()
+    pdf_data=list()
+    image_data=list()
+    for each in fileinstance:
+        filename, file_extension = os.path.splitext(str(each.attachments))
+        if  file_extension in ['.png','.jpeg','.jpg']:
+            image_data.append(each)
+        else:
+            pdf_data.append(each)
+    if image_data:
+        main_image=image_data[0]
+        image_data.pop(0)
+    if bloginstance.tags:
+        tags=re.findall(r"[\w']+", bloginstance.tags)    
+
+    for each in related_blog:
+        related_context={
+                'related_id':each.id,
+                'related_title':each.title,
+                'related_timestamp':each.timestamp,
+                'related_categories':each.categories
+            }
+        files=BlogFile.objects.filter(blog_id=each.id).order_by('-id')
+        if not files :
+            continue
+        else:
+            for each in files:
+                print each.attachments
+                filename, file_extension = os.path.splitext(str(each.attachments))
+                if  file_extension in ['.png','.jpeg','.jpg']:
+                    related_context['related_file']=each.attachments
+                    break
+        related_data.append(related_context)
+    related_data=related_data[:6]
+    return render(request, 'ebs/detail_blog.html',
+                        {'blog':bloginstance,
+                        'image_data':image_data,
+                        'pdf_data':pdf_data,
+                        'main_image':main_image,
+                        'related_data':related_data,
+                        'tags':tags})
+
