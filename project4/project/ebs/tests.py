@@ -506,4 +506,4 @@ class Test1(TestCase):
 	 						{'username':os.environ['USERNAME'],
 	 						'password':os.environ['PASSWORD']})
 		response=client.get(reverse('detail_blog',kwargs={'id':23}))
-		self.assertFalse(response.status_code,404)		
+		self.assertTrue(response.status_code,404)		
