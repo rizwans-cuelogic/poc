@@ -20,9 +20,9 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                {{blogform.description.errors}}
                 <label for="description" class="control-label">*Description</label>
                 {{blogform.description}}
+                {{blogform.description.errors}}
             </div>
         </div>
         <div class="row">
@@ -82,4 +82,6 @@
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script type="text/javascript" src="{% static 'ebs/js/create_blog.js' %}"></script>
+<script type="text/javascript">
+</script>
 {% endblock %}
