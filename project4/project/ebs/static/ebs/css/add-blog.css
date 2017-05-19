@@ -9,6 +9,9 @@
 .django-ckeditor-widget{
 	display:block !important;
 }
+#cke_id_description{
+	width:100% !important;
+}
 .help-line{
 	display:block;
 	color:red;

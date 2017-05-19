@@ -31,6 +31,21 @@ main{
 	word-wrap: break-word;
 	margin-bottom:26px;
 }
+.blog-content ul{
+	margin-bottom:26px;
+}
+.blog-content table{
+	margin-bottom:26px;
+}
+.blog-content ul li{
+	margin-bottom:10px;
+}
+.blog-content ul li a{
+	color:#337ab7;
+}
+.blog-content ul li a:hover{
+	color:#23527c;
+}
 main h3{
     font-size: 21px;
 }

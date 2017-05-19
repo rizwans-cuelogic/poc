@@ -47,11 +47,11 @@
 					<td class="content-middle">
 						<input type="checkbox" name="{{query.blog_id}}" value="{{query.blog_id}}">
 					</td>
-					<td>
+					<td class="image-wrapper">
 					{% if query.blog_file %}
 						<a href="{% url 'detail_blog' id=query.blog_id %}"><img class="blog-image img-responsive" src="/media_cdn/{{query.blog_file}}"/></a>
 					{% else %}
-						<img class="blog-image img-responsive" src="{% static 'ebs/img/default.png' %}"/>
+						<a href="{% url 'detail_blog' id=query.blog_id %}"><img class="blog-image img-responsive" src="{% static 'ebs/img/default.png' %}"/></a>
 					{% endif %}
 					</td>
 					<td>
