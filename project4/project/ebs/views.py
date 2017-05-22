@@ -285,17 +285,14 @@ def manage_blog(request):
                 'blog_title':each.title,
                 'blog_description':each.description
             }
-            files=BlogFile.objects.filter(blog_id=each.id).order_by('-id')
+            files=BlogFile.objects.filter(blog_id=each.id)
             if files is None:
                 context['blog_file']=''
             else:
                 for each in files:
                     print each.attachments
-                    filename, file_extension = os.path.splitext(str(each.attachments))
-                    if  file_extension in ['.png','.jpeg','.jpg']:
-                        context['blog_file']=each.attachments
-                        break
-
+                    context['blog_file']=each.attachments
+                    break
             data.append(context)
         paginator=Paginator(data,5)
         page = request.GET.get('page')
@@ -356,43 +353,20 @@ def update_blog(request,id):
             blog.save()
             messages.success(request, 'Blog details saved successfully.')
             return HttpResponseRedirect('/manage_blog',{"messages":messages})
-
     else:
-        
         blogform=BlogForm(instance=bloginstance)
         attachments_value= ""
-        image1_value=""
-        image2_value=""
         attachments_id=0
-        image1_id=0
-        image2_id=0
-        if not fileinstance:
-            pass
-        if len(fileinstance)==1:
+        if fileinstance:
             attachments_value=fileinstance[0].attachments.name
-            attachments_id=fileinstance[0].id
-        if len(fileinstance)==2:
-            attachments_value=fileinstance[0].attachments.name
-            image1_value=fileinstance[1].attachments.name
-            attachments_id=fileinstance[0].id
-            image1_id=fileinstance[1].id          
-        if len(fileinstance)==3:
-            attachments_value=fileinstance[0].attachments.name
-            image1_value=fileinstance[1].attachments.name
-            image2_value=fileinstance[2].attachments.name
-            attachments_id=fileinstance[0].id
-            image1_id=fileinstance[1].id
-            image2_id=fileinstance[2].id      
+            attachments_id=fileinstance[0].id    
         blogfileform=BlogFileForm(request.POST)                      
         return render(request,'ebs/update_blog.html',
                                     {'blogform':blogform,'blogfileform':blogfileform,
                                     'bloginstance':bloginstance,
                                     'attachments_value':attachments_value,
-                                    'image1_value':image1_value,
-                                    'image2_value':image2_value,
                                     'attachments_id':attachments_id,
-                                    'image1_id':image1_id,
-                                    'image2_id':image2_id})
+                                    })
 @csrf_exempt
 def update_delete_blog(request):
     if request.method=='POST':
@@ -402,7 +376,6 @@ def update_delete_blog(request):
         response = json.dumps({'status':'Success'})
         return HttpResponse(response, content_type="application/json")
 
-@login_required(login_url='/')
 def detail_blog(request,id):
     bloginstance=get_object_or_404(Blog, id=id)
     fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
@@ -418,17 +391,8 @@ def detail_blog(request,id):
     related_data=list()
     main_image=None
     tags=list()
-    pdf_data=list()
-    image_data=list()
     for each in fileinstance:
-        filename, file_extension = os.path.splitext(str(each.attachments))
-        if  file_extension in ['.png','.jpeg','.jpg']:
-            image_data.append(each)
-        else:
-            pdf_data.append(each)
-    if image_data:
-        main_image=image_data[0]
-        image_data.pop(0)
+        main_image=each
     if bloginstance.tags:
         tags=re.findall(r"[\w']+", bloginstance.tags)    
 
@@ -439,22 +403,18 @@ def detail_blog(request,id):
                 'related_timestamp':each.timestamp,
                 'related_categories':each.categories
             }
-        files=BlogFile.objects.filter(blog_id=each.id).order_by('-id')
+        files=BlogFile.objects.filter(blog_id=each.id)
         if not files :
             continue
         else:
             for each in files:
                 print each.attachments
-                filename, file_extension = os.path.splitext(str(each.attachments))
-                if  file_extension in ['.png','.jpeg','.jpg']:
-                    related_context['related_file']=each.attachments
-                    break
+                related_context['related_file']=each.attachments
+                break
         related_data.append(related_context)
     related_data=related_data[:6]
     return render(request, 'ebs/detail_blog.html',
                         {'blog':bloginstance,
-                        'image_data':image_data,
-                        'pdf_data':pdf_data,
                         'main_image':main_image,
                         'related_data':related_data,
                         'tags':tags})

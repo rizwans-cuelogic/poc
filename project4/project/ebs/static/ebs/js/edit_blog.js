@@ -1,14 +1,6 @@
 $(document).ready(function(){
 	if($('#file1').text()!=""){
 		$('#id_attachments').hide();
-	} 
-	if($('#file2').text()!=""){
-		$('#id_image1').hide();
-	}
-	if($('#file3').text()!=""){
-		$('#id_image2').hide();
-	}
-	if($('#file3').text()!="" && $('#file1').text()!="" && $('#file2').text()!=""){
 		$('#attached').hide();
 		$('#attached-row').removeClass('form-group');
 	}
@@ -16,18 +8,6 @@ $(document).ready(function(){
 		var value=$(this).attr('value');
 		file1='file1'
 		attachments='id_attachments'
-		deleteAttachment(value,file1,attachments)
-	})
- 	$(document).on('click','#button2',function(){
- 		var value=$(this).attr('value');
-		file1='file2'
-		attachments='id_image1'
-		deleteAttachment(value,file1,attachments)
- 	})
-	$(document).on('click','#button3',function(){
-		var value=$(this).attr('value');
-		file1='file3'
-		attachments='id_image2'
 		deleteAttachment(value,file1,attachments)
 	})
 	deleteAttachment=function(value,file1,attachments){
@@ -51,10 +31,10 @@ $(document).ready(function(){
 					$('#'+file1).remove();
 					$('#'+attachments).show();
 					$('#attached-row').addClass('form-group');
-					if(!$('#file1').is(':visible') && !$('#file2').is(':visible') && !$('#file3').is(':visible')){
+					if(!$('#file1').is(':visible')){
 						$('#label-uploaded').remove();
 					}
-					if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+					if($('#file1').text()==""){
 						$('#upload-row').removeClass('form-group');
 					}
 					swal("Deleted!", "Your file has been deleted.", "success");
@@ -63,7 +43,7 @@ $(document).ready(function(){
 		});		
 	}
 
-	if($('#file3').text()=="" && $('#file1').text()=="" && $('#file2').text()==""){
+	if($('#file1').text()==""){
 		$('#upload-row').removeClass('form-group');
 	}
 

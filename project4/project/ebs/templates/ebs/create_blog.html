@@ -1,6 +1,7 @@
 {% extends "ebs/common.html" %}
 {% load static %}
-{% block head_extra %}	
+{% block head_extra %}
+<title>Create Blog</title>	
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
@@ -33,12 +34,11 @@
             </div>
         </div>
         <div class="row">
+           
             <div class="form-group col-md-6">
                 {{blogform.image.errors}}
-                <label class="control-label">Attachments</label>
+                <label class="control-label">Blog Image</label>
                 {{blogfileform.attachments}}
-                {{blogfileform.image1}}
-                {{blogfileform.image2}}
             </div>
         </div>
         <div class="row">

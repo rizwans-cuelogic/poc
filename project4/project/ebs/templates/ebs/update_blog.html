@@ -1,6 +1,7 @@
 {% extends "ebs/common.html" %}
 {% load static %}
-{% block head_extra %}	
+{% block head_extra %}
+<title>Edit Blog</title>	
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
@@ -36,10 +37,8 @@
         <div class="row">
             <div id ="attached-row" class="form-group col-md-6">
                 {{blogform.image.errors}}
-                <label id="attached" class="control-label">Attachments</label>
+                <label id="attached" class="control-label">Blog Image</label>
                     {{blogfileform.attachments}}
-                    {{blogfileform.image1}}
-                    {{blogfileform.image2}}
             </div>
         </div>
         <div class="row">
@@ -51,18 +50,6 @@
                 {{attachments_value}}
                 </p>
         {% endif %}
-        {% if image1_value %}
-                <p class="media-file" id="file2">
-                <button class="media-button pull-right" id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                {{image1_value}}
-                </p>
-        {% endif %}
-        {% if image2_value %}
-            <p class="media-file" id="file3">
-            <button class="media-button pull-right" id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-            {{image2_value}}
-            </p>
-        {% endif %} 
             </div>
         </div>
         <div class="row">

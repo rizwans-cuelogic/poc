@@ -1,10 +1,20 @@
-$(document).ready(function() {  
+$(document).ready(function() {
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //     var reader = new FileReader();
+    //     reader.onload = function(e) {
+    //         $('#previewHolder').attr('src', e.target.result);
+    //     }
+    //     reader.readAsDataURL(input.files[0]);
+    //     }
+    // } 
+    // $("#id_attachments").change(function() {
+    //     readURL(this);
+    // });
+
     $('#createform').on('submit', function (e) {
         var file_error_one = 0
-        var file_error_two = 0
-        var file_error_three = 0
         var file_error_four=0
-        var file_error_five=0
         input=$('#id_published').val();
         input=input.split(" ");
         time=input[1].split(":");
@@ -35,7 +45,6 @@ $(document).ready(function() {
                 file_error_four=1;
                 $( "#id_published" ).focus();
             }
-
         }
     }
     else{
@@ -56,49 +65,19 @@ $(document).ready(function() {
             $( "#id_attachments" ).focus();
             file_error_one = 1
         }
-
-        if($('#id_image1').val() && $('#id_image1')[0].files[0].size>15728640) {
-            if ($("#id_image1").next(".validation").length == 0){
-                $("#id_image1").after("<div class='validation' style='color:red;margin-top:5px;'>File Size Should Be Less Than 15MB</div>"); 
-            } 
-            file_error_two = 1 
-            $( "#id_image1" ).focus();
-        } 
-
-        if ($('#id_image2').val() && $('#id_image2')[0].files[0].size>15728640) {
-            if ($("#id_image2").next(".validation").length == 0){
-                $("#id_image2").after("<div class='validation' style='color:red;margin-top:5px;'>File Size Should Be Less Than 15MB</div>");
-            }
-            file_error_three = 1
-            $( "#id_image2" ).focus();
-        }
         if(file_error_one==0){
             $("#id_attachments").next(".validation").remove();
-        }
-        if(file_error_two==0){
-            $("#id_image1").next(".validation").remove();
-        }
-        if(file_error_three==0){
-            $("#id_image2").next(".validation").remove();
         }
         if(file_error_four==0){
             $("#datetimepicker1").next(".validation").remove();
         }
-
-        if(file_error_one && file_error_two || file_error_one && file_error_two && file_error_three ){
+        if(file_error_one){
             $( "#id_attachments" ).focus();
         }
-        
-        if(!file_error_one && file_error_two && file_error_three){
-            $( "#id_image1" ).focus()   
-        }    
-
-       if (!file_error_one && !file_error_two && !file_error_three && !file_error_four)
+        if (!file_error_one && !file_error_four)
         {
-            $("#id_image1").next(".validation").remove();
             $("#id_attachments").next(".validation").remove();
-            $("#id_image2").next(".validation").remove();
-        $("#datetimepicker1").next(".validation").remove();
+            $("#datetimepicker1").next(".validation").remove();
             return true;     
         }
         return false;

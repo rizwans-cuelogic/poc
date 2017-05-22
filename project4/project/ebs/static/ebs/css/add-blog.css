@@ -1,3 +1,6 @@
+#search-form{
+	display:none;
+}
 .errorlist{
 	color:red;
 	list-style: none;
