@@ -366,6 +366,7 @@ def update_blog(request,id):
                                     'bloginstance':bloginstance,
                                     'attachments_value':attachments_value,
                                     'attachments_id':attachments_id,
+                                    'bloginstance':bloginstance,
                                     })
 @csrf_exempt
 def update_delete_blog(request):

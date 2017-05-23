@@ -69,6 +69,7 @@ a{
 }
 .header-navbar{
 	border-top:4px solid #009688;
+	border-radius:0px;
 }
 .navbar-inverse{
 	border-radius:0px;
@@ -123,7 +124,7 @@ nav{
 ul li a{
 	color:black;
 }
-#logged-user {
+.login-user {
 	font-weight: 700;
 	padding-top:10px;
 }
@@ -142,6 +143,9 @@ ul li a{
 	#nav-list li a{
 		padding: 10px 6px;
     	font-size: 12px;
+	}
+	.dropdown-menu>li>a{
+		padding:6px 12px !important;
 	}
 	.navbar-header a img{
 		height:60px;
