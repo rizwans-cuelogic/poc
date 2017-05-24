@@ -41,7 +41,7 @@
            {% if attachments_value %}
             <div id="preview" class="col-md-2">
                 <img class="img-responsive" src="/media_cdn/{{attachments_value}}"/>
-                <button class="media-button pull-right" id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <button class="media-button" id="button1" type="button" value="{{attachments_id}}" data-toggle="tooltip" title="remove this image"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
             </div>
             {% endif %}
             <div id ="attached-row" class="col-md-6">
