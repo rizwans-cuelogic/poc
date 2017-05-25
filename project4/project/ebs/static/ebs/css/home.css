@@ -48,7 +48,7 @@
 	width:100% ;
 }
 .latest-blog .image-wrap {
-	height:160px;
+	height:170px;
 	overflow:hidden;
 	display: block;
 	position:relative;
@@ -161,6 +161,11 @@ ul.simple-list{
 	list-style: none;
 	padding: 0;
 }
+@media screen and (max-width:320px){
+	.latest-blog .image-wrap {
+		height:160px;
+	}
+}
 @media screen and (max-width:768px){
 	.file-size{
 		width:100%;
@@ -179,4 +184,5 @@ ul.simple-list{
 	.modal-dialog{
 		width:400px;
 	}
+}
 }
