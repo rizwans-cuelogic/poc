@@ -10,7 +10,19 @@ $.urlParam = function(name){
   var param=$.urlParam('filterbox');
   if(param==null){
      sessionStorage.setItem("SelItem", 'al')
-}
+  }
+  if(param=='ds?deleted=1')
+  {
+    sessionStorage.setItem("SelItem", 'al')
+  }
+  if(param=='en?deleted=1')
+  {
+    sessionStorage.setItem("SelItem", 'al')
+  }
+  if(param=='al?deleted=1')
+  {
+    sessionStorage.setItem("SelItem", 'al')
+  }
 window.onload = function() {
 var selItem = sessionStorage.getItem("SelItem");
 $('#filter').val(selItem);

@@ -29,20 +29,33 @@
 	font-size:11px;
 }
 .latest-blog{
-	position:relative;
-	height:285px;
+	margin-bottom:30px;
 }
 .latest-blog .latest-text{
-	position:absolute;
-	top:150px;
+	position:relative;
+	height:76px;
 }
 .latest-blog .latest-text h3{
 	margin-top:10px;
 	font-size: 21px;
 }
+.latest-blog .latest-text h3{
+  	max-height:46px;
+  	overflow:hidden;
+}
 .latest-blog img{
 	width:100% ;
+}
+.latest-blog .image-wrap {
 	height:170px;
+	overflow:hidden;
+	display: block;
+	position:relative;
+}
+.latest-text >.latest-label{
+	position:absolute;
+ 	top:-30px;
+	left:5px;
 }
 .latest-text .author-text a:hover{
 	color:black;

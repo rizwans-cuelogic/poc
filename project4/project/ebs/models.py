@@ -66,7 +66,7 @@ class Blog(models.Model):
     tags = models.CharField(max_length=125,blank=True,null=True)
     updated=models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp=models.DateTimeField(auto_now=False,auto_now_add=True)
-    published=models.DateTimeField(default=timezone.now)
+    published=models.DateTimeField(blank=True,null=True)
     published_state=models.BooleanField(default=False,blank=True)
     draft=models.BooleanField(default=False)
     categories=models.ForeignKey(Categories,blank=True,on_delete=models.CASCADE)

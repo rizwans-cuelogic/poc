@@ -1,6 +1,7 @@
 {% extends "ebs/common.html" %}
 {% load static %}
 {% block head_extra %}
+<title>Home</title>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/home.css' %}"/>{% endblock %}
 {% block content %}
 	<!-- BANNER BLOGS POSTS -->
@@ -9,56 +10,32 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="banner-blog">
-						<a href="#"><img class="large" src="{% static 'ebs/img/pro1.jpg' %}"/></a>
+						<a href="{% url 'detail_blog' id=main_blog.id %}"><img class="large" src="/media_cdn/{{main_image}}"/></a>
 						<div class="banner-text">
-							<a href="#" class="label label-default">photography</a>
-							<h3><a href="#">Celebrity Make-up artist gary cockrill shows you beaty tips</a></h3>
-							<span><a href="#"><strong>David Lee</strong></a>-  September 24,    2016</span>
+							<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=main_blog.id %}" class="label label-default">{{main_blog.categories}}</a>
+							<h3><a href="{% url 'detail_blog' id=main_blog.id %}">{{main_blog.title}}</a></h3>
+							<span><a href="{% url 'detail_blog' id=main_blog.id %}"><strong>{{main_blog.organisation}}</strong></a>-  {{main_blog.published}}</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
+				{% for blog in banner_data %}
+				{% if not forloop.counter|divisibleby:2%}
 					<div class="row">
+				{% endif %}
 						<div class="col-md-6">
 							<div class="banner-blog">
-								<a href="#"><img src="{% static 'ebs/img/por1.jpg' %}"/></a>
+								<a href="{% url 'detail_blog' id=blog.banner_id %}"><img src="/media_cdn/{{blog.banner_file}}"/></a>
 								<div class="banner-text">
-									<a href="#" class="label label-default">Health</a>
-									<h4><a href="#">The workout That Burns More Calories Than Runing</a></h4>
+									<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=blog.banner_id %}" class="label label-default">{{blog.banner_categories}}</a>
+									<h4><a href="{% url 'detail_blog' id=blog.banner_id %}">{{blog.banner_title}}</a></h4>
 								</div> 
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="banner-blog">
-								<a href="#"><img src="{% static 'ebs/img/mobile.jpg' %}"/></a>
-								<div class="banner-text">
-									<a href="#" class="label label-default">Tech</a>
-									<h4><a href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h4>
-								</div> 
-							</div>
-						</div>
+				{% if forloop.counter|divisibleby:2%}
 					</div>
-					<!--<div class="banner-2">-->
-					<div class="row">
-						<div class="col-md-6 ">
-							<div class="banner-blog">
-								<a href="#"><img src="{% static 'ebs/img/post2.jpg' %}"/></a>
-								<div class="banner-text">
-									<a href="#" class="label label-default">Arts</a>
-									<h4><a href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h4>
-								</div> 
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="banner-blog">
-								<a href="#"><img src="{% static 'ebs/img/gile.jpg' %}"/></a>
-								<div class="banner-text">
-									<a href="#" class="label label-default">Fashion</a>
-									<h4><a href="#">Fashion Week Parties: Night 4</a></h4>
-								</div> 
-							</div>
-						</div>
-					</div>
+				{% endif %}
+				{% endfor %}
 				</div>
 			</div>
 		</div>			
@@ -69,185 +46,48 @@
 			<div class="row">
 				<main class="col-md-8">
 					<h4 class="separator">LATEST BLOGS</h4>
+					{% for latest in latest_data %}
+					{% if not forloop.counter|divisibleby:2%}
 					<div class="row">
+					{% endif %}
 						<div class="col-md-6">
 							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/pro1.jpg' %} "/></a>
+								<a class="image-wrap" href="{% url 'detail_blog' id=latest.latest_id %}">
+									<img src="/media_cdn/{{latest.latest_file}}">
+								</a>
 								<div class="latest-text">
-									<a href="#" class="label label-default">PHOTOGRAPHY</a>
-									<h3><a href="#"> Celebrity Make-up artist gary Cockrill shows you beaty tips</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
+									<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=latest.latest_id %}" class="label label-default latest-label">{{latest.latest_categories}}</a>
+									<h3><a href="{% url 'detail_blog' id=latest.latest_id %}">{{latest.latest_title}}</a></h3>
+									<span class="author-text"><a href="{% url 'detail_blog' id=latest.latest_id %}"><strong>{{latest.latest_organisation}}</strong></a>-   {{latest.latest_timestamp}}</span>
+									<a href="{% url 'detail_blog' id=latest.latest_id %}" class="pull-right label label-default view-block">0</a>
 								</div>
 							</div>		
 						</div>
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/books.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">HEALTH</a>
-									<h3><a href="#">Summer Sports That Torch Serious Calories</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>	
-						</div>
+					{% if forloop.counter|divisibleby:2%}
 					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/por1.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">Health</a>
-									<h3><a href="#">The workout That Burns More Calories Than Running</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>-   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/mobile.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">TECH</a>
-									<h3><a href="#"> Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>		
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/army.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">army</a>
-									<h3><a href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>   -   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/post2.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">Arts</a>
-									<h3><a href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/bus.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">Arts</a>
-									<h3><a href="#">Making Times Square’s Pedestrian Plazas Work</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a> -   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/frame.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">arts</a>
-									<h3><a href="#">How the Guggenheim Keeps Its Galleries Immaculate</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-								<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/masterpiece.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">arts</a>
-									<h3><a href="#"> Joan Young Moderates a Conversation about Singapore</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="latest-blog">
-								<a href="#"><img src="{% static 'ebs/img/camera.jpg' %}"/></a>
-								<div class="latest-text">
-									<a href="#" class="label label-default">arts</a>
-									<h3><a href="#"> Lenovo Introduces Its Best Entertainment Tablets Yet</a></h3>
-									<span class="author-text"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
-									<a href="#" class="pull-right label label-default view-block">0</a>
-								</div>
-							</div>
-						</div>
-					</div>					
+					{% endif %}
+					{% endfor %}
 				</main>	
-				<aside class="col-md-4">
+				<aside class="latest-section col-md-4">
 					<!-- MOST POPULAR -->
 					<h4 class="separator">MOST POPULAR</h4>
+					{% for popular in popular_data %}
 					 <div class="row">
 						<div class="blog-side">
 							<div class="col-md-5 col-xs-5">
-								<a href="#"><img class="img-responsive" src="{% static 'ebs/img/mobile.jpg' %}"/>
+								<a href="{% url 'detail_blog' id=popular.popular_id %}"><img class="img-responsive" src="/media_cdn/{{popular.popular_file}}"/>
 								</a>
 							</div>
 							<div class="col-md-7 col-xs-7">
-								<h4><a href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h4>
-								<a href="#" class="label label-default">TECH</a>
-								<span class="author-text">    -   September 24,   2016</span>
+								<h4><a href="{% url 'detail_blog' id=popular.popular_id %}">{{ popular.popular_title}}</a></h4>
+								<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=popular.popular_id %}" class="label label-default">{{popular.popular_categories}}</a>
+								<span class="author-text"> - {{popular.popular_timestamp}}</span>
 							</div>
 						</div>
 					</div>	
 					<hr>
-					<div class="row">
-						<div class="blog-side">
-							<div class="col-md-5 col-xs-5">
-								<a href="#"><img class="img-responsive" src="{% static 'ebs/img/pro1.jpg' %}"/>
-								</a>
-							</div>
-							<div class="col-md-7 col-xs-7">
-								<h4 ><a href="#"> Celebrity Make-up artist gary cockrill shows you beaty tips</a></h4>
-								<a href="#"class="label label-default">PHOTOGRAPHY</a>
-								<span class="author-text">   -   September 24,   2016</span>
-							</div>
-						</div>
-					</div>	
-					<hr>
-					<div class="row">
-						<div class="blog-side">
-							<div class="col-md-5 col-xs-5">
-								<a href="#"><img class="img-responsive" src="{% static 'ebs/img/por1.jpg' %}"/></a>
-							</div>
-							<div class="col-md-7 col-xs-7">
-								<h4><a href="#">The workout That Burns More Calories Than Running</a></h4>
-								<a href="#" class="label label-default">HEALTH</a>
-								<span class="author-text">     -   September 24,    2016</span>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="row">
-						<div class="blog-side">
-							<div class="col-md-5 col-xs-5">
-								<a href="#">
-									<img class="img-responsive" src="{% static 'ebs/img/gile.jpg' %}"/>
-								</a>
-							</div>
-							<div class="col-md-7 col-xs-7">
-								<h4><a href="#">Fashion Week Parties: Night 4</a></h4>
-								<a href="#" class="label label-default">FASHION</a>
-								<span class="author-text">    -    September 24,    2016</span>
-							</div>
-						</div>
-					</div>	
+					{% endfor %}
+						
 					<!-- MUST READ BLOG -->
 					<div class="top-margin-30">
 						<h4 class="separator">MUST READ</h4>
@@ -255,7 +95,7 @@
 							<div class="col-md-12">
 								<div class="must-blog">
 									<h5><a href="#">Gigabyte GeForce GTX 950 Review: Pricing Is Everything</a></h5>
-									<a href="#" class="label label-default">TECH</a>
+									<a data-toggle="tooltip" title="category" href="#" class="label label-default">TECH</a>
 								 	<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 							 		<a href="#" class="pull-right label label-default view-block">0</a>
 							 	</div>
@@ -266,7 +106,7 @@
 							<div class="col-md-12">
 								<div class="must-blog">
 								<h5><a href="#">Celebrity Make-up artist gary cockrill shows you beaty tips</a></h5>
-								<a href="#" class="label label-default">PHOTOGRAPPHY</a>
+								<a data-toggle="tooltip" title="category" href="#" class="label label-default">PHOTOGRAPPHY</a>
 								<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 								<a href="#" class="pull-right label label-default view-block">0</a>
 								</div>
@@ -277,7 +117,7 @@
 							<div class="col-md-12">
 								<div class="must-blog">
 									<h5><a href="#">A Thomas Hart Benton Mural, Repurposed as a Writing Desk</a></h5>
-									<a href="#" class="label label-default">ARTS</a>
+									<a data-toggle="tooltip" title="category" href="#" class="label label-default">ARTS</a>
 									<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 									<a href="#" class="pull-right label label-default view-block">0</a>
 								</div>
@@ -288,7 +128,7 @@
 							<div class="col-md-12">
 								<div class="must-blog">
 									<h5><a href="#">Georgian soldier helped in attack near US base in Afghanistan</a></h5>
-									<a href="#" class="label label-default">ARMY</a>
+									<a data-toggle="tooltip" title="category" href="#" class="label label-default">ARMY</a>
 									<span class="must-author"><a href="#"><strong>David Lee</strong></a>  -   September 24,   2016</span>
 									<a href="#" class="pull-right view-block label label-default">0</a>
 								</div>
@@ -299,9 +139,9 @@
 					<div class="top-margin-30">
 						<h4 class="separator"><strong>CATAGORIES</strong></h4>
 						<ul class="simple-list">
-							<li><a href="#" class="hcatagories">Arts</a></li>
-							<li><a href="#" class="hcatagories">Fashion</a></li>
-							<li><a href="#" class="hcatagories">Gallery</a></li>
+						{% for category in categories %}
+							<li><a href="#" class="hcatagories">{{ category }}</a></li>
+						{% endfor %}
 						</ul>
 					</div>
 				</aside>
@@ -316,4 +156,8 @@
 <script type="text/javascript" src="{% static 'ebs/js/login.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/forgotpassword.js' %}"></script>
 <script type="text/javascript" src="{% static 'ebs/js/resetpassword.js' %}"></script>
+<script type="text/javascript">
+	$(".latest-section > hr").last().remove();
+	$('[data-toggle="tooltip"]').tooltip();
+</script>
 {% endblock %}

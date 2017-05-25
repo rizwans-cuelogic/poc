@@ -49,23 +49,7 @@ main{
 main h3{
     font-size: 21px;
 }
-.thumbnail{
-	margin-bottom:0px;
-}
-.blog-thumbnail{
-	margin-bottom:26px;
-}
-.thumbnail img{
-	max-height:232px;
-}
-.blog-attachments h3,
-.blog-thumbnail h3{
-	margin-top:26px;
-}
 .tags span{
 	text-transform: uppercase;
 	word-spacing:1px;
-}
-.blog-attachments p:last-child{
-	margin-bottom:26px ;
 }

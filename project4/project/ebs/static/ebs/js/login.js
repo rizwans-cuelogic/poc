@@ -52,6 +52,7 @@ $(document).ready(function() {
                 else{
                      $('#signinmodal').modal('hide');
                      $('#logged-user').text("Welocome "+result['user']);
+                     $('#dropdownMenu1').text("Welocome "+result['user']);
                      location.reload();   
                 }
               }
