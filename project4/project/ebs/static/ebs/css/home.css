@@ -33,15 +33,16 @@
 }
 .latest-blog .latest-text{
 	position:relative;
-	height:76px;
 }
 .latest-blog .latest-text h3{
 	margin-top:10px;
 	font-size: 21px;
 }
 .latest-blog .latest-text h3{
-  	max-height:46px;
-  	overflow:hidden;
+	display:block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .latest-blog img{
 	width:100% ;

@@ -57,7 +57,7 @@
 								</a>
 								<div class="latest-text">
 									<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=latest.latest_id %}" class="label label-default latest-label">{{latest.latest_categories}}</a>
-									<h3><a href="{% url 'detail_blog' id=latest.latest_id %}">{{latest.latest_title}}</a></h3>
+									<h3><a href="{% url 'detail_blog' id=latest.latest_id %}" title="{{latest.latest_title}}">{{latest.latest_title}}</a></h3>
 									<span class="author-text"><a href="{% url 'detail_blog' id=latest.latest_id %}"><strong>{{latest.latest_organisation}}</strong></a>-   {{latest.latest_timestamp}}</span>
 									<a href="{% url 'detail_blog' id=latest.latest_id %}" class="pull-right label label-default view-block">0</a>
 								</div>
