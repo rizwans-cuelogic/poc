@@ -93,8 +93,7 @@ class BlogForm(forms.ModelForm):
 							 		'placeholder':'Tags',
 									'class': 'form-control'}))
 	
-	published=forms.DateTimeField(
-          				required=True,
+	published=forms.DateTimeField(required=False,
           				widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm "}))
 
 	categories=forms.ModelChoiceField(
@@ -123,18 +122,6 @@ class BlogFileForm(forms.Form):
 	attachments=forms.FileField(required=False,label="image",
 						widget=forms.FileInput(
 							attrs={
-								   'class':'form-control blog-file',
-								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
-								}))
-	image1=forms.FileField(required=False,label="image",
-						widget=forms.FileInput(
-							attrs={
-								   'class':'form-control blog-file',
-								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
-								}))
-	image2=forms.FileField(required=False,label="image",
-						widget=forms.FileInput(
-							attrs={
-								   'class':'form-control blog-file',
-								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf'
+								   'class':'form-control',
+								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf',
 								}))

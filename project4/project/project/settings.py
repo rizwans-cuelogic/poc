@@ -32,6 +32,7 @@ HOST='172.21.32.76:8000'
 
 INSTALLED_APPS = [
     'ebs.apps.EbsConfig',
+    'flat_responsive',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,7 +150,7 @@ EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_IMAGE_BACKEND="pillow"
-
+CKEDITOR_RESTRICT_BY_USER=True
 
 CKEDITOR_CONFIGS = {
     'default': {

@@ -1,6 +1,7 @@
 {% extends "ebs/common.html" %}
 {% load static %}
 {% block head_extra %}
+<title>Blog Detail</title>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/detail_blog.css' %}"/>
 {% endblock %}
 {% block content %}
@@ -19,28 +20,6 @@
 					</div>
 					<div class="blog-content">
 					{{blog.description | safe}}
-					</div>
-					{% if image_data %}
-					<div class="blog-thumbnail">
-						<h3><i class="fa fa-camera" aria-hidden="true"></i> Media</h3>
-						<div class="row">
-					{% for image in image_data %}
-							<div class="col-md-6">
-								<div class="thumbnail">
-									<a href="/media_cdn/{{image.attachments}}"><img class="blog-image img-responsive" src="/media_cdn/{{image.attachments}}"/></a>
-								</div>
-							</div>
-					{% endfor %}
-						</div>
-					</div>	
-					{% endif%}	
-					<div class="blog-attachments">
-					{% if pdf_data %}
-						<h3><i class="fa fa-paperclip" aria-hidden="true"></i> Attachments</h3>
-					{% for q in pdf_data %}
-						<p><a href="/media_cdn/{{q.attachments}}">{{q.attachments.name}}</a></p>
-					{% endfor %}
-					{% endif %}
 					</div>
 			</main>
 			<aside class="col-md-4">

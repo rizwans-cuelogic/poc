@@ -1,6 +1,7 @@
 {% extends "ebs/common.html" %}
 {% load static %}
-{% block head_extra %}	
+{% block head_extra %}
+<title>Edit Blog</title>	
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/add-blog.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'ebs/css/bootstrap-datetimepicker.min.css' %}"/>
@@ -33,36 +34,19 @@
                 {{blogform.tags}}
             </div>
         </div>
-        <div class="row">
-            <div id ="attached-row" class="form-group col-md-6">
-                {{blogform.image.errors}}
-                <label id="attached" class="control-label">Attachments</label>
-                    {{blogfileform.attachments}}
-                    {{blogfileform.image1}}
-                    {{blogfileform.image2}}
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label class="control-label">Blog Image</label>
             </div>
-        </div>
-        <div class="row">
-            <div id="upload-row" class="form-group col-md-6">
-        {% if attachments_value %}
-                <label id="label-uploaded">Uploaded Files</label>
-                <p class="media-file" id="file1">
-                <button class="media-button pull-right" id="button1" type="button" value="{{attachments_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                {{attachments_value}}
-                </p>
-        {% endif %}
-        {% if image1_value %}
-                <p class="media-file" id="file2">
-                <button class="media-button pull-right" id="button2" type="button" value="{{image1_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                {{image1_value}}
-                </p>
-        {% endif %}
-        {% if image2_value %}
-            <p class="media-file" id="file3">
-            <button class="media-button pull-right" id="button3" type="button" value="{{image2_id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-            {{image2_value}}
-            </p>
-        {% endif %} 
+           {% if attachments_value %}
+            <div id="preview" class="col-md-3">
+                <img class="img-responsive" src="/media_cdn/{{attachments_value}}"/>
+                <button class="media-button" id="button1" type="button" value="{{attachments_id}}" data-toggle="tooltip" title="remove this image"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            </div>
+            {% endif %}
+            <div id ="attached-row" class="col-md-6">
+                {{blogform.image.errors}}
+                {{blogfileform.attachments}}
             </div>
         </div>
         <div class="row">
@@ -80,27 +64,32 @@
         </div>
         <div class="row">
             <div class="form-group col-md-3">
-                <label class="control-label">*Publish on</label><div id="datetimepicker1">
+                <label class="control-label">Publish on</label><div id="datetimepicker1">
                     {{blogform.published.errors}}
                     {{blogform.published}}
                 </div>
             </div>
         </div>
         <div class="row">
+        {% if bloginstance.is_enable %}
             <div class="form-group col-md-3">
                 <label id="status" class="control-label">Status</label>
                 {{blogform.published_state}}
             </div>
+        {% endif %}
         </div>
         <div class="row">
             <div class="col-md-12 form-group buttons" >
+            {% if not bloginstance.is_enable %}
                 <button id="draft" class="btn btn-secondary" name="button1" value="button1">Save As Draft</button>
+            {% endif %}
                 <button id="save" type="submit" class="btn btn-secondary" name="button2" value="button2">Save</button>
                 <a href="{% url 'manage_blog'%}" class="btn btn-secondary">Cancel</a>
             </div>
         </div>
     </form>
 </div>
+<input id="date_status" type="hidden" name="country" value="{{bloginstance.is_enable}}">
 {% endblock %}
 
 {% block extra_js %}
