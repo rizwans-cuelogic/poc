@@ -51,8 +51,8 @@ $(document).ready(function() {
                 }
                 else{
                      $('#signinmodal').modal('hide');
-                     $('#logged-user').text("Welocome "+result['user']);
-                     $('#dropdownMenu1').text("Welocome "+result['user']);
+                     $('#logged-user').text("Welcome "+result['user']);
+                     $('#dropdownMenu1').text("Welcome "+result['user']);
                      location.reload();   
                 }
               }
