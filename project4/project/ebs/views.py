@@ -39,6 +39,8 @@ def home(request):
     loginform = UserLoginForm()
     hash1 = request.GET.get('uid', '')
     blogs=Blog.objects.filter(published_state=True).order_by('-id')
+    main_blog=None
+    main_image=None
     for each in blogs:
         images=BlogFile.objects.filter(blog=each.id)
         if not images:
@@ -47,11 +49,10 @@ def home(request):
             for image in images:
                 main_image=image.attachments
                 main_blog=each
+                blogs=blogs.exclude(id=main_blog.id)
             break;
-
     banner_context={}
     banner_data=list()
-    blogs=blogs.exclude(id=main_blog.id)
     for each in blogs:
         banner_context={'banner_id':each.id,
                         'banner_title':each.title,

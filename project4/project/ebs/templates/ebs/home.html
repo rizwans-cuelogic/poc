@@ -10,12 +10,14 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="banner-blog">
+						{% if main_blog %}
 						<a href="{% url 'detail_blog' id=main_blog.id %}"><img class="large" src="/media_cdn/{{main_image}}"/></a>
 						<div class="banner-text">
 							<a data-toggle="tooltip" title="category" href="{% url 'detail_blog' id=main_blog.id %}" class="label label-default">{{main_blog.categories}}</a>
 							<h3><a href="{% url 'detail_blog' id=main_blog.id %}">{{main_blog.title}}</a></h3>
 							<span><a href="{% url 'detail_blog' id=main_blog.id %}"><strong>{{main_blog.organisation}}</strong></a>-  {{main_blog.published}}</span>
 						</div>
+						{% endif %}
 					</div>
 				</div>
 				<div class="col-md-6">

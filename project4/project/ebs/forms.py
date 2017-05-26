@@ -125,3 +125,5 @@ class BlogFileForm(forms.Form):
 								   'class':'form-control',
 								   'accept':'image/jpeg,image/png',
 								}))
+
+	
