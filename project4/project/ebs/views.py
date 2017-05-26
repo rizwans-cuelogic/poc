@@ -276,7 +276,6 @@ def forgotpass(request):
                                     content_type='application/json')
 
     except Exception as e:
-        print e
         response = {'status': 'Error', 'message': "Invalid email"}
         return HttpResponse(json.dumps(response), content_type='application/json')
 
@@ -507,7 +506,6 @@ def detail_blog(request,id):
             continue
         else:
             for each in files:
-                print each.attachments
                 related_context['related_file']=each.attachments
                 break
         related_data.append(related_context)
