@@ -7,6 +7,9 @@ h1, h2, h3, h4, h5{
 a{
 	text-decoration:none !important;
 }
+.dropdown-menu{
+	margin-left:15px;
+}
 #footer{
 	background:url(../img/bg.png);
 	background-color:black;
@@ -63,17 +66,21 @@ a{
 .copyright{
 	color:white;
 	line-height: 40px;
+	text-align: right;
 }
 .white-text{
 	color:white;
 }
 .header-navbar{
 	border-top:4px solid #009688;
+	border-radius:0px;
 }
 .navbar-inverse{
 	border-radius:0px;
 }
 .navbar{
+	border-radius: 0px;
+	border:0px;
 	border-bottom: 4px solid #009688;
 }
 .navbar-toggle{
@@ -123,7 +130,7 @@ nav{
 ul li a{
 	color:black;
 }
-#logged-user {
+.login-user {
 	font-weight: 700;
 	padding-top:10px;
 }
@@ -143,6 +150,9 @@ ul li a{
 		padding: 10px 6px;
     	font-size: 12px;
 	}
+	.dropdown-menu>li>a{
+		padding:6px 12px !important;
+	}
 	.navbar-header a img{
 		height:60px;
 		margin:0 auto;
@@ -154,6 +164,9 @@ ul li a{
 		background-color:black;
 	}
 	#footer-2 ul{
+		text-align:center;
+	}
+	.copyright{
 		text-align:center;
 	}
 }

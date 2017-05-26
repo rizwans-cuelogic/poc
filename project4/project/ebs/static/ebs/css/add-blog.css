@@ -1,3 +1,18 @@
+.cke_screen_reader_only{
+	height:0px !important;
+} 
+#preview img{
+	border: #dcdcdc 1px solid;
+    border-radius: 3px;
+    padding:3px;
+    width:100%;
+}
+#preview{
+	position:relative;
+}
+#search-form{
+	display:none;
+}
 .errorlist{
 	color:red;
 	list-style: none;
@@ -34,8 +49,14 @@
 	text-align:right;
 }
 .media-button{
-	border:none;
-	margin-right:-50px;
+	color:white;
+	position:absolute;
+	right:15px;
+	top:0;
+	background:rgba(0,0,0,0.5);
+	border-radius:0 3px;
+	font-size:17px;
+	border: #dcdcdc 1px solid;
 }
 .media-file{
 	word-wrap:break-word;

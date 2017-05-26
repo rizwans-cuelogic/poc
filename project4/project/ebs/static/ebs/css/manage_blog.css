@@ -1,3 +1,6 @@
+#search-form{
+	display:none;
+}
 .search-wrapper{
 	width: 500px;
 	margin:0px auto;
