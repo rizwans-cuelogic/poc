@@ -46,6 +46,7 @@
 }
 .latest-blog img{
 	width:100% ;
+	min-height:170px;
 }
 .latest-blog .image-wrap {
 	height:170px;
@@ -160,11 +161,6 @@ a{
 ul.simple-list{
 	list-style: none;
 	padding: 0;
-}
-@media screen and (max-width:320px){
-	.latest-blog .image-wrap {
-		height:160px;
-	}
 }
 @media screen and (max-width:768px){
 	.file-size{
