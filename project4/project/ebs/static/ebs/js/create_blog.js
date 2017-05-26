@@ -1,16 +1,4 @@
 $(document).ready(function() {
-    // function readURL(input) {
-    //     if (input.files && input.files[0]) {
-    //     var reader = new FileReader();
-    //     reader.onload = function(e) {
-    //         $('#previewHolder').attr('src', e.target.result);
-    //     }
-    //     reader.readAsDataURL(input.files[0]);
-    //     }
-    // } 
-    // $("#id_attachments").change(function() {
-    //     readURL(this);
-    // });
     $( "#save" ).click(function() {
             $('#id_published').prop('required',true);
     });

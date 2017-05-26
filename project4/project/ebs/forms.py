@@ -123,5 +123,5 @@ class BlogFileForm(forms.Form):
 						widget=forms.FileInput(
 							attrs={
 								   'class':'form-control',
-								   'accept':'image/jpeg,image/png,application/msword,application/vnd.ms-excel,application/pdf',
+								   'accept':'image/jpeg,image/png',
 								}))

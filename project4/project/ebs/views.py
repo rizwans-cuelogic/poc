@@ -28,7 +28,7 @@ from django.utils import timezone
 from django.utils.html import strip_tags
 from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
-from .models import Organisation,Blog,BlogFile,ForgotPassword
+from .models import Organisation,Blog,BlogFile,ForgotPassword,Categories
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
 # Create your views here.
 
@@ -38,6 +38,78 @@ def home(request):
     orgform = OrgForm()
     loginform = UserLoginForm()
     hash1 = request.GET.get('uid', '')
+    blogs=Blog.objects.filter(published_state=True).order_by('-id')
+    for each in blogs:
+        images=BlogFile.objects.filter(blog=each.id)
+        if not images:
+            continue
+        else:
+            for image in images:
+                main_image=image.attachments
+                main_blog=each
+            break;
+
+    banner_context={}
+    banner_data=list()
+    blogs=blogs.exclude(id=main_blog.id)
+    for each in blogs:
+        banner_context={'banner_id':each.id,
+                        'banner_title':each.title,
+                        'banner_categories':each.categories,
+                        'banner_timestamp':each.published,
+                        'banner_organisation':each.organisation
+                    }
+        files=BlogFile.objects.filter(blog_id=each.id)
+        if not files :
+            continue
+        else:
+            for file in files:
+                banner_context['banner_file']=file.attachments
+            blogs=blogs.exclude(id=each.id)
+        banner_data.append(banner_context)
+        if len(banner_data)==4:
+            break
+
+    latest_context={}
+    latest_data=list()
+    for each in blogs:
+        latest_context={'latest_id':each.id,
+                        'latest_title':each.title,
+                        'latest_categories':each.categories,
+                        'latest_timestamp':each.published,
+                        'latest_organisation':each.organisation
+                    }
+        files=BlogFile.objects.filter(blog_id=each.id)
+        if not files :
+            continue
+        else:
+            for file in files:
+                latest_context['latest_file']=file.attachments
+            blogs=blogs.exclude(id=each.id)
+        latest_data.append(latest_context)
+        if len(latest_data)==10:
+            break
+
+    popular_context={}
+    popular_data=list()
+    for each in blogs:
+        popular_context={'popular_id':each.id,
+                        'popular_title':each.title,
+                        'popular_categories':each.categories,
+                        'popular_timestamp':each.published,
+                        'popular_organisation':each.organisation
+                    }
+        files=BlogFile.objects.filter(blog_id=each.id)
+        if not files :
+            continue
+        else:
+            for file in files:
+                popular_context['popular_file']=file.attachments
+            blogs=blogs.exclude(id=each.id)
+        popular_data.append(popular_context)
+        if len(popular_data)==4:
+            break        
+    categories=Categories.objects.all()
     try:
         if (hash1):
             obj = ForgotPassword.objects.get(activation_key=hash1)
@@ -47,22 +119,46 @@ def home(request):
                 return render(request, 'ebs/home.html', {'userform': userform,
                                                         'orgform': orgform, 
                                                         'loginform': loginform,
-                                                        'hashsuccess': False})
+                                                        'hashsuccess': False,
+                                                        'main_blog':main_blog,
+                                                        'main_image':main_image,
+                                                        'banner_data':banner_data,
+                                                        'latest_data':latest_data,
+                                                        'popular_data':popular_data,
+                                                        'categories':categories})
             else:
                 return render(request, 'ebs/home.html', {'userform': userform, 
                                                         'orgform': orgform, 
                                                         'loginform': loginform,
                                                         'hashsuccess': True,
-                                                        'hash': hash1})
+                                                        'hash': hash1,
+                                                        'main_blog':main_blog,
+                                                        'main_image':main_image,
+                                                        'banner_data':banner_data,
+                                                        'latest_data':latest_data,
+                                                        'popular_data':popular_data,
+                                                        'categories':categories})
     except Exception:
         return render(request, 'ebs/home.html', {'userform': userform,
                                                 'orgform': orgform,
                                                 'loginform': loginform, 
-                                                'hashsuccess': False})
+                                                'hashsuccess': False,
+                                                'main_blog':main_blog,
+                                                'main_image':main_image,
+                                                'banner_data':banner_data,
+                                                'latest_data':latest_data,
+                                                'popular_data':popular_data,
+                                                'categories':categories})
 
     return render(request, 'ebs/home.html', {'userform': userform,
                                             'orgform': orgform,
-                                            'loginform': loginform})
+                                            'loginform': loginform,
+                                            'main_blog':main_blog,
+                                            'main_image':main_image,
+                                            'banner_data':banner_data,
+                                            'latest_data':latest_data,
+                                            'popular_data':popular_data,
+                                            'categories':categories})
 
 
 def newpassword(request):
@@ -381,10 +477,12 @@ def detail_blog(request,id):
     fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
     if bloginstance.tags: 
         related_blog=Blog.objects.filter(
-                        Q(categories=bloginstance.categories)|
-                        Q(tags__icontains=bloginstance.tags)).order_by('-id')
+                        Q(published_state=True) &
+                        (Q(categories=bloginstance.categories)|
+                        Q(tags__icontains=bloginstance.tags))).order_by('-id')
     else:
         related_blog=Blog.objects.filter(
+                        Q(published_state=True)&
                         Q(categories=bloginstance.categories)).order_by('-id')
     related_blog=related_blog.exclude(id=id)
     related_context={}
@@ -400,7 +498,7 @@ def detail_blog(request,id):
         related_context={
                 'related_id':each.id,
                 'related_title':each.title,
-                'related_timestamp':each.timestamp,
+                'related_timestamp':each.published,
                 'related_categories':each.categories
             }
         files=BlogFile.objects.filter(blog_id=each.id)
