@@ -17,8 +17,6 @@ from django.contrib.auth import (authenticate, login, logout,)
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.conf import settings
-from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.db.models import Q
 from django.http import Http404
@@ -30,6 +28,18 @@ from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
 from .models import Organisation,Blog,BlogFile,ForgotPassword,Categories
 from .forms import UserForm, OrgForm, UserLoginForm,BlogForm,BlogFileForm
+from .helper import (get_banner_blogs,
+                    get_latest_blogs,
+                    get_popular_blogs,
+                    send_email,
+                    filter_manage_blog,
+                    get_related_blogs,
+                    check_password_empty,
+                    check_password_length,
+                    check_password_match,
+                    check_confirm_password_match,
+                    find_related_blog_tags,
+                    get_expiry_time)
 # Create your views here.
 
 
@@ -49,73 +59,77 @@ def home(request):
                 main_blog=each
             break;
 
-    banner_context={}
-    banner_data=list()
-    blogs=blogs.exclude(id=main_blog.id)
-    for each in blogs:
-        banner_context={'banner_id':each.id,
-                        'banner_title':each.title,
-                        'banner_categories':each.categories,
-                        'banner_timestamp':each.published,
-                        'banner_organisation':each.organisation
-                    }
-        files=BlogFile.objects.filter(blog_id=each.id)
-        if not files :
-            continue
-        else:
-            for file in files:
-                banner_context['banner_file']=file.attachments
-            blogs=blogs.exclude(id=each.id)
-        banner_data.append(banner_context)
-        if len(banner_data)==4:
-            break
+    banner_data,blogs= get_banner_blogs(main_blog)
+    # banner_data=list()
+    # blogs=blogs.exclude(id=main_blog.id)
+    # for each in blogs:
+    #     banner_context={'banner_id':each.id,
+    #                     'banner_title':each.title,
+    #                     'banner_categories':each.categories,
+    #                     'banner_timestamp':each.published,
+    #                     'banner_organisation':each.organisation
+    #                 }
+    #     files=BlogFile.objects.filter(blog_id=each.id)
+    #     if not files :
+    #         continue
+    #     else:
+    #         for file in files:
+    #             banner_context['banner_file']=file.attachments
+    #         blogs=blogs.exclude(id=each.id)
+    #     banner_data.append(banner_context)
+    #     if len(banner_data)==4:
+    #         break
 
-    latest_context={}
-    latest_data=list()
-    for each in blogs:
-        latest_context={'latest_id':each.id,
-                        'latest_title':each.title,
-                        'latest_categories':each.categories,
-                        'latest_timestamp':each.published,
-                        'latest_organisation':each.organisation
-                    }
-        files=BlogFile.objects.filter(blog_id=each.id)
-        if not files :
-            continue
-        else:
-            for file in files:
-                latest_context['latest_file']=file.attachments
-            blogs=blogs.exclude(id=each.id)
-        latest_data.append(latest_context)
-        if len(latest_data)==10:
-            break
+    #latest_context={}
+    latest_data,blogs=get_latest_blogs(blogs)
+    # for each in blogs:
+    #     latest_context={'latest_id':each.id,
+    #                     'latest_title':each.title,
+    #                     'latest_categories':each.categories,
+    #                     'latest_timestamp':each.published,
+    #                     'latest_organisation':each.organisation
+    #                 }
+    #     files=BlogFile.objects.filter(blog_id=each.id)
+    #     if not files :
+    #         continue
+    #     else:
+    #         for file in files:
+    #             latest_context['latest_file']=file.attachments
+    #         blogs=blogs.exclude(id=each.id)
+    #     latest_data.append(latest_context)
+    #     if len(latest_data)==10:
+    #         break
 
-    popular_context={}
-    popular_data=list()
-    for each in blogs:
-        popular_context={'popular_id':each.id,
-                        'popular_title':each.title,
-                        'popular_categories':each.categories,
-                        'popular_timestamp':each.published,
-                        'popular_organisation':each.organisation
-                    }
-        files=BlogFile.objects.filter(blog_id=each.id)
-        if not files :
-            continue
-        else:
-            for file in files:
-                popular_context['popular_file']=file.attachments
-            blogs=blogs.exclude(id=each.id)
-        popular_data.append(popular_context)
-        if len(popular_data)==4:
-            break        
+    #popular_context={}
+        
+    popular_data,blogs=get_popular_blogs(blogs)
+    #popular_data=list()
+    # for each in blogs:
+    #     popular_context={'popular_id':each.id,
+    #                     'popular_title':each.title,
+    #                     'popular_categories':each.categories,
+    #                     'popular_timestamp':each.published,
+    #                     'popular_organisation':each.organisation
+    #                 }
+    #     files=BlogFile.objects.filter(blog_id=each.id)
+    #     if not files :
+    #         continue
+    #     else:
+    #         for file in files:
+    #             popular_context['popular_file']=file.attachments
+    #         blogs=blogs.exclude(id=each.id)
+    #     popular_data.append(popular_context)
+    #     if len(popular_data)==4:
+    #         break        
     categories=Categories.objects.all()
     try:
         if (hash1):
             obj = ForgotPassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             time_date = obj.link_time
-            if time_date < (timezone.now() - timedelta(hours=48)):
+
+            #DIP
+            if time_date < (get_expiry_time()):
                 return render(request, 'ebs/home.html', {'userform': userform,
                                                         'orgform': orgform, 
                                                         'loginform': loginform,
@@ -253,19 +267,25 @@ def forgotpass(request):
                 hash1 = str(uuid.uuid1())
                 obj = user.forgotpassword_set.create(
                     activation_key=hash1, link_time=timezone.now())
+        
                 subject = 'Password Recovery'
-                html_content = render_to_string(
-                                            'ebs/mail.html', 
-                                            {'hash1': hash1, 
-                                            'HOST': settings.HOST,
-                                             'user': user})
+                send_email(user,hash1,subject)
+                #DIP,SRP,OPC
 
-                text_content = strip_tags(html_content)
-                from_email = settings.EMAIL_HOST_USER
-                msg = EmailMultiAlternatives(
-                    subject, text_content, from_email, [user.email])
-                msg.attach_alternative(html_content, "text/html")
-                msg.send()
+                # subject = 'Password Recovery'
+                # html_content = render_to_string(
+                #                             'ebs/mail.html', 
+                #                             {'hash1': hash1, 
+                #                             'HOST': settings.HOST,
+                #                              'user': user})
+
+                # text_content = strip_tags(html_content)
+                # from_email = settings.EMAIL_HOST_USER
+                # msg = EmailMultiAlternatives(
+                #     subject, text_content, from_email, [user.email])
+                # msg.attach_alternative(html_content, "text/html")
+                # msg.send()
+                
                 response = {
                 'status': 'success', 'message': "Reset password link has been email to your registered email address."}
                 return HttpResponse(json.dumps(response), 
@@ -282,34 +302,42 @@ def forgotpass(request):
 
 def recover_password(request):
     try:
+        
         if request.method == 'POST':
             data = json.loads(request.body)
             hash1 = data['hash']
             password = data['password']
             password1=data['password1']
             REGEX = re.compile('^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-z\d]+$')
-            if password == '':
-                response = {'status': 'Error',
-                            'message': "please fill the details"}
-                return HttpResponse(json.dumps(response),
-                                     content_type='application/json')
-            elif len(password) < 8 or len(password) > 16:
-                response = {'status': 'Error',
-                            'message': "please fill the details"}
-                return HttpResponse(json.dumps(response),
-                                    content_type='application/json')
+            check_password_empty(password)
+            check_password_length(password)
+            check_password_match(REGEX,password)
+            check_confirm_password_match(password,password1)
 
-            elif REGEX.match(password) is None:
-                response = {'status': 'Error',
-                            'message': "please fill the details"}
-                return HttpResponse(json.dumps(response), 
-                                    content_type='application/json')
+            #OCP
 
-            elif password!=password1:
-                response = {'status': 'Error',
-                            'message': "please fill the details"}
-                return HttpResponse(json.dumps(response), 
-                                    content_type='application/json')
+            # if password == '':
+            #     response = {'status': 'Error',
+            #                 'message': "please fill the details"}
+            #     return HttpResponse(json.dumps(response),
+            #                          content_type='application/json')
+            # elif len(password) < 8 or len(password) > 16:
+            #     response = {'status': 'Error',
+            #                 'message': "please fill the details"}
+            #     return HttpResponse(json.dumps(response),
+            #                         content_type='application/json')
+
+            # elif REGEX.match(password) is None:
+            #     response = {'status': 'Error',
+            #                 'message': "please fill the details"}
+            #     return HttpResponse(json.dumps(response), 
+            #                         content_type='application/json')
+
+            # elif password!=password1:
+            #     response = {'status': 'Error',
+            #                 'message': "please fill the details"}
+            #     return HttpResponse(json.dumps(response), 
+            #                         content_type='application/json')
             obj = ForgotPassword.objects.get(activation_key=hash1)
             user = User.objects.get(username=obj.username)
             user.set_password(password)
@@ -363,17 +391,21 @@ def manage_blog(request):
         context={}
         bloglist=Blog.objects.filter(organisation_id=orgobj.id).order_by('-timestamp')
         query=request.GET.get('q')
-        filters=request.GET.get('filterbox') 
-        if query or filters:
-            if filters=='en':
-                bloglist=bloglist.filter(published_state=True)
-            elif filters=='ds':
-                bloglist=bloglist.filter(published_state=False)    
-            bloglist=bloglist.filter(
-                            Q(title__icontains=query)|
-                            Q(description__icontains=query)|
-                            Q(tags__icontains=query)
-                        )
+        filters=request.GET.get('filterbox')
+        bloglist=filter_manage_blog(query,filters,bloglist)
+        
+        #SRP
+
+        # if query or filters:
+        #     if filters=='en':
+        #         bloglist=bloglist.filter(published_state=True)
+        #     elif filters=='ds':
+        #         bloglist=bloglist.filter(published_state=False)    
+        #     bloglist=bloglist.filter(
+        #                     Q(title__icontains=query)|
+        #                     Q(description__icontains=query)|
+        #                     Q(tags__icontains=query)
+        #                 )
 
         for each in bloglist:
             context={'blog_id':each.id,
@@ -473,20 +505,24 @@ def update_delete_blog(request):
         return HttpResponse(response, content_type="application/json")
 
 def detail_blog(request,id):
+
     bloginstance=get_object_or_404(Blog, id=id)
     fileinstance=BlogFile.objects.filter(blog=id).order_by('-id')
-    if bloginstance.tags: 
-        related_blog=Blog.objects.filter(
-                        Q(published_state=True) &
-                        (Q(categories=bloginstance.categories)|
-                        Q(tags__icontains=bloginstance.tags))).order_by('-id')
-    else:
-        related_blog=Blog.objects.filter(
-                        Q(published_state=True)&
-                        Q(categories=bloginstance.categories)).order_by('-id')
+    related_blog = find_related_blog_tags(bloginstance)
+    
+    #OCP
+
+    # if bloginstance.tags: 
+    #     related_blog=Blog.objects.filter(
+    #                     Q(published_state=True) &
+    #                     (Q(categories=bloginstance.categories)|
+    #                     Q(tags__icontains=bloginstance.tags))).order_by('-id')
+    # else:
+    #     related_blog=Blog.objects.filter(
+    #                     Q(published_state=True)&
+    #                     Q(categories=bloginstance.categories)).order_by('-id')
     related_blog=related_blog.exclude(id=id)
-    related_context={}
-    related_data=list()
+    related_data = list()
     main_image=None
     tags=list()
     for each in fileinstance:
@@ -494,21 +530,26 @@ def detail_blog(request,id):
     if bloginstance.tags:
         tags=re.findall(r"[\w']+", bloginstance.tags)    
 
-    for each in related_blog:
-        related_context={
-                'related_id':each.id,
-                'related_title':each.title,
-                'related_timestamp':each.published,
-                'related_categories':each.categories
-            }
-        files=BlogFile.objects.filter(blog_id=each.id)
-        if not files :
-            continue
-        else:
-            for each in files:
-                related_context['related_file']=each.attachments
-                break
-        related_data.append(related_context)
+        
+    related_data = get_related_blogs(related_blog)
+    
+    #SRP
+
+    # for each in related_blog:
+    #     related_context={
+    #             'related_id':each.id,
+    #             'related_title':each.title,
+    #             'related_timestamp':each.published,
+    #             'related_categories':each.categories
+    #         }
+    #     files=BlogFile.objects.filter(blog_id=each.id)
+    #     if not files :
+    #         continue
+    #     else:
+    #         for each in files:
+    #             related_context['related_file']=each.attachments
+    #             break
+    #     related_data.append(related_context)
     related_data=related_data[:6]
     return render(request, 'ebs/detail_blog.html',
                         {'blog':bloginstance,
